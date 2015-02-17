@@ -7,26 +7,21 @@
 
 package main;
 
+import java.io.File;
+
 public class Log {
 	
-	public Log() {
-		
+	private static String logData = "";
+	
+	public static void add(String data){
+		logData = logData + data + "\n";
 	}
 	
-	/**
-	 * Add's a new piece of log data
-	 * 
-	 * @param data
-	 */
-	public void add(String data){
-		
+	public static String getLog(){
+		return logData;
 	}
 	
-	/**
-	 * Reads the current log file
-	 */
-	public void read(){
-		
+	public static void exportLogToFile(){
+		File exportedLog = new File("");
 	}
-	
 }

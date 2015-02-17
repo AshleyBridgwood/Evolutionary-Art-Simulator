@@ -22,8 +22,9 @@ public class BioController {
  */
 
 	public BioController() {
-		System.out.println("Bio Controller Initiated");
+		Log.add("Bio Controller Initiated");
 		checkFiles();
+		System.out.println(Log.getLog());
 	}
 	
 	//Eventually will be moved to fileHandler.java
@@ -33,13 +34,13 @@ public class BioController {
 		
 		//Checking which Operating system the user is running (either Windows/Linux)
 		if(System.getProperty("os.name").equals("Windows 7")){
-			System.out.println("Operating System detected: Windows 7");
+			Log.add("Operating System detected: Windows 7");
 			 dir = System.getProperty("user.home") + File.separator + "My Documents";
 		} else if(System.getProperty("os.name").equals("Windows 8")){
-			System.out.println("Operating System detected: Windows 8");
+			Log.add("Operating System detected: Windows 8");
 			dir = System.getProperty("user.home") + File.separator + "Documents";
 		} else if(System.getProperty("os.name").equals("Linux")){
-			System.out.println("Operating System detected: Linux");
+			Log.add("Operating System detected: Linux");
 			dir = System.getProperty("user.home");
 		}
 			
@@ -53,31 +54,31 @@ public class BioController {
 			//Check and/or create the main folder
 			if(!defaultDir.isDirectory()){
 				defaultDir.mkdirs();
-				System.out.println("Folder created: Evolutionary Art");
+				Log.add("Folder created: Evolutionary Art");
 			}
 				
 			//Check and/or create the log folder
 			if(!logDir.isDirectory()){
 				logDir.mkdirs();
-				System.out.println("Folder Created in Evolutionary Art: Log");		
+				Log.add("Folder Created in Evolutionary Art: Log");		
 			}
 			
 			//Check and/or create the videos folder
 			if(!videoDir.isDirectory()){
 				videoDir.mkdirs();
-				System.out.println("Folder Created in Evolutionary Art: Videos");
+				Log.add("Folder Created in Evolutionary Art: Videos");
 			}
 			
 			//Check and/or create the exported Biomorph's folder
 			if(!exportDir.isDirectory()){
 				exportDir.mkdirs();
-				System.out.println("Folder Created in Evolutionary Art: Exported Biomorphs");
+				Log.add("Folder Created in Evolutionary Art: Exported Biomorphs");
 			}
 			
 			//Check and/or create the Saved Biomorph's folder
 			if(!savedDir.isDirectory()){
 				savedDir.mkdirs();
-				System.out.println("Folder Created in Evolutionary Art: Saved Biomorphs");
+				Log.add("Folder Created in Evolutionary Art: Saved Biomorphs");
 			}
 		}
 			
