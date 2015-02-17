@@ -7,6 +7,6 @@
 
 package main;
 
-public class UserInterface {
+public class UI {
 
 }
