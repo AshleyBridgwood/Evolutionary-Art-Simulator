@@ -29,7 +29,7 @@ public class BioController {
 		
 		EvolutionaryArtFolderLocation = null;
 		checkForMainWorkingFolder();
-		System.out.println(Log.getLog());
+		Log.exportLogToFile(EvolutionaryArtFolderLocation);
 	}
 	
 	//TODO: Eventually will be moved to fileHandler.java (maybee)
