@@ -18,17 +18,22 @@ public class BioController {
  * - Start the UI
  * - Check if directory file is there
  * - Link to BioGeneration and file handler
- * - link to log
  */
+	
+	//File location the users machine of the Evolutionary Art folder (Works will ALL OSs)
+	public String EvolutionaryArtFolderLocation;
 
 	public BioController() {
 		Log.add("Bio Controller Initiated");
-		checkFiles();
+		
+		
+		EvolutionaryArtFolderLocation = null;
+		checkForMainWorkingFolder();
 		System.out.println(Log.getLog());
 	}
 	
-	//Eventually will be moved to fileHandler.java
-	private void checkFiles(){
+	//TODO: Eventually will be moved to fileHandler.java (maybee)
+	private void checkForMainWorkingFolder(){
 		
 		String dir = null;
 		
@@ -43,9 +48,11 @@ public class BioController {
 			Log.add("Operating System detected: Linux");
 			dir = System.getProperty("user.home");
 		}
-			
+		
+		//If a correct OS is being used, continue with making main folder
 		if(dir != null){
 			File defaultDir = new File(dir,"Evolutionary Art");
+			EvolutionaryArtFolderLocation = dir + File.separator + "Evolutionary Art";
 			File logDir = new File(dir + File.separator + "Evolutionary Art", "Log");
 			File videoDir = new File(dir + File.separator + "Evolutionary Art", "Videos");
 			File exportDir = new File(dir + File.separator + "Evolutionary Art", "Exported Biomorphs");
@@ -80,6 +87,9 @@ public class BioController {
 				savedDir.mkdirs();
 				Log.add("Folder Created in Evolutionary Art: Saved Biomorphs");
 			}
+		} else {
+			//If OS is not Windows or Linux, pass error message about failed folder creation
+			Log.add("Unable to create Evolutionary Art folder in: " + EvolutionaryArtFolderLocation + ". Some functions may not perform correctly!");
 		}
 			
 	}
