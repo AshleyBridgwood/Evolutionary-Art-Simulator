@@ -16,11 +16,7 @@ public class FileHandler {
 	
 	public static String EvolutionaryArtFolderLocation = null;
 	
-	public static void saveBiomorph(String name, String bioData){
-		Log.add("Saving Biomorph...");
-		writeToFile("/Saved Biomorphs/" + name + ".biomorph", bioData);
-		Log.add("Biomorph saved: " + EvolutionaryArtFolderLocation + "/Saved Biomorphs");
-	}
+
 	
 	public static void writeToFile(String locationWithinFolder, String data){
 		if(EvolutionaryArtFolderLocation != null){

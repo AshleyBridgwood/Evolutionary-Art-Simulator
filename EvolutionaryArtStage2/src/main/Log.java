@@ -34,7 +34,7 @@ public class Log {
 	}
 	
 	public static void exportLogToFile(){
-		Log.add("Writing Log to File..");
+		Log.add("Writing Log to File...");
 		FileHandler.writeToFile("/Log/log.txt", logData);
 		clearLog();
 	}
