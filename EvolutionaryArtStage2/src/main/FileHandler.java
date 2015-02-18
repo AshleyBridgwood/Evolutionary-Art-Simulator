@@ -16,8 +16,6 @@ public class FileHandler {
 	
 	public static String EvolutionaryArtFolderLocation = null;
 	
-
-	
 	public static void writeToFile(String locationWithinFolder, String data){
 		if(EvolutionaryArtFolderLocation != null){
 			try{
@@ -31,7 +29,6 @@ public class FileHandler {
 				BufferedWriter bufferWriter = new BufferedWriter(fileWriter);
 				bufferWriter.write(data);
 				bufferWriter.close();
-				
 			} catch(IOException e){
 				e.printStackTrace();
 			}
