@@ -12,8 +12,9 @@ public class BioController {
 	public BioController() {
 		Log.add("Bio Controller Initiated");
 		FileHandler.checkForMainWorkingFolder();
-		Save.saveBiomorph("Test", "145814514154584845614");
-		System.out.println(Load.loadBiomorph("Test"));
+		
+		new BioCache();
+		Log.add("BioCache Initiated");
 		Log.exportLogToFile();
 	}
 	
