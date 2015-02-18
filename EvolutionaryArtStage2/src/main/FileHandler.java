@@ -14,22 +14,24 @@ import java.io.IOException;
 
 public class FileHandler {
 	
-	public static String EvolutionaryArtFolderLocation;
+	public static String EvolutionaryArtFolderLocation = null;
 	
-	public FileHandler() {
-		EvolutionaryArtFolderLocation = null;
+	public static void saveBiomorph(String name, String bioData){
+		Log.add("Saving Biomorph...");
+		writeToFile("/Saved Biomorphs/" + name + ".biomorph", bioData);
+		Log.add("Biomorph saved: " + EvolutionaryArtFolderLocation + "/Saved Biomorphs");
 	}
 	
 	public static void writeToFile(String locationWithinFolder, String data){
 		if(EvolutionaryArtFolderLocation != null){
 			try{
-				File exportedLog = new File(EvolutionaryArtFolderLocation + locationWithinFolder);
+				File file = new File(EvolutionaryArtFolderLocation + locationWithinFolder);
 				
-				if(!exportedLog.exists()){
-					exportedLog.createNewFile();
+				if(!file.exists()){
+					file.createNewFile();
 				}
 				
-				FileWriter fileWriter = new FileWriter(exportedLog.getAbsoluteFile());
+				FileWriter fileWriter = new FileWriter(file.getAbsoluteFile());
 				BufferedWriter bufferWriter = new BufferedWriter(fileWriter);
 				bufferWriter.write(data);
 				bufferWriter.close();
