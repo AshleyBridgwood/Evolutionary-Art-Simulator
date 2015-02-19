@@ -35,8 +35,7 @@ public class FileHandler {
 		}
 	}
 	
-	public static void checkForMainWorkingFolder(){
-		
+	public static String checkForOS(){
 		String dir = null;
 		
 		//Checking which Operating system the user is running (either Windows/Linux)
@@ -50,6 +49,14 @@ public class FileHandler {
 			Log.add("Operating System detected: Linux");
 			dir = System.getProperty("user.home");
 		}
+		
+		return dir;
+		
+	}
+	
+	public static void checkForMainWorkingFolder(){
+		
+		String dir = checkForOS();
 		
 		//If a correct OS is being used, continue with making main folder
 		if(dir != null){
