@@ -10,12 +10,19 @@ package main;
 import java.util.Random;
 
 public class Factory {
+	
+	private static Random r;
+	
+	/**
+	 * Generate random numbers for setting gene values
+	 * @return int
+	 */
 	public static int generateGeneValues(){
-		Random r = new Random();
+		r = new Random();
 		int value;
 		
 		do{
-			value = r.nextInt(3) -3;
+			value = r.nextInt(7) -3;
 		} while(value == 0);
 		
 		return value;	

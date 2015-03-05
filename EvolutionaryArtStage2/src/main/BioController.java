@@ -13,16 +13,13 @@ public class BioController {
 		Log.add("Bio Controller Initiated");
 		FileHandler.checkForMainWorkingFolder();
 		
-		Save.saveBiomorph("Test", "1841653102515205");
-		System.out.println(Load.loadBiomorph("Test"));
 		
-		new BioCache();
-		Log.add("BioCache Initiated");
+		//new UI(); <-- commented to speed up testing
+		Log.add("User Interface Initiated");
 		
-		while(!BioCache.isEmpty()){
-			String data = BioCache.pop();
-			System.out.println(data);
-		}
+		//Testing biomorphs
+		Biomorph b = new Biomorph();
+		System.out.println(b.getGeneValue());
 		
 		Log.exportLogToFile();
 	
