@@ -13,17 +13,22 @@ public class BioController {
 		Log.add("Bio Controller Initiated");
 		FileHandler.checkForMainWorkingFolder();
 		
-		
 		//new UI(); <-- commented to speed up testing
 		Log.add("User Interface Initiated");
-		
-		//Testing biomorphs
-		Biomorph b = new Biomorph();
-		System.out.println(b.getGeneValue());
-		
-		Log.exportLogToFile();
+			
+	}
 	
-		
+	/**
+	 * Creates a new biomorph
+	 * @return Biomorph
+	 */
+	public Biomorph newBiomorph(){
+		Biomorph b = new Biomorph();
+		return b;
+	}
+	
+	public void exportLogToFile(){
+		Log.exportLogToFile();
 	}
 	
 }
