@@ -14,7 +14,9 @@ public class BioController {
 		FileHandler.checkForMainWorkingFolder();
 		
 		//new UI(); <-- commented to speed up testing
-		Log.add("User Interface Initiated");
+		//Log.add("User Interface Initiated");
+		
+		new uinew();
 			
 	}
 	

@@ -11,8 +11,13 @@ import java.util.ArrayList;
 
 public class BioDrawParent extends BioDraw {
 
-	public BioDrawParent(ArrayList<Biomorph> biodata) {
-		super(biodata);
+	public BioDrawParent(String data) {
+		super(data);
+	}
+
+	@Override
+	public void paintComponent() {
+		
 	}
 
 }

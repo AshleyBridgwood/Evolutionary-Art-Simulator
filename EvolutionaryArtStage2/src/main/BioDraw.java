@@ -10,10 +10,11 @@ package main;
 
 import java.util.ArrayList;
 
-public class BioDraw {
+public abstract class BioDraw {
 	
-	public BioDraw(ArrayList<Biomorph> biodata) {
-
+	public BioDraw(String data) {
 	}
+	
+	public abstract void paintComponent();
 	
 }
