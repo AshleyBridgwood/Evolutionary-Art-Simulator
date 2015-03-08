@@ -21,4 +21,7 @@ public class Gene {
 	public void setValue(int g){
 		this.g = g;
 	}
+	
+
+
 }

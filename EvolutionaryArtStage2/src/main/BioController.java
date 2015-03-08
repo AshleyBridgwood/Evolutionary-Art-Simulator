@@ -17,6 +17,7 @@ public class BioController {
 		//Log.add("User Interface Initiated");
 		
 		new uinew();
+		newBiomorph();
 			
 	}
 	
