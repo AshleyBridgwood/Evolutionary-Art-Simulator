@@ -11,20 +11,9 @@ import java.util.Random;
 
 public class Factory {
 
-	private static Random rnd;
+	private static Random rnd = new Random();
 	private static int value;
-
-	/**
-	 * Generate random numbers for setting gene values
-	 * 
-	 * @return int
-	 */
-
-	// called at the start of each project. 
-	public static void init() {
-		rnd = new Random();
-	}
-
+	
 	// generates random seed for project
 	public static long generateSeed() {
 		long seed = System.currentTimeMillis();
@@ -38,7 +27,11 @@ public class Factory {
 		return customSeed;
 	}
 
-	// generate gene values using seed
+	/**
+	 * Generate random numbers for setting gene values
+	 * 
+	 * @return int
+	 */
 	public static int generateGeneValues() {
 		do {
 			value = rnd.nextInt(7) - 3;
