@@ -2,6 +2,9 @@
  * DESCRIPTION OF THE CLASS
  * 
  * @author Ashley Bridgwood
+ * 
+ * First value is branching, this must always be positive.
+ * Right now there are only two other values, the second being length and the third being width.
  *
  */
 
@@ -11,13 +14,22 @@ import java.util.ArrayList;
 
 public class Biomorph {
 	ArrayList<Gene> genes = new ArrayList<Gene>();
-	String seed;
+	int seed;
 	
 	public Biomorph() {
 		String testStr = "\n This bio-morphs genes are: ";
+		Gene first_gene;
+		do{
+			first_gene = new Gene(seed);	
+			
+		} while(first_gene.getValue() <= 0);
 		
-		for(int i = 0; i<3; i++){
-			Gene g = new Gene();
+		genes.add(first_gene);
+		testStr += first_gene.getValue()+", " ;
+		
+		
+		for(int i = 1; i<3; i++){
+			Gene g = new Gene(seed);
 			genes.add(g);
 			testStr += g.getValue()+", " ;
 		}
@@ -26,7 +38,7 @@ public class Biomorph {
 		//seed = "440460446534165";
 	}
 	
-	public String getSeed(){
+	public int getSeed(){
 		return seed;
 	}
 	

@@ -13,9 +13,13 @@ public class PointTree {
 		
 	}
 	
-	public static class Node<Point> 
+	public void test(){
+		
+	}
+	
+	private static class Node<Point> 
 	{
-		// point object
+		//S point object
 		public Point point;
 		// the collection of nodes this node keeps track of as children
 		public ArrayList<Node<Point>> children;

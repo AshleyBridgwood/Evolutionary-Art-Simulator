@@ -10,8 +10,8 @@ package main;
 public class Gene {
 	private int g;
 	
-	public Gene() {
-		g = Factory.generateGeneValues(); 
+	public Gene(int seed) {
+		g = Factory.generateGeneValues(seed); 
 	}
 	
 	public int getValue(){

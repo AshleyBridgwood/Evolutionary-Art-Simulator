@@ -2,6 +2,10 @@
  * DESCRIPTION OF THE CLASS
  * 
  * @author Ashley Bridgwood
+ * 
+ * First value is branching, this must always be positive.
+ * Right now there are only two other values, the second being length and the third being width.
+ * Width is x axis, Length is y axis.
  *
  */
 
@@ -15,8 +19,8 @@ public class BioGeneration {
 	private Gene g1;
 	private Gene g2;
 	
-	private String seed; //Seed Structure: {SEED; PARENT; CHILD1; CHILD2; CHILD3; CHILD4; CHILD5, CHILD6; CHILD7; CHILD8; CHILD9;}
-	private String bioData;
+	private int seed; 
+	private String bioData; //bioData Structure: {SEED; PARENT; CHILD1; CHILD2; CHILD3; CHILD4; CHILD5, CHILD6; CHILD7; CHILD8; CHILD9;}
 	
 	public BioGeneration(Biomorph b){
 		//Take values out of the biomorph passed in
@@ -33,6 +37,7 @@ public class BioGeneration {
 		
 		//Generate the parent biomorph data
 		
+		
 		//recursively generate points and their children for the amount of branching
 		// (which is currently gene 2)
 		
@@ -43,10 +48,42 @@ public class BioGeneration {
 		
 	}
 	
+	public PointTree generate(Biomorph b){
+		// create node thats root (0,0);
+		PointTree pt = new PointTree(new Point(0,0));
+		
+		Point childLeft = new Point(0, 0);
+		Point childRight = new Point(0, 0);
+		// pt.addChild(childLeft); //left child of root
+		// pt.addChild(childRight); //right child of root
+		
+		
+		
+		
+		// create two children of that node influenced by genes;
+		// if g0.getValue() > 1
+		for(int i=0; i<g0.getValue();i++)
+		{
+			
+		}
+		
+		
+		return null;
+		
+	}
+	
+	
 	
 	
 	public String getBioData(){
 		return bioData;
+	}
+
+
+
+	public void paintComponent() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
