@@ -49,25 +49,21 @@ public class BioGeneration {
 	}
 	
 	public PointTree generate(Biomorph b){
+		
+		
 		// create node thats root (0,0);
-		PointTree pt = new PointTree(new Point(0,0));
-		
-		Point childLeft = new Point(0, 0);
-		Point childRight = new Point(0, 0);
-		// pt.addChild(childLeft); //left child of root
-		// pt.addChild(childRight); //right child of root
+		Point root = new Point(0,0,0);
+		//PointTree pt = new PointTree(root);
+		//g1 is length(y), and g2 is width(x).
 		
 		
 		
+		//pt.add(new Point(0,0),new Point(0,0));
 		
-		// create two children of that node influenced by genes;
-		// if g0.getValue() > 1
-		for(int i=0; i<g0.getValue();i++)
-		{
-			
-		}
-		
-		
+		//for amount of branches
+		//iterate through children
+		//iterate through childrens children adding new points according to the genes	
+		//}
 		return null;
 		
 	}
