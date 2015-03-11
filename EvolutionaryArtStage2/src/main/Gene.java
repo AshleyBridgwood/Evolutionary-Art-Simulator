@@ -9,9 +9,15 @@ package main;
 
 public class Gene {
 	private int g;
+	private boolean branch = false;
 	
-	public Gene(int seed) {
-		g = Factory.generateGeneValues(seed); 
+	public Gene() {
+		g = Factory.generateGeneValue(); 
+	}
+	
+	public Gene(boolean isBranch) {
+		g = Factory.generateBranchValue(); 
+		branch = isBranch;
 	}
 	
 	public int getValue(){

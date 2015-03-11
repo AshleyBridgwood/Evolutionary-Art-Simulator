@@ -8,6 +8,7 @@
 package main;
 
 import java.util.Random;
+
 // Maybe global seed variable?
 
 public class Factory {
@@ -15,15 +16,15 @@ public class Factory {
 	private static Random rnd = new Random();
 	private static int value;
 	private static int branch;
-	
-	// generates random seed for project
+
+	// generates random seed for a biomorph
 	public static long generateSeed() {
 		long seed = System.currentTimeMillis();
 		rnd.setSeed(seed);
 		return seed;
 	}
 
-	// assigns custom seed for project
+	// assigns custom seed for a biomorph
 	public static long generateSeed(long customSeed) {
 		rnd.setSeed(customSeed);
 		return customSeed;
@@ -34,21 +35,22 @@ public class Factory {
 	 * 
 	 * @return int
 	 */
-	//TODO:need to work out how to use the seed in the random number generation.
-	public static int generateGeneValues(int seed) {
+	// TODO:need to work out how to use the seed in the random number
+	// generation.
+	public static int generateGeneValue() {
 		do {
 			value = rnd.nextInt(7) - 3;
 		} while (value == 0);
 
 		return value;
 	}
-	
-	public static int generateBranchValue(int seed){
-		
+
+	public static int generateBranchValue() {
+
 		do {
-			branch = generateGeneValues(seed);
-			
-	} while (branch<0);
+			branch = generateGeneValue();
+
+		} while (branch < 0);
 		return branch;
 	}
 }

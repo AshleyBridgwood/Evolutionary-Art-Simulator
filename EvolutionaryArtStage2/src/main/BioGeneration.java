@@ -19,7 +19,7 @@ public class BioGeneration {
 	private Gene g1;
 	private Gene g2;
 	
-	private int seed; 
+	private long seed; 
 	private String bioData; //bioData Structure: {SEED; PARENT; CHILD1; CHILD2; CHILD3; CHILD4; CHILD5, CHILD6; CHILD7; CHILD8; CHILD9;}
 	
 	public BioGeneration(Biomorph b){
