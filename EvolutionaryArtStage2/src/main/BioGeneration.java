@@ -13,7 +13,11 @@ package main;
 
 import java.util.ArrayList;
 
+import main.BinaryTree.BinaryTreeNode;
+
 public class BioGeneration {
+	
+	private int tempID;
 	
 	private Gene g0;
 	private Gene g1;
@@ -48,26 +52,76 @@ public class BioGeneration {
 		
 	}
 	
-	public PointTree generate(Biomorph b){
+	// I don't think this method will work straight away but when we implement a draw function
+	// it will be easier for us to visualise what this produces and how we can change it.
+	// I'm presuming this will only generate a certain branch of the bio-morph.
+	
+	public BinaryTree makeChildren(int branching, Point oldPoint)
+	{
+		branching = 0;
+		//point One is right point so:
+		//Point one x = oldPoint x + value of gene 1.
+		//Point one y = oldPoint y + value of gene 2.
+		Point pointOne = new Point(tempID,oldPoint.getX()+g1.getValue(),oldPoint.getY()+g2.getValue());
+		tempID++;
 		
+		//Point two x = oldPoint x - value of gene 1.
+		//Point two y = oldPoint y + value of gene 2.
+		Point pointTwo = new Point(tempID,oldPoint.getX()-g1.getValue(),oldPoint.getY()+g2.getValue());
+		tempID++;
 		
-		// create node thats root (0,0);
-		Point root = new Point(0,0,0);
-		//PointTree pt = new PointTree(root);
-		//g1 is length(y), and g2 is width(x).
+		// new binary tree
+		BinaryTree<Point> bt = new BinaryTree<Point>();
 		
+		if(branching == g0.getValue())
+		{
+			// make two new children and thats it.
+			addNode(oldPoint, pointOne);
+			addNode(oldPoint, pointTwo);			
+		}
+		else
+		{
+			// make child1 call recursive method
+			addNode(oldPoint, pointOne);
+			makeChildren(branching, pointOne);
+			
+			
+			// make child2 call recursive method
+			// increment branching 
+			addNode(oldPoint, pointTwo);
+			makeChildren(branching, pointTwo);
+			branching++;
+		}
 		
-		
-		//pt.add(new Point(0,0),new Point(0,0));
-		
-		//for amount of branches
-		//iterate through children
-		//iterate through childrens children adding new points according to the genes	
-		//}
-		return null;
+		return bt;
 		
 	}
 	
+	public void addNode(Point oldPoint, Point newPoint)
+	{
+		//search through the tree for the old point
+		BinaryTreeNode<Point> focusNode = find(oldPoint);
+		if(focusNode.right == null)
+		{
+			BinaryTreeNode<Point> newNode = null;
+			newNode.element = newPoint;
+			focusNode.right = newNode;
+		}
+		else 
+		{
+			BinaryTreeNode<Point> newNode = null;
+			newNode.element = newPoint;
+			focusNode.left = newNode;
+		}
+		//add newPoint as left node
+		//if left node is not null add it as right node.
+	}
+	
+	public BinaryTreeNode<Point> find(Point oldPoint)
+	{
+		int id = oldPoint.getID();
+		return null;
+	}
 	
 	
 	

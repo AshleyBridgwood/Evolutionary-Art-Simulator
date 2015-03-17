@@ -14,9 +14,9 @@ public class Point {
 	
 	public Point(int ID, int x, int y)
 	{
+		this.ID = ID;
 		this.x = x;
 		this.y = y;
-		this.ID = ID;
 	}
 	
 	
@@ -34,7 +34,7 @@ public class Point {
 	{
 		return ID;
 	}
-	
+
 	public String toString()
 	{
 		return ""+x+","+y+" : ";
