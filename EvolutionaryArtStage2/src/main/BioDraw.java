@@ -8,13 +8,42 @@
 
 package main;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
-public abstract class BioDraw {
+import javax.swing.JPanel;
+
+public class BioDraw extends JPanel {
 	
-	public BioDraw(String data) {
+	private int canvasSize;
+	
+	public BioDraw(String data, boolean isParent) {
+		
+		//Set the canvas size - Parent will be larger than 
+		if(isParent){
+			canvasSize = 350;
+		} else {
+			canvasSize = 150;
+		}
 	}
 	
-	public abstract void paintComponent();
+	/**
+	 * Set the preferred size of the canvas. This is dependent on if it is a parent or a child
+	 * 
+	 * @return Dimension
+	 */
+	@Override
+     public Dimension getPreferredSize() {
+         return new Dimension(canvasSize, canvasSize);
+    }
 	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		//!!! COMPLETE THE DRAWING OF THE BIOMORPH BELOW !!!\\ 	
+		g.setColor(Color.BLACK);
+		
+	}
 }

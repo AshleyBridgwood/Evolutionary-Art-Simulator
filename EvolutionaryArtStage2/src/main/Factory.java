@@ -9,41 +9,48 @@ package main;
 
 import java.util.Random;
 
+// Maybe global seed variable?
+
 public class Factory {
 
-	private static Random rnd;
+	private static Random rnd = new Random();
 	private static int value;
+	private static int branch;
 
-	/**
-	 * Generate random numbers for setting gene values
-	 * 
-	 * @return int
-	 */
-
-	// called at the start of each project. 
-	public static void init() {
-		rnd = new Random();
-	}
-
-	// generates random seed for project
+	// generates random seed for a biomorph
 	public static long generateSeed() {
 		long seed = System.currentTimeMillis();
 		rnd.setSeed(seed);
 		return seed;
 	}
 
-	// assigns custom seed for project
+	// assigns custom seed for a biomorph
 	public static long generateSeed(long customSeed) {
 		rnd.setSeed(customSeed);
 		return customSeed;
 	}
 
-	// generate gene values using seed
-	public static int generateGeneValues() {
+	/**
+	 * Generate random numbers for setting gene values
+	 * 
+	 * @return int
+	 */
+	// TODO:need to work out how to use the seed in the random number
+	// generation.
+	public static int generateGeneValue() {
 		do {
 			value = rnd.nextInt(7) - 3;
 		} while (value == 0);
 
 		return value;
+	}
+
+	public static int generateBranchValue() {
+
+		do {
+			branch = generateGeneValue();
+
+		} while (branch < 0);
+		return branch;
 	}
 }

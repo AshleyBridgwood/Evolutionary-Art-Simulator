@@ -1,0 +1,60 @@
+/**
+ * DESCRIPTION OF THE CLASS
+ * 
+ * @author Ashley Bridgwood
+ * @author Matthew Gould
+ * 
+ * First value is branching, this must always be positive.
+ * Right now there are only two other values, the second being length and the third being width.
+ *
+ */
+
+package main;
+
+import java.util.ArrayList;
+
+public class Biomorph {
+	ArrayList<Gene> genes = new ArrayList<Gene>();
+	long seed;
+
+	public Biomorph() {
+		String testStr = "\n This bio-morphs genes are: ";
+		Gene first_gene;
+
+		this.seed = Factory.generateSeed();
+		System.out.println(seed); // testing purposes
+		
+		//generate first gene value
+		do {
+			first_gene = new Gene();
+		} while (first_gene.getValue() <= 0);
+		genes.add(first_gene);
+		testStr += first_gene.getValue() + ", ";
+
+		for (int i = 1; i < 3; i++) {
+			Gene g = new Gene();
+			genes.add(g);
+			testStr += g.getValue() + ", ";
+		}
+		System.out.print(testStr);
+	}
+
+	public long getSeed() {
+		return seed;
+	}
+
+	public String getStringGeneValue() {
+		String genesString = "";
+		for (int i = 0; i < genes.size(); i++) {
+			genesString = genesString + genes.get(i).getValue() + ", ";
+		}
+		return genesString;
+
+		// return genes.get(0).getValue() + ", " + genes.get(0).getValue() +
+		// ", " + genes.get(0).getValue();
+	}
+
+	public ArrayList<Gene> getGenes() {
+		return genes;
+	}
+}
