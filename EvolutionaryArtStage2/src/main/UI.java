@@ -61,6 +61,8 @@ public class UI {
 	JPanel child8Panel = new JPanel();       // actual output
 	JPanel panel4Right = new JPanel();
 	JPanel child9Panel = new JPanel();      // actual output
+	
+	//Panel Section for biomorph to be manipulated.
 	JPanel panel4Gap = new JPanel();
 	JPanel panel4Gap2 = new JPanel();
 	JPanel saveBiomorph = new JPanel();
