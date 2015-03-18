@@ -117,10 +117,23 @@ public class BioGeneration {
 		//if left node is not null add it as right node.
 	}
 	
-	public BinaryTreeNode<Point> find(Point oldPoint)
+	public Point find(BinaryTreeNode<Point> tree, Point oldPoint)
 	{
 		//TODO: This needs to be implemented.
-		int id = oldPoint.getID();
+		//int id = oldPoint.getID();
+		
+		if(!(tree == null)){
+			int value = oldPoint.getID();
+			
+			if(value < 0){
+				return find(tree.left, oldPoint);
+			} else if(value > 0){
+				return find(tree.right, oldPoint);
+			} else {
+				return tree.element;
+			}
+		}
+		
 		return null;
 	}
 	
@@ -128,16 +141,5 @@ public class BioGeneration {
 	
 	public String getBioData(){
 		return bioData;
-	}
-
-
-
-	public void paintComponent() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
-	
+	}	
 }
