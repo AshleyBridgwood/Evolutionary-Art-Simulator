@@ -52,6 +52,10 @@ public class BioGeneration {
 		
 	}
 	
+	public BinaryTree makeParent(){
+		return null;
+	}
+	
 	// I don't think this method will work straight away but when we implement a draw function
 	// it will be easier for us to visualise what this produces and how we can change it.
 	// I'm presuming this will only generate a certain branch of the bio-morph.
@@ -73,16 +77,15 @@ public class BioGeneration {
 		// new binary tree
 		BinaryTree<Point> bt = new BinaryTree<Point>();
 		
-		if(branching == g0.getValue())
-		{
+		if(branching == g0.getValue()){
 			// make two new children and thats it.
 			addNode(oldPoint, pointOne);
 			addNode(oldPoint, pointTwo);			
-		}
-		else
-		{
-			// make child1 call recursive method
+		} else {
+			// making of child1
+			//Create the parent node
 			addNode(oldPoint, pointOne);
+			//Make the child off that node
 			makeChildren(branching, pointOne);
 			
 			
@@ -97,6 +100,25 @@ public class BioGeneration {
 		
 	}
 	
+	public void addNode(Point oldPoint, Point newPoint){
+		//search through the tree for the old point
+		BinaryTreeNode<Point> focusNode = find(oldPoint);
+		if(focusNode.right == null)
+		{
+			BinaryTreeNode<Point> newNode = null;
+			newNode.element = newPoint;
+			focusNode.right = newNode;
+			
+		} else {
+			BinaryTreeNode<Point> newNode = null;
+			newNode.element = newPoint;
+			focusNode.left = newNode;
+		}
+		//add newPoint as left node
+		//if left node is not null add it as right node.
+	}
+	
+	/**
 	public void addNode(Point oldPoint, Point newPoint)
 	{
 		//search through the tree for the old point
@@ -106,9 +128,8 @@ public class BioGeneration {
 			BinaryTreeNode<Point> newNode = null;
 			newNode.element = newPoint;
 			focusNode.right = newNode;
-		}
-		else 
-		{
+			
+		} else {
 			BinaryTreeNode<Point> newNode = null;
 			newNode.element = newPoint;
 			focusNode.left = newNode;
@@ -117,27 +138,37 @@ public class BioGeneration {
 		//if left node is not null add it as right node.
 	}
 	
-	public Point find(BinaryTreeNode<Point> tree, Point oldPoint)
-	{
-		//TODO: This needs to be implemented.
-		//int id = oldPoint.getID();
+	*/
+	
+	
+	private <T> BinaryTreeNode<Point> find(BinaryTreeNode<Point> node, Point oldPoint){
 		
-		if(!(tree == null)){
-			int value = oldPoint.getID();
-			
-			if(value < 0){
-				return find(tree.left, oldPoint);
-			} else if(value > 0){
-				return find(tree.right, oldPoint);
-			} else {
-				return tree.element;
-			}
+		if(node == null){
+			return null;
+		} else if(node.element.getID() == oldPoint.getID()){
+			return node;
+		} else if(node.element.getID() < oldPoint.getID()){
+			return find(node.left, oldPoint);
 		}
 		
 		return null;
 	}
 	
+	//public Point find(Point oldPoint){
+	//	return elementAt(oldPoint);
+	//}
 	
+	//public Point elementAt(Point t){
+	//	return t == null? null : t;
+	//}
+	
+	//private Point elementAt(BinaryTreeNode<Point> t){
+	//	return t == null ? null : t.element;
+	//}
+	
+	//public Point find(BinaryTreeNode<Point> oldPoint){
+		//return elementAt(oldPoint);
+	//}	
 	
 	public String getBioData(){
 		return bioData;
