@@ -1,9 +1,9 @@
 package main;
 import java.util.Iterator;
 
-public class BinaryTree<T> implements Iterable<T> {
+public class BinaryTree<Point> implements Iterable<Point> {
 	
-	protected BinaryTreeNode<T> root;
+	protected BinaryTreeNode<Point> root;
 
 	// constructs an empty tree
 	public BinaryTree() 
@@ -12,9 +12,9 @@ public class BinaryTree<T> implements Iterable<T> {
 	}
 	
 	// constructs a tree with just a root node
-	public BinaryTree(T element) 
+	public BinaryTree(Point element) 
 	{
-		root = new BinaryTreeNode<T>(element);
+		root = new BinaryTreeNode<Point>(element);
 	}
 	
 	// reset the tree to empty state
@@ -24,22 +24,58 @@ public class BinaryTree<T> implements Iterable<T> {
 	}
 	
 	@Override
-	public Iterator<T> iterator() 
+	public Iterator<Point> iterator() 
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
+	public Point find(Point oldPoint)
+	{
+		return find(oldPoint, root).element;
+	}
+	
+	protected BinaryTreeNode<Point> find(Point oldPoint, BinaryTreeNode<Point> t)
+	{
+		while(t!=null)
+		{
+			// if t.element is what we are looking for
+			if(true)
+			{
+				
+			}
+			
+		}
+		return null;
+	}
+	
+	protected BinaryTreeNode<Point> insert(Point oldPoint, BinaryTreeNode<Point>t)
+	{
+		if(t==null){ t = new BinaryTreeNode<Point>(oldPoint);}
+		else if()
+		{
+			t.left = insert(oldPoint,t.left);
+		}
+		else if()
+		{
+			t.right = insert(oldPoint,t.right);
+		}
+		else
+		{
+			//throw exception
+		}
+	}
+	
 	
 
-protected static class BinaryTreeNode<T> {
+protected static class BinaryTreeNode<Point> {
 	
-	public T element;
-	public BinaryTreeNode<T> left;
-	public BinaryTreeNode<T> right;
+	public Point element;
+	public BinaryTreeNode<Point> left;
+	public BinaryTreeNode<Point> right;
 	
 	// Constructor for creating a leaf node
-	public BinaryTreeNode(T element)
+	public BinaryTreeNode(Point element)
 	{
 		this.element = element;
 		left = null; 
@@ -47,7 +83,7 @@ protected static class BinaryTreeNode<T> {
 	}
 	
 	// Constructor for creating a parent node
-	public BinaryTreeNode(T element, BinaryTreeNode<T> left, BinaryTreeNode<T> right) 
+	public BinaryTreeNode(Point element, BinaryTreeNode<Point> left, BinaryTreeNode<Point> right) 
 	{
 		this.element = element;
 		this.left = left; 
