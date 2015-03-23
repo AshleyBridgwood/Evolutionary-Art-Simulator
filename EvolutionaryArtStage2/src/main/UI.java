@@ -318,7 +318,6 @@ public class UI {
 		panel5Bottom.add(prevButton);
 		//panel5Bottom.add(firstButton + nextButton + prevButton);
 		
-		
 
 		//Exit prompt
 		mainFrame.addWindowListener(new WindowAdapter() {

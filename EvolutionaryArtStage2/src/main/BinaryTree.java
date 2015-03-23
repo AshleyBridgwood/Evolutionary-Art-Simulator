@@ -2,11 +2,12 @@ package main;
 
 import main.Point;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class BinaryTree {
 	
-	protected BinaryTreeNode<Point> root;
+	protected  BinaryTreeNode<Point> root;
 
 	// constructs an empty tree
 	public BinaryTree(){
@@ -53,6 +54,16 @@ public class BinaryTree {
 		return null;
 	}
 	
+	public ArrayList<Line> getLineInformation(){
+		ArrayList<Line> lines = new ArrayList<Line>();
+		
+		if(root != null){
+			lines.add(root)
+		}
+			
+		return lines;
+	}
+	
 	protected static class BinaryTreeNode<Point> {
 		
 		public Point element;
@@ -77,6 +88,7 @@ public class BinaryTree {
 			// will only be true if both nodes are null
 			return (left == null && right == null);
 		}
+		
 	}
 
 }
