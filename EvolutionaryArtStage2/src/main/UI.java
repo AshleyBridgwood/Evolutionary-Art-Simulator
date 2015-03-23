@@ -8,7 +8,6 @@
 package main;
 
 import main.LabelledSlider;
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -112,11 +111,11 @@ public class UI {
 		///////////////////////////////////////////               1. Create containers to hold components \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 		//mainFrame
-		mainFrame = new JFrame("Graphical User Interface");
+		setMainFrame(new JFrame("Graphical User Interface"));
 		//mainFrame properties
 		Dimension d = new Dimension (1400,1000); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
-		mainFrame.setPreferredSize(d); // not set in step 2 because mainFrame variable not initialised.
-		mainFrame.setResizable(false);
+		getMainFrame().setPreferredSize(d); // not set in step 2 because mainFrame variable not initialised.
+		getMainFrame().setResizable(false);
 		
 		
 		///////////////////////////////////////////               2. Specify Layout Manager \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -124,7 +123,7 @@ public class UI {
 
 
 		//mainFrame layout set to (5,1).
-		mainFrame.setLayout(new GridLayout(5,1));
+		getMainFrame().setLayout(new GridLayout(5,1));
 		
 		//panel1
 		panel1.setLayout(new GridLayout(1,1));
@@ -246,11 +245,11 @@ public class UI {
 		///////////////////////////////////////////               4. Add panels to mainframe \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 		//(5,1)
-		mainFrame.add(panel1);
-		mainFrame.add(panel2);
-		mainFrame.add(panel3);
-		mainFrame.add(panel4);
-		mainFrame.add(panel5);
+		getMainFrame().add(panel1);
+		getMainFrame().add(panel2);
+		getMainFrame().add(panel3);
+		getMainFrame().add(panel4);
+		getMainFrame().add(panel5);
 		
 		
 		/* Panel 2*/
@@ -320,7 +319,7 @@ public class UI {
 		
 
 		//Exit prompt
-		mainFrame.addWindowListener(new WindowAdapter() {
+		getMainFrame().addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				exit();
 			}
@@ -363,7 +362,9 @@ public class UI {
 			menuBar.add(tools);
 			menuBar.add(help);
 		
-		mainFrame.setJMenuBar(menuBar);
+		getMainFrame().setJMenuBar(menuBar);
+		getMainFrame().pack();
+		getMainFrame().setVisible(true);
 		
 		//Listeners for the menu bar:
 		//Exit
@@ -375,22 +376,32 @@ public class UI {
 		});
                 
 
-                
-		mainFrame.pack();
-		mainFrame.setVisible(true);
+
 	}
 	
 	//Default exit of the system
 	private void exit(){
 		int response = JOptionPane
-				.showConfirmDialog(mainFrame,
+				.showConfirmDialog(getMainFrame(),
 						"Do you really want to quit?", "Quit",
 						JOptionPane.YES_NO_OPTION,
 						JOptionPane.QUESTION_MESSAGE);
 		if (response == JOptionPane.YES_OPTION) {
-			mainFrame.dispose();
+			getMainFrame().dispose();
 		}
 	}
+
+	
+	//getters and setters so startscreen can access the main frame.
+	public JFrame getMainFrame() {
+		return this.mainFrame;
+	}
+
+	public void setMainFrame(JFrame mainFrame) {
+		this.mainFrame = mainFrame;
+	}
+
+
 }
 
 
