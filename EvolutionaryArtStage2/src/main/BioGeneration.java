@@ -74,7 +74,7 @@ public class BioGeneration {
 		tempID++;
 		
 		// new binary tree
-		BinaryTree<Point> bt = new BinaryTree<Point>();
+		BinaryTree bt = new BinaryTree();
 		
 		if(branching == g0.getValue()){
 			// make two new children and thats it.

@@ -30,39 +30,45 @@ public class BinaryTree {
 	}
 	
 	protected BinaryTreeNode<Point> find(Point oldPoint, BinaryTreeNode<Point> t){
-		//TODO: WHILE LOOP 
-		while(){
-			// if t.element is what we are looking for
-			if(t.element.getID() == oldPoint.getID()){
-				
+		// if this node is the one we are looking for: return it
+		if(t!=null)
+		{
+			if(t.element.getID() == oldPoint.getID())
+			{
+				return t;
 			}
-			
+			else // else: call this method for the left and right nodes
+			{
+				find(oldPoint,t.left);
+				find(oldPoint,t.right);
+			}
 		}
 		return null;
-	}
-	
-	protected BinaryTreeNode<Point> insert(Point oldPoint, BinaryTreeNode<Point> t){
-		if(){
-			t = new BinaryTreeNode<Point>(oldPoint);
-		} else if(false){
-			t.left = insert(oldPoint,t.left);
-		} else if(false){
-			t.right = insert(oldPoint,t.right);
-		} else {
-			//throw exception
-		}
-		return null;
-	}
-	
-	public ArrayList<Line> getLineInformation(){
-		ArrayList<Line> lines = new ArrayList<Line>();
 		
-		if(root != null){
-			lines.add(root)
+		
 		}
-			
-		return lines;
+	
+	protected void insert(Point oldPoint, BinaryTreeNode<Point> t){
+		// use find to locate the parent node we want to add in, if left is empty add it there else add it to right
+		if(find(oldPoint,t).left != null)
+		{
+			find(oldPoint,t).left = t; 
+		}
+		else
+		{
+			find(oldPoint,t).right = t;
+		}
 	}
+	
+//	public ArrayList<Line> getLineInformation(){
+//		ArrayList<Line> lines = new ArrayList<Line>();
+//		
+//		if(root != null){
+//			lines.add(root);
+//		}
+//			
+//		return lines;
+//	}
 	
 	protected static class BinaryTreeNode<Point> {
 		
