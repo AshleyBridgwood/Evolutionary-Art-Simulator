@@ -12,31 +12,26 @@ public class Point {
 	int x;
 	int y;
 	
-	public Point(int ID, int x, int y)
-	{
+	public Point(int ID, int x, int y){
 		this.ID = ID;
 		this.x = x;
 		this.y = y;
 	}
 	
 	
-	public int getX()
-	{
+	public int getX(){
 		return x;
 	}
 	
-	public int getY()
-	{
+	public int getY(){
 		return y;
 	}
 	
-	public int getID()
-	{
+	public int getID(){
 		return ID;
 	}
 
-	public String toString()
-	{
+	public String toString(){
 		return ""+x+","+y+" : ";
 	}
 

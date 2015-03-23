@@ -1,7 +1,10 @@
 package main;
+
+import main.Point;
+
 import java.util.Iterator;
 
-public class BinaryTree<Point> implements Iterable<Point> {
+public class BinaryTree {
 	
 	protected BinaryTreeNode<Point> root;
 
@@ -20,11 +23,6 @@ public class BinaryTree<Point> implements Iterable<Point> {
 		root = null;
 	}
 	
-	@Override
-	public Iterator<Point> iterator(){
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	public Point find(Point oldPoint){
 		return find(oldPoint, root).element;
@@ -33,7 +31,7 @@ public class BinaryTree<Point> implements Iterable<Point> {
 	protected BinaryTreeNode<Point> find(Point oldPoint, BinaryTreeNode<Point> t){
 		while(t!=null){
 			// if t.element is what we are looking for
-			if(true){
+			if(){
 				
 			}
 			
@@ -42,7 +40,7 @@ public class BinaryTree<Point> implements Iterable<Point> {
 	}
 	
 	protected BinaryTreeNode<Point> insert(Point oldPoint, BinaryTreeNode<Point> t){
-		if(true){
+		if(){
 			t = new BinaryTreeNode<Point>(oldPoint);
 		} else if(false){
 			t.left = insert(oldPoint,t.left);
@@ -54,8 +52,6 @@ public class BinaryTree<Point> implements Iterable<Point> {
 		return null;
 	}
 	
-	
-
 	protected static class BinaryTreeNode<Point> {
 		
 		public Point element;
@@ -81,6 +77,5 @@ public class BinaryTree<Point> implements Iterable<Point> {
 			return (left == null && right == null);
 		}
 	}
-
 
 }
