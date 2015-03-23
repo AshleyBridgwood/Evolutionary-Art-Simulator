@@ -50,6 +50,7 @@ public class BinaryTree {
 	
 	protected void insert(Point oldPoint, BinaryTreeNode<Point> t){
 		// use find to locate the parent node we want to add in, if left is empty add it there else add it to right
+		t.element = oldPoint; //<---- TODO: Maybe the new point needs to be passed in too otherwise we are always assigning the old point?
 		if(find(oldPoint,t).left != null)
 		{
 			find(oldPoint,t).left = t; 
