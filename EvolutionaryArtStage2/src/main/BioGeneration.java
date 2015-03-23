@@ -48,8 +48,7 @@ public class BioGeneration {
 		
 		//Generate the children biomorph data (9 of them)
 		
-		
-		
+			
 	}
 	
 	public BinaryTree makeParent(){
@@ -143,16 +142,11 @@ public class BioGeneration {
 	
 	private <T> BinaryTreeNode<Point> find(BinaryTreeNode<Point> node, Point oldPoint){
 		
-		if(node == null)
-		{
+		if(node == null){
 			return null;	
-		} 
-		else if(node.element.getID() == oldPoint.getID()){
-			
+		} else if(node.element.getID() == oldPoint.getID()){
 			return node;
-		} 
-		else
-		{
+		} else {
 			if(find(node.left, oldPoint).element.getID() == oldPoint.getID())
 				
 				{
