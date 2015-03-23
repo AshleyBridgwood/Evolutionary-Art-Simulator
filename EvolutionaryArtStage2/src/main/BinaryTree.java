@@ -29,9 +29,10 @@ public class BinaryTree {
 	}
 	
 	protected BinaryTreeNode<Point> find(Point oldPoint, BinaryTreeNode<Point> t){
-		while(t!=null){
+		//TODO: WHILE LOOP 
+		while(){
 			// if t.element is what we are looking for
-			if(){
+			if(t.element.getID() == oldPoint.getID()){
 				
 			}
 			
