@@ -317,6 +317,9 @@ public class UI {
 		panel5Bottom.add(prevButton);
 		//panel5Bottom.add(firstButton + nextButton + prevButton);
 		
+		//Adding of biomorphs to the panels
+		
+		child1Panel.add
 
 		//Exit prompt
 		getMainFrame().addWindowListener(new WindowAdapter() {

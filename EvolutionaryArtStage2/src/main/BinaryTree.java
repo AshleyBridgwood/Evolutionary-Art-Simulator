@@ -31,45 +31,37 @@ public class BinaryTree {
 	
 	protected BinaryTreeNode<Point> find(Point oldPoint, BinaryTreeNode<Point> t){
 		// if this node is the one we are looking for: return it
-		if(t!=null)
-		{
-			if(t.element.getID() == oldPoint.getID())
-			{
+		if(t!=null){
+			if(t.element.getID() == oldPoint.getID()){
 				return t;
-			}
-			else // else: call this method for the left and right nodes
-			{
+			} else {
+				// else: call this method for the left and right nodes
 				find(oldPoint,t.left);
 				find(oldPoint,t.right);
 			}
 		}
 		return null;
-		
-		
-		}
+	}
 	
 	protected void insert(Point oldPoint, BinaryTreeNode<Point> t){
 		// use find to locate the parent node we want to add in, if left is empty add it there else add it to right
 		t.element = oldPoint; //<---- TODO: Maybe the new point needs to be passed in too otherwise we are always assigning the old point?
-		if(find(oldPoint,t).left != null)
-		{
+		if(find(oldPoint,t).left != null){
 			find(oldPoint,t).left = t; 
-		}
-		else
-		{
+		} else {
 			find(oldPoint,t).right = t;
 		}
 	}
 	
-//	public ArrayList<Line> getLineInformation(){
-//		ArrayList<Line> lines = new ArrayList<Line>();
-//		
-//		if(root != null){
-//			lines.add(root);
-//		}
-//			
-//		return lines;
-//	}
+	public ArrayList<Line> getLineInformation(){
+		ArrayList<Line> lines = new ArrayList<Line>();
+		
+		if(root != null){
+			
+		}
+			
+		return lines;
+	}
 	
 	protected static class BinaryTreeNode<Point> {
 		

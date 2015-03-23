@@ -108,8 +108,15 @@ public class StartScreen{
 		//Action listener for new button. Directs it to the main screen of the UI.
 		newButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new UI().getMainFrame().setVisible(true);
+				new EvolutionaryArt();
 
+			}
+		});
+		
+		//TODO: action listener for the existing button. Need a interface so they can pick old biomorphs
+		loadButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				
 			}
 		});
 		

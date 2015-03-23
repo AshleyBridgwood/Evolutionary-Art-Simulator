@@ -42,8 +42,8 @@ public class BioDraw extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		//!!! COMPLETE THE DRAWING OF THE BIOMORPH BELOW !!!\\ 	
+		//!!! COMPLETE THE DRAWING OF THE BIOMORPH BELOW !!!\\
 		g.setColor(Color.BLACK);
-		
+		g.drawLine(1, 1, 10, 10);
 	}
 }
