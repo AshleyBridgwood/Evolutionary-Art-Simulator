@@ -48,8 +48,7 @@ public class BioGeneration {
 		
 		//Generate the children biomorph data (9 of them)
 		
-		
-		
+			
 	}
 	
 	public BinaryTree makeParent(){
@@ -60,7 +59,7 @@ public class BioGeneration {
 	// it will be easier for us to visualise what this produces and how we can change it.
 	// I'm presuming this will only generate a certain branch of the bio-morph.
 	
-	public BinaryTree makeChildren(int branching, Point oldPoint)
+	public BinaryTree makeTree(int branching, Point oldPoint)
 	{
 		branching = 0;
 		//point One is right point so:
@@ -79,20 +78,20 @@ public class BioGeneration {
 		
 		if(branching == g0.getValue()){
 			// make two new children and thats it.
-			addNode(oldPoint, pointOne);
-			addNode(oldPoint, pointTwo);			
+			//addNode(bt, oldPoint, pointOne);
+			//addNode(bt, oldPoint, pointTwo);			
 		} else {
 			// making of child1
 			//Create the parent node
-			addNode(oldPoint, pointOne);
+			//addNode(bt, oldPoint, pointOne);
 			//Make the child off that node
-			makeChildren(branching, pointOne);
+			makeTree(branching, pointOne);
 			
 			
 			// make child2 call recursive method
 			// increment branching 
-			addNode(oldPoint, pointTwo);
-			makeChildren(branching, pointTwo);
+			//addNode(bt, oldPoint, pointTwo);
+			makeTree(branching, pointTwo);
 			branching++;
 		}
 		
@@ -100,9 +99,9 @@ public class BioGeneration {
 		
 	}
 	
-	public void addNode(Point oldPoint, Point newPoint){
+	public void addNode(BinaryTreeNode<Point> bt, Point oldPoint, Point newPoint){
 		//search through the tree for the old point
-		BinaryTreeNode<Point> focusNode = find(oldPoint);
+		BinaryTreeNode<Point> focusNode = find(bt, oldPoint);
 		if(focusNode.right == null)
 		{
 			BinaryTreeNode<Point> newNode = null;
@@ -144,13 +143,22 @@ public class BioGeneration {
 	private <T> BinaryTreeNode<Point> find(BinaryTreeNode<Point> node, Point oldPoint){
 		
 		if(node == null){
-			return null;
+			return null;	
 		} else if(node.element.getID() == oldPoint.getID()){
 			return node;
-		} else if(node.element.getID() < oldPoint.getID()){
-			return find(node.left, oldPoint);
-		}
-		
+		} else {
+			if(find(node.left, oldPoint).element.getID() == oldPoint.getID())
+				
+				{
+				return node.left;
+				}
+			
+			else if(find(node.right, oldPoint).element.getID() == oldPoint.getID())
+				{
+				return node.right;
+				}
+		} 
+			
 		return null;
 	}
 	

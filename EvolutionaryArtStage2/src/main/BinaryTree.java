@@ -1,67 +1,94 @@
 package main;
+
+import main.Point;
+
+import java.util.ArrayList;
 import java.util.Iterator;
 
-public class BinaryTree<T> implements Iterable<T> {
+public class BinaryTree {
 	
-	protected BinaryTreeNode<T> root;
+	protected  BinaryTreeNode<Point> root;
 
 	// constructs an empty tree
-	public BinaryTree() 
-	{
+	public BinaryTree(){
 		root = null;
 	}
 	
 	// constructs a tree with just a root node
-	public BinaryTree(T element) 
-	{
-		root = new BinaryTreeNode<T>(element);
+	public BinaryTree(Point element){
+		root = new BinaryTreeNode<Point>(element);
 	}
 	
 	// reset the tree to empty state
-	public void clear() 
-	{
+	public void clear(){
 		root = null;
 	}
 	
-	@Override
-	public Iterator<T> iterator() 
-	{
-		// TODO Auto-generated method stub
+	
+	public Point find(Point oldPoint){
+		return find(oldPoint, root).element;
+	}
+	
+	protected BinaryTreeNode<Point> find(Point oldPoint, BinaryTreeNode<Point> t){
+		//TODO: WHILE LOOP 
+		while(){
+			// if t.element is what we are looking for
+			if(t.element.getID() == oldPoint.getID()){
+				
+			}
+			
+		}
 		return null;
 	}
 	
-	
-
-protected static class BinaryTreeNode<T> {
-	
-	public T element;
-	public BinaryTreeNode<T> left;
-	public BinaryTreeNode<T> right;
-	
-	// Constructor for creating a leaf node
-	public BinaryTreeNode(T element)
-	{
-		this.element = element;
-		left = null; 
-		right = null; // no children
+	protected BinaryTreeNode<Point> insert(Point oldPoint, BinaryTreeNode<Point> t){
+		if(){
+			t = new BinaryTreeNode<Point>(oldPoint);
+		} else if(false){
+			t.left = insert(oldPoint,t.left);
+		} else if(false){
+			t.right = insert(oldPoint,t.right);
+		} else {
+			//throw exception
+		}
+		return null;
 	}
 	
-	// Constructor for creating a parent node
-	public BinaryTreeNode(T element, BinaryTreeNode<T> left, BinaryTreeNode<T> right) 
-	{
-		this.element = element;
-		this.left = left; 
-		this.right = right;
+	public ArrayList<Line> getLineInformation(){
+		ArrayList<Line> lines = new ArrayList<Line>();
+		
+		if(root != null){
+			lines.add(root)
+		}
+			
+		return lines;
 	}
 	
-	public boolean isLeaf() 
-	{
-		// will only be true if both nodes are null
-		return (left == null && right == null);
+	protected static class BinaryTreeNode<Point> {
+		
+		public Point element;
+		public BinaryTreeNode<Point> left;
+		public BinaryTreeNode<Point> right;
+		
+		// Constructor for creating a leaf node
+		public BinaryTreeNode(Point element){
+			this.element = element;
+			left = null; 
+			right = null; // no children
+		}
+		
+		// Constructor for creating a parent node
+		public BinaryTreeNode(Point element, BinaryTreeNode<Point> left, BinaryTreeNode<Point> right){
+			this.element = element;
+			this.left = left; 
+			this.right = right;
+		}
+		
+		public boolean isLeaf(){
+			// will only be true if both nodes are null
+			return (left == null && right == null);
+		}
+		
 	}
-	
-	
-	}
-
 
 }
