@@ -8,7 +8,6 @@
 package main;
 
 import main.LabelledSlider;
-
 import java.awt.*;
 import java.awt.event.*;
 

@@ -110,7 +110,6 @@ public class StartScreen{
 			public void actionPerformed(ActionEvent e) {
 				new UI().getMainFrame().setVisible(true);
 
-
 			}
 		});
 		
