@@ -105,7 +105,7 @@ public class StartScreen{
 		startFrame.add(panel2);
 		
 		
-		//Action listener for new button. Directs it to the main screen of the UI.
+		//Action listeners for new button. Directs it to the main screen of the UI.
 		newButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new UserInterface().getFrame().setVisible(true);
@@ -114,12 +114,11 @@ public class StartScreen{
 			}
 		});
 		
-		
+		//Action listeners for load button. Directs it to the loading screenI.
 		loadButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new LoadBiomorph().getFrame().setVisible(true);
 				startFrame.setVisible(false);
-
 			}
 		});
 		

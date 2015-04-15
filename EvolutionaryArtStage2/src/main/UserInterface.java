@@ -51,7 +51,8 @@ public class UserInterface {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = 
+				new JFrame();
 		
 		
 		frame.setBounds(100, 100, 1093, 875);

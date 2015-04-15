@@ -16,8 +16,9 @@ public class BioController {
 		//new UI(); <-- commented to speed up testing
 		//Log.add("User Interface Initiated");
 		
-		new uinew();
-		newBiomorph();
+		//Start the start screen.
+		
+		
 			
 	}
 	
