@@ -94,16 +94,19 @@ public class Tree {
 		private Point element;
 		private List<TreeNode<Point>> children;
 		private TreeNode<Point> parent;
+		private int numberOfChildren;
 		
 		// Constructor for creating a leaf node
 		public TreeNode(Point element){
 			this.element = element;
+			
 			children = new ArrayList<TreeNode<Point>>();
 		}
 		
 		// Constructor for creating a parent node
 		public TreeNode(TreeNode<Point> node){
 			this.element = node.element;
+			numberOfChildren = 0;
 			children = new ArrayList<TreeNode<Point>>();
 		}
 		
@@ -118,6 +121,7 @@ public class Tree {
 		public void addChild(TreeNode<Point> child){
 			child.setParent(this);
 			children.add(child);
+			numberOfChildren++;
 		}
 		
 		public TreeNode<Point> getParent(){

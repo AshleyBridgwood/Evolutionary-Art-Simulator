@@ -12,6 +12,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import main.Tree.TreeNode;
 
@@ -35,69 +36,96 @@ public class BioGeneration {
 		seed = b.getSeed();
 		
 		//Generate the parent biomorph data
-		makeBiomorph();
-		
-		//recursively generate points and their children for the amount of branching
-		// (which is currently gene 2)
-		
+		makeParentBiomorph();
 		
 		//Generate the children biomorph data (9 of them)
 		
 			
 	}
 	
-	public void makeBiomorph(){
-		int branching = 1;
+	public ArrayList<Line> makeParentBiomorph(){
+		int branching = g0.getValue();
 		int currentNumberOfLegs = 0;
 		int numberOfLegs = 10;
-		int treeId = 1;
-		
+		int nodeId = 1;
+		Random rand = new Random();
 		//Creating the root node (TOP NODE) - Always needs to be created
-		Point data = new Point(000,123,321);
+		Point data = new Point(nodeId,0,0);
+		nodeId++;
 		TreeNode<Point> root = new TreeNode<Point>(data);
 		Tree biomorphTree = new Tree(root);
 		root.setParent(root);
 		
 		while(currentNumberOfLegs < numberOfLegs){
-			if(branching == 1){
-				TreeNode<Point> child1 = new TreeNode<Point>(new Point(1,1,1));
-				root.addChild(child1);
-				TreeNode<Point> child2 = new TreeNode<Point>(new Point(2,2,2));
-				root.addChild(child2);
-				TreeNode<Point> child3 = new TreeNode<Point>(new Point(3,3,3));
-				root.addChild(child3);
-				
-				
-				TreeNode<Point> newNode = biomorphTree.findTreeNode(child3, 3);
-				TreeNode<Point> child4 = new TreeNode<Point>(new Point(4,9,9));
-				newNode.addChild(child4);
-				
-				TreeNode<Point> newNode1 = biomorphTree.findTreeNode(child4, 4);
-				TreeNode<Point> child5 = new TreeNode<Point>(new Point(5,9,9));
-				newNode1.addChild(child5);
-				
-				
-			} else {
-				
-				branching++;
-			}
+			TreeNode<Point> parentNode = null;
+			int randomNum = rand.nextInt((nodeId - 1) + 1) + 1;
+			parentNode = biomorphTree.findTreeNode(root, randomNum);
+			System.out.println("Total number of nodes: " + nodeId);
+			System.out.println("Parent Node: " + parentNode.getElement().getID());
+			int x =  rand.nextInt((200-50) + 1) + 50;
+			int y = rand.nextInt((200-50) + 1) + 50;
+			
+			TreeNode<Point> newNode = new TreeNode<Point>(new Point(nodeId, x, y));
+			parentNode.addChild(newNode);
+			nodeId++;
+
+			currentNumberOfLegs++;
 		}
 			ArrayList<TreeNode<Point>> finalTree = biomorphTree.getPreOrderTraversal();
-			
+			String id_in_line = "";
 			for(int i = 0; i < finalTree.size(); i++){
 				System.out.println("ID: " + finalTree.get(i).getElement().getID());
 				System.out.println("X: " + finalTree.get(i).getElement().getX());
 				System.out.println("Y: " + finalTree.get(i).getElement().getY());
 				System.out.println("Parent ID: " + finalTree.get(i).getParent().getElement().getID());
 				System.out.println("------------------");
+				id_in_line += finalTree.get(i).getElement().getID() + ", ";
 			}
+			System.out.println("Id's in-line: " + id_in_line);
+			
+			return generateLineInformation(finalTree);
+	}
+	
+	public ArrayList<Line> generateLineInformation(ArrayList<TreeNode<Point>> data){
+		ArrayList<Line> lines = new ArrayList<Line>();
+		
+		for(int i = 0; i < data.size(); i++){
+			int x1 = data.get(i).getElement().getX();
+			int y1 = data.get(i).getElement().getY();
+			int x2 = data.get(i+1).getElement().getX();
+			int y2 = data.get(i+1).getElement().getY();
+			lines.add(new Line(x1, y1, x2, y2));
+		}
+		
+		return lines;
 	}
 			
 	// I don't think this method will work straight away but when we implement a draw function
 	// it will be easier for us to visualise what this produces and how we can change it.
 	// I'm presuming this will only generate a certain branch of the bio-morph.
 	
-	/**public Tree makeTree(int branching, Point oldPoint)
+	/**
+	 * 				//TreeNode<Point> child1 = new TreeNode<Point>(new Point(nodeId,1,1));
+				//nodeId++;
+				//root.addChild(child1);
+				//TreeNode<Point> child2 = new TreeNode<Point>(new Point(2,2,2));
+				//root.addChild(child2);
+				//TreeNode<Point> child3 = new TreeNode<Point>(new Point(3,3,3));
+				//root.addChild(child3);
+				
+				
+				//TreeNode<Point> newNode = biomorphTree.findTreeNode(child3, 3);
+				//TreeNode<Point> child4 = new TreeNode<Point>(new Point(4,9,9));
+				//newNode.addChild(child4);
+				
+				//TreeNode<Point> newNode1 = biomorphTree.findTreeNode(child4, 4);
+				//TreeNode<Point> child5 = new TreeNode<Point>(new Point(5,9,9));
+				//newNode1.addChild(child5);
+				
+	 * 
+	 * 
+	 * 
+	 * public Tree makeTree(int branching, Point oldPoint)
 	{
 		branching = 0;
 		//point One is right point so:
