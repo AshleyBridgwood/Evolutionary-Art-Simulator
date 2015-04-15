@@ -10,8 +10,8 @@ package main;
 public class EvolutionaryArt {
 	
 	public static void main(String args[]){
-	new BioController();
-	//new UserInterface();
+	//new BioController();
+	new UserInterface();
 	//new StartScreen();
 	}
 }
