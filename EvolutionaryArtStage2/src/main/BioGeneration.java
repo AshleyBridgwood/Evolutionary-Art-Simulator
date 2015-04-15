@@ -25,6 +25,7 @@ public class BioGeneration {
 	
 	private long seed; 
 	private String bioData; //bioData Structure: {SEED; PARENT; CHILD1; CHILD2; CHILD3; CHILD4; CHILD5, CHILD6; CHILD7; CHILD8; CHILD9;}
+
 	
 	public BioGeneration(Biomorph b){
 		//Take values out of the biomorph passed in
@@ -32,12 +33,6 @@ public class BioGeneration {
 		g1 = b.getGenes().get(1);
 		g2 = b.getGenes().get(2);
 		seed = b.getSeed();
-		
-		//Set the bioData value
-		bioData = "";
-		
-		//Set the first value in the bioData (The seed)
-		bioData = seed + ":";
 		
 		//Generate the parent biomorph data
 		
@@ -49,10 +44,6 @@ public class BioGeneration {
 		//Generate the children biomorph data (9 of them)
 		
 			
-	}
-	
-	public BinaryTree makeParent(){
-		return null;
 	}
 	
 	// I don't think this method will work straight away but when we implement a draw function
@@ -99,7 +90,70 @@ public class BioGeneration {
 		
 	}
 	
-	public void addNode(BinaryTreeNode<Point> bt, Point oldPoint, Point newPoint){
+	//public 
+	
+	//NEW - BINARY TREE THOUGH
+	/**
+	public void addNode(BinaryTreeNode<Point> root, int key, Point newValue){
+		BinaryTreeNode<Point> newNode = new BinaryTreeNode<Point>(newValue);
+		
+		if(root == null){
+			root = newNode;
+		} else {
+			BinaryTreeNode<Point> focusNode = root;
+			
+			BinaryTreeNode<Point> parent;
+			
+			while(true){
+				parent = focusNode;
+				
+				if(key < focusNode.element.getID()){
+					focusNode = focusNode.left;
+					
+					if(focusNode == null){
+						parent.left = newNode;
+						return;
+					}
+				} else {
+					focusNode = focusNode.right;
+					
+					if(focusNode == null){
+						parent.right = newNode;
+						return;
+					}
+				}
+			}
+		}
+	}
+	
+	public BinaryTreeNode<Point> find(BinaryTreeNode<Point> p, Point pointToFind){
+		BinaryTreeNode<Point> focusNode = p;
+		
+		while(focusNode.element.getID() != pointToFind.getID()){
+			if(pointToFind.getID() < focusNode.element.getID()){
+				focusNode = focusNode.left;
+			} else {
+				focusNode = focusNode.right;
+			}
+			
+			if(focusNode == null){
+				return null;
+			}
+		}
+		return focusNode;
+	}
+	
+	public void inOrderTraverseTree(BinaryTreeNode<Point> focusNode){
+		if(focusNode != null){
+			inOrderTraverseTree(focusNode.left);
+			System.out.println("ID IS: " + focusNode.element.getID());
+			
+			inOrderTraverseTree(focusNode.right);
+			System.out.println("ID IS: " + focusNode.element.getID());
+		}
+	}
+	*/
+	/**public void addNode(BinaryTreeNode<Point> bt, Point oldPoint, Point newPoint){
 		//search through the tree for the old point
 		BinaryTreeNode<Point> focusNode = find(bt, oldPoint);
 		if(focusNode.right == null)
@@ -117,7 +171,6 @@ public class BioGeneration {
 		//if left node is not null add it as right node.
 	}
 	
-	/**
 	public void addNode(Point oldPoint, Point newPoint)
 	{
 		//search through the tree for the old point
@@ -140,7 +193,7 @@ public class BioGeneration {
 	*/
 	
 	
-	private <T> BinaryTreeNode<Point> find(BinaryTreeNode<Point> node, Point oldPoint){
+	/**private <T> BinaryTreeNode<Point> find(BinaryTreeNode<Point> node, Point oldPoint){
 		
 		if(node == null){
 			return null;	
@@ -161,7 +214,7 @@ public class BioGeneration {
 			
 		return null;
 	}
-	
+	*/
 	//public Point find(Point oldPoint){
 	//	return elementAt(oldPoint);
 	//}
