@@ -11,7 +11,7 @@ public class EvolutionaryArt {
 	
 	public static void main(String args[]){
 	//new BioController();
-	     //new UI();
-		new StartScreen();
+	//new UserInterface();
+	new StartScreen();
 	}
 }

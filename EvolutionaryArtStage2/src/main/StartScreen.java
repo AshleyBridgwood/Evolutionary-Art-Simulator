@@ -108,7 +108,17 @@ public class StartScreen{
 		//Action listener for new button. Directs it to the main screen of the UI.
 		newButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new UI().getMainFrame().setVisible(true);
+				new UserInterface().getFrame().setVisible(true);
+				startFrame.setVisible(false);
+
+			}
+		});
+		
+		
+		loadButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new LoadBiomorph().getFrame().setVisible(true);
+				startFrame.setVisible(false);
 
 			}
 		});
@@ -131,5 +141,9 @@ public class StartScreen{
 			startFrame.dispose();
 		}
 	}
+	
+	public JFrame getFrame() {
+		return this.startFrame;
+}
 
 }
