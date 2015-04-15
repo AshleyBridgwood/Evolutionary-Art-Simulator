@@ -47,24 +47,40 @@ public class BioGeneration {
 	}
 	
 	public void makeBiomorph(){
-		int branching = 2;
+		int branching = 1;
+		int currentNumberOfLegs = 0;
+		int numberOfLegs = 10;
 		int treeId = 1;
 		
 		//Creating the root node (TOP NODE) - Always needs to be created
-		Point data = new Point(0,123,321);
+		Point data = new Point(000,123,321);
 		TreeNode<Point> root = new TreeNode<Point>(data);
 		Tree biomorphTree = new Tree(root);
+		root.setParent(root);
 		
-		if(branching == 1){
-			TreeNode<Point> child1 = new TreeNode<Point>(new Point(1,1,1));
-			biomorphTree.root.addChild(child1);
-			TreeNode<Point> child2 = new TreeNode<Point>(new Point(2,2,2));
-			biomorphTree.root.addChild(child2);
-			TreeNode<Point> child3 = new TreeNode<Point>(new Point(3,3,3));
-			biomorphTree.root.addChild(child3);
-		} else {
-			
-			branching++;
+		while(currentNumberOfLegs < numberOfLegs){
+			if(branching == 1){
+				TreeNode<Point> child1 = new TreeNode<Point>(new Point(1,1,1));
+				root.addChild(child1);
+				TreeNode<Point> child2 = new TreeNode<Point>(new Point(2,2,2));
+				root.addChild(child2);
+				TreeNode<Point> child3 = new TreeNode<Point>(new Point(3,3,3));
+				root.addChild(child3);
+				
+				
+				TreeNode<Point> newNode = biomorphTree.findTreeNode(child3, 3);
+				TreeNode<Point> child4 = new TreeNode<Point>(new Point(4,9,9));
+				newNode.addChild(child4);
+				
+				TreeNode<Point> newNode1 = biomorphTree.findTreeNode(child4, 4);
+				TreeNode<Point> child5 = new TreeNode<Point>(new Point(5,9,9));
+				newNode1.addChild(child5);
+				
+				
+			} else {
+				
+				branching++;
+			}
 		}
 			ArrayList<TreeNode<Point>> finalTree = biomorphTree.getPreOrderTraversal();
 			
@@ -72,6 +88,7 @@ public class BioGeneration {
 				System.out.println("ID: " + finalTree.get(i).getElement().getID());
 				System.out.println("X: " + finalTree.get(i).getElement().getX());
 				System.out.println("Y: " + finalTree.get(i).getElement().getY());
+				System.out.println("Parent ID: " + finalTree.get(i).getParent().getElement().getID());
 				System.out.println("------------------");
 			}
 	}

@@ -26,6 +26,25 @@ public class Tree {
 		return root;
 	}
 	
+	public boolean exists(int key){
+		return find(root, key);
+	}
+	
+	private boolean find(TreeNode<Point> node, int key){
+		boolean result = false;
+		if(node.element.getID() == key){
+			result = true;
+		} else {
+			for(TreeNode<Point> child : node.getChildren()){
+				if(find(node, key)){
+					result = true;
+				}
+			}
+		}
+		return result;
+	}
+	
+	
 	public ArrayList<TreeNode<Point>> getPreOrderTraversal(){
 		ArrayList<TreeNode<Point>> list = new ArrayList<TreeNode<Point>>();
 		buildPreOrder(root, list);
@@ -39,12 +58,12 @@ public class Tree {
 		}
 	}
 	
-	private TreeNode<Point> findTreeNode(TreeNode<Point> node, Point key){
+	public TreeNode<Point> findTreeNode(TreeNode<Point> node, int key){
 		if(node== null){
 			return null;
 		}
 		
-		if(node.element.getID() == key.getID()){
+		if(node.element.getID() == key){
 			return node;
 		} else {
 			TreeNode<Point> newNode = null;
@@ -78,13 +97,13 @@ public class Tree {
 		
 		// Constructor for creating a leaf node
 		public TreeNode(Point element){
-			this.element = element; 
+			this.element = element;
 			children = new ArrayList<TreeNode<Point>>();
 		}
 		
 		// Constructor for creating a parent node
 		public TreeNode(TreeNode<Point> node){
-			this.element = node.element; 
+			this.element = node.element;
 			children = new ArrayList<TreeNode<Point>>();
 		}
 		
