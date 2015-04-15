@@ -47,19 +47,25 @@ public class BioGeneration {
 	}
 	
 	public void makeBiomorph(){
-		int branching = 1;
-		Point data = new Point(0,0,0);
+		int branching = 2;
+		int treeId = 1;
+		
+		//Creating the root node (TOP NODE) - Always needs to be created
+		Point data = new Point(0,123,321);
 		TreeNode<Point> root = new TreeNode<Point>(data);
 		Tree biomorphTree = new Tree(root);
 		
-		//if(branching == g0.getValue()){
+		if(branching == 1){
 			TreeNode<Point> child1 = new TreeNode<Point>(new Point(1,1,1));
 			biomorphTree.root.addChild(child1);
 			TreeNode<Point> child2 = new TreeNode<Point>(new Point(2,2,2));
 			biomorphTree.root.addChild(child2);
 			TreeNode<Point> child3 = new TreeNode<Point>(new Point(3,3,3));
 			biomorphTree.root.addChild(child3);
+		} else {
 			
+			branching++;
+		}
 			ArrayList<TreeNode<Point>> finalTree = biomorphTree.getPreOrderTraversal();
 			
 			for(int i = 0; i < finalTree.size(); i++){
@@ -68,12 +74,8 @@ public class BioGeneration {
 				System.out.println("Y: " + finalTree.get(i).getElement().getY());
 				System.out.println("------------------");
 			}
-		//} else {
-			
-			//branching++;
-		//}
 	}
-	
+			
 	// I don't think this method will work straight away but when we implement a draw function
 	// it will be easier for us to visualise what this produces and how we can change it.
 	// I'm presuming this will only generate a certain branch of the bio-morph.
