@@ -278,11 +278,13 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				panelBiomorph1.setBackground(SystemColor.menu);
 				
 			}
 		
 			public void mouseClicked(MouseEvent e) {
+				for (int i = 0; i < panels.length; i++){
+					panels[i].setBackground(SystemColor.menu);
+				}
 				panelBiomorph1.setBackground(Color.GREEN);
 			}
 			});
@@ -306,11 +308,13 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				panelBiomorph2.setBackground(SystemColor.menu);
 				
 			}
 		
 			public void mouseClicked(MouseEvent e) {
+				for (int i = 0; i < panels.length; i++){
+					panels[i].setBackground(SystemColor.menu);
+				}
 				panelBiomorph2.setBackground(Color.GREEN);
 			}
 			});
@@ -333,11 +337,13 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				panelBiomorph3.setBackground(SystemColor.menu);
 				
 			}
 		
 			public void mouseClicked(MouseEvent e) {
+				for (int i = 0; i < panels.length; i++){
+					panels[i].setBackground(SystemColor.menu);
+				}
 				panelBiomorph3.setBackground(Color.GREEN);
 			}
 			});
@@ -360,11 +366,13 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				panelBiomorph4.setBackground(SystemColor.menu);
 				
 			}
 		
 			public void mouseClicked(MouseEvent e) {
+				for (int i = 0; i < panels.length; i++){
+					panels[i].setBackground(SystemColor.menu);
+				}
 				panelBiomorph4.setBackground(Color.GREEN);
 			}
 			});
@@ -387,11 +395,13 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				panelBiomorph5.setBackground(SystemColor.menu);
 				
 			}
 		
 			public void mouseClicked(MouseEvent e) {
+				for (int i = 0; i < panels.length; i++){
+					panels[i].setBackground(SystemColor.menu);
+				}
 				panelBiomorph5.setBackground(Color.GREEN);
 			}
 			});
@@ -414,11 +424,13 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				panelBiomorph6.setBackground(SystemColor.menu);
 				
 			}
 		
 			public void mouseClicked(MouseEvent e) {
+				for (int i = 0; i < panels.length; i++){
+					panels[i].setBackground(SystemColor.menu);
+				}
 				panelBiomorph6.setBackground(Color.GREEN);
 			}
 			});
@@ -441,11 +453,13 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				panelBiomorph7.setBackground(SystemColor.menu);
 				
 			}
 		
 			public void mouseClicked(MouseEvent e) {
+				for (int i = 0; i < panels.length; i++){
+					panels[i].setBackground(SystemColor.menu);
+				}
 				panelBiomorph7.setBackground(Color.GREEN);
 			}
 			});
@@ -468,11 +482,13 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				panelBiomorph8.setBackground(SystemColor.menu);
 				
 			}
 		
 			public void mouseClicked(MouseEvent e) {
+				for (int i = 0; i < panels.length; i++){
+					panels[i].setBackground(SystemColor.menu);
+				}
 				panelBiomorph8.setBackground(Color.GREEN);
 			}
 			});
@@ -495,11 +511,13 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				panelBiomorph9.setBackground(SystemColor.menu);
 				
 			}
 		
 			public void mouseClicked(MouseEvent e) {
+				for (int i = 0; i < panels.length; i++){
+					panels[i].setBackground(SystemColor.menu);
+				}
 				panelBiomorph9.setBackground(Color.GREEN);
 			}
 			});
