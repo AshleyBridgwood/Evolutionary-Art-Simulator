@@ -13,7 +13,7 @@ package main;
 
 import java.util.ArrayList;
 
-import main.BinaryTree.BinaryTreeNode;
+import main.Tree.TreeNode;
 
 public class BioGeneration {
 	
@@ -35,7 +35,7 @@ public class BioGeneration {
 		seed = b.getSeed();
 		
 		//Generate the parent biomorph data
-		
+		makeBiomorph();
 		
 		//recursively generate points and their children for the amount of branching
 		// (which is currently gene 2)
@@ -46,11 +46,39 @@ public class BioGeneration {
 			
 	}
 	
+	public void makeBiomorph(){
+		int branching = 1;
+		Point data = new Point(0,0,0);
+		TreeNode<Point> root = new TreeNode<Point>(data);
+		Tree biomorphTree = new Tree(root);
+		
+		//if(branching == g0.getValue()){
+			TreeNode<Point> child1 = new TreeNode<Point>(new Point(1,1,1));
+			biomorphTree.root.addChild(child1);
+			TreeNode<Point> child2 = new TreeNode<Point>(new Point(2,2,2));
+			biomorphTree.root.addChild(child2);
+			TreeNode<Point> child3 = new TreeNode<Point>(new Point(3,3,3));
+			biomorphTree.root.addChild(child3);
+			
+			ArrayList<TreeNode<Point>> finalTree = biomorphTree.getPreOrderTraversal();
+			
+			for(int i = 0; i < finalTree.size(); i++){
+				System.out.println("ID: " + finalTree.get(i).getElement().getID());
+				System.out.println("X: " + finalTree.get(i).getElement().getX());
+				System.out.println("Y: " + finalTree.get(i).getElement().getY());
+				System.out.println("------------------");
+			}
+		//} else {
+			
+			//branching++;
+		//}
+	}
+	
 	// I don't think this method will work straight away but when we implement a draw function
 	// it will be easier for us to visualise what this produces and how we can change it.
 	// I'm presuming this will only generate a certain branch of the bio-morph.
 	
-	public BinaryTree makeTree(int branching, Point oldPoint)
+	/**public Tree makeTree(int branching, Point oldPoint)
 	{
 		branching = 0;
 		//point One is right point so:
@@ -65,7 +93,7 @@ public class BioGeneration {
 		tempID++;
 		
 		// new binary tree
-		BinaryTree bt = new BinaryTree();
+		Tree bt = new Tree();
 		
 		if(branching == g0.getValue()){
 			// make two new children and thats it.
@@ -89,7 +117,7 @@ public class BioGeneration {
 		return bt;
 		
 	}
-	
+	*/
 	//public 
 	
 	//NEW - BINARY TREE THOUGH

@@ -17,7 +17,7 @@ public class BioController {
 		//Log.add("User Interface Initiated");
 		
 		//Start the start screen.
-		
+		new BioGeneration(newBiomorph());
 		
 			
 	}
