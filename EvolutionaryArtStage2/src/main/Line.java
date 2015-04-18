@@ -31,6 +31,22 @@ public class Line {
 		return y2;
 	}
 	
+	public void setX1(int change){
+		x1 = change;
+	}
+	
+	public void setY1(int change){
+		y1 = change;
+	}
+	
+	public void setX2(int change){
+		x2 = change;
+	}
+	
+	public void setY2(int change){
+		y2 = change;
+	}
+	
 	public String toString(){
 		return x1 + ", " + y1 + ", " + x2 + ", " + y2;
 	}

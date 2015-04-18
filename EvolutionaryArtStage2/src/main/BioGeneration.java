@@ -86,6 +86,60 @@ public class BioGeneration {
 			return generateLineInformation(finalTree);
 	}
 	
+	public ArrayList<ArrayList<Line>> createChildren()
+	{
+		
+		ArrayList<ArrayList<Line>> children = new ArrayList<ArrayList<Line>>();
+		// for the amount of children 
+		for(int i = 0; i<9; i++)
+		{
+			//make a copy of the tree
+			ArrayList<Line> tempTree = makeParentBiomorph();
+			
+			//iterate through tree
+			for(int j = 0; j<tempTree.size(); j++)
+			{
+				//chance it will mutate
+				//when this is working need to change it so probabilities change according to slider.
+				Random rand = new Random();
+				int num = rand.nextInt(100);
+				//if it does mutate change x or y by certain amount
+				if(num <= 49)
+				{
+					//which point to change:
+					int pointDecider = rand.nextInt(99)+1;
+					if(pointDecider == 0 && pointDecider <= 25)
+					{
+						// change x1
+						tempTree.get(j).setX1(tempTree.get(j).getX1() +2); //TODO: change "+2" to amount on slider.
+						
+					}
+					else if(pointDecider > 25 && pointDecider <= 50)
+					{
+						// change y1
+						tempTree.get(j).setY1(tempTree.get(j).getY1() +2); //TODO: change "+2" to amount on slider.
+					}
+					else if(pointDecider > 50  && pointDecider <= 75)
+					{
+						// change x2
+						tempTree.get(j).setX2(tempTree.get(j).getX2() +2); //TODO: change "+2" to amount on slider.
+					}
+					else
+					{
+						//change y2
+						tempTree.get(j).setY2(tempTree.get(j).getY2() +2); //TODO: change "+2" to amount on slider.
+					}
+				}
+				
+			}
+			
+			
+			//add to list of trees.
+			children.add(tempTree);
+		}
+		return children;
+	}
+	
 	public ArrayList<Line> generateLineInformation(ArrayList<TreeNode<Point>> data){
 		ArrayList<Line> lines = new ArrayList<Line>();
 		
