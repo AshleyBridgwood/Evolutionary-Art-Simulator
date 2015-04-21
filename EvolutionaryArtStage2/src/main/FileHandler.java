@@ -9,12 +9,21 @@ package main;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class FileHandler {
 	
 	public static String EvolutionaryArtFolderLocation = null;
+	
+	public static void saveObjectToFile(String locationWithinFolder, Object data) throws IOException{
+		FileOutputStream fout = new FileOutputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
+		ObjectOutputStream oos = new ObjectOutputStream(fout);
+		oos.writeObject(data);
+	}
 	
 	public static void writeToFile(String locationWithinFolder, String data){
 		if(EvolutionaryArtFolderLocation != null){
