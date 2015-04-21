@@ -65,9 +65,14 @@ public class BioGeneration {
 		while(currentNumberOfLegs < numberOfLegs){
 			TreeNode<Point> parentNode = null;
 			int randomNum = rand.nextInt((nodeId - 1) + 1) + 1;
-			parentNode = biomorphTree.findTreeNode(root, randomNum);
+			System.out.println("Random ID Generated: " + randomNum);
 			System.out.println("Total number of nodes: " + nodeId);
-			System.out.println("Parent Node: " + parentNode.getElement().getID());
+			//If the nodeID is the same as the random number, if errors, so code to fix that
+			if(randomNum == nodeId){
+				randomNum--;
+			}
+				parentNode = biomorphTree.findTreeNode(root, randomNum);
+			System.out.println("Parent node ID found: " + parentNode.getElement().getID());
 			int x =  rand.nextInt((200-50) + 1) + 50;
 			int y = rand.nextInt((200-50) + 1) + 50;
 			
