@@ -202,26 +202,9 @@ public class UserInterface extends MouseAdapter{
 		
 		//Button Control
 		JPanel buttonPanel = new JPanel();
-		JButton helpButton = new JButton("Help"); 
-		//Action listeners for load button. Directs it to the loading screenI.
-		helpButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new HelpScreen().getFrame().setVisible(true);
-			}
-		});
-		
-		
-		helpButton.setBounds(611, 13, 166, 56);
-		JButton undoutton = new JButton("Undo");
-		//test
-		undoutton.setBounds(168, 13, 166, 56);
 		JButton menuButton = new JButton("Home"); 
 		menuButton.setBounds(388, 13, 166, 56);
 		buttonPanel.setLayout(null);
-		
-		
-		buttonPanel.add(helpButton);
-		buttonPanel.add(undoutton);
 		buttonPanel.add(menuButton);
 		sliderPanel.setLayout(null);
 		sliderPanel.add(probSlider);
@@ -251,6 +234,18 @@ public class UserInterface extends MouseAdapter{
 		JButton btnSave = new JButton("Save!");
 		btnSave.setBounds(736, 603, 311, 43);
 		frame.getContentPane().add(btnSave);
+		JButton undoutton = new JButton("Undo");
+		undoutton.setBounds(460, 182, 166, 56);
+		frame.getContentPane().add(undoutton);
+		JButton helpButton = new JButton("Help"); 
+		helpButton.setBounds(638, 182, 166, 56);
+		frame.getContentPane().add(helpButton);
+		//Action listeners for load button. Directs it to the loading screenI.
+		helpButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new HelpScreen().getFrame().setVisible(true);
+			}
+		});
 		
 		//Action listener for new button. Directs it to the main screen of the UI.
 		menuButton.addActionListener(new ActionListener() {
