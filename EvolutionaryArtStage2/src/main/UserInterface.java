@@ -25,6 +25,7 @@ import main.LabelledSlider;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class UserInterface extends MouseAdapter{
 
@@ -48,6 +49,7 @@ public class UserInterface extends MouseAdapter{
 	/**
 	 * Launch the application.
 	 */
+	/**
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -59,7 +61,7 @@ public class UserInterface extends MouseAdapter{
 				}
 			}
 		});
-	}
+	} */
 
 	/**	
 	 * Create the application.
@@ -178,6 +180,8 @@ public class UserInterface extends MouseAdapter{
 		panelOutput.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelOutput.setBackground(SystemColor.menu);
 		panelOutput.setBounds(736, 237, 311, 175);
+		ArrayList<ArrayList<Line>> biomorphs = BioGeneration.getAllBiomorphs();
+		panelOutput.add(new BioDraw(biomorphs.get(0)));
 		frame.getContentPane().add(panelOutput);
 		
 		btnMutate = new JButton("Mutate !");

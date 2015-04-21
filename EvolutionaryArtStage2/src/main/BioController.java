@@ -7,19 +7,32 @@
 
 package main;
 
+import java.util.ArrayList;
+
 public class BioController {
+	static ArrayList<ArrayList<Line>> biomorphs;
 	
 	public BioController() {
 		Log.add("Bio Controller Initiated");
 		FileHandler.checkForMainWorkingFolder();
 		
-		//new UI(); <-- commented to speed up testing
-		//Log.add("User Interface Initiated");
+		
+		
 		
 		//Start the start screen.
 		new BioGeneration(newBiomorph());
 		
-			
+		biomorphs = BioGeneration.getAllBiomorphs();
+		new StartScreen();
+		Log.add("User Interface Initiated");
+		
+		Log.exportLogToFile();
+		
+		
+	}
+	
+	public static BioDraw displayParent(){
+		return new BioDraw(biomorphs.get(0));
 	}
 	
 	/**

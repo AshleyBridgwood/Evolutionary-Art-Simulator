@@ -18,15 +18,11 @@ import javax.swing.JPanel;
 public class BioDraw extends JPanel {
 	
 	private int canvasSize;
+	ArrayList<Line> data;
 	
-	public BioDraw(String data, boolean isParent) {
-		
-		//Set the canvas size - Parent will be larger than 
-		if(isParent){
-			canvasSize = 350;
-		} else {
-			canvasSize = 150;
-		}
+	public BioDraw(ArrayList<Line> data) {
+		this.data = data;
+		canvasSize = 180;
 	}
 	
 	/**
@@ -44,6 +40,9 @@ public class BioDraw extends JPanel {
 		super.paintComponent(g);
 		//!!! COMPLETE THE DRAWING OF THE BIOMORPH BELOW !!!\\
 		g.setColor(Color.BLACK);
-		g.drawLine(1, 1, 10, 10);
+		for(int i = 0; i < data.size(); i++){
+			g.drawLine(data.get(i).getX1(), data.get(i).getY1(),data.get(i).getX2(), data.get(i).getY2());
+			g.drawLine(canvasSize - data.get(i).getX1(), data.get(i).getY1(), canvasSize-data.get(i).getX2(), data.get(i).getY2());
+		}
 	}
 }
