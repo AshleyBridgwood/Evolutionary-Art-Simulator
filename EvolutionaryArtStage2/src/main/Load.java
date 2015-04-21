@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class Load extends FileHandler {
 	
-	public static String loadBiomorph(String fileName){
+	public static Object loadBiomorph(String fileName){
 		String data = "";
 		if(fileName != null){
 			String location = EvolutionaryArtFolderLocation + "\\Saved Biomorphs\\" + fileName + ".biomorph";

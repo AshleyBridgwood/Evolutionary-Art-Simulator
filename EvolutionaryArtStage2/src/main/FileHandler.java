@@ -75,6 +75,7 @@ public class FileHandler {
 			File videoDir = new File(dir + File.separator + "Evolutionary Art", "Videos");
 			File exportDir = new File(dir + File.separator + "Evolutionary Art", "Exported Biomorphs");
 			File savedDir = new File(dir + File.separator + "Evolutionary Art", "Saved Biomorphs");
+			File hallOfFameDir = new File(dir + File.separator + "Evolutionary Art", "Hall Of Fame");
 			
 			//Check and/or create the main folder
 			if(!defaultDir.isDirectory()){
@@ -104,6 +105,11 @@ public class FileHandler {
 			if(!savedDir.isDirectory()){
 				savedDir.mkdirs();
 				Log.add("Folder Created in Evolutionary Art: Saved Biomorphs");
+			}
+			
+			if(!hallOfFameDir.isDirectory()){
+				hallOfFameDir.mkdirs();
+				Log.add("Folder Created in Evolutionary Art: Hall Of Fame");
 			}
 		} else {
 			//If OS is not Windows or Linux, pass error message about failed folder creation
