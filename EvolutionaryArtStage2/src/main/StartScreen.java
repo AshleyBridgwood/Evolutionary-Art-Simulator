@@ -114,11 +114,18 @@ public class StartScreen{
 			}
 		});
 		
-		//Action listeners for load button. Directs it to the loading screenI.
+		//Action listeners for load button. Directs it to the loading screen.
 		loadButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new LoadBiomorph().getFrame().setVisible(true);
 				startFrame.setVisible(false);
+			}
+		});
+		
+		//Action listeners for help button. Directs it to the help screen.
+		helpButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new HelpScreen().getFrame().setVisible(true);
 			}
 		});
 		

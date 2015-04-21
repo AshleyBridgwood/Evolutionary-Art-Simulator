@@ -46,23 +46,6 @@ public class UserInterface extends MouseAdapter{
 			panelBiomorph7, panelBiomorph8, panelBiomorph9};
 
 
-	/**
-	 * Launch the application.
-	 */
-	/**
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UserInterface window = new UserInterface();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	} */
-
 	/**	
 	 * Create the application.
 	 */
@@ -208,24 +191,38 @@ public class UserInterface extends MouseAdapter{
 		Dimension d2 = new Dimension(300,70);
 		JPanel sliderPanel = new JPanel();
 		final LabelledSlider probSlider = new LabelledSlider(" Probability of Change  ", 0.0, 0, 20, 100);
+		probSlider.setBounds(55, 5, 300, 70);
 		probSlider.setPreferredSize(d2);
 		final LabelledSlider widthSlider = new LabelledSlider(" Adjust Width of Biomorph  ", 0.0, 0, 20, 100);
+		widthSlider.setBounds(360, 5, 300, 70);
      	widthSlider.setPreferredSize(d2);	
 		final LabelledSlider BranchSlider = new LabelledSlider(" Adjust Thickness of Biomorph  ", 0.0, 0, 20, 100);
+		BranchSlider.setBounds(665, 5, 300, 70);
 		BranchSlider.setPreferredSize(d2);
 		
 		//Button Control
 		JPanel buttonPanel = new JPanel();
-		JButton firstButton = new JButton("First"); 
-		JButton nextButton = new JButton("Next"); 
-		JButton prevButton = new JButton("Prev");
+		JButton helpButton = new JButton("Help"); 
+		//Action listeners for load button. Directs it to the loading screenI.
+		helpButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new HelpScreen().getFrame().setVisible(true);
+			}
+		});
+		
+		
+		helpButton.setBounds(611, 13, 166, 56);
+		JButton undoutton = new JButton("Undo");
+		undoutton.setBounds(168, 13, 166, 56);
 		JButton menuButton = new JButton("Home"); 
+		menuButton.setBounds(388, 13, 166, 56);
+		buttonPanel.setLayout(null);
 		
 		
-		buttonPanel.add(firstButton);
-		buttonPanel.add(nextButton);
-		buttonPanel.add(prevButton);
+		buttonPanel.add(helpButton);
+		buttonPanel.add(undoutton);
 		buttonPanel.add(menuButton);
+		sliderPanel.setLayout(null);
 		sliderPanel.add(probSlider);
 		sliderPanel.add(widthSlider);
 		sliderPanel.add(BranchSlider);

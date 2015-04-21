@@ -27,18 +27,7 @@ public class LoadBiomorph {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LoadBiomorph window = new LoadBiomorph();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the application.
@@ -133,9 +122,7 @@ public class LoadBiomorph {
                 
 	}
 	
-	public JFrame getFrame() {
-		return this.frame;
-	}
+
         
         private void picListener(final JRadioButton pic, final JTextField text){
             pic.addActionListener(new ActionListener(){
@@ -151,4 +138,8 @@ public class LoadBiomorph {
             
             });
         }
+        
+    	public JFrame getFrame() {
+    		return this.frame;
+    	}
 }
