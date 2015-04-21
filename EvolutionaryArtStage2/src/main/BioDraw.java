@@ -22,7 +22,7 @@ public class BioDraw extends JPanel {
 	
 	public BioDraw(ArrayList<Line> data) {
 		this.data = data;
-		canvasSize = 180;
+		canvasSize = 160;
 	}
 	
 	/**
