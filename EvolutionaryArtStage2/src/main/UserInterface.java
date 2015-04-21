@@ -176,7 +176,7 @@ public class UserInterface extends MouseAdapter{
 		frame.getContentPane().add(panelOutput);
 		
 		btnMutate = new JButton("Mutate !");
-		btnMutate.setBounds(736, 414, 311, 43);
+		btnMutate.setBounds(893, 414, 154, 43);
 		frame.getContentPane().add(btnMutate);
 		
 		JPanel controlPanel = new JPanel();
@@ -202,16 +202,22 @@ public class UserInterface extends MouseAdapter{
 		
 		//Button Control
 		JPanel buttonPanel = new JPanel();
-		JButton menuButton = new JButton("Home"); 
-		menuButton.setBounds(388, 13, 166, 56);
 		buttonPanel.setLayout(null);
-		buttonPanel.add(menuButton);
 		sliderPanel.setLayout(null);
 		sliderPanel.add(probSlider);
 		sliderPanel.add(widthSlider);
 		sliderPanel.add(BranchSlider);
 		controlPanel.add(sliderPanel);
 		controlPanel.add(buttonPanel);
+		JButton helpButton = new JButton("Help");
+		helpButton.setBounds(170, 13, 166, 56);
+		buttonPanel.add(helpButton);
+		//Action listeners for load button. Directs it to the loading screenI.
+		helpButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new HelpScreen().getFrame().setVisible(true);
+			}
+		});
 
 		frame.getContentPane().add(controlPanel);
 		
@@ -235,17 +241,11 @@ public class UserInterface extends MouseAdapter{
 		btnSave.setBounds(736, 603, 311, 43);
 		frame.getContentPane().add(btnSave);
 		JButton undoutton = new JButton("Undo");
-		undoutton.setBounds(460, 182, 166, 56);
+		undoutton.setBounds(736, 414, 162, 43);
 		frame.getContentPane().add(undoutton);
-		JButton helpButton = new JButton("Help"); 
-		helpButton.setBounds(638, 182, 166, 56);
-		frame.getContentPane().add(helpButton);
-		//Action listeners for load button. Directs it to the loading screenI.
-		helpButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new HelpScreen().getFrame().setVisible(true);
-			}
-		});
+		JButton menuButton = new JButton("Home");
+		menuButton.setBounds(511, 183, 166, 56);
+		frame.getContentPane().add(menuButton);
 		
 		//Action listener for new button. Directs it to the main screen of the UI.
 		menuButton.addActionListener(new ActionListener() {
