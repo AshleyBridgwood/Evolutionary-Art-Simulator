@@ -108,7 +108,7 @@ public class StartScreen{
 		//Action listeners for new button. Directs it to the main screen of the UI.
 		newButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new UserInterface().getFrame().setVisible(true);
+				BioController.start();
 				startFrame.setVisible(false);
 
 			}

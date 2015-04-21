@@ -16,19 +16,21 @@ public class BioController {
 		Log.add("Bio Controller Initiated");
 		FileHandler.checkForMainWorkingFolder();
 		
-		
-		
-		
-		//Start the start screen.
-		new BioGeneration(newBiomorph());
-		
-		biomorphs = BioGeneration.getAllBiomorphs();
 		new StartScreen();
+		Log.add("Start menu loaded");
+	}
+	
+	public static void start(){
+		new BioGeneration(newBiomorph());
+		Log.add("Generating new Biomorphs");
+		
+		//Get the newly generated biomorphs from the biogeneration class
+		biomorphs = BioGeneration.getAllBiomorphs();
+		
+		new UserInterface().getFrame().setVisible(true);
 		Log.add("User Interface Initiated");
 		
-		Log.exportLogToFile();
-		
-		
+			
 	}
 	
 	public static BioDraw displayParent(){
@@ -43,7 +45,7 @@ public class BioController {
 	 * Creates a new biomorph
 	 * @return Biomorph
 	 */
-	public Biomorph newBiomorph(){
+	public static Biomorph newBiomorph(){
 		Biomorph b = new Biomorph();
 		return b;
 	}
