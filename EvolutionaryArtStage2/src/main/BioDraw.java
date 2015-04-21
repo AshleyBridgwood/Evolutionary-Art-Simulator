@@ -20,9 +20,13 @@ public class BioDraw extends JPanel {
 	private int canvasSize;
 	ArrayList<Line> data;
 	
-	public BioDraw(ArrayList<Line> data) {
+	public BioDraw(ArrayList<Line> data, boolean isChild) {
 		this.data = data;
-		canvasSize = 160;
+		if(isChild){
+			canvasSize = 120;
+		} else {
+			canvasSize = 160;
+		}
 	}
 	
 	/**

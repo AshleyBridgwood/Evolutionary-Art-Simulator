@@ -119,54 +119,63 @@ public class UserInterface extends MouseAdapter{
 		panelBiomorph1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph1.setBackground(SystemColor.menu);
 		panelBiomorph1.setBounds(22, 241, 210, 133);
+		panelBiomorph1.add(BioController.displayChildren(1));
 		frame.getContentPane().add(panelBiomorph1);
 		
 		panelBiomorph2.setForeground(Color.BLACK);
 		panelBiomorph2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph2.setBackground(SystemColor.menu);
 		panelBiomorph2.setBounds(241, 241, 210, 133);
+		panelBiomorph2.add(BioController.displayChildren(2));
 		frame.getContentPane().add(panelBiomorph2);
 		
 		panelBiomorph3.setForeground(Color.BLACK);
 		panelBiomorph3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph3.setBackground(SystemColor.menu);
 		panelBiomorph3.setBounds(460, 241, 210, 133);
+		panelBiomorph3.add(BioController.displayChildren(3));
 		frame.getContentPane().add(panelBiomorph3);
 		
 		panelBiomorph4.setForeground(Color.BLACK);
 		panelBiomorph4.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph4.setBackground(SystemColor.menu);
 		panelBiomorph4.setBounds(22, 376, 210, 133);
+		panelBiomorph4.add(BioController.displayChildren(4));
 		frame.getContentPane().add(panelBiomorph4);
 		
 		panelBiomorph5.setForeground(Color.BLACK);
 		panelBiomorph5.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph5.setBackground(SystemColor.menu);
 		panelBiomorph5.setBounds(241, 376, 210, 133);
+		panelBiomorph5.add(BioController.displayChildren(5));
 		frame.getContentPane().add(panelBiomorph5);
 		
 		panelBiomorph6.setForeground(Color.BLACK);
 		panelBiomorph6.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph6.setBackground(SystemColor.menu);
 		panelBiomorph6.setBounds(460, 376, 210, 133);
+		panelBiomorph6.add(BioController.displayChildren(6));
 		frame.getContentPane().add(panelBiomorph6);
 		
 		panelBiomorph7.setForeground(Color.BLACK);
 		panelBiomorph7.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph7.setBackground(SystemColor.menu);
 		panelBiomorph7.setBounds(22, 513, 210, 133);
+		panelBiomorph7.add(BioController.displayChildren(7));
 		frame.getContentPane().add(panelBiomorph7);
 		
 		panelBiomorph8.setForeground(Color.BLACK);
 		panelBiomorph8.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph8.setBackground(SystemColor.menu);
 		panelBiomorph8.setBounds(241, 513, 210, 133);
+		panelBiomorph8.add(BioController.displayChildren(8));
 		frame.getContentPane().add(panelBiomorph8);
 		
 		panelBiomorph9.setForeground(Color.BLACK);
 		panelBiomorph9.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph9.setBackground(SystemColor.menu);
 		panelBiomorph9.setBounds(460, 513, 210, 133);
+		panelBiomorph9.add(BioController.displayChildren(9));
 		frame.getContentPane().add(panelBiomorph9);
 		
 		JLabel lblFinalOutput = new JLabel("Final Output");
@@ -180,8 +189,7 @@ public class UserInterface extends MouseAdapter{
 		panelOutput.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelOutput.setBackground(SystemColor.menu);
 		panelOutput.setBounds(736, 237, 311, 175);
-		ArrayList<ArrayList<Line>> biomorphs = BioGeneration.getAllBiomorphs();
-		panelOutput.add(new BioDraw(biomorphs.get(0)));
+		panelOutput.add(BioController.displayParent());
 		frame.getContentPane().add(panelOutput);
 		
 		btnMutate = new JButton("Mutate !");

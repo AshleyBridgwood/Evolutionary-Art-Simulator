@@ -32,7 +32,11 @@ public class BioController {
 	}
 	
 	public static BioDraw displayParent(){
-		return new BioDraw(biomorphs.get(0));
+		return new BioDraw(biomorphs.get(0), false);
+	}
+	
+	public static BioDraw displayChildren(int childNumber){
+		return new BioDraw(biomorphs.get(childNumber), true);
 	}
 	
 	/**
