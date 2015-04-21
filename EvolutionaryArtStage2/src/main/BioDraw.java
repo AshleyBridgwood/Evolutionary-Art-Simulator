@@ -22,6 +22,7 @@ public class BioDraw extends JPanel {
 	
 	public BioDraw(ArrayList<Line> data, boolean isChild) {
 		this.data = data;
+		canvasSize = 0;
 		if(isChild){
 			canvasSize = 120;
 		} else {

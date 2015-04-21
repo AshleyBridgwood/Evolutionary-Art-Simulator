@@ -18,29 +18,23 @@ import main.Tree.TreeNode;
 
 public class BioGeneration {
 	
-	private int tempID;
-	
 	private Gene g0;
 	private Gene g1;
 	private Gene g2;
-	
-	private long seed; 
-	//private String bioData; //bioData Structure: {SEED; PARENT; CHILD1; CHILD2; CHILD3; CHILD4; CHILD5, CHILD6; CHILD7; CHILD8; CHILD9;}
+
 	private static ArrayList<ArrayList<Line>> finishedBiomorphs;
 	
 	public BioGeneration(Biomorph b){
-		//Take values out of the biomorph passed in
+		//Take values out of the Biomorph values passed in
 		g0 = b.getGenes().get(0);
 		g1 = b.getGenes().get(1);
 		g2 = b.getGenes().get(2);
-		seed = b.getSeed();
 		finishedBiomorphs = new ArrayList<>();
 		
-		//Generate the parent biomorph data
+		//Generate the parent
 		ArrayList<Line> parent = makeParentBiomorph();
-		Log.add("Parent Biomorph Generated");
 		finishedBiomorphs.add(parent);
-		//Generate the children biomorph data (9 of them)
+		//Generate the children from the parent (9 of them)
 		createChildren(parent);
 	}
 	
@@ -51,7 +45,7 @@ public class BioGeneration {
 	public ArrayList<Line> makeParentBiomorph(){
 		int branching = g0.getValue();
 		int currentNumberOfLegs = 0;
-		int numberOfLegs = 10;
+		int numberOfLines = 20;
 		int nodeId = 1;
 		Random rand = new Random();
 		//Creating the root node (TOP NODE) - Always needs to be created
@@ -61,7 +55,7 @@ public class BioGeneration {
 		Tree biomorphTree = new Tree(root);
 		root.setParent(root);
 		
-		while(currentNumberOfLegs < numberOfLegs){
+		while(currentNumberOfLegs < numberOfLines){
 			TreeNode<Point> parentNode = null;
 			int randomNum = rand.nextInt((nodeId - 1) + 1) + 1;
 			System.out.println("Random ID Generated: " + randomNum);
@@ -98,13 +92,13 @@ public class BioGeneration {
 	}
 	
 	public void createChildren(ArrayList<Line> parent){
+		ArrayList<Line> parentTree = parent;
 		// for the amount of children 
 		for(int i = 0; i<9; i++){
 			//make a copy of the tree
-			ArrayList<Line> tempTree = parent;
-			
+			ArrayList<Line> tempTree = parentTree;
 			//iterate through tree
-			for(int j = 0; j<tempTree.size(); j++){
+			for(int j = 0; j < tempTree.size(); j++){
 				//chance it will mutate
 				//when this is working need to change it so probabilities change according to slider.
 				Random rand = new Random();
@@ -128,9 +122,9 @@ public class BioGeneration {
 						tempTree.get(j).setY2(tempTree.get(j).getY2() +2); //TODO: change "+2" to amount on slider.
 					}
 				}
-				finishedBiomorphs.add(tempTree);
-				
+					
 			}
+			finishedBiomorphs.add(tempTree);
 		}
 	}
 	
