@@ -10,7 +10,7 @@ package main;
 import java.util.ArrayList;
 
 public class BioController {
-	static ArrayList<ArrayList<Line>> biomorphs;
+	private static ArrayList<ArrayList<Line>> biomorphs;
 	
 	public BioController() {
 		Log.add("Bio Controller Initiated");
