@@ -197,22 +197,18 @@ public class UserInterface extends MouseAdapter{
 		Dimension d2 = new Dimension(300,70);
 		JPanel sliderPanel = new JPanel();
 		final LabelledSlider probSlider = new LabelledSlider(" Probability of Change  ", 0.0, 0, 20, 100);
-		probSlider.setBounds(55, 5, 300, 70);
+		probSlider.setBounds(191, 5, 300, 70);
 		probSlider.setPreferredSize(d2);
-		final LabelledSlider widthSlider = new LabelledSlider(" Adjust Width of Biomorph  ", 0.0, 0, 20, 100);
-		widthSlider.setBounds(360, 5, 300, 70);
-     	widthSlider.setPreferredSize(d2);	
-		final LabelledSlider BranchSlider = new LabelledSlider(" Adjust Thickness of Biomorph  ", 0.0, 0, 20, 100);
-		BranchSlider.setBounds(665, 5, 300, 70);
-		BranchSlider.setPreferredSize(d2);
+		final LabelledSlider changeSlider = new LabelledSlider("Amount of Change  ", 0.0, 0, 20, 100);
+		changeSlider.setBounds(519, 5, 300, 70);
+     	changeSlider.setPreferredSize(d2);
 		
 		//Button Control
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(null);
 		sliderPanel.setLayout(null);
 		sliderPanel.add(probSlider);
-		sliderPanel.add(widthSlider);
-		sliderPanel.add(BranchSlider);
+		sliderPanel.add(changeSlider);
 		controlPanel.add(sliderPanel);
 		controlPanel.add(buttonPanel);
 		JButton helpButton = new JButton("Help");
@@ -265,16 +261,19 @@ public class UserInterface extends MouseAdapter{
 			public void actionPerformed(ActionEvent e) {
 				//new StartScreen().getFrame().setVisible(true);
 				//frame.setVisible(false);
+				panelOutput.removeAll();
 				BioController.generateBiomorphs();
+				panelOutput.add(BioController.displayParent());
 				panelOutput.repaint();
 				panelOutput.revalidate();
 				System.out.println("Parent Reprinted");
-				panelBiomorph1.repaint();
 				
-				for (JPanel onePanel : allPanels){
+				for (JPanel onePanel : panels){
+					int i = 0;
+					i++;
 					onePanel.removeAll();
-					BioController.generateBiomorphs();
-					onePanel.add(BioController.displayParent());
+					//BioController.generateBiomorphs();
+					onePanel.add(BioController.displayChildren(i));
 					onePanel.validate();
 					onePanel.repaint();
 				}
