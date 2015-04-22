@@ -37,7 +37,7 @@ public class BioGeneration {
 		
 		//Generate the children from the parent (9 of them)
 		for(int i = 0; i <  9; i++){
-			finishedBiomorphs.add(createChildren(parent));
+			finishedBiomorphs.add(createChild(parent));
 		}
 	}
 	
@@ -46,7 +46,7 @@ public class BioGeneration {
 		data.add(parent);
 		
 		for(int i = 0; i < 9; i++){
-			data.add(createChildren(parent));
+			data.add(createChild(parent));
 		}
 		
 		return data;
@@ -89,24 +89,11 @@ public class BioGeneration {
 			nodeId++;
 
 			currentNumberOfLegs++;
-		}
-			ArrayList<TreeNode<Point>> finalTree = biomorphTree.getPreOrderTraversal();
-			
-			/**String id_in_line = "";
-			for(int i = 0; i < finalTree.size(); i++){
-				System.out.println("ID: " + finalTree.get(i).getElement().getID());
-				System.out.println("X: " + finalTree.get(i).getElement().getX());
-				System.out.println("Y: " + finalTree.get(i).getElement().getY());
-				System.out.println("Parent ID: " + finalTree.get(i).getParent().getElement().getID());
-				System.out.println("------------------");
-				id_in_line += finalTree.get(i).getElement().getID() + ", ";
-			}
-			System.out.println("Id's in-line: " + id_in_line);
-			*/
-			return generateLineInformation(finalTree);
+		}	
+			return generateLineInformation(biomorphTree.getPreOrderTraversal());
 	}
 	
-	public static ArrayList<Line> createChildren(ArrayList<Line> parent){
+	public static ArrayList<Line> createChild(ArrayList<Line> parent){
 		ArrayList<Line> parentTree = parent;
 		// for the amount of children 
 		//for(int i = 0; i<9; i++){
