@@ -223,7 +223,7 @@ public class UserInterface extends MouseAdapter{
 		
 		JPanel panelLogo = new JPanel();
 		panelLogo.setForeground(Color.BLACK);
-		panelLogo.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
+		//panelLogo.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelLogo.setBackground(SystemColor.menu);
 		panelLogo.setBounds(736, 470, 311, 127);
 		
@@ -238,7 +238,7 @@ public class UserInterface extends MouseAdapter{
 		frame.getContentPane().add(panelLogo);
 		
 		JButton btnSave = new JButton("Save!");
-		btnSave.setBounds(736, 603, 311, 43);
+		btnSave.setBounds(736, 603, 154, 43);
 		frame.getContentPane().add(btnSave);
 		JButton undoutton = new JButton("Undo");
 		undoutton.setBounds(736, 414, 162, 43);
@@ -246,6 +246,10 @@ public class UserInterface extends MouseAdapter{
 		JButton menuButton = new JButton("Home");
 		menuButton.setBounds(511, 183, 166, 56);
 		frame.getContentPane().add(menuButton);
+		
+		JButton btnExport = new JButton("Export!");
+		btnExport.setBounds(893, 603, 154, 43);
+		frame.getContentPane().add(btnExport);
 		
 		//Action listener for new button. Directs it to the main screen of the UI.
 		menuButton.addActionListener(new ActionListener() {
