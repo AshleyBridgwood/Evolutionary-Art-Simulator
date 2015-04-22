@@ -34,8 +34,11 @@ public class BioGeneration {
 		//Generate the parent
 		ArrayList<Line> parent = makeParentBiomorph();
 		finishedBiomorphs.add(parent);
+		
 		//Generate the children from the parent (9 of them)
-		createChildren(parent);
+		for(int i = 0; i <  9; i++){
+			finishedBiomorphs.add(createChildren(parent));
+		}
 	}
 	
 	public static ArrayList<ArrayList<Line>> getAllBiomorphs(){
@@ -94,10 +97,10 @@ public class BioGeneration {
 			return generateLineInformation(finalTree);
 	}
 	
-	public void createChildren(ArrayList<Line> parent){
+	public ArrayList<Line> createChildren(ArrayList<Line> parent){
 		ArrayList<Line> parentTree = parent;
 		// for the amount of children 
-		for(int i = 0; i<9; i++){
+		//for(int i = 0; i<9; i++){
 			//make a copy of the tree
 			ArrayList<Line> tempTree = parentTree;
 			//iterate through tree
@@ -139,8 +142,7 @@ public class BioGeneration {
 				}
 					
 			}
-			finishedBiomorphs.add(tempTree);
-		}
+			return tempTree;
 	}
 	
 	public ArrayList<Line> generateLineInformation(ArrayList<TreeNode<Point>> data){
