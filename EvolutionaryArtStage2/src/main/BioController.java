@@ -11,8 +11,12 @@ import java.util.ArrayList;
 
 public class BioController {
 	private static ArrayList<ArrayList<Line>> biomorphs;
+	private static int currentlySelectedToMutate;
 	
 	public BioController() {
+		
+		currentlySelectedToMutate = 0;
+		
 		Log.add("Bio Controller Initiated");
 		FileHandler.checkForMainWorkingFolder();
 		
@@ -38,11 +42,24 @@ public class BioController {
 	}
 
 	public static BioDraw displayParent(){
+		System.out.println("");
 		return new BioDraw(biomorphs.get(0), false);
 	}
 	
 	public static BioDraw displayChildren(int childNumber){
 		return new BioDraw(biomorphs.get(childNumber), true);
+	}
+	
+	public static void mutuateBiomorphOne(){
+		System.out.println("CHILD SELECTED: " + currentlySelectedToMutate);
+		ArrayList<Line> data = new ArrayList<Line>();
+		data = biomorphs.get(currentlySelectedToMutate);
+		
+		biomorphs = BioGeneration.getChildrenFromParent(data);
+	}
+	
+	public static void setNextToMutate(int data){
+		currentlySelectedToMutate = data;
 	}
 	
 	public static Biomorph newBiomorph(){

@@ -255,6 +255,14 @@ public class UserInterface extends MouseAdapter{
 		
 		frame.pack();
 		
+		//Action listener for mutuate button. Mutates the biomorpbhs from what is selected
+		btnMutate.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				panelOutput.removeAll();
+				BioController.mutuateBiomorphOne();
+				refreshAllPanels();
+			}
+		});
 		
 		//Action listener for new button. Directs it to the main screen of the UI.
 		menuButton.addActionListener(new ActionListener() {
@@ -263,20 +271,7 @@ public class UserInterface extends MouseAdapter{
 				//frame.setVisible(false);
 				panelOutput.removeAll();
 				BioController.generateBiomorphs();
-				panelOutput.add(BioController.displayParent());
-				panelOutput.repaint();
-				panelOutput.revalidate();
-				System.out.println("Parent Reprinted");
-				
-				for (JPanel onePanel : panels){
-					int i = 0;
-					i++;
-					onePanel.removeAll();
-					//BioController.generateBiomorphs();
-					onePanel.add(BioController.displayChildren(i));
-					onePanel.validate();
-					onePanel.repaint();
-				}
+				refreshAllPanels();
 
 
 			}
@@ -304,7 +299,7 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
+				BioController.setNextToMutate(1);
 			}
 
 			@Override
@@ -317,6 +312,7 @@ public class UserInterface extends MouseAdapter{
 					panels[i].setBackground(SystemColor.menu);
 				}
 				panelBiomorph1.setBackground(Color.GREEN);
+				BioController.setNextToMutate(1);
 			}
 			});
 		
@@ -554,6 +550,20 @@ public class UserInterface extends MouseAdapter{
 			});
 	}
 	
+	private void refreshAllPanels(){
+		panelOutput.add(BioController.displayParent());
+		panelOutput.repaint();
+		panelOutput.revalidate();
+		for (JPanel onePanel : panels){
+			int i = 0;
+			i++;
+			onePanel.removeAll();
+			onePanel.add(BioController.displayChildren(i));
+			onePanel.validate();
+			onePanel.repaint();
+		}
+	}
+
 	//getter so startscreen can access the main frame.
 	public JFrame getFrame() {
 			return this.frame;

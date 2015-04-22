@@ -42,7 +42,7 @@ public class BioGeneration {
 	}
 	
 	public static ArrayList<ArrayList<Line>> getChildrenFromParent(ArrayList<Line> parent){
-		ArrayList<ArrayList<Line>> data = null;
+		ArrayList<ArrayList<Line>> data = new ArrayList<ArrayList<Line>>();
 		data.add(parent);
 		
 		for(int i = 0; i < 9; i++){
