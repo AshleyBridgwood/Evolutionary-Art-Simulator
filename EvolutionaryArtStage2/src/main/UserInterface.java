@@ -57,11 +57,13 @@ public class UserInterface extends MouseAdapter{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame =	new JFrame();
+		frame =	new JFrame();	
 		
 		frame.setBounds(100, 100, 1093, 875);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		Dimension d = new Dimension (1093, 875); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
+		frame.setPreferredSize(d);
 		frame.setResizable(false);
 
 		
@@ -250,6 +252,9 @@ public class UserInterface extends MouseAdapter{
 		JButton btnExport = new JButton("Export!");
 		btnExport.setBounds(893, 603, 154, 43);
 		frame.getContentPane().add(btnExport);
+		
+		frame.pack();
+		
 		
 		//Action listener for new button. Directs it to the main screen of the UI.
 		menuButton.addActionListener(new ActionListener() {
