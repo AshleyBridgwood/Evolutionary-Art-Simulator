@@ -41,6 +41,17 @@ public class BioGeneration {
 		}
 	}
 	
+	public static ArrayList<ArrayList<Line>> getChildrenFromParent(ArrayList<Line> parent){
+		ArrayList<ArrayList<Line>> data = null;
+		data.add(parent);
+		
+		for(int i = 0; i < 9; i++){
+			data.add(createChildren(parent));
+		}
+		
+		return data;
+	}
+	
 	public static ArrayList<ArrayList<Line>> getAllBiomorphs(){
 		return finishedBiomorphs;
 	}
@@ -97,7 +108,7 @@ public class BioGeneration {
 			return generateLineInformation(finalTree);
 	}
 	
-	public ArrayList<Line> createChildren(ArrayList<Line> parent){
+	public static ArrayList<Line> createChildren(ArrayList<Line> parent){
 		ArrayList<Line> parentTree = parent;
 		// for the amount of children 
 		//for(int i = 0; i<9; i++){
