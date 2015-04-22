@@ -5,6 +5,7 @@ package main;
 
 import java.awt.EventQueue;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -25,6 +26,8 @@ import main.LabelledSlider;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 
 public class UserInterface extends MouseAdapter{
@@ -281,6 +284,17 @@ public class UserInterface extends MouseAdapter{
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new SaveBiomorph().getFrame().setVisible(true);
+			}
+		});
+		
+		//Action listener for export button. Directs it to the main screen of the UI.
+		btnExport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BufferedImage bi = new BufferedImage(panelOutput.getSize().width, panelOutput.getSize().height, BufferedImage.TYPE_INT_ARGB); 
+				Graphics g = bi.createGraphics();
+				panelOutput.paint(g);  //this == JComponent
+				g.dispose();
+				try{ImageIO.write(bi,"png",new File("C:\\Users\\ibrahim\\OneDrive\\Documents\\222.png"));}catch (Exception c) {};
 			}
 		});
 
