@@ -45,7 +45,7 @@ public class BiomorphStartUp {
 		frame.setResizable(false);
 
 		
-		JPanel biomorphPanel = new JPanel();
+		final JPanel biomorphPanel = new JPanel();
 		biomorphPanel.setForeground(Color.BLACK);
 		biomorphPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		biomorphPanel.setBackground(SystemColor.menu);
@@ -94,6 +94,14 @@ public class BiomorphStartUp {
 		btnHelp.setBounds(373, 13, 166, 44);
 		navPanel.add(btnHelp);
 	
+		//Action listener for the generate button. Regenerates a new biomorph
+		btnGenerate.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				BioController.generateBiomorphs();
+				biomorphPanel.repaint();
+			}
+		});
 		
 		//Action listeners for new button. Directs it to the main screen of the UI.
 		btnNext.addActionListener(new ActionListener() {
