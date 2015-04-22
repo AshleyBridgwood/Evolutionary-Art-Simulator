@@ -72,14 +72,12 @@ public class BioGeneration {
 		while(currentNumberOfLegs < numberOfLines){
 			TreeNode<Point> parentNode = null;
 			int randomNum = rand.nextInt((nodeId - 1) + 1) + 1;
-			System.out.println("Random ID Generated: " + randomNum);
-			System.out.println("Total number of nodes: " + nodeId);
 			//If the nodeID is the same as the random number, if errors, so code to fix that
 			if(randomNum == nodeId){
 				randomNum--;
 			}
 				parentNode = biomorphTree.findTreeNode(root, randomNum);
-			System.out.println("Parent node ID found: " + parentNode.getElement().getID());
+			//System.out.println("Parent node ID found: " + parentNode.getElement().getID());
 			//int x =  rand.nextInt((200-50) + 1) + 50;
 			//int y = rand.nextInt((200-50) + 1) + 50;
 			int x = rand.nextInt((100-25) + 1) + 25;
@@ -94,7 +92,7 @@ public class BioGeneration {
 		}
 			ArrayList<TreeNode<Point>> finalTree = biomorphTree.getPreOrderTraversal();
 			
-			String id_in_line = "";
+			/**String id_in_line = "";
 			for(int i = 0; i < finalTree.size(); i++){
 				System.out.println("ID: " + finalTree.get(i).getElement().getID());
 				System.out.println("X: " + finalTree.get(i).getElement().getX());
@@ -104,7 +102,7 @@ public class BioGeneration {
 				id_in_line += finalTree.get(i).getElement().getID() + ", ";
 			}
 			System.out.println("Id's in-line: " + id_in_line);
-			
+			*/
 			return generateLineInformation(finalTree);
 	}
 	
