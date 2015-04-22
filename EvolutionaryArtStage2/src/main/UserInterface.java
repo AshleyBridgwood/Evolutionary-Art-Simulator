@@ -167,7 +167,7 @@ public class UserInterface extends MouseAdapter{
 		lblFinalOutput.setBounds(821, 195, 120, 35);
 		frame.getContentPane().add(lblFinalOutput);
 		
-		JPanel panelOutput = new JPanel();
+		final JPanel panelOutput = new JPanel();
 		panelOutput.setForeground(Color.BLACK);
 		panelOutput.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelOutput.setBackground(SystemColor.menu);
@@ -243,7 +243,7 @@ public class UserInterface extends MouseAdapter{
 		JButton undoutton = new JButton("Undo");
 		undoutton.setBounds(736, 414, 162, 43);
 		frame.getContentPane().add(undoutton);
-		JButton menuButton = new JButton("Home");
+		JButton menuButton = new JButton("Home - Temp Next");
 		menuButton.setBounds(511, 183, 166, 56);
 		frame.getContentPane().add(menuButton);
 		
@@ -254,8 +254,13 @@ public class UserInterface extends MouseAdapter{
 		//Action listener for new button. Directs it to the main screen of the UI.
 		menuButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new StartScreen().getFrame().setVisible(true);
-				frame.setVisible(false);
+				//new StartScreen().getFrame().setVisible(true);
+				//frame.setVisible(false);
+				BioController.nextRandomBiomorph();
+				panelOutput.repaint();
+				panelOutput.revalidate();
+				System.out.println("Parent Reprinted");
+				panelBiomorph1.repaint();
 
 			}
 		});
