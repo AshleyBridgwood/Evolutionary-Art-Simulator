@@ -40,10 +40,15 @@ public class UserInterface extends MouseAdapter{
 	JPanel panelBiomorph7= new JPanel();
 	JPanel panelBiomorph8 = new JPanel();
 	JPanel panelBiomorph9 = new JPanel();
+	JPanel panelOutput = new JPanel();
+
 
 	
 	JPanel[] panels = {panelBiomorph1,panelBiomorph2, panelBiomorph3, panelBiomorph4, panelBiomorph5, panelBiomorph6, 
 			panelBiomorph7, panelBiomorph8, panelBiomorph9};
+	
+	JPanel[] allPanels = {panelOutput, panelBiomorph1,panelBiomorph2, panelBiomorph3, panelBiomorph4, panelBiomorph5, panelBiomorph6, 
+			panelBiomorph7, panelBiomorph8, panelBiomorph9,};
 
 
 	/**	
@@ -169,7 +174,6 @@ public class UserInterface extends MouseAdapter{
 		lblFinalOutput.setBounds(821, 195, 120, 35);
 		frame.getContentPane().add(lblFinalOutput);
 		
-		final JPanel panelOutput = new JPanel();
 		panelOutput.setForeground(Color.BLACK);
 		panelOutput.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelOutput.setBackground(SystemColor.menu);
@@ -266,6 +270,15 @@ public class UserInterface extends MouseAdapter{
 				panelOutput.revalidate();
 				System.out.println("Parent Reprinted");
 				panelBiomorph1.repaint();
+				
+				for (JPanel onePanel : allPanels){
+					onePanel.removeAll();
+					BioController.generateBiomorphs();
+					onePanel.add(BioController.displayParent());
+					onePanel.validate();
+					onePanel.repaint();
+				}
+
 
 			}
 		});
