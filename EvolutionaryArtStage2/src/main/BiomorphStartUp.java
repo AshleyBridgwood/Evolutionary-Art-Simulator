@@ -50,6 +50,8 @@ public class BiomorphStartUp {
 		biomorphPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		biomorphPanel.setBackground(SystemColor.menu);
 		biomorphPanel.setBounds(190, 132, 311, 175);
+		BioController.generateBiomorphs();
+		biomorphPanel.add(BioController.displayParent());
 		frame.getContentPane().add(biomorphPanel);
 		
 		JLabel lblBiomorph = new JLabel("Biomorph");
@@ -96,7 +98,7 @@ public class BiomorphStartUp {
 		//Action listeners for new button. Directs it to the main screen of the UI.
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BioController.start();
+				BioController.generateBiomorphs();
 				frame.setVisible(false);
 			}
 		});

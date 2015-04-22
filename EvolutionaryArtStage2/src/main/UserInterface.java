@@ -261,7 +261,7 @@ public class UserInterface extends MouseAdapter{
 			public void actionPerformed(ActionEvent e) {
 				//new StartScreen().getFrame().setVisible(true);
 				//frame.setVisible(false);
-				BioController.nextRandomBiomorph();
+				BioController.generateBiomorphs();
 				panelOutput.repaint();
 				panelOutput.revalidate();
 				System.out.println("Parent Reprinted");
