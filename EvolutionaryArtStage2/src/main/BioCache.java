@@ -9,22 +9,22 @@ package main;
 
 public class BioCache {
 
-	private static String[] stack;
+	private static Object[] stack;
 	private static int defaultValue;
 	private static int top;
 	
 	public BioCache() {
 		top = -1;
 		defaultValue = 15;
-		stack = new String[defaultValue];
+		stack = new Object[defaultValue];
 	}
 	
-	public static void push(String newValue){
+	public static void push(Object newValue){
 		stack[++top] = newValue;
 		Log.add("Biomorph data added to the cache");
 	}
 	
-	public static String pop(){
+	public static Object pop(){
 		Log.add("Biomorph data removed from the cache");
 		return stack[top--];
 	}
@@ -37,7 +37,7 @@ public class BioCache {
 		return (top == defaultValue -1);
 	}
 	
-	public static String peek(){
+	public static Object peek(){
 		return stack[top];
 	}
 }
