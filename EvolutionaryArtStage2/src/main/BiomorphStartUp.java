@@ -22,6 +22,7 @@ import javax.swing.JButton;
 public class BiomorphStartUp {
 
 	private JFrame frame;
+	private JPanel biomorphPanel = new JPanel();
 
 	/**
 	 * Launch the application.
@@ -45,7 +46,7 @@ public class BiomorphStartUp {
 		frame.setResizable(false);
 
 		
-		final JPanel biomorphPanel = new JPanel();
+
 		biomorphPanel.setForeground(Color.BLACK);
 		biomorphPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		biomorphPanel.setBackground(SystemColor.menu);
@@ -98,7 +99,10 @@ public class BiomorphStartUp {
 		btnGenerate.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
+				biomorphPanel.removeAll();
 				BioController.generateBiomorphs();
+				biomorphPanel.add(BioController.displayParent());
+				biomorphPanel.validate();
 				biomorphPanel.repaint();
 			}
 		});
