@@ -98,7 +98,7 @@ public class BiomorphStartUp {
 		//Action listeners for new button. Directs it to the main screen of the UI.
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BioController.generateBiomorphs();
+				BioController.startMainScreen();
 				frame.setVisible(false);
 			}
 		});

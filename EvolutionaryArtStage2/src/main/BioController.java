@@ -20,6 +20,11 @@ public class BioController {
 		Log.add("Start menu loaded");
 	}
 	
+	public static void startMainScreen(){
+		new UserInterface().getFrame().setVisible(true);
+		Log.add("User Interface Initiated");	
+	}
+	
 	public static void saveCurrentBiomorphs(String name){
 		//Save the parent, and the children
 		Save.saveBiomorph(name, biomorphs);
@@ -31,9 +36,6 @@ public class BioController {
 		
 		//Get the newly generated biomorphs from the biogeneration class
 		biomorphs = BioGeneration.getAllBiomorphs();
-		
-		new UserInterface().getFrame().setVisible(true);
-		Log.add("User Interface Initiated");	
 	}
 
 	public static BioDraw displayParent(){
