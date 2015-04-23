@@ -1,3 +1,7 @@
+/**
+ * @author Ibrahim Farah
+ */
+
 package main;
 
 import java.awt.EventQueue;
@@ -24,13 +28,6 @@ public class BiomorphStartUp {
 	private JFrame frame;
 	private JPanel biomorphPanel = new JPanel();
 
-	/**
-	 * Launch the application.
-	 */
-
-	/**
-	 * Create the application.
-	 */
 	public BiomorphStartUp() {
 		initialize();
 	}
