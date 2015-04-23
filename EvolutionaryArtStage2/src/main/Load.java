@@ -71,7 +71,6 @@ public class Load extends FileHandler {
 		} else {
 			Log.add("Loading of Biomorph failed - File name was left blank.");
 		}
-		
-		return data;
+			return data;
 	}
 }

@@ -30,6 +30,10 @@ public class BioController {
 		Log.add("User Interface Initiated");	
 	}
 	
+	public static void loadBiomorph(String fileName){
+		biomorphs = Load.loadBiomorphs(fileName);
+	}
+	
 	public static void saveCurrentBiomorphs(String name){
 		//Save the parent, and the children
 		Save.saveBiomorph(name, biomorphs);
