@@ -21,6 +21,7 @@ public class BioGeneration {
 	private Gene g0;
 	private Gene g1;
 	private Gene g2;
+	private static int tempIdCounter = 0;
 
 	private static ArrayList<ArrayList<Line>> finishedBiomorphs;
 	
@@ -139,6 +140,11 @@ public class BioGeneration {
 				}
 					
 			}
+			if(tempIdCounter == 0){
+				System.out.println("Parent: " + parent.toString());
+			}
+			System.out.println("Child " + tempIdCounter + ": " + tempTree.toString());
+			tempIdCounter++;
 			return tempTree;
 	}
 	
