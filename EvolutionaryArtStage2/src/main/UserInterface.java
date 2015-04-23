@@ -247,9 +247,9 @@ public class UserInterface extends MouseAdapter{
 		JButton btnSave = new JButton("Save!");
 		btnSave.setBounds(736, 603, 154, 43);
 		frame.getContentPane().add(btnSave);
-		JButton undoutton = new JButton("Undo");
-		undoutton.setBounds(736, 414, 162, 43);
-		frame.getContentPane().add(undoutton);
+		JButton undoButton = new JButton("Undo");
+		undoButton.setBounds(736, 414, 162, 43);
+		frame.getContentPane().add(undoButton);
 		JButton menuButton = new JButton("Home - Temp Next");
 		menuButton.setBounds(511, 183, 166, 56);
 		frame.getContentPane().add(menuButton);
@@ -259,6 +259,14 @@ public class UserInterface extends MouseAdapter{
 		frame.getContentPane().add(btnExport);
 		
 		frame.pack();
+		//Action listener for the undo button. Goes to the previous biomorph
+		undoButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				panelOutput.removeAll();
+				BioController.undoOneBiomorph();
+				refreshAllPanels();
+			}
+		});
 		
 		//Action listener for mutuate button. Mutates the biomorpbhs from what is selected
 		btnMutate.addActionListener(new ActionListener(){

@@ -16,6 +16,7 @@ public class BioController {
 	public BioController() {
 		
 		currentlySelectedToMutate = 0;
+		new BioCache();
 		
 		Log.add("Bio Controller Initiated");
 		FileHandler.checkForMainWorkingFolder();
@@ -39,6 +40,9 @@ public class BioController {
 		Log.add("Generating new Biomorphs");
 		//Get the newly generated biomorphs from the biogeneration class
 		biomorphs = BioGeneration.getAllBiomorphs();
+		BioCache.push(biomorphs);
+		System.out.println("BioCache Size: " + BioCache.getNumberOfItemsOnStack());
+		System.out.println("BioCache Data: " + biomorphs.get(0).get(1).toString());
 	}
 
 	public static BioDraw displayParent(){
@@ -65,6 +69,16 @@ public class BioController {
 	public static Biomorph newBiomorph(){
 		Biomorph b = new Biomorph();
 		return b;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static void undoOneBiomorph(){
+		if(BioCache.getNumberOfItemsOnStack() > 0){
+			BioCache.pop();
+			biomorphs = (ArrayList<ArrayList<Line>>) BioCache.peek();
+			System.out.println("UNDO - BioCache Size: " + BioCache.getNumberOfItemsOnStack());
+			System.out.println("UNDO - BioCache Data: " + biomorphs.get(0).get(1).toString());
+		}
 	}
 	
 	public void exportLogToFile(){

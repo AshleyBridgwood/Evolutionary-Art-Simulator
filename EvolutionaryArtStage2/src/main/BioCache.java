@@ -40,4 +40,8 @@ public class BioCache {
 	public static Object peek(){
 		return stack[top];
 	}
+	
+	public static int getNumberOfItemsOnStack(){
+		return top;
+	}
 }
