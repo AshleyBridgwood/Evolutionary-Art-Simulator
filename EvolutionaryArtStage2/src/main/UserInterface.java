@@ -6,8 +6,10 @@ package main;
 import java.awt.EventQueue;
 
 import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -290,11 +292,20 @@ public class UserInterface extends MouseAdapter{
 		//Action listener for export button. Directs it to the main screen of the UI.
 		btnExport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BufferedImage bi = new BufferedImage(panelOutput.getSize().width, panelOutput.getSize().height, BufferedImage.TYPE_INT_ARGB); 
-				Graphics g = bi.createGraphics();
+				JFileChooser chooser = new JFileChooser();
+				chooser.showOpenDialog(null);
+				File f = chooser.getSelectedFile();
+
+				//File f = chooser.getCurrentDirectory();
+				String filename = f.getAbsolutePath();
+				
+				BufferedImage pingImage = new BufferedImage(panelOutput.getSize().width, panelOutput.getSize().height, BufferedImage.TYPE_INT_ARGB); 
+				Graphics g = pingImage.createGraphics();
 				panelOutput.paint(g);  //this == JComponent
 				g.dispose();
-				try{ImageIO.write(bi,"png",new File("C:\\Users\\ibrahim\\OneDrive\\Documents\\222.png"));}catch (Exception c) {};
+				Export.export(filename, pingImage);
+				JOptionPane.showMessageDialog(null, "File Successfully Exported!");
+
 			}
 		});
 
