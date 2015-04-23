@@ -20,7 +20,7 @@ public class Load extends FileHandler {
 	
 	@SuppressWarnings("unchecked")
 	public static ArrayList<Line> loadHallOfFameBiomorph(String fileName){
-		ArrayList<0Line> data = null;
+		ArrayList<Line> data = null;
 		
 		try {
 			FileInputStream fileInput = new FileInputStream(EvolutionaryArtFolderLocation + "\\Hall Of Fame\\" + fileName + ".biomorph");
