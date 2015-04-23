@@ -19,6 +19,32 @@ import java.util.ArrayList;
 public class Load extends FileHandler {
 	
 	@SuppressWarnings("unchecked")
+	public static ArrayList<Line> loadHallOfFameBiomorph(String fileName){
+		ArrayList<0Line> data = null;
+		
+		try {
+			FileInputStream fileInput = new FileInputStream(EvolutionaryArtFolderLocation + "\\Hall Of Fame\\" + fileName + ".biomorph");
+			try {
+				ObjectInputStream input = new ObjectInputStream(fileInput);
+				try {
+					data = (ArrayList<Line>) input.readObject();
+					input.close();
+					fileInput.close();
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return data;
+	}
+	
+	
+	@SuppressWarnings("unchecked")
 	public static ArrayList<ArrayList<Line>> loadBiomorphs(String fileName){
 		ArrayList<ArrayList<Line>> data = null;
 		
@@ -43,7 +69,7 @@ public class Load extends FileHandler {
 		return data;
 	}
 	
-	public static Object loadBiomorphold(String fileName){
+	public static String loadFile(String fileName){
 		String data = "";
 		if(fileName != null){
 			String location = EvolutionaryArtFolderLocation + "\\Saved Biomorphs\\" + fileName + ".biomorph";
