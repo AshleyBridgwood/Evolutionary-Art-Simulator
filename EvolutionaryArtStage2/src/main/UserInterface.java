@@ -337,7 +337,7 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				
+			
 			}
 		
 			public void mouseClicked(MouseEvent e) {
@@ -346,6 +346,7 @@ public class UserInterface extends MouseAdapter{
 				}
 				panelBiomorph1.setBackground(Color.GREEN);
 				BioController.setNextToMutate(1);
+				System.out.println(BioController.isPanelPressed());
 			}
 			});
 		

@@ -19,6 +19,8 @@ public class BioController {
 		currentlySelectedToMutate = 0;
 		new BioCache();
 		
+		//Load 3 hall of fame biomorphs here
+		
 		Log.add("Bio Controller Initiated");
 		FileHandler.checkForMainWorkingFolder();
 		
@@ -69,15 +71,20 @@ public class BioController {
 	}
 	
 	public static BioDraw displayChildren(int childNumber){
+		
 		return new BioDraw(biomorphs.get(childNumber), true);
 	}
 	
 	public static void mutuateBiomorphOne(){
 		System.out.println("CHILD SELECTED: " + currentlySelectedToMutate);
+		System.out.println("CHILD 1 DATA: " + biomorphs.get(currentlySelectedToMutate).toString());
+			System.out.println("BEFORE MUTATE DATA:" + biomorphs.get(currentlySelectedToMutate).toString());
+		
 		ArrayList<Line> data = new ArrayList<Line>();
 		data = biomorphs.get(currentlySelectedToMutate);
 		
 		biomorphs = BioGeneration.getChildrenFromParent(data);
+		System.out.println("New Parent DATA: " + biomorphs.get(0).toString());
 	}
 	
 	public static void setNextToMutate(int data){
@@ -97,6 +104,13 @@ public class BioController {
 			System.out.println("UNDO - BioCache Size: " + BioCache.getNumberOfItemsOnStack());
 			System.out.println("UNDO - BioCache Data: " + biomorphs.get(0).get(1).toString());
 		}
+	}
+	
+	public static boolean isPanelPressed(){
+		if(currentlySelectedToMutate == 0){
+			return false;
+		}
+		return true;
 	}
 	
 	public void exportLogToFile(){
