@@ -51,8 +51,10 @@ public class BioController {
 		Save.saveBiomorphToHallOfFame("b" + hallOfFameBiomorphs.size(), biomorphs.get(0));
 	}
 	
-	public static void loadHallOfFameBiomorph(String fileName){
-		hallOfFameBiomorphs.add(Load.loadHallOfFameBiomorph(fileName));
+	public static void loadHallOfFameBiomorphs(){
+		for(int i = 1; i < FileHandler.getNumberOfHallOfFameBiomorphs(); i++){
+			hallOfFameBiomorphs.add(Load.loadHallOfFameBiomorph("b" + i));
+		}
 	}
 	
 	public static void generateBiomorphs(){
@@ -64,17 +66,15 @@ public class BioController {
 		System.out.println("BioCache Size: " + BioCache.getNumberOfItemsOnStack());
 	}
 	
-	public static BioDraw displayHallOfFame(int number){
+	public static BioDraw displayHallOfFameBiomorph(int number){
 		return new BioDraw(hallOfFameBiomorphs.get(number), true);
 	}
 
 	public static BioDraw displayParent(){
-		System.out.println("");
 		return new BioDraw(biomorphs.get(0), false);
 	}
 	
 	public static BioDraw displayChildren(int childNumber){
-		
 		return new BioDraw(biomorphs.get(childNumber), true);
 	}
 	

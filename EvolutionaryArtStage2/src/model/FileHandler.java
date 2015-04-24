@@ -25,6 +25,10 @@ public class FileHandler {
 		oos.writeObject(data);
 	}
 	
+	public static int getNumberOfHallOfFameBiomorphs(){
+		return new File(EvolutionaryArtFolderLocation + "/Hall Of Fame/").listFiles().length;
+	}
+	
 	public static void writeToFile(String locationWithinFolder, String data){
 		if(EvolutionaryArtFolderLocation != null){
 			try{
