@@ -11,10 +11,11 @@ import java.util.ArrayList;
 
 public class BioController {
 	private static ArrayList<ArrayList<Line>> biomorphs;
+	private static ArrayList<ArrayList<Line>> hallOfFameBiomorphs;
 	private static int currentlySelectedToMutate;
 	
 	public BioController() {
-		
+		hallOfFameBiomorphs = new ArrayList<ArrayList<Line>>();
 		currentlySelectedToMutate = 0;
 		new BioCache();
 		
@@ -30,13 +31,23 @@ public class BioController {
 		Log.add("User Interface Initiated");	
 	}
 	
-	public static void loadBiomorph(String fileName){
+	//Loading of a biomorph
+	public static void loadBiomorphs(String fileName){
 		biomorphs = Load.loadBiomorphs(fileName);
 	}
 	
+	//Save the parent, and the children
 	public static void saveCurrentBiomorphs(String name){
-		//Save the parent, and the children
 		Save.saveBiomorph(name, biomorphs);
+	}
+	
+	public static void saveCurrentParentToHallOfFame(){
+		hallOfFameBiomorphs.add(biomorphs.get(0));
+		Save.saveBiomorphToHallOfFame("b" + hallOfFameBiomorphs.size(), biomorphs.get(0));
+	}
+	
+	public static void loadHallOfFameBiomorph(String fileName){
+		hallOfFameBiomorphs.add(Load.loadHallOfFameBiomorph(fileName));
 	}
 	
 	public static void generateBiomorphs(){
@@ -46,7 +57,10 @@ public class BioController {
 		biomorphs = BioGeneration.getAllBiomorphs();
 		BioCache.push(biomorphs);
 		System.out.println("BioCache Size: " + BioCache.getNumberOfItemsOnStack());
-		System.out.println("BioCache Data: " + biomorphs.get(0).get(1).toString());
+	}
+	
+	public static BioDraw displayHallOfFame(int number){
+		return new BioDraw(hallOfFameBiomorphs.get(number), true);
 	}
 
 	public static BioDraw displayParent(){
