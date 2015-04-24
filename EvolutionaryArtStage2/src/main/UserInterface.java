@@ -251,12 +251,16 @@ public class UserInterface extends MouseAdapter{
 		undoButton.setBounds(736, 414, 162, 43);
 		frame.getContentPane().add(undoButton);
 		JButton menuButton = new JButton("Home - Temp Next");
-		menuButton.setBounds(511, 183, 166, 56);
+		menuButton.setBounds(610, 183, 166, 56);
 		frame.getContentPane().add(menuButton);
 		
 		JButton btnExport = new JButton("Export!");
 		btnExport.setBounds(893, 603, 154, 43);
 		frame.getContentPane().add(btnExport);
+		
+		JButton btnHOF = new JButton("Add to hall of fame");
+		btnHOF.setBounds(449, 183, 166, 56);
+		frame.getContentPane().add(btnHOF);
 		
 		frame.pack();
 		//Action listener for the undo button. Goes to the previous biomorph
