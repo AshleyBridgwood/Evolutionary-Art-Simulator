@@ -21,6 +21,7 @@ public class BioGeneration {
 	private Gene g0;
 	private Gene g1;
 	private Gene g2;
+	private static int tempIdCounter = 0;
 
 	private static ArrayList<ArrayList<Line>> finishedBiomorphs;
 	
@@ -34,8 +35,22 @@ public class BioGeneration {
 		//Generate the parent
 		ArrayList<Line> parent = makeParentBiomorph();
 		finishedBiomorphs.add(parent);
+		
 		//Generate the children from the parent (9 of them)
-		createChildren(parent);
+		for(int i = 0; i <  9; i++){
+			finishedBiomorphs.add(createChild(parent));
+		}
+	}
+	
+	public static ArrayList<ArrayList<Line>> getChildrenFromParent(ArrayList<Line> parent){
+		ArrayList<ArrayList<Line>> data = new ArrayList<ArrayList<Line>>();
+		data.add(parent);
+		
+		for(int i = 0; i < 9; i++){
+			data.add(createChild(parent));
+		}
+		
+		return data;
 	}
 	
 	public static ArrayList<ArrayList<Line>> getAllBiomorphs(){
@@ -58,52 +73,40 @@ public class BioGeneration {
 		while(currentNumberOfLegs < numberOfLines){
 			TreeNode<Point> parentNode = null;
 			int randomNum = rand.nextInt((nodeId - 1) + 1) + 1;
-			System.out.println("Random ID Generated: " + randomNum);
-			System.out.println("Total number of nodes: " + nodeId);
 			//If the nodeID is the same as the random number, if errors, so code to fix that
 			if(randomNum == nodeId){
 				randomNum--;
 			}
 				parentNode = biomorphTree.findTreeNode(root, randomNum);
-			System.out.println("Parent node ID found: " + parentNode.getElement().getID());
+			//System.out.println("Parent node ID found: " + parentNode.getElement().getID());
 			//int x =  rand.nextInt((200-50) + 1) + 50;
-			//int y = rand.nextInt((200-50) + 1) + 50;
-			
+			//int y = rand.nextInt((200-50) + 1) + 50;			
 			
 			int x = rand.nextInt((100-25) + 1) + (g1.getValue()*2);
 			int y = rand.nextInt((100-25) + 1) + (g2.getValue()*2);
 			
 			//int x = rand.nextInt((100-25) + 1) + 25;
 			//int y = rand.nextInt((100-25) + 1) + 25;
-			
+
 			
 			TreeNode<Point> newNode = new TreeNode<Point>(new Point(nodeId, x, y));
 			parentNode.addChild(newNode);
 			nodeId++;
 
 			currentNumberOfLegs++;
-		}
-			ArrayList<TreeNode<Point>> finalTree = biomorphTree.getPreOrderTraversal();
-			
-			String id_in_line = "";
-			for(int i = 0; i < finalTree.size(); i++){
-				System.out.println("ID: " + finalTree.get(i).getElement().getID());
-				System.out.println("X: " + finalTree.get(i).getElement().getX());
-				System.out.println("Y: " + finalTree.get(i).getElement().getY());
-				System.out.println("Parent ID: " + finalTree.get(i).getParent().getElement().getID());
-				System.out.println("------------------");
-				id_in_line += finalTree.get(i).getElement().getID() + ", ";
-			}
-			System.out.println("Id's in-line: " + id_in_line);
-			
-			return generateLineInformation(finalTree);
+		}	
+			return generateLineInformation(biomorphTree.getPreOrderTraversal());
 	}
 	
-	public void createChildren(ArrayList<Line> parent){
+	public static ArrayList<Line> createChild(ArrayList<Line> parent){
 		ArrayList<Line> parentTree = parent;
 		// for the amount of children 
+
 		for(int i = 0; i<9; i++)
 		{
+
+		//for(int i = 0; i<9; i++){
+
 			//make a copy of the tree
 			ArrayList<Line> tempTree = parentTree;
 			//iterate through tree			
@@ -163,6 +166,14 @@ public class BioGeneration {
 			
 			finishedBiomorphs.add(tempTree);			
 		}
+
+			//if(tempIdCounter == 0){
+			//	System.out.println("Parent: " + parent.toString());
+			//}
+			//System.out.println("Child " + tempIdCounter + ": " + tempTree.toString());
+			//tempIdCounter++;
+			//return tempTree;
+
 	}
 	
 	public Biomorph combineBiomorphs(Biomorph a, Biomorph b)

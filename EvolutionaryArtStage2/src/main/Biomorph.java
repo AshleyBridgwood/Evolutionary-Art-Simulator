@@ -22,7 +22,6 @@ public class Biomorph {
 		Gene first_gene;
 
 		this.seed = Factory.generateSeed();
-		System.out.println("Seed: " + seed); // testing purposes
 
 		// generate first gene value
 		first_gene = new Gene(true);
@@ -36,7 +35,6 @@ public class Biomorph {
 
 		// print gene values
 		testStr += getStringGeneValues();
-		System.out.println(testStr);
 	}
 
 	public long getSeed() {

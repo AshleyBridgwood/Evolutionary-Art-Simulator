@@ -5,8 +5,11 @@ package main;
 
 import java.awt.EventQueue;
 
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -25,6 +28,8 @@ import main.LabelledSlider;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 
 public class UserInterface extends MouseAdapter{
@@ -242,19 +247,39 @@ public class UserInterface extends MouseAdapter{
 		JButton btnSave = new JButton("Save!");
 		btnSave.setBounds(736, 603, 154, 43);
 		frame.getContentPane().add(btnSave);
-		JButton undoutton = new JButton("Undo");
-		undoutton.setBounds(736, 414, 162, 43);
-		frame.getContentPane().add(undoutton);
+		JButton undoButton = new JButton("Undo");
+		undoButton.setBounds(736, 414, 162, 43);
+		frame.getContentPane().add(undoButton);
 		JButton menuButton = new JButton("Home - Temp Next");
-		menuButton.setBounds(511, 183, 166, 56);
+		menuButton.setBounds(610, 183, 166, 56);
 		frame.getContentPane().add(menuButton);
 		
 		JButton btnExport = new JButton("Export!");
 		btnExport.setBounds(893, 603, 154, 43);
 		frame.getContentPane().add(btnExport);
 		
-		frame.pack();
+		JButton btnHOF = new JButton("Add to hall of fame");
+		btnHOF.setBounds(449, 183, 166, 56);
+		frame.getContentPane().add(btnHOF);
 		
+		frame.pack();
+		//Action listener for the undo button. Goes to the previous biomorph
+		undoButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				panelOutput.removeAll();
+				BioController.undoOneBiomorph();
+				refreshAllPanels();
+			}
+		});
+		
+		//Action listener for mutuate button. Mutates the biomorpbhs from what is selected
+		btnMutate.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				panelOutput.removeAll();
+				BioController.mutuateBiomorphOne();
+				refreshAllPanels();
+			}
+		});
 		
 		//Action listener for new button. Directs it to the main screen of the UI.
 		menuButton.addActionListener(new ActionListener() {
@@ -263,20 +288,7 @@ public class UserInterface extends MouseAdapter{
 				//frame.setVisible(false);
 				panelOutput.removeAll();
 				BioController.generateBiomorphs();
-				panelOutput.add(BioController.displayParent());
-				panelOutput.repaint();
-				panelOutput.revalidate();
-				System.out.println("Parent Reprinted");
-				
-				for (JPanel onePanel : panels){
-					int i = 0;
-					i++;
-					onePanel.removeAll();
-					//BioController.generateBiomorphs();
-					onePanel.add(BioController.displayChildren(i));
-					onePanel.validate();
-					onePanel.repaint();
-				}
+				refreshAllPanels();
 
 
 			}
@@ -286,6 +298,26 @@ public class UserInterface extends MouseAdapter{
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new SaveBiomorph().getFrame().setVisible(true);
+			}
+		});
+		
+		//Action listener for export button. Directs it to the main screen of the UI.
+		btnExport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser chooser = new JFileChooser();
+				chooser.showOpenDialog(null);
+				File f = chooser.getSelectedFile();
+
+				//File f = chooser.getCurrentDirectory();
+				String filename = f.getAbsolutePath();
+				
+				BufferedImage pingImage = new BufferedImage(panelOutput.getSize().width, panelOutput.getSize().height, BufferedImage.TYPE_INT_ARGB); 
+				Graphics g = pingImage.createGraphics();
+				panelOutput.paint(g);  //this == JComponent
+				g.dispose();
+				Export.export(filename, pingImage);
+				JOptionPane.showMessageDialog(null, "File Successfully Exported!");
+
 			}
 		});
 
@@ -304,12 +336,12 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
+				BioController.setNextToMutate(1);
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				
+			
 			}
 		
 			public void mouseClicked(MouseEvent e) {
@@ -317,6 +349,8 @@ public class UserInterface extends MouseAdapter{
 					panels[i].setBackground(SystemColor.menu);
 				}
 				panelBiomorph1.setBackground(Color.GREEN);
+				BioController.setNextToMutate(1);
+				System.out.println(BioController.isPanelPressed());
 			}
 			});
 		
@@ -554,6 +588,20 @@ public class UserInterface extends MouseAdapter{
 			});
 	}
 	
+	private void refreshAllPanels(){
+		panelOutput.add(BioController.displayParent());
+		panelOutput.repaint();
+		panelOutput.revalidate();
+		for (JPanel onePanel : panels){
+			int i = 0;
+			i++;
+			onePanel.removeAll();
+			onePanel.add(BioController.displayChildren(i));
+			onePanel.validate();
+			onePanel.repaint();
+		}
+	}
+
 	//getter so startscreen can access the main frame.
 	public JFrame getFrame() {
 			return this.frame;

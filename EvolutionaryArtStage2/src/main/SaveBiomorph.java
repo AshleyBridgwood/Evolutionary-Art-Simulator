@@ -1,3 +1,7 @@
+/**
+ * @author Ibrahim Farah
+ */
+
 package main;
 
 import java.awt.EventQueue;

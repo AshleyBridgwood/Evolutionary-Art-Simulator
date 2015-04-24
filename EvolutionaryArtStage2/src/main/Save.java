@@ -22,4 +22,12 @@ public class Save extends FileHandler {
 		//writeToFile("/Saved Biomorphs/" + name + ".biomorph", bioData);
 		Log.add("Biomorph saved: " + EvolutionaryArtFolderLocation + "\\Saved Biomorphs");
 	}
+	
+	public static void saveBiomorphToHallOfFame(String name, Object bioData){
+		try{
+			saveObjectToFile("/Hall Of Fame/" + name + ".biomorph", bioData);
+		} catch(IOException e){
+			e.printStackTrace();
+		}
+	}
 }

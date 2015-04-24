@@ -15,7 +15,7 @@ public class BioCache {
 	
 	public BioCache() {
 		top = -1;
-		defaultValue = 15;
+		defaultValue = 200;
 		stack = new Object[defaultValue];
 	}
 	
@@ -39,5 +39,9 @@ public class BioCache {
 	
 	public static Object peek(){
 		return stack[top];
+	}
+	
+	public static int getNumberOfItemsOnStack(){
+		return top;
 	}
 }
