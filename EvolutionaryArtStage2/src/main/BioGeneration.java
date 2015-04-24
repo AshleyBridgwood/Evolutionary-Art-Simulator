@@ -68,8 +68,13 @@ public class BioGeneration {
 			System.out.println("Parent node ID found: " + parentNode.getElement().getID());
 			//int x =  rand.nextInt((200-50) + 1) + 50;
 			//int y = rand.nextInt((200-50) + 1) + 50;
-			int x = rand.nextInt((100-25) + 1) + 25;
-			int y = rand.nextInt((100-25) + 1) + 25;
+			
+			
+			int x = rand.nextInt((100-25) + 1) + (g1.getValue()*2);
+			int y = rand.nextInt((100-25) + 1) + (g2.getValue()*2);
+			
+			//int x = rand.nextInt((100-25) + 1) + 25;
+			//int y = rand.nextInt((100-25) + 1) + 25;
 			
 			
 			TreeNode<Point> newNode = new TreeNode<Point>(new Point(nodeId, x, y));
@@ -97,39 +102,54 @@ public class BioGeneration {
 	public void createChildren(ArrayList<Line> parent){
 		ArrayList<Line> parentTree = parent;
 		// for the amount of children 
-		for(int i = 0; i<9; i++){
+		for(int i = 0; i<9; i++)
+		{
 			//make a copy of the tree
 			ArrayList<Line> tempTree = parentTree;
-			//iterate through tree
-			for(int j = 0; j < tempTree.size(); j++){
+			//iterate through tree			
+			for(int j = 0; j < tempTree.size(); j++)
+			{
 				//chance it will mutate
 				//when this is working need to change it so probabilities change according to slider.
 				Random rand = new Random();
 				int num = rand.nextInt(100);
-				//if it does mutate change x or y by certain amount
-				if(num <= 49){
+				//if it does mutate change x or y by certain amount				
+				if(num <= 49)
+				{
 					//which point to change:
 					int pointDecider = rand.nextInt(99)+1;
-					if(pointDecider == 0 && pointDecider <= 25){
+					
+					if(pointDecider == 0 && pointDecider <= 25)
+					{
 						// change x1
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
 						int changeRan = newRan.nextInt(100)+50; // change 100 to what has been selected on slider.
 						tempTree.get(j).setX1(tempTree.get(j).getX1() + changeRan); //TODO: change "+2" to amount on slider.
 						
-					} else if(pointDecider > 25 && pointDecider <= 50){
+					} 
+					else if(pointDecider > 25 && pointDecider <= 50)
+					{
 						// change y1
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
 						int changeRan = newRan.nextInt(100)+50; // change 100 to what has been selected on slider.
-						tempTree.get(j).setY1(tempTree.get(j).getY1() +changeRan); //TODO: change "+2" to amount on slider.
-					} else if(pointDecider > 50  && pointDecider <= 75){
+						
+						//System.out.println("Hit mid mutation point");
+						//System.out.println(tempTree.get(j).toString());
+						tempTree.get(j).setY1(tempTree.get(j).getY1() + changeRan);
+						//System.out.println(tempTree.get(j).toString());
+					} 
+					else if(pointDecider > 50  && pointDecider <= 75)
+					{
 						// change x2
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
 						int changeRan = newRan.nextInt(100)+50; // change 100 to what has been selected on slider.
 						tempTree.get(j).setX2(tempTree.get(j).getX2() + changeRan); //TODO: change "+2" to amount on slider.
-					} else {
+					} 
+					else 
+					{
 						//change y2
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
@@ -137,10 +157,30 @@ public class BioGeneration {
 						tempTree.get(j).setY2(tempTree.get(j).getY2() +changeRan); //TODO: change "+2" to amount on slider.
 					}
 				}
-					
+				
 			}
-			finishedBiomorphs.add(tempTree);
+			
+			
+			finishedBiomorphs.add(tempTree);			
 		}
+	}
+	
+	public Biomorph combineBiomorphs(Biomorph a, Biomorph b)
+	{
+		
+		//create new biomorph object
+		Biomorph offspring = new Biomorph();
+		// each biomorph should always have the same amount of genes
+		if(a.getGenes().size() == b.getGenes().size())
+		{
+			for(int i = 0; i<a.getGenes().size(); i++)
+			{
+				// for each gene in the new offspring biomorph take the corresponding gene out of a and b and average it.
+				offspring.changeGene(i,((a.getGenes().get(i).getValue()) + (b.getGenes().get(i).getValue()))/2);
+			}
+		}
+		
+		return offspring;
 	}
 	
 	public ArrayList<Line> generateLineInformation(ArrayList<TreeNode<Point>> data){

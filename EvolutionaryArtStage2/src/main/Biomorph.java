@@ -54,4 +54,9 @@ public class Biomorph {
 	public ArrayList<Gene> getGenes() {
 		return genes;
 	}
+	
+	public void changeGene(int index, int value)
+	{
+		genes.get(index).setValue(value);
+	}
 }
