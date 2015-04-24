@@ -5,9 +5,8 @@
  *
  */
 
-package main;
+package model;
 
-public class BioCacheRawBioData extends BioCache {
+public class BioCacheVideo extends BioCache {
 
-	
 }

@@ -1,7 +1,7 @@
 /**
  * @author Ibrahim Farah
  */
-package main;
+package view;
 
 import java.awt.EventQueue;
 
@@ -24,7 +24,8 @@ import java.awt.SystemColor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import main.LabelledSlider;
+import model.BioController;
+import model.Export;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -88,6 +89,7 @@ public class UserInterface extends MouseAdapter{
 		HOFPanel1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		HOFPanel1.setBackground(SystemColor.menu);
 		HOFPanel1.setBounds(207, 36, 210, 133);
+		//HOFPanel1.add(BioController.displayHallOfFame(0));
 		frame.getContentPane().add(HOFPanel1);
 		
 		JPanel HOFPanel2 = new JPanel();
@@ -95,6 +97,7 @@ public class UserInterface extends MouseAdapter{
 		HOFPanel2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		HOFPanel2.setBackground(SystemColor.menu);
 		HOFPanel2.setBounds(429, 36, 210, 133);
+		//HOFPanel2.add(BioController.displayHallOfFame(1));
 		frame.getContentPane().add(HOFPanel2);
 		
 		JPanel HOFPanel3 = new JPanel();
@@ -102,6 +105,7 @@ public class UserInterface extends MouseAdapter{
 		HOFPanel3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		HOFPanel3.setBackground(SystemColor.menu);
 		HOFPanel3.setBounds(651, 36, 210, 133);
+		//HOFPanel3.add(BioController.displayHallOfFame(2));
 		frame.getContentPane().add(HOFPanel3);
 		
 		JLabel lblBiomorph = new JLabel("Biomorph Children");
@@ -263,6 +267,13 @@ public class UserInterface extends MouseAdapter{
 		frame.getContentPane().add(btnHOF);
 		
 		frame.pack();
+		
+		//Action listener for the hall of fame button.
+		btnHOF.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				BioController.saveCurrentParentToHallOfFame();
+			}
+		});
 		//Action listener for the undo button. Goes to the previous biomorph
 		undoButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){

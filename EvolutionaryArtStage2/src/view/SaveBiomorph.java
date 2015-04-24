@@ -2,7 +2,7 @@
  * @author Ibrahim Farah
  */
 
-package main;
+package view;
 
 import java.awt.EventQueue;
 
@@ -25,6 +25,8 @@ import java.awt.Font;
 
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
+
+import model.BioController;
 
 public class SaveBiomorph {
 

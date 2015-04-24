@@ -1,4 +1,4 @@
-package main;
+package view;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;

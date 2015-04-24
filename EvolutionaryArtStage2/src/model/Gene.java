@@ -5,7 +5,7 @@
  *
  */
 
-package main;
+package model;
 
 public class Gene {
 	private int g;

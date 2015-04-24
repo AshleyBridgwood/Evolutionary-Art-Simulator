@@ -5,7 +5,7 @@
  * @author Matthew Gould
  */
 
-package main;
+package model;
 
 import java.util.Random;
 

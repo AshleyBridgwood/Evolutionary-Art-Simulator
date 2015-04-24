@@ -9,12 +9,12 @@
  *
  */
 
-package main;
+package model;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import main.Tree.TreeNode;
+import model.Tree.TreeNode;
 
 public class BioGeneration {
 	
@@ -101,10 +101,6 @@ public class BioGeneration {
 	public static ArrayList<Line> createChild(ArrayList<Line> parent){
 		ArrayList<Line> parentTree = parent;
 		// for the amount of children 
-
-		for(int i = 0; i<9; i++)
-		{
-
 		//for(int i = 0; i<9; i++){
 
 			//make a copy of the tree
@@ -164,8 +160,7 @@ public class BioGeneration {
 			}
 			
 			
-			finishedBiomorphs.add(tempTree);			
-		}
+			return tempTree;			
 
 			//if(tempIdCounter == 0){
 			//	System.out.println("Parent: " + parent.toString());

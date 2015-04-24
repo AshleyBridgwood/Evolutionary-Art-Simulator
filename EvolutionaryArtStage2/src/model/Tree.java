@@ -1,6 +1,6 @@
-package main;
+package model;
 
-import main.Point;
+import model.Point;
 
 import java.util.ArrayList;
 import java.util.Iterator;

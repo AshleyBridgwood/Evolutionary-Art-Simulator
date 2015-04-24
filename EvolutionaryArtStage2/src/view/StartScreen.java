@@ -3,7 +3,7 @@
  * @author Ibrahim Farah
  */
 
-package main;
+package view;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;

@@ -5,8 +5,9 @@
  *
  */
 
-package main;
+package model;
 
-public class Import extends FileHandler {
+public class BioCacheRawBioData extends BioCache {
 
+	
 }

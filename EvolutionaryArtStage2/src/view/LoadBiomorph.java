@@ -2,7 +2,7 @@
  * @author Ibrahim Farah
  */
 
-package main;
+package view;
 
 import java.awt.Color;
 import java.awt.SystemColor;

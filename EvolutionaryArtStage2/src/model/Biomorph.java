@@ -9,7 +9,7 @@
  *
  */
 
-package main;
+package model;
 
 import java.util.ArrayList;
 

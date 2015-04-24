@@ -5,9 +5,12 @@
  *
  */
 
-package main;
+package model;
 
 import java.util.ArrayList;
+
+import view.StartScreen;
+import view.UserInterface;
 
 public class BioController {
 	private static ArrayList<ArrayList<Line>> biomorphs;

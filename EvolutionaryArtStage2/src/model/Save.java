@@ -5,7 +5,7 @@
  *
  */
 
-package main;
+package model;
 
 import java.io.IOException;
 

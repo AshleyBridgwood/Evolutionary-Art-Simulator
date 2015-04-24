@@ -5,8 +5,8 @@
  *
  */
 
-package main;
+package model;
 
-public class BioCacheVideo extends BioCache {
+public class Import extends FileHandler {
 
 }

@@ -1,4 +1,4 @@
-package main;
+package view;
 
 import java.awt.EventQueue;
 import java.awt.event.WindowAdapter;
