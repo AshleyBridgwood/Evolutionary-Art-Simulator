@@ -25,10 +25,6 @@ public class Save extends FileHandler {
 	}
 	
 	public static void saveBiomorphToHallOfFame(String name, ArrayList<Line> bioData){
-		try{
-			saveObjectToFile("/Hall Of Fame/" + name + ".biomorph", bioData);
-		} catch(IOException e){
-			e.printStackTrace();
-		}
+		saveBiomorphToHallOfFame("\\Hall Of Fame\\" + name + ".biomorph", bioData);
 	}
 }

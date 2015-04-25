@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Load extends FileHandler {
 	
 	public static ArrayList<ArrayList<Line>> loadAllBiomorphs(String fileName){
-		FileHandler.loadBiomorph("\\Hall")
+		FileHandler.loadBiomorph("\\Hall");
 	}
 	
 	public static ArrayList<Line> loadHallOfFameBiomorph(String fileName) throws IOException{

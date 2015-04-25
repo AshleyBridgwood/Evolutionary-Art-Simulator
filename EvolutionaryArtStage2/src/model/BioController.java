@@ -7,6 +7,7 @@
 
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import view.StartScreen;
@@ -31,14 +32,23 @@ public class BioController {
 	}
 	
 	public static void startMainScreen(){
+		try {
+			loadHallOfFameBiomorphs();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		new UserInterface().getFrame().setVisible(true);
-		Log.add("User Interface Initiated");	
+		Log.add("User Interface Initiated");
+		
 	}
 	
 	//Loading of a biomorph
+	/**
 	public static void loadBiomorphs(String fileName){
 		biomorphs = Load.loadBiomorphs(fileName);
 	}
+	*/
 	
 	//Save the parent, and the children
 	public static void saveCurrentBiomorphs(String name){
@@ -50,7 +60,7 @@ public class BioController {
 		Save.saveBiomorphToHallOfFame("b" + hallOfFameBiomorphs.size(), biomorphs.get(0));
 	}
 	
-	public static void loadHallOfFameBiomorphs(){
+	public static void loadHallOfFameBiomorphs() throws IOException{
 		for(int i = 1; i < FileHandler.getNumberOfHallOfFameBiomorphs(); i++){
 			hallOfFameBiomorphs.add(Load.loadHallOfFameBiomorph("b" + i));
 		}

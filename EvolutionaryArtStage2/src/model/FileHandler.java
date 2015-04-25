@@ -44,6 +44,14 @@ public class FileHandler {
 		return data;
 	}
 	
+	public static void saveBiomorphToHallOfFame(String locationWithinFolder, ArrayList<Line> data) throws IOException{
+		FileOutputStream fileOut = new FileOutputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
+		ObjectOutputStream out = new ObjectOutputStream(fileOut);
+		out.writeObject(data);
+		out.close();
+		fileOut.close();
+	}
+	
 	public static void saveObjectToFile(String locationWithinFolder, ArrayList<ArrayList<Line>> data) throws IOException{
 		FileOutputStream fileOut = new FileOutputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
 		ObjectOutputStream out = new ObjectOutputStream(fileOut);
