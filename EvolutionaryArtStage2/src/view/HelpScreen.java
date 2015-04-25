@@ -59,10 +59,9 @@ public class HelpScreen {
 		
 
 		try {
-
-	       //textArea.read(new FileReader("C:\\Users\\ibrahim\\OneDrive\\Documents\\Group\\Help.txt"), null);
-	       textArea.read(new FileReader("/EvolutionaryArtStage2/src/view/Help.txt"), null);
-
+	       textArea.read(new FileReader("src/view/Help.txt"), null);
+	       textArea.setEditable(false);
+	       
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -83,7 +82,8 @@ public class HelpScreen {
 		frame.getContentPane().add(btnHome);
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new UserInterface().getFrame().setVisible(true);
+				new StartScreen().getFrame().setVisible(true);
+				frame.setVisible(false);
 			}
 		});
 		
