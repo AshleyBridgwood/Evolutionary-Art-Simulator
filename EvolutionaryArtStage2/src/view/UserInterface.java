@@ -602,14 +602,15 @@ public class UserInterface extends MouseAdapter{
 		panelOutput.add(BioController.displayParent());
 		panelOutput.repaint();
 		panelOutput.revalidate();
+		int i = 1;
 		for (JPanel onePanel : panels){
-			int i = 0;
-			i++;
 			onePanel.removeAll();
 			onePanel.add(BioController.displayChildren(i));
 			onePanel.validate();
 			onePanel.repaint();
+			i++;
 		}
+	
 	}
 
 	//getter so startscreen can access the main frame.

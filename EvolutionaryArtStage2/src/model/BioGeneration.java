@@ -21,7 +21,6 @@ public class BioGeneration {
 	private Gene g0;
 	private Gene g1;
 	private Gene g2;
-	private static int tempIdCounter = 1;
 
 	private static ArrayList<ArrayList<Line>> finishedBiomorphs;
 	
@@ -38,9 +37,12 @@ public class BioGeneration {
 		
 		//Generate the children from the parent (9 of them)
 		for(int i = 0; i < 9; i++){
-			ArrayList<Line> child = createChild(parent);
-			finishedBiomorphs.add(child);
+			finishedBiomorphs.add(createChild(parent));
 		}
+		
+		System.out.println("Parent Created: " + finishedBiomorphs.get(0).toString());
+		System.out.println("Child Created: " + finishedBiomorphs.get(1).toString());
+		System.out.println("Parent and children successfull created");
 	}
 	
 	public static ArrayList<ArrayList<Line>> getChildrenFromParent(ArrayList<Line> parent){

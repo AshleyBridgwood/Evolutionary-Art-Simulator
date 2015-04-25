@@ -19,15 +19,14 @@ public class BioController {
 	
 	public BioController() {
 		hallOfFameBiomorphs = new ArrayList<ArrayList<Line>>();
+		biomorphs = new ArrayList<ArrayList<Line>>();
 		currentlySelectedToMutate = 0;
-		new BioCache();
-		
-		//Load 3 hall of fame biomorphs here
-		
+		new BioCache(); //Start the cache for the undo feature
+
 		Log.add("Bio Controller Initiated");
 		FileHandler.checkForMainWorkingFolder();
 		
-		new StartScreen();
+		new StartScreen(); //Start the main menu screen
 		Log.add("Start menu loaded");
 	}
 	
@@ -60,11 +59,7 @@ public class BioController {
 	public static void generateBiomorphs(){
 		new BioGeneration(newBiomorph());
 		biomorphs = BioGeneration.getAllBiomorphs();
-		for(int i = 0; i < biomorphs.size(); i++){
-			System.out.println("Data Received--: " + biomorphs.get(i).toString());
-		}
 		BioCache.push(biomorphs);
-		System.out.println("BioCache Size: " + BioCache.getNumberOfItemsOnStack());
 	}
 	
 	public static BioDraw displayHallOfFameBiomorph(int number){
@@ -72,23 +67,20 @@ public class BioController {
 	}
 
 	public static BioDraw displayParent(){
+		System.out.println("Parent Displayed: " + biomorphs.get(0).toString());
 		return new BioDraw(biomorphs.get(0), false);
 	}
 	
 	public static BioDraw displayChildren(int childNumber){
+		System.out.println("Child " + childNumber + ": " + biomorphs.get(childNumber).toString());
 		return new BioDraw(biomorphs.get(childNumber), true);
 	}
 	
 	public static void mutuateBiomorphOne(){
-		System.out.println("CHILD SELECTED: " + currentlySelectedToMutate);
-		System.out.println("CHILD 1 DATA: " + biomorphs.get(currentlySelectedToMutate).toString());
-			System.out.println("BEFORE MUTATE DATA:" + biomorphs.get(currentlySelectedToMutate).toString());
-		
 		ArrayList<Line> data = new ArrayList<Line>();
 		data = biomorphs.get(currentlySelectedToMutate);
 		
 		biomorphs = BioGeneration.getChildrenFromParent(data);
-		System.out.println("New Parent DATA: " + biomorphs.get(0).toString());
 	}
 	
 	public static void setNextToMutate(int data){
