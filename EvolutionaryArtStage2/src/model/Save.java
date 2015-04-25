@@ -8,10 +8,11 @@
 package model;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Save extends FileHandler {
 	
-	public static void saveBiomorph(String name, Object bioData){
+	public static void saveBiomorph(String name, ArrayList<ArrayList<Line>> bioData){
 		Log.add("Saving Biomorph...");
 		try {
 			saveObjectToFile("/Saved Biomorphs/" + name + ".biomorph", bioData);
@@ -23,7 +24,7 @@ public class Save extends FileHandler {
 		Log.add("Biomorph saved: " + EvolutionaryArtFolderLocation + "\\Saved Biomorphs");
 	}
 	
-	public static void saveBiomorphToHallOfFame(String name, Object bioData){
+	public static void saveBiomorphToHallOfFame(String name, ArrayList<Line> bioData){
 		try{
 			saveObjectToFile("/Hall Of Fame/" + name + ".biomorph", bioData);
 		} catch(IOException e){

@@ -9,20 +9,47 @@ package model;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class FileHandler {
 	
 	public static String EvolutionaryArtFolderLocation = null;
 	
-	public static void saveObjectToFile(String locationWithinFolder, Object data) throws IOException{
-		FileOutputStream fout = new FileOutputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
-		ObjectOutputStream oos = new ObjectOutputStream(fout);
-		oos.writeObject(data);
+	public static ArrayList<Line> loadHallOfFameBiomorph(String locationWithFolder) throws IOException{
+		ArrayList<Line> data = new ArrayList<Line>();
+		FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithFolder);
+		ObjectInputStream in = new ObjectInputStream(fileIn);
+		try { data = (ArrayList<Line>) in.readObject(); } catch (ClassNotFoundException e) { e.printStackTrace(); }
+		in.close();
+		fileIn.close();
+		
+		return data;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static ArrayList<ArrayList<Line>> loadBiomorphs(String locationWithinFolder) throws IOException{
+		ArrayList<ArrayList<Line>> data = new ArrayList<ArrayList<Line>>();
+		FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
+		ObjectInputStream in = new ObjectInputStream(fileIn);
+		try { data = (ArrayList<ArrayList<Line>>) in.readObject(); } catch (ClassNotFoundException e){ e.printStackTrace(); }
+		in.close();
+		fileIn.close();
+		return data;
+	}
+	
+	public static void saveObjectToFile(String locationWithinFolder, ArrayList<ArrayList<Line>> data) throws IOException{
+		FileOutputStream fileOut = new FileOutputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
+		ObjectOutputStream out = new ObjectOutputStream(fileOut);
+		out.writeObject(data);
+		out.close();
+		fileOut.close();
 	}
 	
 	public static int getNumberOfHallOfFameBiomorphs(){

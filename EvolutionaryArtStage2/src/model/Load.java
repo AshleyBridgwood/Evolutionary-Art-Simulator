@@ -18,55 +18,12 @@ import java.util.ArrayList;
 
 public class Load extends FileHandler {
 	
-	@SuppressWarnings("unchecked")
-	public static ArrayList<Line> loadHallOfFameBiomorph(String fileName){
-		ArrayList<Line> data = null;
-		
-		try {
-			FileInputStream fileInput = new FileInputStream(EvolutionaryArtFolderLocation + "\\Hall Of Fame\\" + fileName + ".biomorph");
-			try {
-				ObjectInputStream input = new ObjectInputStream(fileInput);
-				try {
-					data = (ArrayList<Line>) input.readObject();
-					input.close();
-					fileInput.close();
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		return data;
+	public static ArrayList<ArrayList<Line>> loadAllBiomorphs(String fileName){
+		FileHandler.loadBiomorph("\\Hall")
 	}
 	
-	
-	@SuppressWarnings("unchecked")
-	public static ArrayList<ArrayList<Line>> loadBiomorphs(String fileName){
-		ArrayList<ArrayList<Line>> data = null;
-		
-		try {
-			FileInputStream fileInput = new FileInputStream(EvolutionaryArtFolderLocation + "\\Saved Biomorphs\\" + fileName + ".biomorph");
-			try {
-				ObjectInputStream input = new ObjectInputStream(fileInput);
-				try {
-					data = (ArrayList<ArrayList<Line>>) input.readObject();
-					input.close();
-					fileInput.close();
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		return data;
+	public static ArrayList<Line> loadHallOfFameBiomorph(String fileName) throws IOException{
+		return FileHandler.loadHallOfFameBiomorph("\\Hall Of Fame\\" + fileName + ".biomorph");
 	}
 	
 	public static String loadFile(String fileName){
