@@ -1,6 +1,6 @@
 package model;
 
-public class Line {
+public class Line implements Cloneable{
 	//Start of the line
 	int x1;
 	int y1;
@@ -49,5 +49,10 @@ public class Line {
 	
 	public String toString(){
 		return x1 + ", " + y1 + ", " + x2 + ", " + y2;
+	}
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return new Line(x1, y1, x2, y2);
 	}
 }

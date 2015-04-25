@@ -39,18 +39,8 @@ public class BioGeneration {
 		//Generate the children from the parent (9 of them)
 		for(int i = 0; i < 9; i++){
 			ArrayList<Line> child = createChild(parent);
-			System.out.println("B4 ARRAY- CHECK: " + child.toString());
 			finishedBiomorphs.add(child);
-			System.out.println("SIZE OF FINISHED BIOMORPHS: " + finishedBiomorphs.size());
-			System.out.println("I: " + i);
 		}
-		
-		System.out.println("BIOGENERATION FINISHED CAUSE IM A BOSS");
-		System.out.println("--------------------------------------");
-		for(int j= 0; j < 10; j++){
-			System.out.println("DOUBLE CHECK--: " + j + " : " + finishedBiomorphs.get(j).toString());
-		}
-		System.out.println("--------------------------------------");
 	}
 	
 	public static ArrayList<ArrayList<Line>> getChildrenFromParent(ArrayList<Line> parent){
@@ -110,12 +100,12 @@ public class BioGeneration {
 	}
 	
 	public static ArrayList<Line> createChild(ArrayList<Line> parent){
-		ArrayList<Line> parentTree = parent;
+		ArrayList<Line> parentTree = cloneData(parent);
 		// for the amount of children 
 		//for(int i = 0; i<9; i++){
 
 			//make a copy of the tree
-			ArrayList<Line> tempTree = parentTree;
+			ArrayList<Line> tempTree = cloneData(parentTree);
 			//iterate through tree			
 			for(int j = 0; j < tempTree.size(); j++)
 			{
@@ -169,10 +159,7 @@ public class BioGeneration {
 				}
 				
 			}
-			System.out.println("Child " + tempIdCounter + " created: " + tempTree.toString());
-			tempIdCounter++;
-			return tempTree;			
-
+			return tempTree;
 	}
 	
 	public Biomorph combineBiomorphs(Biomorph a, Biomorph b)
@@ -192,6 +179,20 @@ public class BioGeneration {
 		
 		return offspring;
 	}
+	
+	private static ArrayList<Line> cloneData(ArrayList<Line> data){
+		ArrayList<Line> newList = new ArrayList<Line>(data.size());
+		
+		for(Line line : data){
+			try {
+				newList.add((Line) line.clone());
+			} catch (CloneNotSupportedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return newList;
+	} 
 	
 	public ArrayList<Line> generateLineInformation(ArrayList<TreeNode<Point>> data){
 		ArrayList<Line> lines = new ArrayList<Line>();
