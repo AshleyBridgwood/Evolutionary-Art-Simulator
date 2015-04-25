@@ -59,9 +59,10 @@ public class BioController {
 	
 	public static void generateBiomorphs(){
 		new BioGeneration(newBiomorph());
-		Log.add("Generating new Biomorphs");
-		//Get the newly generated biomorphs from the biogeneration class
 		biomorphs = BioGeneration.getAllBiomorphs();
+		for(int i = 0; i < biomorphs.size(); i++){
+			System.out.println("Data Received--: " + biomorphs.get(i).toString());
+		}
 		BioCache.push(biomorphs);
 		System.out.println("BioCache Size: " + BioCache.getNumberOfItemsOnStack());
 	}

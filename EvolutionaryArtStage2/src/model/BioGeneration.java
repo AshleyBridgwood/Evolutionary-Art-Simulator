@@ -21,7 +21,7 @@ public class BioGeneration {
 	private Gene g0;
 	private Gene g1;
 	private Gene g2;
-	private static int tempIdCounter = 0;
+	private static int tempIdCounter = 1;
 
 	private static ArrayList<ArrayList<Line>> finishedBiomorphs;
 	
@@ -30,16 +30,27 @@ public class BioGeneration {
 		g0 = b.getGenes().get(0);
 		g1 = b.getGenes().get(1);
 		g2 = b.getGenes().get(2);
-		finishedBiomorphs = new ArrayList<>();
+		finishedBiomorphs = new ArrayList<ArrayList<Line>>();
 		
 		//Generate the parent
 		ArrayList<Line> parent = makeParentBiomorph();
 		finishedBiomorphs.add(parent);
 		
 		//Generate the children from the parent (9 of them)
-		for(int i = 0; i <  9; i++){
-			finishedBiomorphs.add(createChild(parent));
+		for(int i = 0; i < 9; i++){
+			ArrayList<Line> child = createChild(parent);
+			System.out.println("B4 ARRAY- CHECK: " + child.toString());
+			finishedBiomorphs.add(child);
+			System.out.println("SIZE OF FINISHED BIOMORPHS: " + finishedBiomorphs.size());
+			System.out.println("I: " + i);
 		}
+		
+		System.out.println("BIOGENERATION FINISHED CAUSE IM A BOSS");
+		System.out.println("--------------------------------------");
+		for(int j= 0; j < 10; j++){
+			System.out.println("DOUBLE CHECK--: " + j + " : " + finishedBiomorphs.get(j).toString());
+		}
+		System.out.println("--------------------------------------");
 	}
 	
 	public static ArrayList<ArrayList<Line>> getChildrenFromParent(ArrayList<Line> parent){
@@ -158,16 +169,9 @@ public class BioGeneration {
 				}
 				
 			}
-			
-			
+			System.out.println("Child " + tempIdCounter + " created: " + tempTree.toString());
+			tempIdCounter++;
 			return tempTree;			
-
-			//if(tempIdCounter == 0){
-			//	System.out.println("Parent: " + parent.toString());
-			//}
-			//System.out.println("Child " + tempIdCounter + ": " + tempTree.toString());
-			//tempIdCounter++;
-			//return tempTree;
 
 	}
 	
