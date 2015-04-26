@@ -55,7 +55,7 @@ public class BioController {
 		Save.saveBiomorph(name, biomorphs);
 	}
 	
-	public static void saveCurrentParentToHallOfFame(){
+	public static void saveCurrentParentToHallOfFame() throws IOException{
 		hallOfFameBiomorphs.add(biomorphs.get(0));
 		Save.saveBiomorphToHallOfFame("b" + hallOfFameBiomorphs.size(), biomorphs.get(0));
 	}
@@ -70,6 +70,11 @@ public class BioController {
 		new BioGeneration(newBiomorph());
 		biomorphs = BioGeneration.getAllBiomorphs();
 		BioCache.push(biomorphs);
+		try {
+			loadHallOfFameBiomorphs();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static BioDraw displayHallOfFameBiomorph(int number){
@@ -77,12 +82,12 @@ public class BioController {
 	}
 
 	public static BioDraw displayParent(){
-		System.out.println("Parent Displayed: " + biomorphs.get(0).toString());
+		//System.out.println("Parent Displayed: " + biomorphs.get(0).toString());
 		return new BioDraw(biomorphs.get(0), false);
 	}
 	
 	public static BioDraw displayChildren(int childNumber){
-		System.out.println("Child " + childNumber + ": " + biomorphs.get(childNumber).toString());
+		//System.out.println("Child " + childNumber + ": " + biomorphs.get(childNumber).toString());
 		return new BioDraw(biomorphs.get(childNumber), true);
 	}
 	
