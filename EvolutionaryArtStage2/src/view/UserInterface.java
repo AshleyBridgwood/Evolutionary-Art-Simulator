@@ -31,6 +31,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 public class UserInterface extends MouseAdapter{
 
@@ -270,7 +271,12 @@ public class UserInterface extends MouseAdapter{
 		//Action listener for the hall of fame button.
 		btnHOF.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				BioController.saveCurrentParentToHallOfFame();
+				try {
+					BioController.saveCurrentParentToHallOfFame();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		//Action listener for the undo button. Goes to the previous biomorph

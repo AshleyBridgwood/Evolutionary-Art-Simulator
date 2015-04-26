@@ -36,9 +36,9 @@ public class Colour {
 		}
 		
 		
-		System.out.println("*****************");
-		System.out.println("****"+Color.RED.toString()+"*******");
-		System.out.println("*****************");
+		//System.out.println("*****************");
+		//System.out.println("****"+Color.RED.toString()+"*******");
+		//System.out.println("*****************");
 		
 		return chosenColor;
 	}

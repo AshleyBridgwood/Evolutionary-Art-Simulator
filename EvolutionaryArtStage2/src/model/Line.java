@@ -1,6 +1,10 @@
 package model;
 
-public class Line implements Cloneable{
+import java.io.Serializable;
+
+public class Line implements Serializable, Cloneable {
+
+	private static final long serialVersionUID = 134125651624063636L;
 	//Start of the line
 	int x1;
 	int y1;
