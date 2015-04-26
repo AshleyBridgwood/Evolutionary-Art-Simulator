@@ -62,6 +62,7 @@ public class BioController {
 	
 	public static void loadHallOfFameBiomorphs() throws IOException{
 		for(int i = 1; i < FileHandler.getNumberOfHallOfFameBiomorphs(); i++){
+			System.out.println("NUMBER OF HALL OF FAME INIT BROTHER: " + FileHandler.getNumberOfHallOfFameBiomorphs());
 			hallOfFameBiomorphs.add(Load.loadHallOfFameBiomorph("b" + i));
 		}
 	}
@@ -70,11 +71,6 @@ public class BioController {
 		new BioGeneration(newBiomorph());
 		biomorphs = BioGeneration.getAllBiomorphs();
 		BioCache.push(biomorphs);
-		try {
-			loadHallOfFameBiomorphs();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public static BioDraw displayHallOfFameBiomorph(int number){
