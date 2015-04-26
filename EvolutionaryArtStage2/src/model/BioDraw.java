@@ -43,9 +43,17 @@ public class BioDraw extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		
 		//!!! COMPLETE THE DRAWING OF THE BIOMORPH BELOW !!!\\
-		g.setColor(Color.BLACK);
+		//g.setColor(Color.BLACK);
+		Colour colour = new Colour();
+		Color toUse = colour.getRandomColour();
+		System.out.print("***********");
+		System.out.print(toUse.toString());
+		System.out.print("***********");
+		g.setColor(toUse);
 		for(int i = 0; i < data.size(); i++){
+			
 			g.drawLine(data.get(i).getX1(), data.get(i).getY1(),data.get(i).getX2(), data.get(i).getY2());
 			g.drawLine(canvasSize - data.get(i).getX1(), data.get(i).getY1(), canvasSize-data.get(i).getX2(), data.get(i).getY2());
 		}
