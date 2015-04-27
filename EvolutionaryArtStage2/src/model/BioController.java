@@ -32,20 +32,19 @@ public class BioController {
 	}
 	
 	public static void startMainScreen(){
-		try {
-			loadHallOfFameBiomorphs();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		new UserInterface().getFrame().setVisible(true);
 		Log.add("User Interface Initiated");
 		
 	}
 	
 	//Save the parent, and the children
-	public static void saveCurrentBiomorphsToFile(String name){
-		Save.saveBiomorphs(name, biomorphs);
+	public static void saveCurrentBiomorphsToFile(String fileName){
+		Save.saveBiomorphs(fileName, biomorphs);
+	}
+	
+	//Load a saved parent
+	public static void loadBiomorphsFromFile(String fileName){
+		biomorphs = Load.loadAllBiomorphs(fileName);
 	}
 	
 	public static void saveCurrentParentToHallOfFame(){

@@ -273,8 +273,10 @@ public class UserInterface extends MouseAdapter{
 		//Action listener for the hall of fame button.
 		btnHOF.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				BioController.saveCurrentParentToHallOfFame();
-
+				//BioController.saveCurrentParentToHallOfFame();
+				BioController.loadBiomorphsFromFile("Test");
+				panelOutput.removeAll();
+				refreshAllPanels();
 			}
 		});
 		

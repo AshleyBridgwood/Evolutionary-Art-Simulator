@@ -33,15 +33,21 @@ public class FileHandler {
 		return data;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public static ArrayList<ArrayList<Line>> loadBiomorphs(String locationWithinFolder) throws IOException{
-		ArrayList<ArrayList<Line>> data = new ArrayList<ArrayList<Line>>();
-		FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
-		ObjectInputStream in = new ObjectInputStream(fileIn);
-		try { data = (ArrayList<ArrayList<Line>>) in.readObject(); } catch (ClassNotFoundException e){ e.printStackTrace(); }
-		in.close();
-		fileIn.close();
-		return data;
+	public static ArrayList<ArrayList<Line>> loadBiomorphs(String locationWithinFolder) {
+		try{
+			System.out.println(EvolutionaryArtFolderLocation + locationWithinFolder);
+			FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			ArrayList<ArrayList<Line>> data = (ArrayList<ArrayList<Line>>) in.readObject();
+			fileIn.close();
+			System.out.println("Runnign codess");
+			return data;
+		} catch (ClassNotFoundException | IOException e){
+			e.printStackTrace();
+		}
+		System.out.println("Not running codes");
+		return null;
+		
 	}
 	
 	public static void saveBiomorphToHallOfFame(String locationWithinFolder, ArrayList<Line> data) throws IOException{
