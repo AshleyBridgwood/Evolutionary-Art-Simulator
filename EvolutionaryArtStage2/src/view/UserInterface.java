@@ -28,6 +28,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import model.BioController;
+import model.Colour;
+
 import model.Export;
 
 import java.awt.*;
@@ -35,6 +37,7 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class UserInterface extends MouseAdapter{
 
@@ -51,6 +54,8 @@ public class UserInterface extends MouseAdapter{
 	JPanel panelBiomorph7= new JPanel();
 	JPanel panelBiomorph8 = new JPanel();
 	JPanel panelBiomorph9 = new JPanel();
+
+	private ArrayList<Integer> panelsSelected = new ArrayList<Integer>();
 	
 	JPanel[] panels = {panelBiomorph1,panelBiomorph2, panelBiomorph3, panelBiomorph4, panelBiomorph5, panelBiomorph6, 
 			panelBiomorph7, panelBiomorph8, panelBiomorph9};
@@ -66,13 +71,12 @@ public class UserInterface extends MouseAdapter{
 		initialize();
 	}
 
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		frame =	new JFrame();	
-		frame.setJMenuBar(makeMenu());
-
 		
 		frame.setBounds(100, 100, 1093, 875);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -112,10 +116,10 @@ public class UserInterface extends MouseAdapter{
 		//HOFPanel3.add(BioController.displayHallOfFame(2));
 		frame.getContentPane().add(HOFPanel3);
 		
-		JLabel lblBiomorph = new JLabel("Biomorph Children");
+		JLabel lblBiomorph = new JLabel("Children");
 		lblBiomorph.setFont(new Font("Calibri", Font.BOLD, 22));
 		lblBiomorph.setBackground(Color.ORANGE);
-		lblBiomorph.setBounds(631, 196, 210, 35);
+		lblBiomorph.setBounds(675, 199, 210, 35);
 		frame.getContentPane().add(lblBiomorph);
 		
 		panelBiomorph1.setForeground(Color.BLACK);
@@ -207,15 +211,6 @@ public class UserInterface extends MouseAdapter{
 		sliderPanel.add(changeSlider);
 		controlPanel.add(sliderPanel);
 		controlPanel.add(buttonPanel);
-		JButton helpButton = new JButton("Help");
-		helpButton.setBounds(170, 13, 166, 56);
-		buttonPanel.add(helpButton);
-		//Action listeners for load button. Directs it to the loading screenI.
-		helpButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new HelpScreen().getFrame().setVisible(true);
-			}
-		});
 
 		frame.getContentPane().add(controlPanel);
 		
@@ -242,10 +237,10 @@ public class UserInterface extends MouseAdapter{
 		btnHOF.setBounds(42, 520, 154, 43);
 		frame.getContentPane().add(btnHOF);
 		
-		JLabel lblBiomorphParent = new JLabel("Biomorph Parent");
+		JLabel lblBiomorphParent = new JLabel("Parent");
 		lblBiomorphParent.setFont(new Font("Calibri", Font.BOLD, 22));
 		lblBiomorphParent.setBackground(Color.ORANGE);
-		lblBiomorphParent.setBounds(127, 205, 188, 35);
+		lblBiomorphParent.setBounds(164, 199, 188, 35);
 		frame.getContentPane().add(lblBiomorphParent);
 		
 		panelOutput.setForeground(Color.BLACK);
@@ -271,6 +266,8 @@ public class UserInterface extends MouseAdapter{
 		frame.getContentPane().add(btnExport);
 		
 		frame.pack();
+		
+	
 		
 		//Action listener for the hall of fame button.
 		btnHOF.addActionListener(new ActionListener(){
@@ -330,22 +327,12 @@ public class UserInterface extends MouseAdapter{
 		//Action listener for export button. Directs it to the main screen of the UI.
 		btnExport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser chooser = new JFileChooser();
-				chooser.showOpenDialog(null);
-				File f = chooser.getSelectedFile();
-
-				//File f = chooser.getCurrentDirectory();
-				String filename = f.getAbsolutePath();
-				
-				BufferedImage pingImage = new BufferedImage(panelOutput.getSize().width, panelOutput.getSize().height, BufferedImage.TYPE_INT_ARGB); 
-				Graphics g = pingImage.createGraphics();
-				panelOutput.paint(g);  //this == JComponent
-				g.dispose();
-				Export.export(filename, pingImage);
-				JOptionPane.showMessageDialog(null, "File Successfully Exported!");
+				exportBiomorph();
 
 			}
 		});
+		
+		
 
 		
 		///////////////////////////////////////////   Mouse Listener so panels can be clicked!\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -377,6 +364,8 @@ public class UserInterface extends MouseAdapter{
 				panelBiomorph1.setBackground(Color.GREEN);
 				BioController.setNextToMutate(1);
 				System.out.println(BioController.isPanelPressed());
+				panelsSelected.add(1);
+				System.out.println(panelsSelected);
 			}
 			});
 		
@@ -620,7 +609,100 @@ public class UserInterface extends MouseAdapter{
 				BioController.setNextToMutate(9);
 			}
 			});
+		
+JMenuBar menuBar = new JMenuBar();
+		
+        //create menus
+		JMenu file = new JMenu("File");
+		JMenu colours = new JMenu("Colour Scheme");
+         
+		//Create menu items
+		JMenuItem save = new JMenuItem("Save");
+		JMenuItem load = new JMenuItem("Load");
+		JMenuItem export = new JMenuItem("Export");
+		JMenuItem help = new JMenuItem("Help");
+		
+		JMenuItem black = new JMenuItem("Default: Black");
+		JMenuItem red = new JMenuItem("Red");
+		JMenuItem green = new JMenuItem("Green");
+		JMenuItem blue = new JMenuItem("Blue");
+		JMenuItem greyScale = new JMenuItem("Grey Scale");
+            
+		//Add items to the menus
+		file.add(save);
+		file.add(export);
+		file.add(help);
+		
+		colours.add(black);
+		colours.add(red);
+		colours.add(blue);
+		colours.add(green);
+		colours.add(greyScale);
+            
+		//Add menus
+		menuBar.add(file);
+		menuBar.add(colours);
+		frame.setJMenuBar(menuBar);
 
+		
+		//Listeners for the menu bar:
+		help.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new HelpScreen().getFrame().setVisible(true);
+			}	
+		});
+		
+		export.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				exportBiomorph();
+			}	
+		});
+		
+		save.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new SaveBiomorph().getFrame().setVisible(true);
+			}	
+		});
+		
+		black.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//To be done..
+			}	
+		});
+		
+		red.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Colour.getRandomColourFromScheme(0);
+			}	
+		});
+		
+		
+		blue.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Colour.getRandomColourFromScheme(1);
+			}	
+		});
+		
+		green.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Colour.getRandomColourFromScheme(2);
+			}	
+		});
+
+		
+		greyScale.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Colour.getRandomColourFromScheme(3);
+			}	
+		});
 	}
 	
 	
@@ -645,31 +727,21 @@ public class UserInterface extends MouseAdapter{
 			return this.frame;
 	}
 	
-	private JMenuBar makeMenu(){
-		JMenuBar menuBar = new JMenuBar();
-		
-        //create menus
-		JMenu file = new JMenu("File");
+	public void exportBiomorph(){
+		JFileChooser chooser = new JFileChooser();
+		chooser.showOpenDialog(null);
+		File f = chooser.getSelectedFile();
 
-            
-		//Create menu items
-		JMenuItem save = new JMenuItem("Save");
-		JMenuItem load = new JMenuItem("Load");
-		JMenuItem export = new JMenuItem("Export");
-		JMenuItem help = new JMenuItem("Help");
-            
-		//Add items to the menu
-		file.add(save);
-		file.add(load);
-		file.add(export);
-		file.add(help);
-            
-		//Add menus
-		menuBar.add(file);
-		return menuBar;
+		//File f = chooser.getCurrentDirectory();
+		String filename = f.getAbsolutePath();
+		
+		BufferedImage pingImage = new BufferedImage(panelOutput.getSize().width, panelOutput.getSize().height, BufferedImage.TYPE_INT_ARGB); 
+		Graphics g = pingImage.createGraphics();
+		panelOutput.paint(g);  //this == JComponent
+		g.dispose();
+		Export.export(filename, pingImage);
+		JOptionPane.showMessageDialog(null, "File Successfully Exported!");
 	}
+
 	
-	
-	
-	
-}
+	}

@@ -67,8 +67,9 @@ public class Colour {
 		return chosenColor;
 	}
 	
-	public Color getRandomColourFromScheme(int choice)
+	public static Color getRandomColourFromScheme(int choice)
 	{
+		System.out.println(choice);
 		/*
 		 * 0 - reds
 		 * 1 - blues

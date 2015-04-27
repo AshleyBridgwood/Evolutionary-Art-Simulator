@@ -18,6 +18,8 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JLabel;
 
@@ -37,18 +39,6 @@ public class SaveBiomorph {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SaveBiomorph window = new SaveBiomorph();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -63,7 +53,7 @@ public class SaveBiomorph {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 685, 286);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
 
@@ -129,12 +119,22 @@ public class SaveBiomorph {
 				BioController.saveCurrentBiomorphs("Test");
 				        JOptionPane.showMessageDialog(null, "File Successfully Saved");
 				frame.setVisible(false);
-
 			}
 		});
+		
+		//Exit prompt
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
 
-
+					getFrame().dispose();
+			}
+			
+		});
+		
 	}
+
+
+	
 	
 	//getter so mainscreen can access the main frame.
 	public JFrame getFrame() {
