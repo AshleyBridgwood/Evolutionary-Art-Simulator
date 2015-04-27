@@ -107,7 +107,9 @@ public class BioGeneration {
 				//chance it will mutate
 				//when this is working need to change it so probabilities change according to slider.
 				Random rand = new Random();
-				int num = rand.nextInt(100);
+				int chance = 100;
+				int num = rand.nextInt(chance);
+				int changeRanVal = 35;
 				//if it does mutate change x or y by certain amount				
 				if(num <= 49)
 				{
@@ -119,7 +121,7 @@ public class BioGeneration {
 						// change x1
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
-						int changeRan = newRan.nextInt(100); // change 100 to what has been selected on slider.
+						int changeRan = newRan.nextInt(changeRanVal); // change 100 to what has been selected on slider.
 						tempTree.get(j).setX1(tempTree.get(j).getX1() + changeRan); //TODO: change "+2" to amount on slider.
 						
 					} 
@@ -128,7 +130,7 @@ public class BioGeneration {
 						// change y1
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
-						int changeRan = newRan.nextInt(100); // change 100 to what has been selected on slider.
+						int changeRan = newRan.nextInt(changeRanVal); // change 100 to what has been selected on slider.
 						
 						//System.out.println("Hit mid mutation point");
 						//System.out.println(tempTree.get(j).toString());
@@ -140,7 +142,7 @@ public class BioGeneration {
 						// change x2
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
-						int changeRan = newRan.nextInt(100); // change 100 to what has been selected on slider.
+						int changeRan = newRan.nextInt(changeRanVal); // change 100 to what has been selected on slider.
 						tempTree.get(j).setX2(tempTree.get(j).getX2() + changeRan); //TODO: change "+2" to amount on slider.
 					} 
 					else 
@@ -148,7 +150,7 @@ public class BioGeneration {
 						//change y2
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
-						int changeRan = newRan.nextInt(100); // change 100 to what has been selected on slider.
+						int changeRan = newRan.nextInt(changeRanVal); // change 100 to what has been selected on slider.
 						tempTree.get(j).setY2(tempTree.get(j).getY2() +changeRan); //TODO: change "+2" to amount on slider.
 					}
 				}
