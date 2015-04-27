@@ -21,18 +21,30 @@ public class Colour {
 		
 		switch (chosen)
 		{
-		case "red": chosenColor =  Color.RED;
+		case "red" : chosenColor =  Color.RED;
+		break;
 		case "yellow": chosenColor = Color.YELLOW;
+		break;
 		case "blue": chosenColor = Color.BLUE;
+		break;
 		case "orange": chosenColor = Color.ORANGE;
+		break;
 		case "pink": chosenColor = Color.PINK;
+		break;
 		case "cyan": chosenColor = Color.CYAN;
+		break;
 		case "magenta": chosenColor = Color.MAGENTA;
-		case "black": chosenColor = Color.BLACK;
+		break;
 		case "white": chosenColor = Color.WHITE;
+		break;
 		case "grey": chosenColor = Color.GRAY;
+		break;
 		case "lightGrey": chosenColor = Color.lightGray;
+		break;
 		case "darkGrey": chosenColor = Color.darkGray;
+		break;
+		default: chosenColor = Color.BLACK;
+		break;
 		}
 		
 		
