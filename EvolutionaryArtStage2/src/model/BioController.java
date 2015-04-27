@@ -48,9 +48,10 @@ public class BioController {
 		Save.saveBiomorph(name, biomorphs);
 	}
 	
-	public static void saveCurrentParentToHallOfFame() throws IOException{
-		hallOfFameBiomorphs.add(biomorphs.get(0));
+	public static void saveCurrentParentToHallOfFame(){
 		Save.saveBiomorphToHallOfFame("b" + hallOfFameBiomorphs.size(), biomorphs.get(0));
+		hallOfFameBiomorphs.add(biomorphs.get(0));
+		System.out.println("HIT");
 	}
 	
 	public static void loadHallOfFameBiomorphs() throws IOException{

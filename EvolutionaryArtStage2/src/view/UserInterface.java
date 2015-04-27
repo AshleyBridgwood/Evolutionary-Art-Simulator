@@ -273,12 +273,7 @@ public class UserInterface extends MouseAdapter{
 		//Action listener for the hall of fame button.
 		btnHOF.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				try {
-					BioController.saveCurrentParentToHallOfFame();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				BioController.saveCurrentParentToHallOfFame();
 			}
 		});
 		//Action listener for the undo button. Goes to the previous biomorph
