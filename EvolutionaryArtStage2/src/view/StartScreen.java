@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.*;
@@ -80,9 +81,9 @@ public class StartScreen{
 		
 		//panel2
 		panel2.setLayout(new GridLayout(3,1));
-		panel2Top.setLayout(new GridLayout(1,1));
-		panel2Middle.setLayout(new GridLayout(1,1));
-		panel2Bottom.setLayout(new GridLayout(1,1));
+		panel2Top.setLayout(new FlowLayout());
+		panel2Middle.setLayout(new FlowLayout());
+		panel2Bottom.setLayout(new FlowLayout());
 		
 		panel2Top.add(newButton);
 		panel2Middle.add(loadButton);

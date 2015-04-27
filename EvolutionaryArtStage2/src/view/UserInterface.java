@@ -294,6 +294,10 @@ public class UserInterface extends MouseAdapter{
 				panelOutput.removeAll();
 				BioController.mutuateBiomorphOne();
 				refreshAllPanels();
+				
+				for (int i = 0; i < panels.length; i++){
+					panels[i].setBackground(SystemColor.menu);
+				}
 			}
 		});
 		
