@@ -116,7 +116,7 @@ public class SaveBiomorph {
 		//Action listener for save button. Confirmation of saved file.
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BioController.saveCurrentBiomorphs("Test");
+				BioController.saveCurrentBiomorphsToFile("Test");
 				        JOptionPane.showMessageDialog(null, "File Successfully Saved");
 				frame.setVisible(false);
 			}

@@ -44,8 +44,8 @@ public class BioController {
 	}
 	
 	//Save the parent, and the children
-	public static void saveCurrentBiomorphs(String name){
-		Save.saveBiomorph(name, biomorphs);
+	public static void saveCurrentBiomorphsToFile(String name){
+		Save.saveBiomorphs(name, biomorphs);
 	}
 	
 	public static void saveCurrentParentToHallOfFame(){

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class Save extends FileHandler {
 	
-	public static void saveBiomorph(String name, ArrayList<ArrayList<Line>> bioData){
+	public static void saveBiomorphs(String name, ArrayList<ArrayList<Line>> bioData){
 		Log.add("Saving Biomorph...");
 		try {
 			saveObjectToFile("/Saved Biomorphs/" + name + ".biomorph", bioData);
