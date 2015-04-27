@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 public class BioDraw extends JPanel {
 	
 	private int canvasSize;
-	private double scaling =  0.75;
+	private double scaling =  0.5;
 	private boolean isChild;
 	ArrayList<Line> data;
 	
@@ -55,11 +55,8 @@ public class BioDraw extends JPanel {
 		//g.setColor(toUse);
 		for(int i = 0; i < data.size(); i++){
 			if(isChild){
-				
-				//Line2D line = new Line2D();
-				
-				g.drawLine(data.get(i).getX1(), data.get(i).getY1(),data.get(i).getX2(), data.get(i).getY2());
-				g.drawLine(canvasSize - data.get(i).getX1(), data.get(i).getY1(), canvasSize-data.get(i).getX2(), data.get(i).getY2());
+				g.drawLine((int) (data.get(i).getX1() * Math.round(scaling)), (int) (data.get(i).getY1()* Math.round(scaling)), (int) (data.get(i).getX2()* Math.round(scaling)), (int) (data.get(i).getY2()* Math.round(scaling)));
+				g.drawLine((int) (canvasSize - data.get(i).getX1()* Math.round(scaling)),(int) (data.get(i).getY1()* Math.round(scaling)),(int) (canvasSize-data.get(i).getX2()* Math.round(scaling)),(int) (data.get(i).getY2()* Math.round(scaling)));
 			} else {
 				g.drawLine(data.get(i).getX1(), data.get(i).getY1(),data.get(i).getX2(), data.get(i).getY2());
 				g.drawLine(canvasSize - data.get(i).getX1(), data.get(i).getY1(), canvasSize-data.get(i).getX2(), data.get(i).getY2());
