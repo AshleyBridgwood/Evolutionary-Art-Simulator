@@ -43,13 +43,6 @@ public class BioController {
 		
 	}
 	
-	//Loading of a biomorph
-	/**
-	public static void loadBiomorphs(String fileName){
-		biomorphs = Load.loadBiomorphs(fileName);
-	}
-	*/
-	
 	//Save the parent, and the children
 	public static void saveCurrentBiomorphs(String name){
 		Save.saveBiomorph(name, biomorphs);
@@ -87,18 +80,11 @@ public class BioController {
 	}
 	
 	public static void mutuateBiomorphOne(){
-		System.out.println("----------------------------------------------------------------------------------------");
-		System.out.println("Mutating by one");
 		ArrayList<Line> data = new ArrayList<Line>();
 		data = biomorphs.get(currentlySelectedToMutate);
-		System.out.println("Biomorph Passed in (" + currentlySelectedToMutate + "): " + biomorphs.get(currentlySelectedToMutate).toString());
 		biomorphs = null;
 		biomorphs = BioGeneration.getChildrenFromParent(data);
-		System.out.println("------------New Parent: " + biomorphs.get(0).toString());
-		for(int i = 1; i < 10; i++){
-			//System.out.println("New Child " + i + ": " + biomorphs.get(i).toString());
-		}
-		System.out.println("----------------------------------------------------------------------------------------");
+		BioCache.push(biomorphs);
 	}
 	
 	public static void setNextToMutate(int data){
