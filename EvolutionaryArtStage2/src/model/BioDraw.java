@@ -18,10 +18,13 @@ import javax.swing.JPanel;
 public class BioDraw extends JPanel {
 	
 	private int canvasSize;
+	private double scaling =  0.75;
+	private boolean isChild;
 	ArrayList<Line> data;
 	
 	public BioDraw(ArrayList<Line> data, boolean isChild) {
 		this.data = data;
+		this.isChild = isChild;
 		canvasSize = 0;
 		if(isChild){
 			canvasSize = 120;
@@ -51,10 +54,13 @@ public class BioDraw extends JPanel {
 		g.setColor(Color.BLACK);
 		//g.setColor(toUse);
 		for(int i = 0; i < data.size(); i++){
-			
-			g.drawLine(data.get(i).getX1(), data.get(i).getY1(),data.get(i).getX2(), data.get(i).getY2());
-			g.drawLine(canvasSize - data.get(i).getX1(), data.get(i).getY1(), canvasSize-data.get(i).getX2(), data.get(i).getY2());
-			
+			if(isChild){
+				g.drawLine(data.get(i).getX1(), data.get(i).getY1(),data.get(i).getX2(), data.get(i).getY2());
+				g.drawLine(canvasSize - data.get(i).getX1(), data.get(i).getY1(), canvasSize-data.get(i).getX2(), data.get(i).getY2());
+			} else {
+				g.drawLine(data.get(i).getX1(), data.get(i).getY1(),data.get(i).getX2(), data.get(i).getY2());
+				g.drawLine(canvasSize - data.get(i).getX1(), data.get(i).getY1(), canvasSize-data.get(i).getX2(), data.get(i).getY2());
+			}
 		}
 	}
 }
