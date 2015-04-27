@@ -54,6 +54,9 @@ public class UserInterface extends MouseAdapter{
 	JPanel panelBiomorph7= new JPanel();
 	JPanel panelBiomorph8 = new JPanel();
 	JPanel panelBiomorph9 = new JPanel();
+	JPanel HOFPanel1 = new JPanel();
+	JPanel HOFPanel2 = new JPanel();
+	JPanel HOFPanel3 = new JPanel();
 	static int colourChoice = -1;
 
 	private ArrayList<Integer> panelsSelected = new ArrayList<Integer>();
@@ -62,7 +65,9 @@ public class UserInterface extends MouseAdapter{
 			panelBiomorph7, panelBiomorph8, panelBiomorph9};
 	
 	JPanel[] allPanels = {panelOutput, panelBiomorph1,panelBiomorph2, panelBiomorph3, panelBiomorph4, panelBiomorph5, panelBiomorph6, 
-			panelBiomorph7, panelBiomorph8, panelBiomorph9,};
+			panelBiomorph7, panelBiomorph8, panelBiomorph9, HOFPanel1, HOFPanel2, HOFPanel3};
+	
+	JPanel[] hofPanels = {HOFPanel1, HOFPanel2, HOFPanel3};
 
 
 	/**	
@@ -93,28 +98,32 @@ public class UserInterface extends MouseAdapter{
 		lblHOF.setBounds(664, 13, 130, 35);
 		frame.getContentPane().add(lblHOF);
 		
-		JPanel HOFPanel1 = new JPanel();
 		HOFPanel1.setForeground(Color.BLACK);
 		HOFPanel1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		HOFPanel1.setBackground(SystemColor.menu);
 		HOFPanel1.setBounds(393, 50, 210, 133);
-		//HOFPanel1.add(BioController.displayHallOfFame(0));
+		System.out.println("Current Number in hall of fame: " + BioController.getCurrentHallOfFameNumber());
+		if(BioController.getCurrentHallOfFameNumber() >= 1){
+			HOFPanel1.add(BioController.displayHallOfFameBiomorph(0));
+		}
 		frame.getContentPane().add(HOFPanel1);
 		
-		JPanel HOFPanel2 = new JPanel();
 		HOFPanel2.setForeground(Color.BLACK);
 		HOFPanel2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		HOFPanel2.setBackground(SystemColor.menu);
 		HOFPanel2.setBounds(615, 50, 210, 133);
-		//HOFPanel2.add(BioController.displayHallOfFame(1));
+		if(BioController.getCurrentHallOfFameNumber() >= 2){
+			HOFPanel2.add(BioController.displayHallOfFameBiomorph(1));
+		}
 		frame.getContentPane().add(HOFPanel2);
 		
-		JPanel HOFPanel3 = new JPanel();
 		HOFPanel3.setForeground(Color.BLACK);
 		HOFPanel3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		HOFPanel3.setBackground(SystemColor.menu);
 		HOFPanel3.setBounds(837, 50, 210, 133);
-		//HOFPanel3.add(BioController.displayHallOfFame(2));
+		if(BioController.getCurrentHallOfFameNumber() >= 3){
+			HOFPanel3.add(BioController.displayHallOfFameBiomorph(2));
+		}
 		frame.getContentPane().add(HOFPanel3);
 		
 		JLabel lblBiomorph = new JLabel("Children");
@@ -273,10 +282,9 @@ public class UserInterface extends MouseAdapter{
 		//Action listener for the hall of fame button.
 		btnHOF.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//BioController.saveCurrentParentToHallOfFame();
-				BioController.loadBiomorphsFromFile("Test");
+				BioController.saveCurrentParentToHallOfFame();
 				panelOutput.removeAll();
-				refreshAllPanels();
+				refreshHallOfFamePanels();
 			}
 		});
 		
@@ -684,6 +692,21 @@ public class UserInterface extends MouseAdapter{
 	}
 	
 	
+	private void refreshHallOfFamePanels(){
+		panelOutput.add(BioController.displayParent());
+		panelOutput.repaint();
+		panelOutput.revalidate();
+		int i = 0;
+		for(JPanel onePanel : hofPanels){
+			onePanel.removeAll();
+			if(i <= BioController.getCurrentHallOfFameNumber()){
+				onePanel.add(BioController.displayChildren(i));
+			}
+			onePanel.validate();
+			onePanel.repaint();
+			i++;
+		}
+	}
 	
 	private void refreshAllPanels(){
 		panelOutput.add(BioController.displayParent());

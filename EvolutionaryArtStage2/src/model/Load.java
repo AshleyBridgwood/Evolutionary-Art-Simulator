@@ -22,8 +22,8 @@ public class Load extends FileHandler {
 		return FileHandler.loadBiomorphs("\\Saved Biomorphs\\" + fileName + ".biomorph");
 	}
 	
-	public static ArrayList<Line> loadHallOfFameBiomorph(String fileName) throws IOException{
-		return FileHandler.loadHallOfFameBiomorph("/Hall Of Fame/" + fileName + ".biomorph");
+	public static ArrayList<Line> loadHallOfFameBiomorph(String fileName){
+		return FileHandler.loadHallOfFameBiomorph("\\Hall Of Fame\\" + fileName + ".biomorph");
 	}
 	
 	public static String loadFile(String fileName){

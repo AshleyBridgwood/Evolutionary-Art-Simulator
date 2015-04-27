@@ -22,30 +22,29 @@ public class FileHandler {
 	
 	public static String EvolutionaryArtFolderLocation = null;
 	
-	public static ArrayList<Line> loadHallOfFameBiomorph(String locationWithFolder) throws IOException{
-		ArrayList<Line> data = new ArrayList<Line>();
-		FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithFolder);
-		ObjectInputStream in = new ObjectInputStream(fileIn);
-		try { data = (ArrayList<Line>) in.readObject(); } catch (ClassNotFoundException e) { e.printStackTrace(); }
-		in.close();
-		fileIn.close();
-		
-		return data;
-	}
-	
-	public static ArrayList<ArrayList<Line>> loadBiomorphs(String locationWithinFolder) {
+	public static ArrayList<Line> loadHallOfFameBiomorph(String locationWithFolder){
 		try{
-			System.out.println(EvolutionaryArtFolderLocation + locationWithinFolder);
-			FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
+			FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithFolder);
 			ObjectInputStream in = new ObjectInputStream(fileIn);
-			ArrayList<ArrayList<Line>> data = (ArrayList<ArrayList<Line>>) in.readObject();
+			ArrayList<Line> data = (ArrayList<Line>) in.readObject();
 			fileIn.close();
-			System.out.println("Runnign codess");
 			return data;
 		} catch (ClassNotFoundException | IOException e){
 			e.printStackTrace();
 		}
-		System.out.println("Not running codes");
+		return null;
+	}
+	
+	public static ArrayList<ArrayList<Line>> loadBiomorphs(String locationWithinFolder) {
+		try{
+			FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			ArrayList<ArrayList<Line>> data = (ArrayList<ArrayList<Line>>) in.readObject();
+			fileIn.close();
+			return data;
+		} catch (ClassNotFoundException | IOException e){
+			e.printStackTrace();
+		}
 		return null;
 		
 	}

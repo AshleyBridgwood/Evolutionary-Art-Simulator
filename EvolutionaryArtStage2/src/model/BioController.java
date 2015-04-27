@@ -17,6 +17,7 @@ public class BioController {
 	private static ArrayList<ArrayList<Line>> biomorphs;
 	private static ArrayList<ArrayList<Line>> hallOfFameBiomorphs;
 	private static int currentlySelectedToMutate;
+	private static int numberInHallOfFame;
 	
 	public BioController() {
 		hallOfFameBiomorphs = new ArrayList<ArrayList<Line>>();
@@ -32,6 +33,7 @@ public class BioController {
 	}
 	
 	public static void startMainScreen(){
+		loadHallOfFameBiomorphs();
 		new UserInterface().getFrame().setVisible(true);
 		Log.add("User Interface Initiated");
 		
@@ -50,12 +52,13 @@ public class BioController {
 	public static void saveCurrentParentToHallOfFame(){
 		Save.saveBiomorphToHallOfFame("b" + hallOfFameBiomorphs.size(), biomorphs.get(0));
 		hallOfFameBiomorphs.add(biomorphs.get(0));
-		System.out.println("HIT");
 	}
 	
-	public static void loadHallOfFameBiomorphs() throws IOException{
-		for(int i = 1; i < FileHandler.getNumberOfHallOfFameBiomorphs(); i++){
+	public static void loadHallOfFameBiomorphs(){
+		for(int i = 0; i < getCurrentHallOfFameNumber(); i++){
 			hallOfFameBiomorphs.add(Load.loadHallOfFameBiomorph("b" + i));
+			System.out.println(i + "loaded");
+			numberInHallOfFame++;
 		}
 	}
 	
@@ -65,17 +68,20 @@ public class BioController {
 		BioCache.push(biomorphs);
 	}
 	
+	public static int getCurrentHallOfFameNumber(){
+		numberInHallOfFame = FileHandler.getNumberOfHallOfFameBiomorphs();
+		return numberInHallOfFame;
+	}
+	
 	public static BioDraw displayHallOfFameBiomorph(int number){
 		return new BioDraw(hallOfFameBiomorphs.get(number), true);
 	}
 
 	public static BioDraw displayParent(){
-		//System.out.println("Parent: -" + biomorphs.get(0).toString());
 		return new BioDraw(biomorphs.get(0), false);
 	}
 	
 	public static BioDraw displayChildren(int childNumber){
-		//System.out.println("Child " + childNumber + ": " + biomorphs.get(childNumber).toString());
 		return new BioDraw(biomorphs.get(childNumber), true);
 	}
 	
