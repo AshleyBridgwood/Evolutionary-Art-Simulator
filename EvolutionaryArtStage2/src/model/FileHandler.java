@@ -22,7 +22,6 @@ public class FileHandler {
 	
 	public static String EvolutionaryArtFolderLocation = null;
 	
-	@SuppressWarnings("unchecked")
 	public static ArrayList<Line> loadHallOfFameBiomorph(String locationWithFolder) throws IOException{
 		ArrayList<Line> data = new ArrayList<Line>();
 		FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithFolder);
@@ -97,6 +96,9 @@ public class FileHandler {
 		} else if(System.getProperty("os.name").equals("Linux")){
 			Log.add("Operating System detected: Linux");
 			dir = System.getProperty("user.home");
+		} else if(System.getProperty("os.name").equals("Windows 8.1")){
+			dir = System.getProperty("user.home") + File.separator + "Documents";
+
 		}
 		
 		return dir;
