@@ -293,8 +293,7 @@ public class UserInterface extends MouseAdapter{
 			public void actionPerformed(ActionEvent e){
 				panelOutput.removeAll();
 				BioController.mutuateBiomorphOne();
-				refreshAllPanels();
-				
+				refreshAllPanels();				
 				for (int i = 0; i < panels.length; i++){
 					panels[i].setBackground(SystemColor.menu);
 				}
@@ -309,6 +308,9 @@ public class UserInterface extends MouseAdapter{
 				panelOutput.removeAll();
 				BioController.generateBiomorphs();
 				refreshAllPanels();
+				for (int i = 0; i < panels.length; i++){
+					panels[i].setBackground(SystemColor.menu);
+				}
 
 
 			}
