@@ -70,11 +70,6 @@ public class BioController {
 		new BioGeneration(newBiomorph());
 		biomorphs = BioGeneration.getAllBiomorphs();
 		BioCache.push(biomorphs);
-		try {
-			loadHallOfFameBiomorphs();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public static BioDraw displayHallOfFameBiomorph(int number){

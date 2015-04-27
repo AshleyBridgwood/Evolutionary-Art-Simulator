@@ -26,6 +26,7 @@ public class BioDraw extends JPanel {
 		if(isChild){
 			canvasSize = 120;
 		} else {
+			//canvasSize = 160;
 			canvasSize = 160;
 		}
 	}
