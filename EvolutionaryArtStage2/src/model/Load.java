@@ -19,12 +19,11 @@ import java.util.ArrayList;
 public class Load extends FileHandler {
 	
 	public static ArrayList<ArrayList<Line>> loadAllBiomorphs(String fileName){
-		//FileHandler.loadBiomorph("\\Hall");
-		return null;
+		return FileHandler.loadBiomorphs("\\Saved Biomorphs\\" + fileName + ".biomorph");
 	}
 	
 	public static ArrayList<Line> loadHallOfFameBiomorph(String fileName) throws IOException{
-		return FileHandler.loadHallOfFameBiomorph("\\Hall Of Fame\\" + fileName + ".biomorph");
+		return FileHandler.loadHallOfFameBiomorph("/Hall Of Fame/" + fileName + ".biomorph");
 	}
 	
 	public static String loadFile(String fileName){
