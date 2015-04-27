@@ -82,7 +82,7 @@ public class BioController {
 	}
 	
 	public static BioDraw displayChildren(int childNumber){
-		//System.out.println("Child " + childNumber + ": " + biomorphs.get(childNumber).toString());
+		System.out.println("");
 		return new BioDraw(biomorphs.get(childNumber), true);
 	}
 	
