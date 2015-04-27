@@ -54,6 +54,7 @@ public class UserInterface extends MouseAdapter{
 	JPanel panelBiomorph7= new JPanel();
 	JPanel panelBiomorph8 = new JPanel();
 	JPanel panelBiomorph9 = new JPanel();
+	static int colourChoice = -1;
 
 	private ArrayList<Integer> panelsSelected = new ArrayList<Integer>();
 	
@@ -670,14 +671,16 @@ JMenuBar menuBar = new JMenuBar();
 		black.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//To be done..
+				colourChoice = -1;
+				refreshAllPanels();
 			}	
 		});
 		
 		red.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Colour.getRandomColourFromScheme(0);
+				colourChoice = 0;
+				refreshAllPanels();
 			}	
 		});
 		
@@ -685,14 +688,16 @@ JMenuBar menuBar = new JMenuBar();
 		blue.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Colour.getRandomColourFromScheme(1);
+				colourChoice = 1;
+				refreshAllPanels();
 			}	
 		});
 		
 		green.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Colour.getRandomColourFromScheme(2);
+				colourChoice = 2;
+				refreshAllPanels();
 			}	
 		});
 
@@ -700,7 +705,8 @@ JMenuBar menuBar = new JMenuBar();
 		greyScale.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Colour.getRandomColourFromScheme(3);
+				colourChoice = 3;
+				refreshAllPanels();
 			}	
 		});
 	}
@@ -741,6 +747,11 @@ JMenuBar menuBar = new JMenuBar();
 		g.dispose();
 		Export.export(filename, pingImage);
 		JOptionPane.showMessageDialog(null, "File Successfully Exported!");
+	}
+	
+	public static int getColourChoice()
+	{
+		return colourChoice;
 	}
 
 	

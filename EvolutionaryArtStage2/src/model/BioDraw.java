@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import view.UserInterface;
+
 public class BioDraw extends JPanel {
 	
 	private int canvasSize;
@@ -51,11 +53,20 @@ public class BioDraw extends JPanel {
 		
 		//!!! COMPLETE THE DRAWING OF THE BIOMORPH BELOW !!!\\
 		
-		Colour colour = new Colour();
-		Color toUse = colour.getRandomColour();
-		g.setColor(Color.BLACK);
-		//g.setColor(toUse);
+		
 		for(int i = 0; i < data.size(); i++){
+			
+			if(UserInterface.getColourChoice() < 0)
+			{
+				g.setColor(Color.BLACK);
+			}
+			else
+			{
+				Colour colour = new Colour();
+				Color toUse = colour.getRandomColourFromScheme(UserInterface.getColourChoice());
+				g.setColor(toUse);
+			}
+			
 			if(isChild){
 				g.drawLine((int) (data.get(i).getX1() * CHILD_SCALING), (int) (data.get(i).getY1()* CHILD_SCALING), (int) (data.get(i).getX2()* CHILD_SCALING), (int) (data.get(i).getY2()* CHILD_SCALING));
 				g.drawLine((int) (canvasSize - data.get(i).getX1()* CHILD_SCALING),(int) (data.get(i).getY1()* CHILD_SCALING),(int) (canvasSize-data.get(i).getX2()* CHILD_SCALING),(int) (data.get(i).getY2()* CHILD_SCALING));
