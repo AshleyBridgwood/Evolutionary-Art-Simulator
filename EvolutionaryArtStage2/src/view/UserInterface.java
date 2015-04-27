@@ -358,13 +358,7 @@ public class UserInterface extends MouseAdapter{
 			}
 		
 			public void mouseClicked(MouseEvent e) {
-				for (int i = 0; i < panels.length; i++){
-					panels[i].setBackground(SystemColor.menu);
-				}
-				panelBiomorph1.setBackground(Color.GREEN);
-				BioController.setNextToMutate(1);
-				System.out.println(BioController.isPanelPressed());
-				panelsSelected.add(1);
+				panelClicked(1-1);
 			}
 			});
 		
@@ -391,14 +385,7 @@ public class UserInterface extends MouseAdapter{
 			}
 		
 			public void mouseClicked(MouseEvent e) {
-				for (int i = 0; i < panels.length; i++){
-					panels[i].setBackground(SystemColor.menu);
-				}
-				BioController.setNextToMutate(2);
-				panelBiomorph2.setBackground(Color.GREEN);
-				panelsSelected.add(2);
-
-				
+				panelClicked(2-1);	
 			}
 			});
 		
@@ -424,12 +411,7 @@ public class UserInterface extends MouseAdapter{
 			}
 		
 			public void mouseClicked(MouseEvent e) {
-				for (int i = 0; i < panels.length; i++){
-					panels[i].setBackground(SystemColor.menu);
-				}
-				BioController.setNextToMutate(3);
-				panelBiomorph3.setBackground(Color.GREEN);
-				panelsSelected.add(3);
+				panelClicked(3-1);
 
 			}
 			});
@@ -456,12 +438,7 @@ public class UserInterface extends MouseAdapter{
 			}
 		
 			public void mouseClicked(MouseEvent e) {
-				for (int i = 0; i < panels.length; i++){
-					panels[i].setBackground(SystemColor.menu);
-				}
-				panelBiomorph4.setBackground(Color.GREEN);
-				BioController.setNextToMutate(4);
-				panelsSelected.add(4);
+				panelClicked(4-1);
 
 			}
 			});
@@ -488,12 +465,7 @@ public class UserInterface extends MouseAdapter{
 			}
 		
 			public void mouseClicked(MouseEvent e) {
-				for (int i = 0; i < panels.length; i++){
-					panels[i].setBackground(SystemColor.menu);
-				}
-				panelBiomorph5.setBackground(Color.GREEN);
-				BioController.setNextToMutate(5);
-				panelsSelected.add(5);
+				panelClicked(5-1);
 
 			}
 			});
@@ -520,12 +492,7 @@ public class UserInterface extends MouseAdapter{
 			}
 		
 			public void mouseClicked(MouseEvent e) {
-				for (int i = 0; i < panels.length; i++){
-					panels[i].setBackground(SystemColor.menu);
-				}
-				panelBiomorph6.setBackground(Color.GREEN);
-				BioController.setNextToMutate(6);
-				panelsSelected.add(6);
+				panelClicked(6-1);
 
 			}
 			});
@@ -552,12 +519,8 @@ public class UserInterface extends MouseAdapter{
 			}
 		
 			public void mouseClicked(MouseEvent e) {
-				for (int i = 0; i < panels.length; i++){
-					panels[i].setBackground(SystemColor.menu);
-				}
-				panelBiomorph7.setBackground(Color.GREEN);
-				BioController.setNextToMutate(7);
-				panelsSelected.add(7);
+				panelClicked(7-1);
+
 
 			}
 			});
@@ -584,12 +547,8 @@ public class UserInterface extends MouseAdapter{
 			}
 		
 			public void mouseClicked(MouseEvent e) {
-				for (int i = 0; i < panels.length; i++){
-					panels[i].setBackground(SystemColor.menu);
-				}
-				panelBiomorph8.setBackground(Color.GREEN);
-				BioController.setNextToMutate(8);
-				panelsSelected.add(8);
+				panelClicked(8-1);
+
 
 			}
 			});
@@ -616,17 +575,11 @@ public class UserInterface extends MouseAdapter{
 			}
 		
 			public void mouseClicked(MouseEvent e) {
-				for (int i = 0; i < panels.length; i++){
-					panels[i].setBackground(SystemColor.menu);
-				}
-				panelBiomorph9.setBackground(Color.GREEN);
-				BioController.setNextToMutate(9);
-				panelsSelected.add(9);
-
+				panelClicked(9-1);
 			}
 			});
 		
-JMenuBar menuBar = new JMenuBar();
+		JMenuBar menuBar = new JMenuBar();
 		
         //create menus
 		JMenu file = new JMenu("File");
@@ -634,7 +587,6 @@ JMenuBar menuBar = new JMenuBar();
          
 		//Create menu items
 		JMenuItem save = new JMenuItem("Save");
-		JMenuItem load = new JMenuItem("Load");
 		JMenuItem export = new JMenuItem("Export");
 		JMenuItem help = new JMenuItem("Help");
 		
@@ -772,6 +724,29 @@ JMenuBar menuBar = new JMenuBar();
 	public static int getColourChoice()
 	{
 		return colourChoice;
+	}
+	
+	public void panelClicked(int panel){
+		
+		int slot;
+		
+		if (panelsSelected.get(0) == panel + 1){
+			slot = 0;			
+		} else {
+			slot = 1;
+		}
+		
+		if (panels[panel].getBackground()==Color.GREEN){
+			panels[panel].setBackground(SystemColor.menu);
+			panelsSelected.remove(slot);
+			System.out.println(panelsSelected);
+			
+		} else if (panelsSelected.size() < 2){
+			panels[panel].setBackground(Color.GREEN);
+			BioController.setNextToMutate(panel + 1);
+			panelsSelected.add(panel+1);
+			System.out.println(panelsSelected);
+		}
 	}
 
 	
