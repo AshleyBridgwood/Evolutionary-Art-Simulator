@@ -77,20 +77,28 @@ public class BioController {
 	}
 
 	public static BioDraw displayParent(){
-		//System.out.println("Parent Displayed: " + biomorphs.get(0).toString());
+		//System.out.println("Parent: -" + biomorphs.get(0).toString());
 		return new BioDraw(biomorphs.get(0), false);
 	}
 	
 	public static BioDraw displayChildren(int childNumber){
-		System.out.println("");
+		//System.out.println("Child " + childNumber + ": " + biomorphs.get(childNumber).toString());
 		return new BioDraw(biomorphs.get(childNumber), true);
 	}
 	
 	public static void mutuateBiomorphOne(){
+		System.out.println("----------------------------------------------------------------------------------------");
+		System.out.println("Mutating by one");
 		ArrayList<Line> data = new ArrayList<Line>();
 		data = biomorphs.get(currentlySelectedToMutate);
-		
+		System.out.println("Biomorph Passed in (" + currentlySelectedToMutate + "): " + biomorphs.get(currentlySelectedToMutate).toString());
+		biomorphs = null;
 		biomorphs = BioGeneration.getChildrenFromParent(data);
+		System.out.println("------------New Parent: " + biomorphs.get(0).toString());
+		for(int i = 1; i < 10; i++){
+			//System.out.println("New Child " + i + ": " + biomorphs.get(i).toString());
+		}
+		System.out.println("----------------------------------------------------------------------------------------");
 	}
 	
 	public static void setNextToMutate(int data){

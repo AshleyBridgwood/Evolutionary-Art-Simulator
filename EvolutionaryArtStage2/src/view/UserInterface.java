@@ -390,7 +390,7 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
+				BioController.setNextToMutate(2);
 			}
 
 			@Override
@@ -402,6 +402,7 @@ public class UserInterface extends MouseAdapter{
 				for (int i = 0; i < panels.length; i++){
 					panels[i].setBackground(SystemColor.menu);
 				}
+				BioController.setNextToMutate(2);
 				panelBiomorph2.setBackground(Color.GREEN);
 			}
 			});
@@ -419,7 +420,7 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
+				BioController.setNextToMutate(3);
 			}
 
 			@Override
@@ -431,6 +432,7 @@ public class UserInterface extends MouseAdapter{
 				for (int i = 0; i < panels.length; i++){
 					panels[i].setBackground(SystemColor.menu);
 				}
+				BioController.setNextToMutate(3);
 				panelBiomorph3.setBackground(Color.GREEN);
 			}
 			});
@@ -448,7 +450,7 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
+				BioController.setNextToMutate(4);
 			}
 
 			@Override
@@ -461,6 +463,7 @@ public class UserInterface extends MouseAdapter{
 					panels[i].setBackground(SystemColor.menu);
 				}
 				panelBiomorph4.setBackground(Color.GREEN);
+				BioController.setNextToMutate(4);
 			}
 			});
 		
@@ -477,7 +480,7 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
+				BioController.setNextToMutate(5);
 			}
 
 			@Override
@@ -490,6 +493,7 @@ public class UserInterface extends MouseAdapter{
 					panels[i].setBackground(SystemColor.menu);
 				}
 				panelBiomorph5.setBackground(Color.GREEN);
+				BioController.setNextToMutate(5);
 			}
 			});
 		
@@ -506,7 +510,7 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
+				BioController.setNextToMutate(6);
 			}
 
 			@Override
@@ -519,6 +523,7 @@ public class UserInterface extends MouseAdapter{
 					panels[i].setBackground(SystemColor.menu);
 				}
 				panelBiomorph6.setBackground(Color.GREEN);
+				BioController.setNextToMutate(6);
 			}
 			});
 	
@@ -535,7 +540,7 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
+				BioController.setNextToMutate(7);	
 			}
 
 			@Override
@@ -548,6 +553,7 @@ public class UserInterface extends MouseAdapter{
 					panels[i].setBackground(SystemColor.menu);
 				}
 				panelBiomorph7.setBackground(Color.GREEN);
+				BioController.setNextToMutate(7);
 			}
 			});
 		
@@ -564,7 +570,7 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
+				BioController.setNextToMutate(8);
 			}
 
 			@Override
@@ -577,6 +583,7 @@ public class UserInterface extends MouseAdapter{
 					panels[i].setBackground(SystemColor.menu);
 				}
 				panelBiomorph8.setBackground(Color.GREEN);
+				BioController.setNextToMutate(8);
 			}
 			});
 		
@@ -593,7 +600,7 @@ public class UserInterface extends MouseAdapter{
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
+				BioController.setNextToMutate(9);
 			}
 
 			@Override
@@ -606,6 +613,7 @@ public class UserInterface extends MouseAdapter{
 					panels[i].setBackground(SystemColor.menu);
 				}
 				panelBiomorph9.setBackground(Color.GREEN);
+				BioController.setNextToMutate(9);
 			}
 			});
 	}
