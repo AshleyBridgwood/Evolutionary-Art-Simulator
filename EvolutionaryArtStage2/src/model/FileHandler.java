@@ -22,6 +22,7 @@ public class FileHandler {
 	
 	public static String EvolutionaryArtFolderLocation = null;
 	
+	@SuppressWarnings("unchecked")
 	public static ArrayList<Line> loadHallOfFameBiomorph(String locationWithFolder) throws IOException{
 		ArrayList<Line> data = new ArrayList<Line>();
 		FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithFolder);

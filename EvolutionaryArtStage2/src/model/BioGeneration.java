@@ -78,8 +78,8 @@ public class BioGeneration {
 			}
 				parentNode = biomorphTree.findTreeNode(root, randomNum);
 			//System.out.println("Parent node ID found: " + parentNode.getElement().getID());
-			int x = rand.nextInt((100 - (g1.getValue() * 2 )) + 1) + (g1.getValue() * 2);
-			int y = rand.nextInt((100 - (g2.getValue() * 2 )) + 1) + (g2.getValue() * 2);
+			int x = rand.nextInt((125 - (g1.getValue() * 2 )) + 1) + (g1.getValue() * 2);
+			int y = rand.nextInt((125 - (g2.getValue() * 2 )) + 1) + (g2.getValue() * 2);
 			
 			TreeNode<Point> newNode = new TreeNode<Point>(new Point(nodeId, x, y));
 			parentNode.addChild(newNode);

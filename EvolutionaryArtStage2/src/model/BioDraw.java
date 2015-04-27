@@ -55,6 +55,9 @@ public class BioDraw extends JPanel {
 		//g.setColor(toUse);
 		for(int i = 0; i < data.size(); i++){
 			if(isChild){
+				
+				//Line2D line = new Line2D();
+				
 				g.drawLine(data.get(i).getX1(), data.get(i).getY1(),data.get(i).getX2(), data.get(i).getY2());
 				g.drawLine(canvasSize - data.get(i).getX1(), data.get(i).getY1(), canvasSize-data.get(i).getX2(), data.get(i).getY2());
 			} else {
