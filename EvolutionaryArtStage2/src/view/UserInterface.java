@@ -274,8 +274,10 @@ public class UserInterface extends MouseAdapter{
 		btnHOF.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				BioController.saveCurrentParentToHallOfFame();
+
 			}
 		});
+		
 		//Action listener for the undo button. Goes to the previous biomorph
 		undoButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -361,7 +363,6 @@ public class UserInterface extends MouseAdapter{
 				BioController.setNextToMutate(1);
 				System.out.println(BioController.isPanelPressed());
 				panelsSelected.add(1);
-				System.out.println(panelsSelected);
 			}
 			});
 		
@@ -393,6 +394,9 @@ public class UserInterface extends MouseAdapter{
 				}
 				BioController.setNextToMutate(2);
 				panelBiomorph2.setBackground(Color.GREEN);
+				panelsSelected.add(2);
+
+				
 			}
 			});
 		
@@ -423,6 +427,8 @@ public class UserInterface extends MouseAdapter{
 				}
 				BioController.setNextToMutate(3);
 				panelBiomorph3.setBackground(Color.GREEN);
+				panelsSelected.add(3);
+
 			}
 			});
 		
@@ -453,6 +459,8 @@ public class UserInterface extends MouseAdapter{
 				}
 				panelBiomorph4.setBackground(Color.GREEN);
 				BioController.setNextToMutate(4);
+				panelsSelected.add(4);
+
 			}
 			});
 		
@@ -483,6 +491,8 @@ public class UserInterface extends MouseAdapter{
 				}
 				panelBiomorph5.setBackground(Color.GREEN);
 				BioController.setNextToMutate(5);
+				panelsSelected.add(5);
+
 			}
 			});
 		
@@ -513,6 +523,8 @@ public class UserInterface extends MouseAdapter{
 				}
 				panelBiomorph6.setBackground(Color.GREEN);
 				BioController.setNextToMutate(6);
+				panelsSelected.add(6);
+
 			}
 			});
 	
@@ -543,6 +555,8 @@ public class UserInterface extends MouseAdapter{
 				}
 				panelBiomorph7.setBackground(Color.GREEN);
 				BioController.setNextToMutate(7);
+				panelsSelected.add(7);
+
 			}
 			});
 		
@@ -573,6 +587,8 @@ public class UserInterface extends MouseAdapter{
 				}
 				panelBiomorph8.setBackground(Color.GREEN);
 				BioController.setNextToMutate(8);
+				panelsSelected.add(8);
+
 			}
 			});
 		
@@ -603,6 +619,8 @@ public class UserInterface extends MouseAdapter{
 				}
 				panelBiomorph9.setBackground(Color.GREEN);
 				BioController.setNextToMutate(9);
+				panelsSelected.add(9);
+
 			}
 			});
 		
