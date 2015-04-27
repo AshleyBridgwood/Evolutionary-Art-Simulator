@@ -672,6 +672,7 @@ JMenuBar menuBar = new JMenuBar();
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				colourChoice = -1;
+				panelOutput.removeAll();
 				refreshAllPanels();
 			}	
 		});
@@ -680,6 +681,7 @@ JMenuBar menuBar = new JMenuBar();
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				colourChoice = 0;
+				panelOutput.removeAll();
 				refreshAllPanels();
 			}	
 		});
@@ -689,6 +691,7 @@ JMenuBar menuBar = new JMenuBar();
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				colourChoice = 1;
+				panelOutput.removeAll();
 				refreshAllPanels();
 			}	
 		});
@@ -697,6 +700,7 @@ JMenuBar menuBar = new JMenuBar();
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				colourChoice = 2;
+				panelOutput.removeAll();
 				refreshAllPanels();
 			}	
 		});
@@ -706,6 +710,7 @@ JMenuBar menuBar = new JMenuBar();
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				colourChoice = 3;
+				panelOutput.removeAll();
 				refreshAllPanels();
 			}	
 		});
