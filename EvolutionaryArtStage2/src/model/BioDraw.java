@@ -18,7 +18,9 @@ import javax.swing.JPanel;
 public class BioDraw extends JPanel {
 	
 	private int canvasSize;
-	private double scaling =  0.8;
+	private static final double CHILD_SCALING  =  0.8;
+	private static final double PARENT_SCALING = 1.25;
+	
 	private boolean isChild;
 	ArrayList<Line> data;
 	
@@ -55,11 +57,13 @@ public class BioDraw extends JPanel {
 		//g.setColor(toUse);
 		for(int i = 0; i < data.size(); i++){
 			if(isChild){
-				g.drawLine((int) (data.get(i).getX1() * scaling), (int) (data.get(i).getY1()* scaling), (int) (data.get(i).getX2()* scaling), (int) (data.get(i).getY2()* scaling));
-				g.drawLine((int) (canvasSize - data.get(i).getX1()* scaling),(int) (data.get(i).getY1()* scaling),(int) (canvasSize-data.get(i).getX2()* scaling),(int) (data.get(i).getY2()* scaling));
+				g.drawLine((int) (data.get(i).getX1() * CHILD_SCALING), (int) (data.get(i).getY1()* CHILD_SCALING), (int) (data.get(i).getX2()* CHILD_SCALING), (int) (data.get(i).getY2()* CHILD_SCALING));
+				g.drawLine((int) (canvasSize - data.get(i).getX1()* CHILD_SCALING),(int) (data.get(i).getY1()* CHILD_SCALING),(int) (canvasSize-data.get(i).getX2()* CHILD_SCALING),(int) (data.get(i).getY2()* CHILD_SCALING));
 			} else {
-				g.drawLine(data.get(i).getX1(), data.get(i).getY1(),data.get(i).getX2(), data.get(i).getY2());
-				g.drawLine(canvasSize - data.get(i).getX1(), data.get(i).getY1(), canvasSize-data.get(i).getX2(), data.get(i).getY2());
+				g.drawLine((int) (data.get(i).getX1() * PARENT_SCALING), (int) (data.get(i).getY1()* PARENT_SCALING), (int) (data.get(i).getX2()* PARENT_SCALING), (int) (data.get(i).getY2()* PARENT_SCALING));
+				g.drawLine((int) (canvasSize - data.get(i).getX1()* PARENT_SCALING),(int) (data.get(i).getY1()* PARENT_SCALING),(int) (canvasSize-data.get(i).getX2()* PARENT_SCALING),(int) (data.get(i).getY2()* PARENT_SCALING));
+				//g.drawLine(data.get(i).getX1(), data.get(i).getY1(),data.get(i).getX2(), data.get(i).getY2());
+				//g.drawLine(canvasSize - data.get(i).getX1(), data.get(i).getY1(), canvasSize-data.get(i).getX2(), data.get(i).getY2());
 			}
 		}
 	}
