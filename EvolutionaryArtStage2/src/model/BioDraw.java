@@ -26,7 +26,6 @@ public class BioDraw extends JPanel {
 		if(isChild){
 			canvasSize = 120;
 		} else {
-			//canvasSize = 160;
 			canvasSize = 160;
 		}
 	}
@@ -49,9 +48,9 @@ public class BioDraw extends JPanel {
 		//g.setColor(Color.BLACK);
 		Colour colour = new Colour();
 		Color toUse = colour.getRandomColour();
-		System.out.print("***********");
-		System.out.print(toUse.toString());
-		System.out.print("***********");
+		//System.out.print("***********");
+		//System.out.print(toUse.toString());
+		//System.out.print("***********");
 		g.setColor(toUse);
 		for(int i = 0; i < data.size(); i++){
 			

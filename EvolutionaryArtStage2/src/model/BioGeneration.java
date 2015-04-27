@@ -39,10 +39,6 @@ public class BioGeneration {
 		for(int i = 0; i < 9; i++){
 			finishedBiomorphs.add(createChild(parent));
 		}
-		
-		System.out.println("Parent Created: " + finishedBiomorphs.get(0).toString());
-		System.out.println("Child Created: " + finishedBiomorphs.get(1).toString());
-		System.out.println("Parent and children successfull created");
 	}
 	
 	public static ArrayList<ArrayList<Line>> getChildrenFromParent(ArrayList<Line> parent){
