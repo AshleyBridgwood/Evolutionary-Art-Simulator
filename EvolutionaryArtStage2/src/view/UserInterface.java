@@ -726,17 +726,10 @@ public class UserInterface extends MouseAdapter{
 	
 	public void panelClicked(int panel){
 		
-		int slot;
-		
-		if (panelsSelected.get(0) == panel + 1){
-			slot = 0;			
-		} else {
-			slot = 1;
-		}
-		
+
 		if (panels[panel].getBackground()==Color.GREEN){
 			panels[panel].setBackground(SystemColor.menu);
-			panelsSelected.remove(slot);
+			panelsSelected.remove(0);
 			System.out.println(panelsSelected);
 			
 		} else if (panelsSelected.size() < 2){
