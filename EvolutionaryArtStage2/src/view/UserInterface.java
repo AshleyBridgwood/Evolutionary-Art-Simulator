@@ -58,6 +58,7 @@ public class UserInterface extends MouseAdapter{
 	JPanel HOFPanel2 = new JPanel();
 	JPanel HOFPanel3 = new JPanel();
 	static int colourChoice = -1;
+	int slot;
 
 	private ArrayList<Integer> panelsSelected = new ArrayList<Integer>();
 	
@@ -751,10 +752,17 @@ public class UserInterface extends MouseAdapter{
 	
 	public void panelClicked(int panel){
 		
-
+		if (!panelsSelected.isEmpty()){
+			if (panelsSelected.get(0) == panel + 1){
+				slot = 0;			
+			} else {
+				slot = 1;
+			}
+		}
+		
 		if (panels[panel].getBackground()==Color.GREEN){
 			panels[panel].setBackground(SystemColor.menu);
-			panelsSelected.remove(0);
+			panelsSelected.remove(slot);
 			System.out.println(panelsSelected);
 			
 		} else if (panelsSelected.size() < 2){
