@@ -1,8 +1,8 @@
 /**
- * Receives data from the BioGeneration and separates the data
- * so it can either be displayed as a Parent or Children
+ * Turns the line data into a draw biomorph
  * 
  * @author Ashley Bridgwood
+ * @author James Langford
  *
  */
 
@@ -19,17 +19,20 @@ import view.UserInterface;
 
 public class BioDraw extends JPanel {
 	
-	private int canvasSize;
-	private static final double CHILD_SCALING  =  0.8;
-	private static final double PARENT_SCALING = 1.25;
+	private static final long serialVersionUID = -3393400647955424411L;
+	private int canvasSize; //The size of the canvas - Dependent on if it is a parent or child
+	private static final double PARENT_SCALING = 1.25; //Scaling of the parent on the canvas
+	private static final double CHILD_SCALING  =  0.8; //Scaling of the child on the canvas
 	
-	private boolean isChild;
-	ArrayList<Line> data;
+	private boolean isChild; //Stores if the data passed in belongs to a parent of child
+	ArrayList<Line> data; //Stores the data about the biomorph currently being printed
 	
 	public BioDraw(ArrayList<Line> data, boolean isChild) {
+		//Initalise the fields
 		this.data = data;
 		this.isChild = isChild;
 		canvasSize = 0;
+		//Determines the canvas size dependent if it is a parent or a child
 		if(isChild){
 			canvasSize = 120;
 		} else {
@@ -39,7 +42,6 @@ public class BioDraw extends JPanel {
 	
 	/**
 	 * Set the preferred size of the canvas. This is dependent on if it is a parent or a child
-	 * 
 	 * @return Dimension
 	 */
 	@Override
@@ -47,34 +49,29 @@ public class BioDraw extends JPanel {
          return new Dimension(canvasSize, canvasSize);
     }
 	
+	/**
+	 * Actually draws the biomorph
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		//!!! COMPLETE THE DRAWING OF THE BIOMORPH BELOW !!!\\
-		
-		
-		for(int i = 0; i < data.size(); i++){
-			
-			if(UserInterface.getColourChoice() < 0)
-			{
+		for(int i = 0; i < data.size(); i++){ //Loops through the data to be printed
+			if(UserInterface.getColourChoice() < 0){ //Setting the colour
 				g.setColor(Color.BLACK);
-			}
-			else
-			{
+			} else {
 				Colour colour = new Colour();
 				Color toUse = colour.getRandomColourFromScheme(UserInterface.getColourChoice());
 				g.setColor(toUse);
 			}
 			
+			//Drawing of the parent and child with scaling applied
 			if(isChild){
 				g.drawLine((int) (data.get(i).getX1() * CHILD_SCALING), (int) (data.get(i).getY1()* CHILD_SCALING), (int) (data.get(i).getX2()* CHILD_SCALING), (int) (data.get(i).getY2()* CHILD_SCALING));
 				g.drawLine((int) (canvasSize - data.get(i).getX1()* CHILD_SCALING),(int) (data.get(i).getY1()* CHILD_SCALING),(int) (canvasSize-data.get(i).getX2()* CHILD_SCALING),(int) (data.get(i).getY2()* CHILD_SCALING));
 			} else {
 				g.drawLine((int) (data.get(i).getX1() * PARENT_SCALING), (int) (data.get(i).getY1()* PARENT_SCALING), (int) (data.get(i).getX2()* PARENT_SCALING), (int) (data.get(i).getY2()* PARENT_SCALING));
 				g.drawLine((int) (canvasSize - data.get(i).getX1()* PARENT_SCALING),(int) (data.get(i).getY1()* PARENT_SCALING),(int) (canvasSize-data.get(i).getX2()* PARENT_SCALING),(int) (data.get(i).getY2()* PARENT_SCALING));
-				//g.drawLine(data.get(i).getX1(), data.get(i).getY1(),data.get(i).getX2(), data.get(i).getY2());
-				//g.drawLine(canvasSize - data.get(i).getX1(), data.get(i).getY1(), canvasSize-data.get(i).getX2(), data.get(i).getY2());
 			}
 		}
 	}
