@@ -30,6 +30,7 @@ import javax.swing.JButton;
 import model.BioController;
 import model.Colour;
 import model.Export;
+import model.FileHandler;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -105,6 +106,7 @@ public class UserInterface extends MouseAdapter{
 		HOFPanel1.setBounds(393, 50, 210, 133);
 		System.out.println("Current Number in hall of fame: " + BioController.getCurrentHallOfFameNumber());
 		if(BioController.getCurrentHallOfFameNumber() >= 1){
+			System.out.println("Displayed 1st hall of fame biomorph");
 			HOFPanel1.add(BioController.displayHallOfFameBiomorph(0));
 		}
 		frame.getContentPane().add(HOFPanel1);
@@ -114,6 +116,7 @@ public class UserInterface extends MouseAdapter{
 		HOFPanel2.setBackground(SystemColor.menu);
 		HOFPanel2.setBounds(615, 50, 210, 133);
 		if(BioController.getCurrentHallOfFameNumber() >= 2){
+			System.out.println("Displayed 2nd hall of fame biomorph");
 			HOFPanel2.add(BioController.displayHallOfFameBiomorph(1));
 		}
 		frame.getContentPane().add(HOFPanel2);
@@ -123,6 +126,7 @@ public class UserInterface extends MouseAdapter{
 		HOFPanel3.setBackground(SystemColor.menu);
 		HOFPanel3.setBounds(837, 50, 210, 133);
 		if(BioController.getCurrentHallOfFameNumber() >= 3){
+			System.out.println("Displayed 3rd hall of fame biomorph");
 			HOFPanel3.add(BioController.displayHallOfFameBiomorph(2));
 		}
 		frame.getContentPane().add(HOFPanel3);
@@ -303,7 +307,9 @@ public class UserInterface extends MouseAdapter{
 		//Action listener for the hall of fame button.
 		btnHOF.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				BioController.saveCurrentParentToHallOfFame();
+				if(FileHandler.getNumberOfHallOfFameBiomorphs() <= 2){
+					BioController.saveCurrentParentToHallOfFame();
+				}
 				panelOutput.removeAll();
 				refreshHallOfFamePanels();
 			}
@@ -654,6 +660,7 @@ public class UserInterface extends MouseAdapter{
 		clearHOF.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
+				panelOutput.removeAll();
 				BioController.clearHallOfFame();
 				refreshHallOfFamePanels();
 			}

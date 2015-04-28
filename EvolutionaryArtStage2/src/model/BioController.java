@@ -18,8 +18,6 @@ public class BioController {
 	private static ArrayList<ArrayList<Line>> hallOfFameBiomorphs; //Stores the biomorphs for the hall of fame
 	private static int currentlySelectedToMutate; //Stores the ID of the next child to mutate
 	private static int numberInHallOfFame; //Stores the number of biomorphs in the hall of fame
-	private static int numOfSavedBiomorphs; //Stores the number of biomorphs in the hall of fame
-
 	
 	public BioController() {
 		//Initalise the starting fields
@@ -105,8 +103,7 @@ public class BioController {
 	 * @return Number of biomorphs saved.
 	 */
 	public static int getNumOfSavedBiomorphs(){
-		numOfSavedBiomorphs = FileHandler.getNumberOfSavedBiomorphs();
-		return numOfSavedBiomorphs;
+		return FileHandler.getNumberOfSavedBiomorphs();
 	}
 	
 	/**
@@ -147,7 +144,7 @@ public class BioController {
 	}
 	
 	public static void clearHallOfFame(){
-		for(int i = 0; i < getCurrentHallOfFameNumber(); i++){
+		for(int i = 0; i < FileHandler.getNumberOfHallOfFameBiomorphs(); i++){
 			FileHandler.clearHallOfFameBiomorphs("b" + i);
 		}
 	}
