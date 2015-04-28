@@ -155,17 +155,12 @@ public class BioGeneration {
 			return tempTree;
 	}
 	
-	public ArrayList<Line> combineBiomorphs(ArrayList<Line> a, ArrayList<Line> b)
-	{
+	public ArrayList<Line> combineBiomorphs(ArrayList<Line> a, ArrayList<Line> b){
 		ArrayList<Line> newBiomorph = new ArrayList<Line>();
-		if(a.size() != b.size())
-		{
+		if(a.size() != b.size()){
 			//do nothing, throw exception?
-		}
-		else
-		{
-			for(int i = 0; i<a.size(); i++)
-			{
+		} else {
+			for(int i = 0; i<a.size(); i++){
 				int newX1 = (a.get(i).getX1() + b.get(i).getX1()) / 2;
 				int newX2 = (a.get(i).getX2() + b.get(i).getX2()) / 2;
 				int newY1 = (a.get(i).getY1() + b.get(i).getY1()) / 2;

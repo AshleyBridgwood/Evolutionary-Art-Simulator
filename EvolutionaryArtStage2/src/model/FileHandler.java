@@ -15,20 +15,29 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class FileHandler {
 	
 	public static String EvolutionaryArtFolderLocation = null; //Stores the main working folder
 	
+	public static void clearHallOfFameBiomorphs(String name){
+		File file = new File(EvolutionaryArtFolderLocation + "/Hall Of Fame/" + name + ".biomorph");
+		try{
+			file.delete();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * Loads the hall of fame biomorph from file
 	 * @param locationWithFolder Location within the working folder
 	 * @return ArrayList<Line> the Biomorph data
 	 */
-	public static ArrayList<Line> loadHallOfFameBiomorph(String locationWithFolder){
+	public static ArrayList<Line> loadHallOfFameBiomorph(String locationWithinFolder){
 		try{
-			FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithFolder);
+			FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			ArrayList<Line> data = (ArrayList<Line>) in.readObject();
 			fileIn.close();

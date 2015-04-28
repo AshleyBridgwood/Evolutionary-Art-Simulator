@@ -612,6 +612,7 @@ public class UserInterface extends MouseAdapter{
 		
         //create menus
 		JMenu file = new JMenu("File");
+		JMenu hallOfFame = new JMenu("Hall Of Fame");
 		JMenu colours = new JMenu("Colour Scheme");
          
 		//Create menu items
@@ -619,6 +620,8 @@ public class UserInterface extends MouseAdapter{
 		JMenuItem save = new JMenuItem("Save");
 		JMenuItem export = new JMenuItem("Export");
 		JMenuItem help = new JMenuItem("Help");
+	
+		JMenuItem clearHOF = new JMenuItem("Clear Hall of Fame"); 
 		
 		JMenuItem black = new JMenuItem("Default: Black");
 		JMenuItem red = new JMenuItem("Red");
@@ -632,6 +635,8 @@ public class UserInterface extends MouseAdapter{
 		file.add(export);
 		file.add(help);
 		
+		hallOfFame.add(clearHOF);
+		
 		colours.add(black);
 		colours.add(red);
 		colours.add(blue);
@@ -640,11 +645,19 @@ public class UserInterface extends MouseAdapter{
             
 		//Add menus
 		menuBar.add(file);
+		menuBar.add(hallOfFame);
 		menuBar.add(colours);
 		frame.setJMenuBar(menuBar);
 
 		
 		//Listeners for the menu bar:
+		clearHOF.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				BioController.clearHallOfFame();
+				refreshHallOfFamePanels();
+			}
+		});
 		
 		newBiomorph.addActionListener(new ActionListener(){
 			@Override

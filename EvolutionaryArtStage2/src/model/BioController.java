@@ -146,6 +146,12 @@ public class BioController {
 		BioCache.push(biomorphs);
 	}
 	
+	public static void clearHallOfFame(){
+		for(int i = 0; i < getCurrentHallOfFameNumber(); i++){
+			FileHandler.clearHallOfFameBiomorphs("b" + i);
+		}
+	}
+	
 	/**
 	 * Sets the next biomorph to be mutated
 	 * @param data The ID of the next child to be mutated
