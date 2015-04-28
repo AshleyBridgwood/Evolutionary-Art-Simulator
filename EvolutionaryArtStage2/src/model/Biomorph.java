@@ -14,34 +14,43 @@ package model;
 import java.util.ArrayList;
 
 public class Biomorph {
-	ArrayList<Gene> genes = new ArrayList<Gene>();
-	private long seed;
+	ArrayList<Gene> genes = new ArrayList<Gene>(); //Create a new arraylist of genes
+	private long seed; //Stores the seed of creating the biomorph data
 
-	public Biomorph() {
+	/**
+	 * Constructor for creating a new biomorph
+	 */
+	public Biomorph(){
 		String testStr = "\nThis bio-morphs genes are: ";
 		Gene first_gene;
 
-		this.seed = Factory.generateSeed();
+		this.seed = Factory.generateSeed(); //Generate the seed value
 
-		// generate first gene value
+		//generate first gene value
 		first_gene = new Gene(true);
 		genes.add(first_gene);
 
-		// generate second and third gene values
-		for (int i = 1; i < 3; i++) {
+		//generate second and third gene values
+		for (int i = 1; i < 3; i++){
 			Gene g = new Gene();
 			genes.add(g);
 		}
-
-		// print gene values
-		testStr += getStringGeneValues();
+		testStr += getStringGeneValues(); //print gene values
 	}
-
-	public long getSeed() {
+	
+	/**
+	 * Gets the seed from the Biomorph
+	 * @return long the seed
+	 */
+	public long getSeed(){
 		return seed;
 	}
 
-	public String getStringGeneValues() {
+	/**
+	 * Gets the string value of the genes
+	 * @return String gene value
+	 */
+	public String getStringGeneValues(){
 		String genesString = "";
 		for (int i = 0; i < genes.size(); i++) {
 			genesString = genesString + genes.get(i).getValue() + ", ";
@@ -49,12 +58,20 @@ public class Biomorph {
 		return genesString;
 	}
 
+	/**
+	 * Gets the gene values
+	 * @return ArrayList<Gene> gene values
+	 */
 	public ArrayList<Gene> getGenes() {
 		return genes;
 	}
 	
-	public void changeGene(int index, int value)
-	{
+	/**
+	 * Changes the gene values
+	 * @param index gene to change
+	 * @param value sets the value of the gene
+	 */
+	public void changeGene(int index, int value){
 		genes.get(index).setValue(value);
 	}
 }
