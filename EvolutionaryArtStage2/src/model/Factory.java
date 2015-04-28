@@ -9,8 +9,6 @@ package model;
 
 import java.util.Random;
 
-// Maybe global seed variable?
-
 public class Factory {
 
 	private static Random rnd = new Random(); //Random number generator
