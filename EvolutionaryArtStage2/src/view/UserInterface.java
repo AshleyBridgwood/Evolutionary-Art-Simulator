@@ -29,7 +29,6 @@ import javax.swing.JButton;
 
 import model.BioController;
 import model.Colour;
-
 import model.Export;
 
 import java.awt.*;
@@ -88,8 +87,10 @@ public class UserInterface extends MouseAdapter{
 		frame.setBounds(100, 100, 1093, 875);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		Dimension d = new Dimension (1093, 875); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
+		Dimension d = new Dimension (1093, 885); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
 		frame.setPreferredSize(d);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
 		frame.setResizable(false);
 
 		
@@ -200,30 +201,39 @@ public class UserInterface extends MouseAdapter{
 		controlPanel.setForeground(Color.BLACK);
 		controlPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		controlPanel.setBackground(SystemColor.menu);
-		controlPanel.setBounds(22, 662, 1025, 153);
-		controlPanel.setLayout(new GridLayout(2,1));
+		controlPanel.setBounds(28, 662, 1025, 153);
 		
 		//Sliders to adjust genes of bio-morph.
 		//probability sliders
 		Dimension d2 = new Dimension(300,70);
-		JPanel sliderPanel = new JPanel();
 		final LabelledSlider probSlider = new LabelledSlider(" Probability of Change  ", 0.0, 0, 20, 100);
-		probSlider.setBounds(191, 5, 300, 70);
+		probSlider.setBounds(193, 13, 300, 70);
 		probSlider.setPreferredSize(d2);
 		final LabelledSlider changeSlider = new LabelledSlider("Amount of Change  ", 0.0, 0, 20, 100);
-		changeSlider.setBounds(519, 5, 300, 70);
+		changeSlider.setBounds(498, 13, 300, 70);
      	changeSlider.setPreferredSize(d2);
 		
-		//Button Control
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.setLayout(null);
-		sliderPanel.setLayout(null);
-		sliderPanel.add(probSlider);
-		sliderPanel.add(changeSlider);
-		controlPanel.add(sliderPanel);
-		controlPanel.add(buttonPanel);
+     	final LabelledSlider linesSlider = new LabelledSlider(" Amount of Lines  ", 0.0, 0, 20, 100.0);
+		linesSlider.setPreferredSize(new Dimension(300, 70));
+		linesSlider.setBounds(193, 75, 300, 70);
+		linesSlider.setPreferredSize(d2);
+
+		
+		final LabelledSlider sliderThickness = new LabelledSlider("Line Thickness  ", 0.0, 0, 20, 100.0);
+		sliderThickness.setPreferredSize(new Dimension(300, 70));
+		sliderThickness.setBounds(498, 75, 300, 70);
+		controlPanel.setLayout(null);
+		probSlider.setPreferredSize(d2);
+		
+		controlPanel.add(probSlider);
+		controlPanel.add(changeSlider);
+		controlPanel.add(linesSlider);
+		controlPanel.add(sliderThickness);
+
+
 
 		frame.getContentPane().add(controlPanel);
+
 		
 		JPanel panelLogo = new JPanel();
 		panelLogo.setForeground(Color.BLACK);
@@ -241,11 +251,11 @@ public class UserInterface extends MouseAdapter{
 		panelLogo.add(logoImage);
 		frame.getContentPane().add(panelLogo);
 		JButton menuButton = new JButton("Home - Temp Next");
-		menuButton.setBounds(203, 469, 149, 43);
+		menuButton.setBounds(202, 475, 149, 43);
 		frame.getContentPane().add(menuButton);
 		
 		JButton btnHOF = new JButton("Add to hall of fame");
-		btnHOF.setBounds(42, 520, 154, 43);
+		btnHOF.setBounds(41, 523, 154, 43);
 		frame.getContentPane().add(btnHOF);
 		
 		JLabel lblBiomorphParent = new JLabel("Parent");
@@ -262,23 +272,34 @@ public class UserInterface extends MouseAdapter{
 		frame.getContentPane().add(panelOutput);
 		
 		JButton undoButton = new JButton("Undo");
-		undoButton.setBounds(42, 422, 154, 43);
+		undoButton.setBounds(41, 428, 154, 43);
 		frame.getContentPane().add(undoButton);
 		
-		btnMutate.setBounds(204, 422, 149, 43);
+		btnMutate.setBounds(203, 428, 149, 43);
 		frame.getContentPane().add(btnMutate);
 		
 		JButton btnSave = new JButton("Save!");
-		btnSave.setBounds(42, 469, 154, 43);
+		btnSave.setBounds(41, 475, 154, 43);
 		frame.getContentPane().add(btnSave);
 		
 		JButton btnExport = new JButton("Export!");
-		btnExport.setBounds(204, 520, 149, 43);
+		btnExport.setBounds(203, 523, 149, 43);
 		frame.getContentPane().add(btnExport);
 		
-		frame.pack();
+		JButton btnHome = new JButton("Home");
+		btnHome.setBounds(0, 0, 130, 43);
+		frame.getContentPane().add(btnHome);
 		
-	
+		
+		//frame.pack();
+		
+		//Action listeners for help button. Directs it to the help screen.
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new StartScreen().getFrame().setVisible(true);
+				frame.dispose();
+			}
+		});	
 		
 		//Action listener for the hall of fame button.
 		btnHOF.addActionListener(new ActionListener(){
@@ -772,6 +793,4 @@ public class UserInterface extends MouseAdapter{
 			System.out.println(panelsSelected);
 		}
 	}
-
-	
 	}
