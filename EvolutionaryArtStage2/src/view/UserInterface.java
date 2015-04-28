@@ -615,6 +615,7 @@ public class UserInterface extends MouseAdapter{
 		JMenu colours = new JMenu("Colour Scheme");
          
 		//Create menu items
+		JMenuItem newBiomorph = new JMenuItem("New Biomorph");
 		JMenuItem save = new JMenuItem("Save");
 		JMenuItem export = new JMenuItem("Export");
 		JMenuItem help = new JMenuItem("Help");
@@ -626,6 +627,7 @@ public class UserInterface extends MouseAdapter{
 		JMenuItem greyScale = new JMenuItem("Grey Scale");
             
 		//Add items to the menus
+		file.add(newBiomorph);
 		file.add(save);
 		file.add(export);
 		file.add(help);
@@ -643,6 +645,14 @@ public class UserInterface extends MouseAdapter{
 
 		
 		//Listeners for the menu bar:
+		
+		newBiomorph.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				new BiomorphStartUp().getFrame().setVisible(true);
+				frame.dispose();
+			}
+		});
 		help.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
