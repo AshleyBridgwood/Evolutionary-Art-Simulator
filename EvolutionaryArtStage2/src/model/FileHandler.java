@@ -68,6 +68,10 @@ public class FileHandler {
 		return new File(EvolutionaryArtFolderLocation + "/Hall Of Fame/").listFiles().length;
 	}
 	
+	public static int getNumberOfSavedBiomorphs(){
+		return new File(EvolutionaryArtFolderLocation + "/Saved Biomorphs/").listFiles().length;
+	}
+	
 	public static void writeToFile(String locationWithinFolder, String data){
 		if(EvolutionaryArtFolderLocation != null){
 			try{

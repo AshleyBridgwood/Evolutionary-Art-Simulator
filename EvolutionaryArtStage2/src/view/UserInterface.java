@@ -89,7 +89,6 @@ public class UserInterface extends MouseAdapter{
 		frame.getContentPane().setLayout(null);
 		Dimension d = new Dimension (1093, 885); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
 		frame.setPreferredSize(d);
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 		frame.setResizable(false);
 

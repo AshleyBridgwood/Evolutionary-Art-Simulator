@@ -21,11 +21,14 @@ import java.awt.Font;
 
 import javax.swing.JScrollPane;
 
+import model.BioController;
+
 public class LoadBiomorph {
 
 	private JFrame frame;
-	JPanel panelImported = new JPanel();
-
+	JPanel panelBiomorphs = new JPanel(); // panel to contain all of the loaded biomorphs.
+	JPanel panelLoaded = new JPanel(); // panel to contain the selected biomorph 
+	JScrollPane scrollPane = new JScrollPane(); // scroll pane that will contain all saved biomorphs.
 
 
 	/**
@@ -44,16 +47,22 @@ public class LoadBiomorph {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);//set the horizontal scrollbar to never appear
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//set the horizontal scrollbar to never appear7
+		
 		JButton btnImport = new JButton("Import Own Bomorph");
 		btnImport.setBounds(49, 128, 201, 52);
 		frame.getContentPane().add(btnImport);
 		
-
-		panelImported.setBounds(549, 195, 311, 172);
-		panelImported.setForeground(Color.BLACK);
-		panelImported.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
-		panelImported.setBackground(SystemColor.menu);
-		frame.getContentPane().add(panelImported);
+		panelBiomorphs.setForeground(Color.BLACK);
+		panelBiomorphs.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
+		panelBiomorphs.setBackground(SystemColor.menu);
+		
+		panelLoaded.setBounds(549, 195, 311, 172);
+		panelLoaded.setForeground(Color.BLACK);
+		panelLoaded.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
+		panelLoaded.setBackground(SystemColor.menu);
+		frame.getContentPane().add(panelLoaded);
 		
 		JLabel lblChooseFromList = new JLabel();
 		//("Choose from list of saved biomorphs, or click the import button on the left to import your own!");
@@ -69,7 +78,6 @@ public class LoadBiomorph {
 		lblLoadYourBiomorph.setBounds(321, 13, 236, 35);
 		frame.getContentPane().add(lblLoadYourBiomorph);
 		
-		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(50, 178, 441, 310);
 		frame.getContentPane().add(scrollPane);
 		
@@ -97,12 +105,21 @@ public class LoadBiomorph {
 				File f = chooser.getSelectedFile();
 				String filename = f.getAbsolutePath();
 				//Import(filename);
-				panelImported.add(new ImagePanel(filename));
+				panelLoaded.add(new ImagePanel(filename));
 				
 				
 				frame.setVisible(true);
 			}
 		});
+		
+		loadBiomorphs();
+	}
+	
+	public void loadBiomorphs(){		
+		int i = BioController.getNumOfSavedBiomorphs();
+		System.out.println(i);
+		scrollPane.getViewport().add(panelBiomorphs);
+		
 	}
 	
 	public JFrame getFrame() {
