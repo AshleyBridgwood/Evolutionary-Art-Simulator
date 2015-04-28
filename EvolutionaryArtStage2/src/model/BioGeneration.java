@@ -155,22 +155,26 @@ public class BioGeneration {
 			return tempTree;
 	}
 	
-	public Biomorph combineBiomorphs(Biomorph a, Biomorph b)
+	public ArrayList<Line> combineBiomorphs(ArrayList<Line> a, ArrayList<Line> b)
 	{
-		
-		//create new biomorph object
-		Biomorph offspring = new Biomorph();
-		// each biomorph should always have the same amount of genes
-		if(a.getGenes().size() == b.getGenes().size())
+		ArrayList<Line> newBiomorph = new ArrayList<Line>();
+		if(a.size() != b.size())
 		{
-			for(int i = 0; i<a.getGenes().size(); i++)
+			//do nothing, throw exception?
+		}
+		else
+		{
+			for(int i = 0; i<a.size(); i++)
 			{
-				// for each gene in the new offspring biomorph take the corresponding gene out of a and b and average it.
-				offspring.changeGene(i,((a.getGenes().get(i).getValue()) + (b.getGenes().get(i).getValue()))/2);
+				int newX1 = (a.get(i).getX1() + b.get(i).getX1()) / 2;
+				int newX2 = (a.get(i).getX2() + b.get(i).getX2()) / 2;
+				int newY1 = (a.get(i).getY1() + b.get(i).getY1()) / 2;
+				int newY2 = (a.get(i).getY2() + b.get(i).getY2()) / 2;
+				Line newLine = new Line(newX1, newY1, newX2, newY2);
+				newBiomorph.add(newLine);
 			}
 		}
-		
-		return offspring;
+		return newBiomorph;
 	}
 	
 	private static ArrayList<Line> cloneData(ArrayList<Line> data){
