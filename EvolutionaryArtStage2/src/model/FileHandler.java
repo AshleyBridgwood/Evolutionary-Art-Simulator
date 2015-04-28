@@ -1,5 +1,5 @@
 /**
- * DESCRIPTION OF THE CLASS
+ * FileHandler - Deals with all reading and writing of data to and from the users computer
  * 
  * @author Ashley Bridgwood
  *
@@ -19,8 +19,13 @@ import java.util.ArrayList;
 
 public class FileHandler {
 	
-	public static String EvolutionaryArtFolderLocation = null;
+	public static String EvolutionaryArtFolderLocation = null; //Stores the main working folder
 	
+	/**
+	 * Loads the hall of fame biomorph from file
+	 * @param locationWithFolder Location within the working folder
+	 * @return ArrayList<Line> the Biomorph data
+	 */
 	public static ArrayList<Line> loadHallOfFameBiomorph(String locationWithFolder){
 		try{
 			FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithFolder);
@@ -34,6 +39,11 @@ public class FileHandler {
 		return null;
 	}
 	
+	/**
+	 * Loads the parent and children data from file
+	 * @param locationWithinFolder Location within the working folder
+	 * @return ArrayList<ArrayList<Line>> the parent and children biomorph data
+	 */
 	public static ArrayList<ArrayList<Line>> loadBiomorphs(String locationWithinFolder) {
 		try{
 			FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
@@ -48,6 +58,11 @@ public class FileHandler {
 		
 	}
 	
+	/**
+	 * Saved the parent biomorph to hall of fame
+	 * @param locationWithinFolder Location within the working folder
+	 * @param data Data being saved to the file
+	 */
 	public static void saveBiomorphToHallOfFame(String locationWithinFolder, ArrayList<Line> data) throws IOException{
 		FileOutputStream fileOut = new FileOutputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
 		ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -56,6 +71,11 @@ public class FileHandler {
 		fileOut.close();
 	}
 	
+	/**
+	 * Saves the parent and children biomorph data to file
+	 * @param locationWithinFolder Location within the working folder
+	 * @param data Data being saved to the file
+	 */
 	public static void saveObjectToFile(String locationWithinFolder, ArrayList<ArrayList<Line>> data) throws IOException{
 		FileOutputStream fileOut = new FileOutputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
 		ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -64,14 +84,27 @@ public class FileHandler {
 		fileOut.close();
 	}
 	
+	/**
+	 * Gets the number of hall of fame biomorphs in the folder
+	 * @return Int number of hall of fame biomorphs saved
+	 */
 	public static int getNumberOfHallOfFameBiomorphs(){
 		return new File(EvolutionaryArtFolderLocation + "/Hall Of Fame/").listFiles().length;
 	}
 	
+	/**
+	 * Gets the number of saved biomorphs in the folder
+	 * @return int number of biomorphs saved
+	 */
 	public static int getNumberOfSavedBiomorphs(){
 		return new File(EvolutionaryArtFolderLocation + "/Saved Biomorphs/").listFiles().length;
 	}
 	
+	/**
+	 * Writes data to a file
+	 * @param locationWithinFolder Location within the main working folder
+	 * @param data Data to be written to the file
+	 */
 	public static void writeToFile(String locationWithinFolder, String data){
 		if(EvolutionaryArtFolderLocation != null){
 			try{
@@ -91,6 +124,10 @@ public class FileHandler {
 		}
 	}
 	
+	/**
+	 * Checks for the operating system of the users computer
+	 * @return String The home directory of the users computer
+	 */
 	public static String checkForOS(){
 		String dir = null;
 		
@@ -113,6 +150,9 @@ public class FileHandler {
 		
 	}
 	
+	/**
+	 * Checks for the main working folder, if not there, attempts to create one
+	 */
 	public static void checkForMainWorkingFolder(){
 		
 		String dir = checkForOS();
@@ -164,7 +204,6 @@ public class FileHandler {
 		} else {
 			//If OS is not Windows or Linux, pass error message about failed folder creation
 			Log.add("Unable to create Evolutionary Art folder in: " + EvolutionaryArtFolderLocation + ". Some functions may not perform correctly!");
-		}
-			
+		}	
 	}
 }
