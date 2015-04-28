@@ -1,3 +1,10 @@
+/**
+ * Colour - Used for storing the different colours which are used with the colouring of the biomorphs
+ * 
+ * @author James Langford
+ *
+ */
+
 package model;
 
 import java.awt.Color;
@@ -13,62 +20,55 @@ public class Colour {
 	private static final Color[][] colourSchemes = {reds,blues,greens,greyscale};
 
 	
-	public Colour()
-	{
-		
+	public Colour(){
+
 	}
 	
-	/*
-	 * Method  to return a random colour from the array,
-	 * probably not needed anymore once new features are added in.
-	 * 
-	 * */
-	 
-	public Color getRandomColour()
-	{
+	/**
+	 * Gets a random colour from the selection
+	 * @return Color the random colour
+	 */
+	public Color getRandomColour(){
 		Random rand = new Random();
 		int randNum = rand.nextInt(colours.length-1);
 		String chosen = colours[randNum];
 		Color chosenColor=null;
 		
-		switch (chosen)
-		{
-		case "red" : chosenColor =  Color.RED;
-		break;
-		case "yellow": chosenColor = Color.YELLOW;
-		break;
-		case "blue": chosenColor = Color.BLUE;
-		break;
-		case "orange": chosenColor = Color.ORANGE;
-		break;
-		case "pink": chosenColor = Color.PINK;
-		break;
-		case "cyan": chosenColor = Color.CYAN;
-		break;
-		case "magenta": chosenColor = Color.MAGENTA;
-		break;
-		case "white": chosenColor = Color.WHITE;
-		break;
-		case "grey": chosenColor = Color.GRAY;
-		break;
-		case "lightGrey": chosenColor = Color.lightGray;
-		break;
-		case "darkGrey": chosenColor = Color.darkGray;
-		break;
-		default: chosenColor = Color.BLACK;
-		break;
+		switch (chosen){
+			case "red" : chosenColor =  Color.RED;
+			break;
+			case "yellow": chosenColor = Color.YELLOW;
+			break;
+			case "blue": chosenColor = Color.BLUE;
+			break;
+			case "orange": chosenColor = Color.ORANGE;
+			break;
+			case "pink": chosenColor = Color.PINK;
+			break;
+			case "cyan": chosenColor = Color.CYAN;
+			break;
+			case "magenta": chosenColor = Color.MAGENTA;
+			break;
+			case "white": chosenColor = Color.WHITE;
+			break;
+			case "grey": chosenColor = Color.GRAY;
+			break;
+			case "lightGrey": chosenColor = Color.lightGray;
+			break;
+			case "darkGrey": chosenColor = Color.darkGray;
+			break;
+			default: chosenColor = Color.BLACK;
+			break;
 		}
-		
-		
-		//System.out.println("*****************");
-		//System.out.println("****"+Color.RED.toString()+"*******");
-		//System.out.println("*****************");
-		
 		return chosenColor;
 	}
 	
-	public Color getRandomColourFromScheme(int choice)
-	{
+	/**
+	 * Gets a random colour scheme
+	 * @param choice Choice of random colour scheme
+	 * @return Color random Colour scheme
+	 */
+	public Color getRandomColourFromScheme(int choice){
 		System.out.println(choice);
 		/*
 		 * 0 - reds
