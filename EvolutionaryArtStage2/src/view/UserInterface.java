@@ -86,12 +86,18 @@ public class UserInterface extends MouseAdapter{
 		frame =	new JFrame();	
 		
 		frame.setBounds(100, 100, 1093, 875);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		Dimension d = new Dimension (1093, 885); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
 		frame.setPreferredSize(d);
-
 		frame.setResizable(false);
+		
+		//Exit prompt
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				exit();
+			}
+		});
 
 		
 		JLabel lblHOF = new JLabel("Hall Of Fame");
@@ -299,8 +305,10 @@ public class UserInterface extends MouseAdapter{
 		//Action listeners for help button. Directs it to the help screen.
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new StartScreen().getFrame().setVisible(true);
-				frame.dispose();
+				if(exit()==false){
+					new StartScreen().getFrame().setVisible(true);
+					frame.dispose();
+				}
 			}
 		});	
 		
@@ -679,8 +687,11 @@ public class UserInterface extends MouseAdapter{
 		newBiomorph.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				new BiomorphStartUp().getFrame().setVisible(true);
-				frame.dispose();
+				if(exit()==false){
+					new BiomorphStartUp().getFrame().setVisible(true);
+					frame.dispose();
+				}
+				
 			}
 		});
 		help.addActionListener(new ActionListener(){
@@ -843,4 +854,21 @@ public class UserInterface extends MouseAdapter{
 			System.out.println(panelsSelected);
 		}
 	}
+	
+	private boolean exit(){
+		int response = JOptionPane
+				.showConfirmDialog(frame,
+						"Do you want to save your work?", "Quit",
+						JOptionPane.YES_NO_OPTION,
+						JOptionPane.QUESTION_MESSAGE);
+		if (response == JOptionPane.YES_OPTION) {
+			new SaveBiomorph().getFrame().setVisible(true);	
+			return true;
+		}
+		else if (response == JOptionPane.NO_OPTION) {
+			frame.dispose();
+		}
+		return false;
 	}
+	
+}
