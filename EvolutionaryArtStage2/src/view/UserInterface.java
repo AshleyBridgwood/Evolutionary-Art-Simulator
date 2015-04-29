@@ -316,14 +316,19 @@ public class UserInterface extends MouseAdapter{
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(hofSelected == 1){
+					panelOutput.removeAll();
 					BioController.clearCertainHallOfFameBiomorph(0);
 					refreshHallOfFamePanels();
 				}
 				else if (hofSelected == 2){
+					panelOutput.removeAll();
 					BioController.clearCertainHallOfFameBiomorph(1);
+					refreshHallOfFamePanels();
 				}
 				else if (hofSelected == 3){
+					panelOutput.removeAll();
 					BioController.clearCertainHallOfFameBiomorph(2);
+					refreshHallOfFamePanels();
 					
 				}
 			}
