@@ -95,6 +95,13 @@ public class LoadBiomorph {
 		btnNext.setBounds(831, 369, 201, 52);
 		frame.getContentPane().add(btnNext);
 		
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BioController.startMainScreen();
+				frame.setVisible(false);
+			}
+		});
+		
 		JButton btnHome = new JButton("Home");
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -149,8 +156,15 @@ public class LoadBiomorph {
 							@Override
 							public void mouseClicked(MouseEvent e) {
 								panel.setBackground(Color.GREEN);
-								BioController.loadBiomorphsFromFile(loadedNames); //look here!!
+								BioController.loadBiomorphsFromFile(loadedNames); 
+								
+								panelLoaded.removeAll();
+								BioController.loadHallOfFameBiomorphs();
+								panelLoaded.add(BioController.displayParent());
+								panelLoaded.repaint();
+								panelLoaded.revalidate();
 							}
+							
 							@Override
 							public void mouseEntered(MouseEvent e) {	
 							}

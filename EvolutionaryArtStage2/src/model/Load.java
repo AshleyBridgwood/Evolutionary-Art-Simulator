@@ -21,7 +21,9 @@ public class Load extends FileHandler {
 	 * @return ArrayList<ArrayList<Line>> the loaded parent and children data
 	 */
 	public static ArrayList<ArrayList<Line>> loadAllBiomorphs(String fileName){
-		return FileHandler.loadBiomorphs("\\Saved Biomorphs\\" + fileName + ".biomorph");
+		return FileHandler.loadBiomorphs("\\Saved Biomorphs\\" + fileName);
+		//		return FileHandler.loadBiomorphs("\\Saved Biomorphs\\" + fileName + ".biomorph"); ..
+
 	}
 	
 	/**
