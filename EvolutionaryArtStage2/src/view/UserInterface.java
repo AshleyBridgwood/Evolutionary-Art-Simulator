@@ -768,8 +768,14 @@ public class UserInterface extends MouseAdapter{
 				new History().getFrame().setVisible(true);
 			}	
 		});
+		
+		clearHistory.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clearHistory();
+			}
+		});
 	}
-	
 	
 	private void refreshHallOfFamePanels(){
 		BioController.loadHallOfFameBiomorphs();
@@ -868,6 +874,22 @@ public class UserInterface extends MouseAdapter{
 		else if (response == JOptionPane.NO_OPTION) {
 			frame.dispose();
 		}
+		return false;
+	}
+	
+	private boolean clearHistory(){
+		int response = JOptionPane
+				.showConfirmDialog(frame,
+						"Are you sure you want to clear the history?\n You will not be able to undo your work previous to this point", "Clear History",
+						JOptionPane.YES_NO_OPTION,
+						JOptionPane.QUESTION_MESSAGE);
+			if (response == JOptionPane.YES_OPTION) {
+				BioController.clearHistoryData();
+				BioController.resetCache();
+				return true;
+			} else if (response == JOptionPane.NO_OPTION) {
+				frame.dispose();
+			}
 		return false;
 	}
 	

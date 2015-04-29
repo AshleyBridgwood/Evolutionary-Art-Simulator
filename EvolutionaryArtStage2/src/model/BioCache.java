@@ -61,6 +61,13 @@ public class BioCache {
 	}
 	
 	/**
+	 * Resets the stack
+	 */
+	public static void resetCache(){
+		top = -1;
+	}
+	
+	/**
 	 * Gets the number of items which are on the stack
 	 * @return int The numnber of items in the stack
 	 */

@@ -223,6 +223,13 @@ public class BioController {
 	}
 	
 	/**
+	 * Resets the Cache
+	 */
+	public static void resetCache(){
+		BioCache.resetCache();
+	}
+	
+	/**
 	 * Exports the log to file
 	 */
 	public void exportLogToFile(){
