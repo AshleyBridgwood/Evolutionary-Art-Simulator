@@ -134,24 +134,29 @@ public class LoadBiomorph {
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
        int numberOfLoops = loadedNames.size();
+       int id = 0;
 			for (int x = 0; x < 16; x++){
 			     final JPanel panel = new JPanel();
 					panel.setForeground(Color.RED);
 					panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 0, 0), null));
 					panel.setPreferredSize(new Dimension(487, 797));
 					if(x < numberOfLoops){
-						panel.add(new JLabel(loadedNames.get(x)));	
+						panel.add(new JLabel(loadedNames.get(x)));
+						BioController.setLoadId(x);
 						
 						//add mouse listener to each panel, so they can be loaded.
 						panel.addMouseListener(new MouseListener() {
 							@Override
-							public void mouseEntered(MouseEvent e) {
-								
+							public void mouseClicked(MouseEvent e) {
+								panel.setBackground(Color.GREEN);
+								BioController.loadBiomorphsFromFile(loadedNames); //look here!!
+							}
+							@Override
+							public void mouseEntered(MouseEvent e) {	
 							}
 
 							@Override
 							public void mouseExited(MouseEvent e) {
-								
 							}
 
 							@Override
@@ -160,13 +165,8 @@ public class LoadBiomorph {
 
 							@Override
 							public void mouseReleased(MouseEvent e) {
-							
 							}
-						
-							public void mouseClicked(MouseEvent e) {
-							panel.setBackground(Color.GREEN);
-						    BioController.loadBiomorphsFromFile(loadedNames.get(x)); //look here!!
-							}
+
 						});
 					}
 				 mainPanel.add(panel);
