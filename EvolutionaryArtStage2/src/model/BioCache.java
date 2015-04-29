@@ -68,6 +68,11 @@ public class BioCache {
 		return top;
 	}
 	
+	public static void setStack(Object[] data, int topValue){
+		stack = data;
+		top = topValue;
+	}
+	
 	/**
 	 * Gets the stack
 	 * @return Object[] the current stack
