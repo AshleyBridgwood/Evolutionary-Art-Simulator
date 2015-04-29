@@ -4,7 +4,6 @@
 
 package view;
 
-import java.awt.EventQueue;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
@@ -34,7 +33,6 @@ public class SaveBiomorph {
 
 	private JFrame frame;
 	private JTextField txtName;
-	private JTextField txtDate;
 
 	/**
 	 * Launch the application.
@@ -52,7 +50,7 @@ public class SaveBiomorph {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 685, 286);
+		frame.setBounds(100, 100, 685, 244);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
@@ -60,7 +58,7 @@ public class SaveBiomorph {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
-		panel.setBounds(0, 189, 679, 62);
+		panel.setBounds(0, 131, 679, 62);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -83,21 +81,10 @@ public class SaveBiomorph {
 		lblLevelOfAccess.setBounds(85, 89, 144, 16);
 		frame.getContentPane().add(lblLevelOfAccess);
 		
-		JLabel lblDate = new JLabel("Date");
-		lblDate.setFont(new Font("Calibri", Font.BOLD, 22));
-		lblDate.setBounds(85, 139, 144, 16);
-		frame.getContentPane().add(lblDate);
-		
 		txtName = new JTextField();
 		txtName.setBounds(274, 32, 286, 24);
 		frame.getContentPane().add(txtName);
 		txtName.setColumns(10);
-		
-		txtDate = new JTextField();
-		txtDate.setEnabled(false);
-		txtDate.setColumns(10);
-		txtDate.setBounds(274, 131, 286, 24);
-		frame.getContentPane().add(txtDate);
 		
 		JRadioButton publicAccess = new JRadioButton("Public");
 		publicAccess.setBounds(274, 86, 127, 25);
@@ -117,8 +104,12 @@ public class SaveBiomorph {
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BioController.saveCurrentBiomorphsToFile("Test");
-				        JOptionPane.showMessageDialog(null, "File Successfully Saved");
-				frame.setVisible(false);
+				JOptionPane.showMessageDialog(null, "File Successfully Saved");
+
+				String test = txtName.getText();
+				System.out.println(test);
+				BioController.saveCurrentBiomorphsToFile(txtName.getText());
+				frame.dispose();
 			}
 		});
 		
