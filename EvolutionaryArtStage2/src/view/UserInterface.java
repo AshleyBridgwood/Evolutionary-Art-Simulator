@@ -330,6 +330,8 @@ public class UserInterface extends MouseAdapter{
 				panelOutput.removeAll();
 				BioController.mutuateBiomorphOne();
 				refreshAllPanels();				
+
+
 				for (int i = 0; i < panels.length; i++){
 					panels[i].setBackground(SystemColor.menu);
 				}
@@ -788,9 +790,11 @@ public class UserInterface extends MouseAdapter{
 			onePanel.repaint();
 			i++;
 		}
-	
+		
+		for (int x = 0; x <= panelsSelected.size(); x++){
+		panelsSelected.remove(0);
+		}
 	}
-	
 	//getter so startscreen can access the main frame.
 	public JFrame getFrame() {
 			return this.frame;
