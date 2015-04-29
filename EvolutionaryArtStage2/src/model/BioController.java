@@ -89,7 +89,6 @@ public class BioController {
 		new BioGeneration(newBiomorph());
 		biomorphs = BioGeneration.getAllBiomorphs();
 		BioCache.push(biomorphs);
-		System.out.println("Number in cache: " + BioCache.getNumberOfItemsOnStack());
 	}
 	
 	/**

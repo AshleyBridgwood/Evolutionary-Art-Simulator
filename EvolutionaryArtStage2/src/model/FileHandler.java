@@ -22,6 +22,10 @@ public class FileHandler {
 	
 	public static String EvolutionaryArtFolderLocation = null; //Stores the main working folder
 	
+	/**
+	 * Clears a Biomorph from the hall of fame folder
+	 * @param name file name to be removed
+	 */
 	public static void clearHallOfFameBiomorph(String name){
 		File file = new File(EvolutionaryArtFolderLocation + "/Hall Of Fame/" + name + ".biomorph");
 		try{
@@ -30,6 +34,7 @@ public class FileHandler {
 			e.printStackTrace();
 		}
 	}
+	
 	/**
 	 * Loads the hall of fame biomorph from file
 	 * @param locationWithFolder Location within the working folder

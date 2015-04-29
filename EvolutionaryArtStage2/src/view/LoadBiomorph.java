@@ -11,6 +11,7 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFileChooser;
@@ -80,7 +81,7 @@ public class LoadBiomorph {
 		lblLoadYourBiomorph.setBounds(321, 13, 236, 35);
 		frame.getContentPane().add(lblLoadYourBiomorph);
 		
-		JButton btnNext = new JButton("Next");
+		JButton btnNext = new JButton("Load Biomorph"); 
 		btnNext.setBounds(831, 369, 201, 52);
 		frame.getContentPane().add(btnNext);
 		
@@ -128,13 +129,16 @@ public class LoadBiomorph {
 		mainPanel.setPreferredSize(new Dimension(487, 797));
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
-		
+       ArrayList<String> loadedNames = BioController.getSavedFileNames();
+       int numberOfLoops = loadedNames.size();
 			for (int x = 0; x < 16; x++){
 			     JPanel panel = new JPanel();
 					panel.setForeground(Color.RED);
 					panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 0, 0), null));
 					panel.setPreferredSize(new Dimension(487, 797));
-
+					if(x < numberOfLoops){
+						panel.add(new JLabel(loadedNames.get(x)));
+					}
 				 mainPanel.add(panel);
 
 			}
