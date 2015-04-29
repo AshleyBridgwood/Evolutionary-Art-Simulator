@@ -57,8 +57,12 @@ public class UserInterface extends MouseAdapter{
 	JPanel HOFPanel1 = new JPanel();
 	JPanel HOFPanel2 = new JPanel();
 	JPanel HOFPanel3 = new JPanel();
+	
 	static int colourChoice = -1;
 	int slot;
+	
+	int attempts = 0;
+	int hofSelected = 0;
 
 	private ArrayList<Integer> panelsSelected = new ArrayList<Integer>();
 	
@@ -140,69 +144,69 @@ public class UserInterface extends MouseAdapter{
 		JLabel lblBiomorph = new JLabel("Children");
 		lblBiomorph.setFont(new Font("Calibri", Font.BOLD, 22));
 		lblBiomorph.setBackground(Color.ORANGE);
-		lblBiomorph.setBounds(675, 199, 210, 35);
+		lblBiomorph.setBounds(680, 217, 210, 35);
 		frame.getContentPane().add(lblBiomorph);
 		
 		panelBiomorph1.setForeground(Color.BLACK);
 		panelBiomorph1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph1.setBackground(SystemColor.menu);
-		panelBiomorph1.setBounds(399, 244, 210, 133);
+		panelBiomorph1.setBounds(405, 252, 210, 133);
 		panelBiomorph1.add(BioController.displayChildren(1));
 		frame.getContentPane().add(panelBiomorph1);
 		
 		panelBiomorph2.setForeground(Color.BLACK);
 		panelBiomorph2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph2.setBackground(SystemColor.menu);
-		panelBiomorph2.setBounds(618, 244, 210, 133);
+		panelBiomorph2.setBounds(624, 252, 210, 133);
 		panelBiomorph2.add(BioController.displayChildren(2));
 		frame.getContentPane().add(panelBiomorph2);
 		
 		panelBiomorph3.setForeground(Color.BLACK);
 		panelBiomorph3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph3.setBackground(SystemColor.menu);
-		panelBiomorph3.setBounds(837, 244, 210, 133);
+		panelBiomorph3.setBounds(843, 252, 210, 133);
 		panelBiomorph3.add(BioController.displayChildren(3));
 		frame.getContentPane().add(panelBiomorph3);
 		
 		panelBiomorph4.setForeground(Color.BLACK);
 		panelBiomorph4.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph4.setBackground(SystemColor.menu);
-		panelBiomorph4.setBounds(399, 379, 210, 133);
+		panelBiomorph4.setBounds(405, 387, 210, 133);
 		panelBiomorph4.add(BioController.displayChildren(4));
 		frame.getContentPane().add(panelBiomorph4);
 		
 		panelBiomorph5.setForeground(Color.BLACK);
 		panelBiomorph5.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph5.setBackground(SystemColor.menu);
-		panelBiomorph5.setBounds(618, 379, 210, 133);
+		panelBiomorph5.setBounds(624, 387, 210, 133);
 		panelBiomorph5.add(BioController.displayChildren(5));
 		frame.getContentPane().add(panelBiomorph5);
 		
 		panelBiomorph6.setForeground(Color.BLACK);
 		panelBiomorph6.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph6.setBackground(SystemColor.menu);
-		panelBiomorph6.setBounds(837, 379, 210, 133);
+		panelBiomorph6.setBounds(843, 387, 210, 133);
 		panelBiomorph6.add(BioController.displayChildren(6));
 		frame.getContentPane().add(panelBiomorph6);
 		
 		panelBiomorph7.setForeground(Color.BLACK);
 		panelBiomorph7.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph7.setBackground(SystemColor.menu);
-		panelBiomorph7.setBounds(399, 516, 210, 133);
+		panelBiomorph7.setBounds(405, 524, 210, 133);
 		panelBiomorph7.add(BioController.displayChildren(7));
 		frame.getContentPane().add(panelBiomorph7);
 		
 		panelBiomorph8.setForeground(Color.BLACK);
 		panelBiomorph8.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph8.setBackground(SystemColor.menu);
-		panelBiomorph8.setBounds(618, 516, 210, 133);
+		panelBiomorph8.setBounds(624, 524, 210, 133);
 		panelBiomorph8.add(BioController.displayChildren(8));
 		frame.getContentPane().add(panelBiomorph8);
 		
 		panelBiomorph9.setForeground(Color.BLACK);
 		panelBiomorph9.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph9.setBackground(SystemColor.menu);
-		panelBiomorph9.setBounds(837, 516, 210, 133);
+		panelBiomorph9.setBounds(843, 524, 210, 133);
 		panelBiomorph9.add(BioController.displayChildren(9));
 		frame.getContentPane().add(panelBiomorph9);
 		
@@ -260,44 +264,49 @@ public class UserInterface extends MouseAdapter{
 		panelLogo.add(logoImage);
 		frame.getContentPane().add(panelLogo);
 		JButton menuButton = new JButton("Home - Temp Next");
-		menuButton.setBounds(202, 475, 149, 43);
+		menuButton.setBounds(208, 483, 149, 43);
 		frame.getContentPane().add(menuButton);
 		
 		JButton btnHOF = new JButton("Add to hall of fame");
-		btnHOF.setBounds(41, 523, 154, 43);
+		btnHOF.setBounds(47, 531, 154, 43);
 		frame.getContentPane().add(btnHOF);
 		
 		JLabel lblBiomorphParent = new JLabel("Parent");
 		lblBiomorphParent.setFont(new Font("Calibri", Font.BOLD, 22));
 		lblBiomorphParent.setBackground(Color.ORANGE);
-		lblBiomorphParent.setBounds(164, 199, 188, 35);
+		lblBiomorphParent.setBounds(169, 217, 188, 35);
 		frame.getContentPane().add(lblBiomorphParent);
 		
 		panelOutput.setForeground(Color.BLACK);
 		panelOutput.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelOutput.setBackground(SystemColor.menu);
-		panelOutput.setBounds(42, 247, 311, 175);
+		panelOutput.setBounds(48, 255, 311, 175);
 		panelOutput.add(BioController.displayParent());
 		frame.getContentPane().add(panelOutput);
 		
 		JButton undoButton = new JButton("Undo");
-		undoButton.setBounds(41, 428, 154, 43);
+		undoButton.setBounds(47, 436, 154, 43);
 		frame.getContentPane().add(undoButton);
 		
-		btnMutate.setBounds(203, 428, 149, 43);
+		btnMutate.setBounds(209, 436, 149, 43);
 		frame.getContentPane().add(btnMutate);
 		
 		JButton btnSave = new JButton("Save!");
-		btnSave.setBounds(41, 475, 154, 43);
+		btnSave.setBounds(47, 483, 154, 43);
 		frame.getContentPane().add(btnSave);
 		
 		JButton btnExport = new JButton("Export!");
-		btnExport.setBounds(203, 523, 149, 43);
+		btnExport.setBounds(209, 531, 149, 43);
 		frame.getContentPane().add(btnExport);
 		
 		JButton btnHome = new JButton("Home");
 		btnHome.setBounds(0, 0, 130, 43);
 		frame.getContentPane().add(btnHome);
+		
+		final JButton btnRemove = new JButton("Remove");
+		btnRemove.setBounds(393, 186, 210, 35);
+		btnRemove.setVisible(false);
+		frame.getContentPane().add(btnRemove);
 		
 		
 		//frame.pack();
@@ -381,6 +390,126 @@ public class UserInterface extends MouseAdapter{
 
 		
 		///////////////////////////////////////////   Mouse Listener so panels can be clicked!\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+		
+		HOFPanel1.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				HOFPanel1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.ORANGE, null));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				HOFPanel1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.BLACK, null));
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			
+			}
+		
+		
+			public void mouseClicked(MouseEvent e) {
+			
+				if (hofSelected != 1){
+					for (int i = 0; i < hofPanels.length; i++){
+						hofPanels[i].setBackground(SystemColor.menu);
+						HOFPanel1.setBackground(Color.GREEN);
+						hofSelected = 1;
+						btnRemove.setBounds(393, 181, 210, 35);
+						btnRemove.setVisible(true);
+					}
+					HofInstructions();
+				} else {
+					hofSelected = 0;
+					HOFPanel1.setBackground(SystemColor.menu);
+					btnRemove.setVisible(false);
+
+				}
+			}
+		});
+		
+		HOFPanel2.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				HOFPanel2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.ORANGE, null));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				HOFPanel2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.BLACK, null));
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			
+			}
+		
+		
+			public void mouseClicked(MouseEvent e) {
+				
+				if (hofSelected != 2){
+					for (int i = 0; i < hofPanels.length; i++){
+						hofPanels[i].setBackground(SystemColor.menu);
+						HOFPanel2.setBackground(Color.GREEN);
+						btnRemove.setBounds(615, 181, 210, 35);
+						btnRemove.setVisible(true);
+						hofSelected = 2;
+					}
+					HofInstructions();
+				} else {
+					hofSelected = 0;
+					HOFPanel2.setBackground(SystemColor.menu);
+					btnRemove.setVisible(false);
+				}	
+			}
+		});
+		
+		HOFPanel3.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				HOFPanel3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.ORANGE, null));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				HOFPanel3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.BLACK, null));
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			
+			}
+		
+			public void mouseClicked(MouseEvent e) {
+				if (hofSelected != 3){
+					for (int i = 0; i < hofPanels.length; i++){
+						hofPanels[i].setBackground(SystemColor.menu);
+						HOFPanel3.setBackground(Color.GREEN);
+						hofSelected = 3;
+						btnRemove.setBounds(837, 181, 210, 35);
+						btnRemove.setVisible(true);
+					}
+					HofInstructions();
+				} else {
+					hofSelected = 0;
+					HOFPanel3.setBackground(SystemColor.menu);
+					btnRemove.setVisible(false);
+				}
+			}
+		});
+		
 		panelBiomorph1.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -772,10 +901,11 @@ public class UserInterface extends MouseAdapter{
 		clearHistory.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				clearHistory();
+			clearHistory();
 			}
-		});
+			});
 	}
+	
 	
 	private void refreshHallOfFamePanels(){
 		BioController.loadHallOfFameBiomorphs();
@@ -875,6 +1005,16 @@ public class UserInterface extends MouseAdapter{
 			frame.dispose();
 		}
 		return false;
+	}
+	
+	public void HofInstructions(){
+		if (attempts <3){
+			JOptionPane.showMessageDialog(null, "<html><body>Click on the parent box to continue evolving this artwork. <br>If you"
+					+ " want to remove this artwork from the hall of fame, click on the remove button below!</body></html>");
+			attempts++;
+		} else {
+			
+		}
 	}
 	
 	private boolean clearHistory(){
