@@ -66,6 +66,7 @@ public class BioController {
 	 */
 	public static void saveCurrentParentToHallOfFame(){
 		Save.saveBiomorphToHallOfFame("b" + getCurrentHallOfFameNumber(), biomorphs.get(0));
+		hallOfFameBiomorphs = new ArrayList<ArrayList<Line>>();
 		loadHallOfFameBiomorphs();
 	}
 	
