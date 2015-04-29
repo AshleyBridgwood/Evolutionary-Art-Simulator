@@ -92,9 +92,10 @@ public class History {
 		//mainPanel.setPreferredSize(new Dimension(987, 917));
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         BioController.getHistoryData();
-			
+		System.out.println("Number of items to display: " + BioController.getNumberOfItemsInHistory());	
         	int id = 0;
-			for (int x = 0; x < BioController.getNumberOfItemsInHistory(); x++){
+        	int numberOfRows = BioController.getNumberOfItemsInHistory();
+			for (int x = 0; x < numberOfRows; x++){
 			     JPanel panel = new JPanel();
 			     panel.setForeground(Color.RED);
 			     panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 0, 0), null));

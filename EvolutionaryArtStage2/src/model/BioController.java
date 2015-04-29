@@ -114,11 +114,11 @@ public class BioController {
 	public static void getHistoryData(){
 		history = new ArrayList<ArrayList<Line>>();
 		BioCache.getStack();
-		for(int i = 0; i < getNumberOfItemsInHistory(); i++){
-			ArrayList<ArrayList<Line>> newLine = (ArrayList<ArrayList<Line>>) BioCache.peek();
-			BioCache.pop();
+		for(int i = 0; i < BioCache.getNumberOfItemsOnStack(); i++){
+			ArrayList<ArrayList<Line>> newLine = (ArrayList<ArrayList<Line>>) BioCache.pop();
 			history.add(newLine.get(0));
 		}
+		System.out.println("History: " + history.size());
 	}
 	
 	public static BioDraw displayHistoryBiomorph(int number){
