@@ -17,6 +17,7 @@ public class BioController {
 	private static ArrayList<ArrayList<Line>> biomorphs; //Stores the parent and child currently displaying on the UI
 	private static ArrayList<ArrayList<Line>> hallOfFameBiomorphs; //Stores the biomorphs for the hall of fame
 	private static int currentlySelectedToMutate; //Stores the ID of the next child to mutate
+	private static ArrayList<ArrayList<Line>> history;
 	
 	public BioController() {
 		//Initalise the starting fields
@@ -87,6 +88,7 @@ public class BioController {
 		new BioGeneration(newBiomorph());
 		biomorphs = BioGeneration.getAllBiomorphs();
 		BioCache.push(biomorphs);
+		System.out.println("Number in cache: " + BioCache.getNumberOfItemsOnStack());
 	}
 	
 	/**
@@ -105,13 +107,22 @@ public class BioController {
 		return FileHandler.getNumberOfSavedBiomorphs();
 	}
 	
-	public static ArrayList<Line> getHistoryData(int number){
-		
-		return null;
+	public static int getNumberOfItemsInHistory(){
+		return BioCache.getNumberOfItemsOnStack();
+	}
+	
+	public static void getHistoryData(){
+		history = new ArrayList<ArrayList<Line>>();
+		BioCache.getStack();
+		for(int i = 0; i < getNumberOfItemsInHistory(); i++){
+			ArrayList<ArrayList<Line>> newLine = (ArrayList<ArrayList<Line>>) BioCache.peek();
+			BioCache.pop();
+			history.add(newLine.get(0));
+		}
 	}
 	
 	public static BioDraw displayHistoryBiomorph(int number){
-		return new BioDraw(getHistoryData(number), true);
+		return new BioDraw(history.get(number), true);
 	}
 	
 	/**

@@ -24,6 +24,8 @@ import java.awt.Font;
 
 import javax.swing.JScrollPane;
 
+import model.BioController;
+
 
 public class History {
 
@@ -89,9 +91,10 @@ public class History {
 		mainPanel.setBackground(SystemColor.menu);
 		//mainPanel.setPreferredSize(new Dimension(987, 917));
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-
-		
-			for (int x = 0; x < 16; x++){
+        BioController.getHistoryData();
+			
+        	int id = 0;
+			for (int x = 0; x < BioController.getNumberOfItemsInHistory(); x++){
 			     JPanel panel = new JPanel();
 			     panel.setForeground(Color.RED);
 			     panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 0, 0), null));
@@ -99,8 +102,12 @@ public class History {
 			     panel.setLayout(new GridLayout(1,5));
 				for (int j = 0; j < 5; j++){
 					JPanel panels = new JPanel();
-				     panels.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 255, 0), null));
-				     panel.add(panels);
+					if(id < BioController.getNumberOfItemsInHistory()){
+						panels.add(BioController.displayHistoryBiomorph(id));
+					}
+				    panels.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 255, 0), null));
+				    panel.add(panels);
+				    id++;
 				}
 				mainPanel.add(panel);
 			}

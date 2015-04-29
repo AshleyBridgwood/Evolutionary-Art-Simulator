@@ -18,14 +18,15 @@ import model.Tree.TreeNode;
 
 public class BioGeneration {
 	
-	private Gene g0;
-	private Gene g1;
-	private Gene g2;
+	private Gene g0; //Stores the value for the first gene
+	private Gene g1; //Stores the value for the second gene
+	private Gene g2; //Stores the value of the third gene
 
-	private static ArrayList<ArrayList<Line>> finishedBiomorphs;
+	private static ArrayList<ArrayList<Line>> finishedBiomorphs; //Stores the finished biomorphs which are created - used for the
+																 // when creating a whole new parent and related children
 	
 	public BioGeneration(Biomorph b){
-		//Take values out of the Biomorph values passed in
+		//Initialise the fields
 		g0 = b.getGenes().get(0);
 		g1 = b.getGenes().get(1);
 		g2 = b.getGenes().get(2);
@@ -41,6 +42,11 @@ public class BioGeneration {
 		}
 	}
 	
+	/**
+	 * Generates children from a given parent
+	 * @param parent children will be based upon this parent
+	 * @return ArrayList<ArrayList<Line>> parent and child data to be printed
+	 */
 	public static ArrayList<ArrayList<Line>> getChildrenFromParent(ArrayList<Line> parent){
 		ArrayList<ArrayList<Line>> data = new ArrayList<ArrayList<Line>>();
 		data.add(parent);
@@ -48,101 +54,94 @@ public class BioGeneration {
 		for(int i = 0; i < 9; i++){
 			data.add(createChild(parent));
 		}
-		
 		return data;
 	}
 	
+	/**
+	 * Gets all the biomorphs which have been generated
+	 * @return ArrayList<ArrayList<Line>> the finished parent and children
+	 */
 	public static ArrayList<ArrayList<Line>> getAllBiomorphs(){
 		return finishedBiomorphs;
 	}
 	
+	/**
+	 * Generates a parent Biomorph
+	 * @return ArrayList<Line> the generated parent
+	 */
 	public ArrayList<Line> makeParentBiomorph(){
-		int branching = g0.getValue();
 		int currentNumberOfLegs = 0;
 		int numberOfLines = 20;
 		int nodeId = 1;
-		Random rand = new Random();
-		//Creating the root node (TOP NODE) - Always needs to be created
-		Point data = new Point(nodeId,0,0);
+		Random rand = new Random(); //Creates a random number
+		
+		Point data = new Point(nodeId,0,0); //Creating the root node (TOP NODE) - Always needs to be created
 		nodeId++;
-		TreeNode<Point> root = new TreeNode<Point>(data);
-		Tree biomorphTree = new Tree(root);
-		root.setParent(root);
+		TreeNode<Point> root = new TreeNode<Point>(data); //Sets the root node
+		Tree biomorphTree = new Tree(root); //Creates a new tree with the newly created root node
+		root.setParent(root); //Sets the parent of the root, to itself
 		
 		while(currentNumberOfLegs < numberOfLines){
 			TreeNode<Point> parentNode = null;
-			int randomNum = rand.nextInt((nodeId - 1) + 1) + 1;
+			int randomNum = rand.nextInt((nodeId - 1) + 1) + 1; //Generates a random number for selecting a random node
 			//If the nodeID is the same as the random number, if errors, so code to fix that
 			if(randomNum == nodeId){
 				randomNum--;
 			}
 				parentNode = biomorphTree.findTreeNode(root, randomNum);
-			//System.out.println("Parent node ID found: " + parentNode.getElement().getID());
-			int x = rand.nextInt((125 - (g1.getValue() * 2 )) + 1) + (g1.getValue() * 2);
-			int y = rand.nextInt((125 - (g2.getValue() * 2 )) + 1) + (g2.getValue() * 2);
 			
-			TreeNode<Point> newNode = new TreeNode<Point>(new Point(nodeId, x, y));
-			parentNode.addChild(newNode);
-			nodeId++;
+			int x = rand.nextInt((125 - (g1.getValue() * 2 )) + 1) + (g1.getValue() * 2); //Generates the X value
+			int y = rand.nextInt((125 - (g2.getValue() * 2 )) + 1) + (g2.getValue() * 2); //Generate the Y value
+			
+			TreeNode<Point> newNode = new TreeNode<Point>(new Point(nodeId, x, y)); //Creates a new TreeNode
+			parentNode.addChild(newNode); //Adds the new TreeNode to the randomly selected parent TreeNode
+			nodeId++; //Increment the NodeId so that the newly generates node can become a parent in the next cycle
 
-			currentNumberOfLegs++;
+			currentNumberOfLegs++; //Increment the number of legs 
 		}	
-			return generateLineInformation(biomorphTree.getPreOrderTraversal());
+			return generateLineInformation(biomorphTree.getPreOrderTraversal()); //Returns the tree to the line creator method
 	}
 	
+	/**
+	 * Creates a single child from a given parent
+	 * @param parent child will be a slightly different from the parent
+	 * @return ArrayList<Line> the newly created child
+	 */
 	public static ArrayList<Line> createChild(ArrayList<Line> parent){
-		ArrayList<Line> parentTree = cloneData(parent);
-		// for the amount of children 
-		//for(int i = 0; i<9; i++){
-
-			//make a copy of the tree
-			ArrayList<Line> tempTree = cloneData(parentTree);
+		ArrayList<Line> parentTree = cloneData(parent); //Makes a copy of the parent tree
+	
+			ArrayList<Line> tempTree = cloneData(parentTree); //Make another copy of the tree, used for editing
 			//iterate through tree			
-			for(int j = 0; j < tempTree.size(); j++)
-			{
-				//chance it will mutate
-				//when this is working need to change it so probabilities change according to slider.
+			for(int j = 0; j < tempTree.size(); j++){
 				Random rand = new Random();
 				int chance = 100;
 				int num = rand.nextInt(chance);
 				int changeRanVal = 35;
 				//if it does mutate change x or y by certain amount				
-				if(num <= 49)
-				{
+				if(num <= 49){
 					//which point to change:
 					int pointDecider = rand.nextInt(99)+1;
 					
-					if(pointDecider == 0 && pointDecider <= 25)
-					{
+					if(pointDecider == 0 && pointDecider <= 25){
 						// change x1
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
 						int changeRan = newRan.nextInt(changeRanVal); // change 100 to what has been selected on slider.
 						tempTree.get(j).setX1(tempTree.get(j).getX1() + changeRan); //TODO: change "+2" to amount on slider.
 						
-					} 
-					else if(pointDecider > 25 && pointDecider <= 50)
-					{
+					} else if(pointDecider > 25 && pointDecider <= 50){
 						// change y1
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
 						int changeRan = newRan.nextInt(changeRanVal); // change 100 to what has been selected on slider.
-						
-						//System.out.println("Hit mid mutation point");
-						//System.out.println(tempTree.get(j).toString());
 						tempTree.get(j).setY1(tempTree.get(j).getY1() + changeRan);
-						//System.out.println(tempTree.get(j).toString());
-					} 
-					else if(pointDecider > 50  && pointDecider <= 75)
-					{
+					} else if(pointDecider > 50  && pointDecider <= 75){
 						// change x2
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
 						int changeRan = newRan.nextInt(changeRanVal); // change 100 to what has been selected on slider.
 						tempTree.get(j).setX2(tempTree.get(j).getX2() + changeRan); //TODO: change "+2" to amount on slider.
-					} 
-					else 
-					{
+					} else {
 						//change y2
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
@@ -150,11 +149,16 @@ public class BioGeneration {
 						tempTree.get(j).setY2(tempTree.get(j).getY2() +changeRan); //TODO: change "+2" to amount on slider.
 					}
 				}
-				
 			}
-			return tempTree;
+		return tempTree;
 	}
 	
+	/**
+	 * Combines two Biomorphs together
+	 * @param a first biomorph which will be combined together with the other
+	 * @param b second biomorph which will be combined together with the other
+	 * @return ArrayList<Line> the newly created combined biomorph
+	 */
 	public ArrayList<Line> combineBiomorphs(ArrayList<Line> a, ArrayList<Line> b){
 		ArrayList<Line> newBiomorph = new ArrayList<Line>();
 		if(a.size() != b.size()){
@@ -172,6 +176,11 @@ public class BioGeneration {
 		return newBiomorph;
 	}
 	
+	/**
+	 * Clones a Biomorph data
+	 * @param data Biomorph to be cloned
+	 * @return ArrayList<Line> newly cloned data
+	 */
 	private static ArrayList<Line> cloneData(ArrayList<Line> data){
 		ArrayList<Line> newList = new ArrayList<Line>(data.size());
 		
@@ -181,11 +190,15 @@ public class BioGeneration {
 			} catch (CloneNotSupportedException e) {
 				e.printStackTrace();
 			}
-		}
-		
+		}	
 		return newList;
 	} 
 	
+	/**
+	 * Generates the line information from the raw Biomorph data
+	 * @param data raw Biomorph which need be converted into line data
+	 * @return ArrayList<Line> the newly generated line information generated from the raw tree data
+	 */
 	public ArrayList<Line> generateLineInformation(ArrayList<TreeNode<Point>> data){
 		ArrayList<Line> lines = new ArrayList<Line>();
 		
