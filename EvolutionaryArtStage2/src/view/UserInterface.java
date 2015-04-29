@@ -59,6 +59,8 @@ public class UserInterface extends MouseAdapter{
 	JPanel HOFPanel3 = new JPanel();
 	
 	static int colourChoice = -1;
+	static int lineThicknessChoice = 1;
+	
 	int slot;
 	
 	int attempts = 0;
@@ -777,6 +779,7 @@ public class UserInterface extends MouseAdapter{
 		JMenu file = new JMenu("File");
 		JMenu hallOfFame = new JMenu("Hall Of Fame");
 		JMenu colours = new JMenu("Colour Scheme");
+		JMenu lineThickness = new JMenu("Line Thickness");
 		JMenu history = new JMenu("History");
          
 		//Create menu items
@@ -792,6 +795,10 @@ public class UserInterface extends MouseAdapter{
 		JMenuItem green = new JMenuItem("Green");
 		JMenuItem blue = new JMenuItem("Blue");
 		JMenuItem greyScale = new JMenuItem("Grey Scale");
+		
+		JMenuItem thin = new JMenuItem("Thin");
+		JMenuItem medium = new JMenuItem("Medium");
+		JMenuItem thick = new JMenuItem("Thick");
 		
 		JMenuItem viewHistory = new JMenuItem("View History");
 		JMenuItem clearHistory = new JMenuItem("Clear History");
@@ -810,6 +817,10 @@ public class UserInterface extends MouseAdapter{
 		colours.add(green);
 		colours.add(greyScale);
 		
+		lineThickness.add(thin);
+		lineThickness.add(medium);
+		lineThickness.add(thick);
+		
 		history.add(viewHistory);
 		history.add(clearHistory);
             
@@ -817,6 +828,7 @@ public class UserInterface extends MouseAdapter{
 		menuBar.add(file);
 		menuBar.add(hallOfFame);
 		menuBar.add(colours);
+		menuBar.add(lineThickness);
 		menuBar.add(history);
 		frame.setJMenuBar(menuBar);
 
@@ -909,6 +921,33 @@ public class UserInterface extends MouseAdapter{
 			}	
 		});
 		
+		thin.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				lineThicknessChoice = 1;
+				panelOutput.removeAll();
+				refreshAllPanels();
+			}	
+		});
+		
+		medium.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				lineThicknessChoice = 2;
+				panelOutput.removeAll();
+				refreshAllPanels();
+			}	
+		});
+		
+		thick.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				lineThicknessChoice = 3;
+				panelOutput.removeAll();
+				refreshAllPanels();
+			}	
+		});
+		
 		viewHistory.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -984,6 +1023,11 @@ public class UserInterface extends MouseAdapter{
 	public static int getColourChoice()
 	{
 		return colourChoice;
+	}
+	
+	public static int getLineThickness()
+	{
+		return lineThicknessChoice;
 	}
 	
 	public void panelClicked(int panel){

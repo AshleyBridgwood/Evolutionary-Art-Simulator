@@ -8,9 +8,11 @@
 
 package model;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -55,6 +57,9 @@ public class BioDraw extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+	
+		
 		
 		for(int i = 0; i < data.size(); i++){ //Loops through the data to be printed
 			if(UserInterface.getColourChoice() < 0){ //Setting the colour
@@ -63,15 +68,18 @@ public class BioDraw extends JPanel {
 				Colour colour = new Colour();
 				Color toUse = colour.getRandomColourFromScheme(UserInterface.getColourChoice());
 				g.setColor(toUse);
+				
 			}
+			
+			g2.setStroke(new BasicStroke(UserInterface.getLineThickness()));
 			
 			//Drawing of the parent and child with scaling applied
 			if(isChild){
-				g.drawLine((int) (data.get(i).getX1() * CHILD_SCALING), (int) (data.get(i).getY1()* CHILD_SCALING), (int) (data.get(i).getX2()* CHILD_SCALING), (int) (data.get(i).getY2()* CHILD_SCALING));
-				g.drawLine((int) (canvasSize - data.get(i).getX1()* CHILD_SCALING),(int) (data.get(i).getY1()* CHILD_SCALING),(int) (canvasSize-data.get(i).getX2()* CHILD_SCALING),(int) (data.get(i).getY2()* CHILD_SCALING));
+				g2.drawLine((int) (data.get(i).getX1() * CHILD_SCALING), (int) (data.get(i).getY1()* CHILD_SCALING), (int) (data.get(i).getX2()* CHILD_SCALING), (int) (data.get(i).getY2()* CHILD_SCALING));
+				g2.drawLine((int) (canvasSize - data.get(i).getX1()* CHILD_SCALING),(int) (data.get(i).getY1()* CHILD_SCALING),(int) (canvasSize-data.get(i).getX2()* CHILD_SCALING),(int) (data.get(i).getY2()* CHILD_SCALING));
 			} else {
-				g.drawLine((int) (data.get(i).getX1() * PARENT_SCALING), (int) (data.get(i).getY1()* PARENT_SCALING), (int) (data.get(i).getX2()* PARENT_SCALING), (int) (data.get(i).getY2()* PARENT_SCALING));
-				g.drawLine((int) (canvasSize - data.get(i).getX1()* PARENT_SCALING),(int) (data.get(i).getY1()* PARENT_SCALING),(int) (canvasSize-data.get(i).getX2()* PARENT_SCALING),(int) (data.get(i).getY2()* PARENT_SCALING));
+				g2.drawLine((int) (data.get(i).getX1() * PARENT_SCALING), (int) (data.get(i).getY1()* PARENT_SCALING), (int) (data.get(i).getX2()* PARENT_SCALING), (int) (data.get(i).getY2()* PARENT_SCALING));
+				g2.drawLine((int) (canvasSize - data.get(i).getX1()* PARENT_SCALING),(int) (data.get(i).getY1()* PARENT_SCALING),(int) (canvasSize-data.get(i).getX2()* PARENT_SCALING),(int) (data.get(i).getY2()* PARENT_SCALING));
 			}
 		}
 	}
