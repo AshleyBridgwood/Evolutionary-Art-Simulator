@@ -18,7 +18,6 @@ public class BioController {
 	private static ArrayList<ArrayList<Line>> hallOfFameBiomorphs; //Stores the biomorphs for the hall of fame
 	private static int currentlySelectedToMutate; //Stores the ID of the next child to mutate
 	private static ArrayList<ArrayList<ArrayList<Line>>> history;
-	private static int loadId; //Stores the ID of the biomorph to be loaded
 	
 	public BioController() {
 		//Initalise the starting fields
@@ -26,10 +25,9 @@ public class BioController {
 		biomorphs = new ArrayList<ArrayList<Line>>();
 		history = new ArrayList<ArrayList<ArrayList<Line>>>();
 		currentlySelectedToMutate = 0;
-		loadId = 0;
 		
 		new BioCache(); //Start the cache for the undo feature
-
+		
 		Log.add("Bio Controller Initiated");
 		
 		FileHandler.checkForMainWorkingFolder(); //Checks if Default folder has been generated. If not, create it
@@ -61,8 +59,7 @@ public class BioController {
 	 * Loads the a specified parent and children from file
 	 * @param fileName Name of the file in need of loading
 	 */
-	public static void loadBiomorphsFromFile(ArrayList<String> data){
-		String fileName = data.get(loadId);
+	public static void loadBiomorphsFromFile(String fileName){
 		biomorphs = Load.loadAllBiomorphs(fileName);
 	}
 	
@@ -239,9 +236,6 @@ public class BioController {
 		return FileHandler.getSavedBiomorphsNames();
 	}
 	
-	public static void setLoadId(int data){
-		loadId = data;
-	}
 	/**
 	 * Resets the Cache
 	 */
