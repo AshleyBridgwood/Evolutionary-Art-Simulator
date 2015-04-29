@@ -1001,7 +1001,9 @@ public class UserInterface extends MouseAdapter{
 		}
 		
 		for (int x = 0; x <= panelsSelected.size(); x++){
-		panelsSelected.remove(0);
+			if (!panelsSelected.isEmpty()){
+				panelsSelected.remove(0);
+			}
 		}
 	}
 	//getter so startscreen can access the main frame.
