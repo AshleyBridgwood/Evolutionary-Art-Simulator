@@ -620,6 +620,7 @@ public class UserInterface extends MouseAdapter{
 		JMenu file = new JMenu("File");
 		JMenu hallOfFame = new JMenu("Hall Of Fame");
 		JMenu colours = new JMenu("Colour Scheme");
+		JMenu history = new JMenu("History");
          
 		//Create menu items
 		JMenuItem newBiomorph = new JMenuItem("New Biomorph");
@@ -634,6 +635,9 @@ public class UserInterface extends MouseAdapter{
 		JMenuItem green = new JMenuItem("Green");
 		JMenuItem blue = new JMenuItem("Blue");
 		JMenuItem greyScale = new JMenuItem("Grey Scale");
+		
+		JMenuItem viewHistory = new JMenuItem("View History");
+		JMenuItem clearHistory = new JMenuItem("Clear History");
             
 		//Add items to the menus
 		file.add(newBiomorph);
@@ -648,11 +652,15 @@ public class UserInterface extends MouseAdapter{
 		colours.add(blue);
 		colours.add(green);
 		colours.add(greyScale);
+		
+		history.add(viewHistory);
+		history.add(clearHistory);
             
 		//Add menus
 		menuBar.add(file);
 		menuBar.add(hallOfFame);
 		menuBar.add(colours);
+		menuBar.add(history);
 		frame.setJMenuBar(menuBar);
 
 		
@@ -738,6 +746,13 @@ public class UserInterface extends MouseAdapter{
 				colourChoice = 3;
 				panelOutput.removeAll();
 				refreshAllPanels();
+			}	
+		});
+		
+		viewHistory.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new History().getFrame().setVisible(true);
 			}	
 		});
 	}
