@@ -17,7 +17,6 @@ public class BioController {
 	private static ArrayList<ArrayList<Line>> biomorphs; //Stores the parent and child currently displaying on the UI
 	private static ArrayList<ArrayList<Line>> hallOfFameBiomorphs; //Stores the biomorphs for the hall of fame
 	private static int currentlySelectedToMutate; //Stores the ID of the next child to mutate
-	private static int numberInHallOfFame; //Stores the number of biomorphs in the hall of fame
 	
 	public BioController() {
 		//Initalise the starting fields
@@ -66,17 +65,17 @@ public class BioController {
 	 * Saves the current parent for use in the hall of fame
 	 */
 	public static void saveCurrentParentToHallOfFame(){
-		Save.saveBiomorphToHallOfFame("b" + hallOfFameBiomorphs.size(), biomorphs.get(0));
-		hallOfFameBiomorphs.add(biomorphs.get(0));
+		Save.saveBiomorphToHallOfFame("b" + getCurrentHallOfFameNumber(), biomorphs.get(0));
+		loadHallOfFameBiomorphs();
 	}
 	
 	/**
 	 * Loads in all of the files inside of the hall of fame folder
 	 */
 	public static void loadHallOfFameBiomorphs(){
-		for(int i = 0; i < getCurrentHallOfFameNumber(); i++){
+		int numberToLoop = getCurrentHallOfFameNumber();
+		for(int i = 0; i < numberToLoop; i++){
 			hallOfFameBiomorphs.add(Load.loadHallOfFameBiomorph("b" + i));
-			numberInHallOfFame++;
 		}
 	}
 	
@@ -94,8 +93,7 @@ public class BioController {
 	 * @return Number of biomorphs saved for use in the hall of fame
 	 */
 	public static int getCurrentHallOfFameNumber(){
-		numberInHallOfFame = FileHandler.getNumberOfHallOfFameBiomorphs();
-		return numberInHallOfFame;
+		return FileHandler.getNumberOfHallOfFameBiomorphs();
 	}
 	
 	/**
@@ -143,9 +141,14 @@ public class BioController {
 		BioCache.push(biomorphs);
 	}
 	
+	/**
+	 * Clears the hall of fame biomorphs from file
+	 */
 	public static void clearHallOfFame(){
-		for(int i = 0; i < FileHandler.getNumberOfHallOfFameBiomorphs(); i++){
+		int numberToLoop = getCurrentHallOfFameNumber();
+		for(int i = 0; i < numberToLoop; i++){
 			FileHandler.clearHallOfFameBiomorphs("b" + i);
+			hallOfFameBiomorphs = null;
 		}
 	}
 	

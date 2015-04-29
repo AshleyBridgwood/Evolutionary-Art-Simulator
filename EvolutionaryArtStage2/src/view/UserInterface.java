@@ -307,11 +307,11 @@ public class UserInterface extends MouseAdapter{
 		//Action listener for the hall of fame button.
 		btnHOF.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				if(FileHandler.getNumberOfHallOfFameBiomorphs() <= 2){
+				if(BioController.getCurrentHallOfFameNumber() < 2){
 					BioController.saveCurrentParentToHallOfFame();
+					panelOutput.removeAll();
+					refreshHallOfFamePanels();
 				}
-				panelOutput.removeAll();
-				refreshHallOfFamePanels();
 			}
 		});
 		
@@ -744,14 +744,16 @@ public class UserInterface extends MouseAdapter{
 	
 	
 	private void refreshHallOfFamePanels(){
+		BioController.loadHallOfFameBiomorphs();
 		panelOutput.add(BioController.displayParent());
 		panelOutput.repaint();
 		panelOutput.revalidate();
 		int i = 0;
+		int numberToLoop = BioController.getCurrentHallOfFameNumber();
 		for(JPanel onePanel : hofPanels){
 			onePanel.removeAll();
-			if(i <= BioController.getCurrentHallOfFameNumber()){
-				onePanel.add(BioController.displayChildren(i));
+			if(i < numberToLoop){
+				onePanel.add(BioController.displayHallOfFameBiomorph(i));
 			}
 			onePanel.validate();
 			onePanel.repaint();
