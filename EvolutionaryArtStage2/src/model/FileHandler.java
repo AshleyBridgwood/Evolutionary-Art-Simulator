@@ -27,9 +27,24 @@ public class FileHandler {
 	 * @param name file name to be removed
 	 */
 	public static void clearHallOfFameBiomorph(String name){
-		File file = new File(EvolutionaryArtFolderLocation + "/Hall Of Fame/" + name + ".biomorph");
+		String location = EvolutionaryArtFolderLocation + "/Hall Of Fame/";
+		File file_to_delete = new File(location + name + ".biomorph");
 		try{
-			file.delete();
+			file_to_delete.delete();
+			
+			if(name.equals("b0") && getNumberOfHallOfFameBiomorphs() == 2){
+				File oldb1 = new File(location + "b1.biomorph");
+				File oldb2 = new File(location + "b2.biomorph");
+				oldb1.renameTo(new File(location + "b0.biomorph"));
+				oldb2.renameTo(new File(location + "b1.biomorph"));		
+			} else if(name.equals("b0") && getNumberOfHallOfFameBiomorphs() == 1){
+				File oldb1 = new File(location + "b1.biomorph");
+				oldb1.renameTo(new File(location + "b0.biomorph"));
+			} else if(name.equals("b1") && getNumberOfHallOfFameBiomorphs() == 2){
+				File oldb2 = new File(location + "b2.biomorph");
+				oldb2.renameTo(new File(location + "b1.biomorph"));
+			} 
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
