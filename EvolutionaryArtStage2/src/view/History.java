@@ -4,34 +4,41 @@
 
 package view;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import java.awt.SystemColor;
-
-import javax.swing.border.EtchedBorder;
-
 import java.awt.Color;
-
-import javax.swing.JLabel;
-
-import java.awt.Font;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EtchedBorder;
 
-import model.BioController;
+import java.awt.Font;
+
+import javax.swing.JScrollPane;
+
 
 public class History {
 
 	private JFrame frame;
-	private JPanel biomorphPanel = new JPanel();
+	JPanel panelBiomorphs = new JPanel(); // panel to contain all of the loaded biomorphs.
+	
+	JPanel mainPanel = new JPanel();
 
+
+	/**
+	 * Create the application.
+	 */
 	public History() {
 		initialize();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 	}
 
 	/**
@@ -39,41 +46,85 @@ public class History {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 729, 500);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setBounds(100, 100, 1128, 686);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		frame.setResizable(false);
+		
+		JButton btnContinue = new JButton("Continue");
+		btnContinue.setBounds(49, 128, 201, 52);
+		frame.getContentPane().add(btnContinue);
+		
+		JLabel lblChooseFromList = new JLabel();
+		lblChooseFromList.setText("<html><body>Welcome to your History! Choose the biomorph you wish, then "
+				+ "click the continue button below, to continue evolving that biomorph! </body></html>");
+		lblChooseFromList.setFont(new Font("Calibri", Font.PLAIN, 20));
+		lblChooseFromList.setBackground(Color.ORANGE);
+		lblChooseFromList.setBounds(49, 63, 1049, 52);
+		frame.getContentPane().add(lblChooseFromList);
+		
+		JLabel lblHistory = new JLabel("History");
+		lblHistory.setFont(new Font("Calibri", Font.BOLD, 26));
+		lblHistory.setBackground(Color.ORANGE);
+		lblHistory.setBounds(508, 15, 236, 35);
+		frame.getContentPane().add(lblHistory);
+		
+		JButton btnHome = new JButton("Home");
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new StartScreen().getFrame().setVisible(true);
+				frame.dispose();
 
-		biomorphPanel.setForeground(Color.BLACK);
-		biomorphPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
-		biomorphPanel.setBackground(SystemColor.menu);
-		biomorphPanel.setBounds(190, 132, 311, 175);
-		BioController.generateBiomorphs();
-		biomorphPanel.add(BioController.displayParent());
-		frame.getContentPane().add(biomorphPanel);
-		
-		JLabel lblChooseYourBiomorph = new JLabel("Biomorph History!");
-		lblChooseYourBiomorph.setFont(new Font("Calibri", Font.BOLD, 22));
-		lblChooseYourBiomorph.setBackground(Color.ORANGE);
-		lblChooseYourBiomorph.setBounds(239, 13, 236, 35);
-		frame.getContentPane().add(lblChooseYourBiomorph);
-		
-		JPanel navPanel = new JPanel();
-		navPanel.setBounds(0, 373, 711, 70);
-		frame.getContentPane().add(navPanel);
-		navPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
-		navPanel.setLayout(null);
-		
-	
-		//Action listener for the generate button. Regenerates a new biomorph
-		/*btnGenerate.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
 			}
-		});*/
-	} 
+		});
+		btnHome.setBounds(0, 5, 168, 52);
+		frame.getContentPane().add(btnHome);
+
+		loadBiomorphs();
+	}
+	
+	public void loadBiomorphs(){		
+
+		mainPanel.setForeground(Color.BLACK);
+		mainPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
+		mainPanel.setBackground(SystemColor.menu);
+		//mainPanel.setPreferredSize(new Dimension(987, 917));
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+
+		
+			for (int x = 0; x < 16; x++){
+			     JPanel panel = new JPanel();
+			     panel.setForeground(Color.RED);
+			     panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 0, 0), null));
+			     panel.setPreferredSize(new Dimension(487, 797));
+			     panel.setLayout(new GridLayout(1,5));
+				for (int j = 0; j < 5; j++){
+					JPanel panels = new JPanel();
+				     panels.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 255, 0), null));
+				     panel.add(panels);
+				}
+				mainPanel.add(panel);
+			}
+		//scrollPane.getViewport().add(mainPanel);
+		
+		JScrollPane scrollPane = new JScrollPane(mainPanel); // scroll pane that will contain all saved biomorphs.
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);//set the horizontal scrollbar to never appear
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//set the horizontal scrollbar to never appear
+		scrollPane.setBounds(49, 178, 1036, 448);
+		frame.getContentPane().add(scrollPane);
+		
+		
+		//Exit prompt
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+
+					getFrame().dispose();
+			}
+			
+		});
+		
+	}
 	
 	public JFrame getFrame() {
 		return this.frame;
-}
+	}
 }

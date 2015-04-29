@@ -5,11 +5,14 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -28,7 +31,8 @@ public class LoadBiomorph {
 	private JFrame frame;
 	JPanel panelBiomorphs = new JPanel(); // panel to contain all of the loaded biomorphs.
 	JPanel panelLoaded = new JPanel(); // panel to contain the selected biomorph 
-	JScrollPane scrollPane = new JScrollPane(); // scroll pane that will contain all saved biomorphs.
+	
+	JPanel mainPanel = new JPanel();
 
 
 	/**
@@ -36,6 +40,7 @@ public class LoadBiomorph {
 	 */
 	public LoadBiomorph() {
 		initialize();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 	}
 
 	/**
@@ -43,12 +48,9 @@ public class LoadBiomorph {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 947, 596);
+		frame.setBounds(100, 100, 1128, 686);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);//set the horizontal scrollbar to never appear
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//set the horizontal scrollbar to never appear7
 		
 		JButton btnImport = new JButton("Import Own Bomorph");
 		btnImport.setBounds(49, 128, 201, 52);
@@ -58,7 +60,7 @@ public class LoadBiomorph {
 		panelBiomorphs.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorphs.setBackground(SystemColor.menu);
 		
-		panelLoaded.setBounds(549, 195, 311, 172);
+		panelLoaded.setBounds(770, 178, 311, 172);
 		panelLoaded.setForeground(Color.BLACK);
 		panelLoaded.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelLoaded.setBackground(SystemColor.menu);
@@ -78,11 +80,8 @@ public class LoadBiomorph {
 		lblLoadYourBiomorph.setBounds(321, 13, 236, 35);
 		frame.getContentPane().add(lblLoadYourBiomorph);
 		
-		scrollPane.setBounds(50, 178, 441, 310);
-		frame.getContentPane().add(scrollPane);
-		
 		JButton btnNext = new JButton("Next");
-		btnNext.setBounds(610, 380, 201, 52);
+		btnNext.setBounds(831, 369, 201, 52);
 		frame.getContentPane().add(btnNext);
 		
 		JButton btnHome = new JButton("Home");
@@ -93,7 +92,7 @@ public class LoadBiomorph {
 
 			}
 		});
-		btnHome.setBounds(610, 467, 201, 52);
+		btnHome.setBounds(831, 456, 201, 52);
 		frame.getContentPane().add(btnHome);
 
 		
@@ -116,14 +115,40 @@ public class LoadBiomorph {
 	}
 	
 	public void loadBiomorphs(){		
-		int i = BioController.getNumOfSavedBiomorphs();
-		System.out.println(i);
-		scrollPane.getViewport().add(panelBiomorphs);
+		//int i = BioController.getNumOfSavedBiomorphs();
+		//System.out.println(i);
 		
+		//int i = 7;
+		
+		//scrollPane.getViewport().add(panelBiomorphs);
+		
+		mainPanel.setForeground(Color.BLACK);
+		mainPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
+		mainPanel.setBackground(SystemColor.menu);
+		mainPanel.setPreferredSize(new Dimension(487, 797));
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+
+		
+			for (int x = 0; x < 16; x++){
+			     JPanel panel = new JPanel();
+					panel.setForeground(Color.RED);
+					panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 0, 0), null));
+					panel.setPreferredSize(new Dimension(487, 797));
+
+				 mainPanel.add(panel);
+
+			}
+		//scrollPane.getViewport().add(mainPanel);
+		
+		JScrollPane scrollPane = new JScrollPane(mainPanel); // scroll pane that will contain all saved biomorphs.
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);//set the horizontal scrollbar to never appear
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//set the horizontal scrollbar to never appear
+		scrollPane.setBounds(50, 178, 672, 448);
+		frame.getContentPane().add(scrollPane);
+
 	}
 	
 	public JFrame getFrame() {
 		return this.frame;
 	}
-	
 }
