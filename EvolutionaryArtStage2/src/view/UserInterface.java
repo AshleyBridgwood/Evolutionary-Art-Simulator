@@ -312,6 +312,24 @@ public class UserInterface extends MouseAdapter{
 		//frame.pack();
 		
 		//Action listeners for help button. Directs it to the help screen.
+		
+		btnRemove.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(hofSelected == 1){
+					BioController.clearCertainHallOfFameBiomorph(0);
+					refreshHallOfFamePanels();
+				}
+				else if (hofSelected == 2){
+					BioController.clearCertainHallOfFameBiomorph(1);
+				}
+				else if (hofSelected == 3){
+					BioController.clearCertainHallOfFameBiomorph(2);
+					
+				}
+			}
+		});	
+		
+		
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(exit()==false){
