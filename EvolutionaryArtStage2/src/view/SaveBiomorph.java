@@ -67,9 +67,9 @@ public class SaveBiomorph {
 		btnSave.setBounds(432, 13, 98, 38);
 		panel.add(btnSave);
 		
-		JButton btnNewButton = new JButton("Cancel");
-		btnNewButton.setBounds(557, 13, 98, 38);
-		panel.add(btnNewButton);
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.setBounds(557, 13, 98, 38);
+		panel.add(btnCancel);
 		
 		JLabel lblName = new JLabel("Author Name");
 		lblName.setFont(new Font("Calibri", Font.BOLD, 22));
@@ -107,6 +107,13 @@ public class SaveBiomorph {
 				System.out.println(test);
 				BioController.saveCurrentBiomorphsToFile(txtName.getText());
 				JOptionPane.showMessageDialog(null, "File Successfully Saved");
+				frame.dispose();
+			}
+		});
+		
+		//Action listener for save button. Confirmation of saved file.
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 			}
 		});
