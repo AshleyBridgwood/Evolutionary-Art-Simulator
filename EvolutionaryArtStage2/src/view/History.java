@@ -95,7 +95,7 @@ public class History {
 			     JPanel panel = new JPanel();
 			     panel.setForeground(Color.RED);
 			     panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 0, 0), null));
-			     panel.setPreferredSize(new Dimension(487, 797));
+			     panel.setPreferredSize(new Dimension(487, 190));
 			     panel.setLayout(new GridLayout(1,5));
 				for (int j = 0; j < 5; j++){
 					JPanel panels = new JPanel();
