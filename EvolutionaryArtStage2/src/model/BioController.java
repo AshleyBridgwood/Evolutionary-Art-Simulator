@@ -105,13 +105,13 @@ public class BioController {
 		return FileHandler.getNumberOfSavedBiomorphs();
 	}
 	
-	public static ArrayList<Line> getHistoryData(){
+	public static ArrayList<Line> getHistoryData(int number){
 		
 		return null;
 	}
 	
 	public static BioDraw displayHistoryBiomorph(int number){
-		return new BioDraw(getHistoryData(), true);
+		return new BioDraw(getHistoryData(number), true);
 	}
 	
 	/**
