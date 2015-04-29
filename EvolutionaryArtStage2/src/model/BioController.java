@@ -178,9 +178,17 @@ public class BioController {
 	public static void clearHallOfFame(){
 		int numberToLoop = getCurrentHallOfFameNumber();
 		for(int i = 0; i < numberToLoop; i++){
-			FileHandler.clearHallOfFameBiomorphs("b" + i);
+			FileHandler.clearHallOfFameBiomorph("b" + i);
 			hallOfFameBiomorphs = null;
 		}
+	}
+	
+	/**
+	 * Clear a specific hall of fame biomorph
+	 */
+	public static void clearCertainHallOfFameBiomorph(int id){
+		FileHandler.clearHallOfFameBiomorph("b" + id);
+		hallOfFameBiomorphs.remove(id);
 	}
 	
 	/**
@@ -220,6 +228,13 @@ public class BioController {
 			return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * Loads all saved file names
+	 */
+	public static ArrayList<String> getSavedFileNames(){
+		return FileHandler.getSavedBiomorphsNames();
 	}
 	
 	/**

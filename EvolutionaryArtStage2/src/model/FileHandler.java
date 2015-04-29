@@ -22,7 +22,7 @@ public class FileHandler {
 	
 	public static String EvolutionaryArtFolderLocation = null; //Stores the main working folder
 	
-	public static void clearHallOfFameBiomorphs(String name){
+	public static void clearHallOfFameBiomorph(String name){
 		File file = new File(EvolutionaryArtFolderLocation + "/Hall Of Fame/" + name + ".biomorph");
 		try{
 			file.delete();
@@ -99,6 +99,21 @@ public class FileHandler {
 	 */
 	public static int getNumberOfHallOfFameBiomorphs(){
 		return new File(EvolutionaryArtFolderLocation + "/Hall Of Fame/").listFiles().length;
+	}
+	
+	/**
+	 * Gets the file name of each of the files in the saved biomorphs folder
+	 */
+	public static ArrayList<String> getSavedBiomorphsNames(){
+		ArrayList<String> data = new ArrayList<String>();
+		File[] files = new File(EvolutionaryArtFolderLocation + "/Saved Biomorphs/").listFiles();
+		
+		for(File file : files){
+			if(file.isFile()){
+				data.add(file.getName());
+			}
+		}
+		return data;
 	}
 	
 	/**
