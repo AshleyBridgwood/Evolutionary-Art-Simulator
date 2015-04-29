@@ -67,17 +67,4 @@ public class BioCache {
 	public static int getNumberOfItemsOnStack(){
 		return top;
 	}
-	
-	public static void setStack(Object[] data, int topValue){
-		stack = data;
-		top = topValue;
-	}
-	
-	/**
-	 * Gets the stack
-	 * @return Object[] the current stack
-	 */
-	public static Object[] getStack(){
-		return stack;
-	}
 }

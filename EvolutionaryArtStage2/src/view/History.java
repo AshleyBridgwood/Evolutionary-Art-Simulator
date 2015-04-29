@@ -92,7 +92,6 @@ public class History {
 		//mainPanel.setPreferredSize(new Dimension(987, 917));
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         BioController.getHistoryData();
-		System.out.println("Number of items to display: " + BioController.getNumberOfItemsInHistory());	
         	int id = 0;
         	int numberOfRows = BioController.getNumberOfItemsInHistory();
 			for (int x = 0; x < numberOfRows; x++){
@@ -112,6 +111,7 @@ public class History {
 				}
 				mainPanel.add(panel);
 			}
+			BioController.clearHistoryData();
 		//scrollPane.getViewport().add(mainPanel);
 		
 		JScrollPane scrollPane = new JScrollPane(mainPanel); // scroll pane that will contain all saved biomorphs.

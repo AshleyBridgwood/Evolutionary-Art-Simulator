@@ -17,12 +17,13 @@ public class BioController {
 	private static ArrayList<ArrayList<Line>> biomorphs; //Stores the parent and child currently displaying on the UI
 	private static ArrayList<ArrayList<Line>> hallOfFameBiomorphs; //Stores the biomorphs for the hall of fame
 	private static int currentlySelectedToMutate; //Stores the ID of the next child to mutate
-	private static ArrayList<ArrayList<Line>> history;
+	private static ArrayList<ArrayList<ArrayList<Line>>> history;
 	
 	public BioController() {
 		//Initalise the starting fields
 		hallOfFameBiomorphs = new ArrayList<ArrayList<Line>>();
 		biomorphs = new ArrayList<ArrayList<Line>>();
+		history = new ArrayList<ArrayList<ArrayList<Line>>>();
 		currentlySelectedToMutate = 0;
 		
 		new BioCache(); //Start the cache for the undo feature
@@ -107,27 +108,31 @@ public class BioController {
 		return FileHandler.getNumberOfSavedBiomorphs();
 	}
 	
+	public static void clearHistoryData(){
+		history.clear();
+	}
+	
 	public static int getNumberOfItemsInHistory(){
 		return history.size();
 	}
 	
 	public static void getHistoryData(){
-		history = new ArrayList<ArrayList<Line>>();
-		Object[] data = BioCache.getStack();
 		int number = BioCache.getNumberOfItemsOnStack();
 		for(int i = 0; i < number; i++){
 			ArrayList<ArrayList<Line>> newLine = (ArrayList<ArrayList<Line>>) BioCache.pop();
-			history.add(newLine.get(0));
+			history.add(newLine);
 		}
-		
-		for(int i = history.size(); i < history.size() ; i--){
-			BioCache.push(history.get(i));
+		System.out.println("Size of history after adding: " + history.size());
+		int loop = history.size();
+		for(int i = loop; i > 0 ; i--){;
+			System.out.println("Adding to biocache");
+			BioCache.push(history.get(i-1));
 		}
-		System.out.println("History: " + history.size());
+		System.out.println("size of biocache after readding: " + BioCache.getNumberOfItemsOnStack());
 	}
 	
 	public static BioDraw displayHistoryBiomorph(int number){
-		return new BioDraw(history.get(number), true);
+		return new BioDraw(history.get(number).get(0), true);
 	}
 	
 	/**
