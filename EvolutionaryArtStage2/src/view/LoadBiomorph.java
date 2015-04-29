@@ -155,22 +155,24 @@ public class LoadBiomorph {
 						panel.addMouseListener(new MouseListener() {
 							@Override
 							public void mouseClicked(MouseEvent e) {
-								panel.setBackground(Color.GREEN);
+								//panel.setBackground(Color.GREEN);
+								
 								BioController.loadBiomorphsFromFile(loadedNames); 
 								
 								panelLoaded.removeAll();
-								BioController.loadHallOfFameBiomorphs();
 								panelLoaded.add(BioController.displayParent());
 								panelLoaded.repaint();
 								panelLoaded.revalidate();
 							}
 							
 							@Override
-							public void mouseEntered(MouseEvent e) {	
+							public void mouseEntered(MouseEvent e) {
+								panel.setBackground(Color.GREEN);
 							}
 
 							@Override
 							public void mouseExited(MouseEvent e) {
+								panel.setBackground(SystemColor.menu);
 							}
 
 							@Override
