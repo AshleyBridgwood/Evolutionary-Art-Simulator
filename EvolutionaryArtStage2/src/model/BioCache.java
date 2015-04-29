@@ -67,4 +67,12 @@ public class BioCache {
 	public static int getNumberOfItemsOnStack(){
 		return top;
 	}
+	
+	/**
+	 * Gets the stack
+	 * @return Object[] the current stack
+	 */
+	public static Object[] getStack(){
+		return stack;
+	}
 }

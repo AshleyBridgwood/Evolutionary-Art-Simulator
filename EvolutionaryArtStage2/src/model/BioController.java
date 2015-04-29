@@ -105,6 +105,15 @@ public class BioController {
 		return FileHandler.getNumberOfSavedBiomorphs();
 	}
 	
+	public static ArrayList<Line> getHistoryData(){
+		
+		return null;
+	}
+	
+	public static BioDraw displayHistoryBiomorph(int number){
+		return new BioDraw(getHistoryData(), true);
+	}
+	
 	/**
 	 * Displays the generated hall of fame biomorph
 	 * @param number Represents both the childHOF number, and number within the hallOfFameBiomorphs array
