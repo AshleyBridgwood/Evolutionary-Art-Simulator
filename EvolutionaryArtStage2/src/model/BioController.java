@@ -118,10 +118,11 @@ public class BioController {
 		for(int i = 0; i < number; i++){
 			ArrayList<ArrayList<Line>> newLine = (ArrayList<ArrayList<Line>>) BioCache.pop();
 			history.add(newLine.get(0));
-			//BioCache.pop();
-			System.out.println("Loop: " + i);
 		}
-		//BioCache.setStack(data, number);
+		
+		for(int i = history.size(); i < history.size() ; i--){
+			BioCache.push(history.get(i));
+		}
 		System.out.println("History: " + history.size());
 	}
 	
