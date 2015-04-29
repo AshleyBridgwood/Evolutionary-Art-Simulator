@@ -108,15 +108,20 @@ public class BioController {
 	}
 	
 	public static int getNumberOfItemsInHistory(){
-		return BioCache.getNumberOfItemsOnStack();
+		return history.size();
 	}
 	
 	public static void getHistoryData(){
 		history = new ArrayList<ArrayList<Line>>();
-		BioCache.getStack();
-		for(int i = 0; i < BioCache.getNumberOfItemsOnStack(); i++){
+		Object[] data = BioCache.getStack();
+		int number = BioCache.getNumberOfItemsOnStack();
+		for(int i = 0; i < number; i++){
 			ArrayList<ArrayList<Line>> newLine = (ArrayList<ArrayList<Line>>) BioCache.pop();
 			history.add(newLine.get(0));
+		}
+		
+		for(int i = history.size(); i < history.size() ; i--){
+			BioCache.push(history.get(i));
 		}
 		System.out.println("History: " + history.size());
 	}
