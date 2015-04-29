@@ -10,6 +10,8 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -32,8 +34,9 @@ public class LoadBiomorph {
 	private JFrame frame;
 	JPanel panelBiomorphs = new JPanel(); // panel to contain all of the loaded biomorphs.
 	JPanel panelLoaded = new JPanel(); // panel to contain the selected biomorph 
-	
 	JPanel mainPanel = new JPanel();
+    ArrayList<String> loadedNames = BioController.getSavedFileNames();
+
 
 
 	/**
@@ -52,6 +55,13 @@ public class LoadBiomorph {
 		frame.setBounds(100, 100, 1128, 686);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		
+		JScrollPane scrollPane = new JScrollPane(mainPanel); // scroll pane that will contain all saved biomorphs.
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);//set the horizontal scrollbar to never appear
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//set the horizontal scrollbar to never appear
+		scrollPane.setBounds(50, 178, 672, 448);
+		frame.getContentPane().add(scrollPane);
 		
 		JButton btnImport = new JButton("Import Own Bomorph");
 		btnImport.setBounds(49, 128, 201, 52);
@@ -116,40 +126,52 @@ public class LoadBiomorph {
 	}
 	
 	public void loadBiomorphs(){		
-		//int i = BioController.getNumOfSavedBiomorphs();
-		//System.out.println(i);
-		
-		//int i = 7;
-		
-		//scrollPane.getViewport().add(panelBiomorphs);
-		
+
 		mainPanel.setForeground(Color.BLACK);
 		mainPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		mainPanel.setBackground(SystemColor.menu);
 		mainPanel.setPreferredSize(new Dimension(487, 797));
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
-       ArrayList<String> loadedNames = BioController.getSavedFileNames();
        int numberOfLoops = loadedNames.size();
 			for (int x = 0; x < 16; x++){
-			     JPanel panel = new JPanel();
+			     final JPanel panel = new JPanel();
 					panel.setForeground(Color.RED);
 					panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 0, 0), null));
 					panel.setPreferredSize(new Dimension(487, 797));
 					if(x < numberOfLoops){
-						panel.add(new JLabel(loadedNames.get(x)));
+						panel.add(new JLabel(loadedNames.get(x)));	
+						
+						//add mouse listener to each panel, so they can be loaded.
+						panel.addMouseListener(new MouseListener() {
+							@Override
+							public void mouseEntered(MouseEvent e) {
+								
+							}
+
+							@Override
+							public void mouseExited(MouseEvent e) {
+								
+							}
+
+							@Override
+							public void mousePressed(MouseEvent e) {
+							}
+
+							@Override
+							public void mouseReleased(MouseEvent e) {
+							
+							}
+						
+							public void mouseClicked(MouseEvent e) {
+							panel.setBackground(Color.GREEN);
+						    BioController.loadBiomorphsFromFile(loadedNames.get(x)); //look here!!
+							}
+						});
 					}
 				 mainPanel.add(panel);
 
 			}
-		//scrollPane.getViewport().add(mainPanel);
-		
-		JScrollPane scrollPane = new JScrollPane(mainPanel); // scroll pane that will contain all saved biomorphs.
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);//set the horizontal scrollbar to never appear
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//set the horizontal scrollbar to never appear
-		scrollPane.setBounds(50, 178, 672, 448);
-		frame.getContentPane().add(scrollPane);
-
 	}
 	
 	public JFrame getFrame() {
