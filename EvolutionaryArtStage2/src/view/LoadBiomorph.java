@@ -163,6 +163,11 @@ public class LoadBiomorph {
 								panelLoaded.revalidate();
 								panelSelected = true;
 							}
+							else
+							{
+								panelSelected = false;
+							}
+							
 								
 							}
 							

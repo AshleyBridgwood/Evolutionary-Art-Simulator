@@ -457,7 +457,7 @@ public class UserInterface extends MouseAdapter{
 		
 			public void mouseClicked(MouseEvent e) {
 			
-				if (hofSelected != 1){
+				if (hofSelected != 1 ){
 					for (int i = 0; i < hofPanels.length; i++){
 						hofPanels[i].setBackground(SystemColor.menu);
 						HOFPanel1.setBackground(Color.GREEN);
