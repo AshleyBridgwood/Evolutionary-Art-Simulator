@@ -313,11 +313,13 @@ public class UserInterface extends MouseAdapter{
 				else if (hofSelected == 2){
 					panelOutput.removeAll();
 					BioController.clearCertainHallOfFameBiomorph(1);
+					HOFPanel1.setBackground(SystemColor.menu);
 					refreshHallOfFamePanels();
 				}
 				else if (hofSelected == 3){
 					panelOutput.removeAll();
 					BioController.clearCertainHallOfFameBiomorph(2);
+					HOFPanel1.setBackground(SystemColor.menu);
 					refreshHallOfFamePanels();
 					
 				}
