@@ -342,6 +342,12 @@ public class UserInterface extends MouseAdapter{
 			}
 		});	
 		
+		btnClose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exit();
+			}
+		});	
+		
 	
 		
 		//Action listener for the hall of fame button.
