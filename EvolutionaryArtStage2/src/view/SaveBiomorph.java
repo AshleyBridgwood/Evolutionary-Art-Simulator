@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import javax.swing.JButton;
 
@@ -54,6 +56,9 @@ public class SaveBiomorph {
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
 
 		
 		JPanel panel = new JPanel();

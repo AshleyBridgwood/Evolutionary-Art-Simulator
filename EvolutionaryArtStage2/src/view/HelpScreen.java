@@ -11,7 +11,9 @@ import javax.swing.JTextArea;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
@@ -50,6 +52,8 @@ public class HelpScreen {
 		frame.setBounds(100, 100, 806, 585);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
 		
 		JLabel lblUltimateEvolution = new JLabel("Ultimate Evolution : Help Screen");
 		lblUltimateEvolution.setBounds(196, 30, 413, 27);

@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.*;
 
 import javax.swing.ImageIcon;
@@ -20,7 +21,7 @@ import javax.swing.JPanel;
 
 
 public class StartScreen{
-    private JFrame startFrame;
+    private JFrame frame;
 	JPanel panel1 = new JPanel();
 	JPanel panelOne = new JPanel();
 	JPanel panelLogo = new JPanel();
@@ -37,11 +38,15 @@ public class StartScreen{
     	
     	//.............................................. Initialise Main Screen ....................................................\\
 		//mainFrame
-		startFrame = new JFrame("Graphical User Interface");
+		frame = new JFrame("Ultimate Evolution");
 		//mainFrame properties
 		Dimension d = new Dimension (900,500); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
-		startFrame.setPreferredSize(d); // not set in step 2 because mainFrame variable not initialised.
-		startFrame.setResizable(false);
+		frame.setPreferredSize(d); // not set in step 2 because mainFrame variable not initialised.
+		frame.setResizable(false);
+		
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
 
     	
     	
@@ -74,7 +79,7 @@ public class StartScreen{
 
     	
 		//mainFrame layout set to (2,1).
-		startFrame.setLayout(new GridLayout(2,1));
+		frame.setLayout(new GridLayout(2,1));
 		//panel1
 		panel1.setLayout(new GridLayout(1,1));
 		panelLogo.setLayout(new GridLayout(1,1));
@@ -102,15 +107,15 @@ public class StartScreen{
 
     	//.............................................. Add Panels to Mainframe ....................................................\\
 
-		startFrame.add(panel1);
-		startFrame.add(panel2);
+		frame.add(panel1);
+		frame.add(panel2);
 		
 		
 		//Action listeners for new button. Directs it to the main screen of the UI.
 		newButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new BiomorphStartUp().getFrame().setVisible(true);
-				startFrame.setVisible(false);
+				frame.setVisible(false);
 
 			}
 		});
@@ -119,7 +124,7 @@ public class StartScreen{
 		loadButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new LoadBiomorph().getFrame().setVisible(true);
-				startFrame.setVisible(false);
+				frame.setVisible(false);
 			}
 		});
 		
@@ -131,8 +136,8 @@ public class StartScreen{
 		});
 		
         //display frame
-		startFrame.pack();
-		startFrame.setVisible(true);
+		frame.pack();
+		frame.setVisible(true);
     }
     
     
@@ -140,17 +145,17 @@ public class StartScreen{
 	@SuppressWarnings("unused")
 	private void exit(){
 		int response = JOptionPane
-				.showConfirmDialog(startFrame,
+				.showConfirmDialog(frame,
 						"Do you really want to quit?", "Quit",
 						JOptionPane.YES_NO_OPTION,
 						JOptionPane.QUESTION_MESSAGE);
 		if (response == JOptionPane.YES_OPTION) {
-			startFrame.dispose();
+			frame.dispose();
 		}
 	}
 	
 	public JFrame getFrame() {
-		return this.startFrame;
+		return this.frame;
 }
 
 }
