@@ -98,14 +98,14 @@ public class UserInterface extends MouseAdapter{
 	 */
 	private void initialize() {
 		frame =	new JFrame();	
-		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-		frame.setUndecorated(true);
+		//frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+		//frame.setUndecorated(true);
 		
-		//frame.setBounds(100, 100, 1093, 875);
+		frame.setBounds(100, 100, 1093, 875);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		//Dimension d = new Dimension (1093, 885); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
-		//frame.setPreferredSize(d);
+		Dimension d = new Dimension (1093, 885); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
+		frame.setPreferredSize(d);
 		frame.setResizable(false);
 		
 		//Exit prompt
