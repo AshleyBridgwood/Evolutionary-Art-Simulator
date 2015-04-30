@@ -52,18 +52,7 @@ public class History {
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnContinue = new JButton("Continue");
-		btnContinue.setBounds(49, 128, 201, 52);
-		frame.getContentPane().add(btnContinue);
-		
-		JLabel lblChooseFromList = new JLabel();
-		lblChooseFromList.setText("<html><body>Welcome to your History! Choose the biomorph you wish, then "
-				+ "click the continue button below, to continue evolving that biomorph! </body></html>");
-		lblChooseFromList.setFont(new Font("Calibri", Font.PLAIN, 20));
-		lblChooseFromList.setBackground(Color.ORANGE);
-		lblChooseFromList.setBounds(49, 63, 1049, 52);
-		frame.getContentPane().add(lblChooseFromList);
-		
+
 		JLabel lblHistory = new JLabel("History");
 		lblHistory.setFont(new Font("Calibri", Font.BOLD, 26));
 		lblHistory.setBackground(Color.ORANGE);
@@ -117,7 +106,7 @@ public class History {
 		JScrollPane scrollPane = new JScrollPane(mainPanel); // scroll pane that will contain all saved biomorphs.
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);//set the horizontal scrollbar to never appear
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//set the horizontal scrollbar to never appear
-		scrollPane.setBounds(49, 178, 1036, 448);
+		scrollPane.setBounds(48, 92, 1036, 521);
 		frame.getContentPane().add(scrollPane);
 		
 		
