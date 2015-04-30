@@ -4,6 +4,7 @@
 
 package view;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -29,6 +30,11 @@ public class BiomorphStartUp {
 
 	private JFrame frame;
 	private JPanel biomorphPanel = new JPanel();
+	
+	static int lineAmountChoice;
+	
+	static LabelledSlider lineAmountSlider = new LabelledSlider(" Amount of Lines  ", 20, 10, 30, 1);
+
 
 	public BiomorphStartUp() {
 		initialize();
@@ -67,6 +73,9 @@ public class BiomorphStartUp {
 		JButton btnNext = new JButton("Next");
 		btnNext.setBounds(347, 309, 154, 43);
 		frame.getContentPane().add(btnNext);
+	
+		lineAmountSlider.setBounds(35, 293, 150, 70);
+		frame.getContentPane().add(lineAmountSlider);
 		
 		JLabel lblChooseYourBiomorph = new JLabel("Choose Your Biomorph!");
 		lblChooseYourBiomorph.setFont(new Font("Calibri", Font.BOLD, 22));
@@ -129,6 +138,12 @@ public class BiomorphStartUp {
 				new HelpScreen().getFrame().setVisible(true);
 			}
 		});
+	}
+	
+	
+	public static int getSliderValue()
+	{
+		return lineAmountSlider.getValue().intValue();
 	}
 	
 	public JFrame getFrame() {

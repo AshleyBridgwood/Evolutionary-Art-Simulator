@@ -14,6 +14,8 @@ package model;
 import java.util.ArrayList;
 import java.util.Random;
 
+import view.BiomorphStartUp;
+import view.UserInterface;
 import model.Tree.TreeNode;
 
 public class BioGeneration {
@@ -71,7 +73,7 @@ public class BioGeneration {
 	 */
 	public ArrayList<Line> makeParentBiomorph(){
 		int currentNumberOfLegs = 0;
-		int numberOfLines = 20;
+		int numberOfLines = BiomorphStartUp.getSliderValue();
 		int nodeId = 1;
 		Random rand = new Random(); //Creates a random number
 		

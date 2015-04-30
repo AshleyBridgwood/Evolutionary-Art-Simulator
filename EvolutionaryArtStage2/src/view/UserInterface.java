@@ -60,6 +60,7 @@ public class UserInterface extends MouseAdapter{
 	
 	static int colourChoice = -1;
 	static int lineThicknessChoice = 1;
+	static int lineAmountChoice = 20;
 	
 	int slot;
 	
@@ -799,6 +800,7 @@ public class UserInterface extends MouseAdapter{
 		JMenu hallOfFame = new JMenu("Hall Of Fame");
 		JMenu colours = new JMenu("Colour Scheme");
 		JMenu lineThickness = new JMenu("Line Thickness");
+		JMenu lineAmount = new JMenu("Amount of Lines");
 		JMenu history = new JMenu("History");
          
 		//Create menu items
@@ -818,6 +820,10 @@ public class UserInterface extends MouseAdapter{
 		JMenuItem thin = new JMenuItem("Thin");
 		JMenuItem medium = new JMenuItem("Medium");
 		JMenuItem thick = new JMenuItem("Thick");
+		
+		JMenuItem ten = new JMenuItem("10");
+		JMenuItem twenty = new JMenuItem("20");
+		JMenuItem thirty = new JMenuItem("30");
 		
 		JMenuItem viewHistory = new JMenuItem("View History");
 		JMenuItem clearHistory = new JMenuItem("Clear History");
@@ -840,6 +846,11 @@ public class UserInterface extends MouseAdapter{
 		lineThickness.add(medium);
 		lineThickness.add(thick);
 		
+		lineAmount.add(ten);
+		lineAmount.add(twenty);
+		lineAmount.add(thirty);
+		
+		
 		history.add(viewHistory);
 		history.add(clearHistory);
             
@@ -848,6 +859,7 @@ public class UserInterface extends MouseAdapter{
 		menuBar.add(hallOfFame);
 		menuBar.add(colours);
 		menuBar.add(lineThickness);
+		menuBar.add(lineAmount);
 		menuBar.add(history);
 		frame.setJMenuBar(menuBar);
 
@@ -967,6 +979,33 @@ public class UserInterface extends MouseAdapter{
 			}	
 		});
 		
+		ten.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				lineAmountChoice = 10;
+				panelOutput.removeAll();
+				refreshAllPanels();
+			}	
+		});
+		
+		twenty.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				lineAmountChoice = 20;
+				panelOutput.removeAll();
+				refreshAllPanels();
+			}	
+		});
+		
+		thirty.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				lineAmountChoice = 30;
+				panelOutput.removeAll();
+				refreshAllPanels();
+			}	
+		});
+		
 		viewHistory.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -1051,6 +1090,11 @@ public class UserInterface extends MouseAdapter{
 		return lineThicknessChoice;
 	}
 	
+	public static int getLineAmount()
+	{
+		return lineAmountChoice;
+	}
+	
 	public void panelClicked(int panel){
 		
 		if (!panelsSelected.isEmpty()){
@@ -1115,5 +1159,7 @@ public class UserInterface extends MouseAdapter{
 			}
 		return false;
 	}
+	
+
 	
 }

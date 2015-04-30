@@ -79,7 +79,7 @@ public class LabelledSlider extends JComponent {
 	 *
 	 * @return the double value.
 	 */
-	public double getValue() {
+	public Double getValue() {
 		return ((double)slider.getValue())/scale;
 	}
 	
@@ -98,5 +98,5 @@ public class LabelledSlider extends JComponent {
 				label.setText(labelString + nf.format(((double)number/scale)));
 			}
 		}
-	}
+	}	
 }
