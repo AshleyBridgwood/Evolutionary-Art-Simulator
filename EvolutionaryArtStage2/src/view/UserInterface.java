@@ -1091,7 +1091,7 @@ public class UserInterface extends MouseAdapter{
 	}
 	
 	public void HofInstructions(){
-		if (attempts <3){
+		if (attempts <1){
 			JOptionPane.showMessageDialog(null, "<html><body>Click on the parent box to continue evolving this artwork. <br>If you"
 					+ " want to remove this artwork from the hall of fame, click on the remove button below!</body></html>");
 			attempts++;
