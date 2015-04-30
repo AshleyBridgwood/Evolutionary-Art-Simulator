@@ -201,7 +201,7 @@ public class BioGeneration {
 	 * @param b second biomorph which will be combined together with the other
 	 * @return ArrayList<Line> the newly created combined biomorph
 	 */
-	public ArrayList<Line> combineBiomorphs(ArrayList<Line> a, ArrayList<Line> b){
+	public static ArrayList<Line> combineBiomorphs(ArrayList<Line> a, ArrayList<Line> b){
 		ArrayList<Line> newBiomorph = new ArrayList<Line>();
 		if(a.size() != b.size()){
 			//do nothing, throw exception?

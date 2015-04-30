@@ -369,9 +369,23 @@ public class UserInterface extends MouseAdapter{
 		//Action listener for mutuate button. Mutates the biomorpbhs from what is selected
 		btnMutate.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				panelOutput.removeAll();
-				BioController.mutuateBiomorphOne();
-				refreshAllPanels();				
+				//Only allow mutation to occur if more than one panel is selected.
+				if(!panelsSelected.isEmpty())
+				{
+					//  mutate one biomorph
+					if(panelsSelected.size() == 1)
+					{
+						panelOutput.removeAll();
+						BioController.mutuateBiomorphOne();
+						refreshAllPanels();	
+					}
+					else // mutate two selected.
+					{
+						panelOutput.removeAll();
+						BioController.mutateBiomorphMultiple(panelsSelected.get(0),panelsSelected.get(1));
+						refreshAllPanels();
+					}
+				}
 
 
 				for (int i = 0; i < panels.length; i++){

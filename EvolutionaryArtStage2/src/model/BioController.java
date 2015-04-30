@@ -250,4 +250,18 @@ public class BioController {
 		Log.exportLogToFile();
 	}
 	
+	/**
+	 * Method called when user selectes multiple biomorphs on the UI.
+	 * @param a first user selected biomorph
+	 * @param b second user selected biomorph
+	 */
+	public static void mutateBiomorphMultiple(int a, int b)
+	{
+		// combine biomorph and set as parent
+		ArrayList<Line> parent = BioGeneration.combineBiomorphs(biomorphs.get(a), biomorphs.get(b));
+		
+		// generate children from new parent
+		biomorphs = BioGeneration.getChildrenFromParent(parent);
+	}
+	
 }
