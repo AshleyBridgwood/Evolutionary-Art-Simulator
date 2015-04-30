@@ -229,22 +229,8 @@ public class UserInterface extends MouseAdapter{
 		changeSlider.setBounds(498, 13, 300, 70);
      	changeSlider.setPreferredSize(d2);
 		
-     	final LabelledSlider linesSlider = new LabelledSlider(" Amount of Lines  ", 0.0, 0, 20, 100.0);
-		linesSlider.setPreferredSize(new Dimension(300, 70));
-		linesSlider.setBounds(193, 75, 300, 70);
-		linesSlider.setPreferredSize(d2);
-
-		
-		final LabelledSlider sliderThickness = new LabelledSlider("Line Thickness  ", 0.0, 0, 20, 100.0);
-		sliderThickness.setPreferredSize(new Dimension(300, 70));
-		sliderThickness.setBounds(498, 75, 300, 70);
-		controlPanel.setLayout(null);
-		probSlider.setPreferredSize(d2);
-		
 		controlPanel.add(probSlider);
 		controlPanel.add(changeSlider);
-		controlPanel.add(linesSlider);
-		controlPanel.add(sliderThickness);
 
 
 
@@ -798,9 +784,9 @@ public class UserInterface extends MouseAdapter{
         //create menus
 		JMenu file = new JMenu("File");
 		JMenu hallOfFame = new JMenu("Hall Of Fame");
+		JMenu lineOption = new JMenu("Line Options");
 		JMenu colours = new JMenu("Colour Scheme");
 		JMenu lineThickness = new JMenu("Line Thickness");
-		JMenu lineAmount = new JMenu("Amount of Lines");
 		JMenu history = new JMenu("History");
          
 		//Create menu items
@@ -821,10 +807,6 @@ public class UserInterface extends MouseAdapter{
 		JMenuItem medium = new JMenuItem("Medium");
 		JMenuItem thick = new JMenuItem("Thick");
 		
-		JMenuItem ten = new JMenuItem("10");
-		JMenuItem twenty = new JMenuItem("20");
-		JMenuItem thirty = new JMenuItem("30");
-		
 		JMenuItem viewHistory = new JMenuItem("View History");
 		JMenuItem clearHistory = new JMenuItem("Clear History");
             
@@ -844,12 +826,7 @@ public class UserInterface extends MouseAdapter{
 		
 		lineThickness.add(thin);
 		lineThickness.add(medium);
-		lineThickness.add(thick);
-		
-		lineAmount.add(ten);
-		lineAmount.add(twenty);
-		lineAmount.add(thirty);
-		
+		lineThickness.add(thick);		
 		
 		history.add(viewHistory);
 		history.add(clearHistory);
@@ -857,10 +834,12 @@ public class UserInterface extends MouseAdapter{
 		//Add menus
 		menuBar.add(file);
 		menuBar.add(hallOfFame);
-		menuBar.add(colours);
-		menuBar.add(lineThickness);
-		menuBar.add(lineAmount);
+		menuBar.add(lineOption);
 		menuBar.add(history);
+		
+		lineOption.add(colours);
+		lineOption.add(lineThickness);
+		
 		frame.setJMenuBar(menuBar);
 
 		
@@ -979,32 +958,6 @@ public class UserInterface extends MouseAdapter{
 			}	
 		});
 		
-		ten.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				lineAmountChoice = 10;
-				panelOutput.removeAll();
-				refreshAllPanels();
-			}	
-		});
-		
-		twenty.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				lineAmountChoice = 20;
-				panelOutput.removeAll();
-				refreshAllPanels();
-			}	
-		});
-		
-		thirty.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				lineAmountChoice = 30;
-				panelOutput.removeAll();
-				refreshAllPanels();
-			}	
-		});
 		
 		viewHistory.addActionListener(new ActionListener(){
 			@Override
