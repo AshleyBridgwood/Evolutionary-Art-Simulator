@@ -39,14 +39,19 @@ public class StartScreen{
     	//.............................................. Initialise Main Screen ....................................................\\
 		//mainFrame
 		frame = new JFrame("Ultimate Evolution");
+		
+		frame.setBounds(100, 100, 1000, 500);
+		
 		//mainFrame properties
 		Dimension d = new Dimension (900,500); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
 		frame.setPreferredSize(d); // not set in step 2 because mainFrame variable not initialised.
 		frame.setResizable(false);
 		
-		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+		
+		
+		
 
     	
     	
@@ -136,7 +141,7 @@ public class StartScreen{
 		});
 		
         //display frame
-		frame.pack();
+		//frame.pack();
 		frame.setVisible(true);
     }
     
