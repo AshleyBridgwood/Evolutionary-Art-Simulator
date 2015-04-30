@@ -6,6 +6,11 @@ package view;
 import java.awt.EventQueue;
 
 import javax.imageio.ImageIO;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,6 +18,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -989,8 +995,18 @@ public class UserInterface extends MouseAdapter{
 			clearHistory();
 			}
 			});
+		
+		 	file.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK), "save");
+	        file.getActionMap().put("save", new AbstractAction() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	new SaveBiomorph().getFrame().setVisible(true);
+	            }
+	        });	
+	        
+	        
+			
 	}
-	
 	
 	private void refreshHallOfFamePanels(){
 		BioController.loadHallOfFameBiomorphs();

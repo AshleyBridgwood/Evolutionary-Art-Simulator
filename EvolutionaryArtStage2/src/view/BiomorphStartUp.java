@@ -30,7 +30,7 @@ import model.BioController;
 public class BiomorphStartUp {
 
 	private JFrame frame;
-	private JPanel biomorphPanel = new JPanel();
+	private static JPanel biomorphPanel = new JPanel();
 	
 	static int lineAmountChoice;
 	
@@ -141,7 +141,7 @@ public class BiomorphStartUp {
 				new HelpScreen().getFrame().setVisible(true);
 			}
 		});
-	}
+}
 	
 	
 	public static int getSliderValue()
