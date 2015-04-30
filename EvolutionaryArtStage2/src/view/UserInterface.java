@@ -1004,6 +1004,16 @@ public class UserInterface extends MouseAdapter{
 	            }
 	        });	
 	        
+	        file.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.CTRL_MASK), "undo");
+	        file.getActionMap().put("undo", new AbstractAction() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	panelOutput.removeAll();
+					BioController.undoOneBiomorph();
+					refreshAllPanels();
+	            }
+	        });
+	        
 	        
 			
 	}
