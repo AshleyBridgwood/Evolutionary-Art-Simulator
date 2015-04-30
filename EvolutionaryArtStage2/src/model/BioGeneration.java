@@ -117,6 +117,17 @@ public class BioGeneration {
 				int chance = 100;
 				int num = rand.nextInt(chance);
 				int changeRanVal = 35;
+				int upOrDown = rand.nextInt(100);
+				boolean up = false;
+				
+				if(upOrDown >= 0 && upOrDown <= 50)
+				{
+					up = false;
+				}
+				else
+				{
+					up = true;
+				}
 				//if it does mutate change x or y by certain amount				
 				if(num <= 49){
 					//which point to change:
@@ -127,26 +138,57 @@ public class BioGeneration {
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
 						int changeRan = newRan.nextInt(changeRanVal); // change 100 to what has been selected on slider.
-						tempTree.get(j).setX1(tempTree.get(j).getX1() + changeRan); //TODO: change "+2" to amount on slider.
+						if(!up)
+						{
+							tempTree.get(j).setX1(tempTree.get(j).getX1() + changeRan); //TODO: change "+2" to amount on slider.
+						}
+						else
+						{
+							tempTree.get(j).setX1(tempTree.get(j).getX1() - changeRan);
+						}
 						
 					} else if(pointDecider > 25 && pointDecider <= 50){
 						// change y1
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
 						int changeRan = newRan.nextInt(changeRanVal); // change 100 to what has been selected on slider.
-						tempTree.get(j).setY1(tempTree.get(j).getY1() + changeRan);
+						if(!up)
+						{
+							tempTree.get(j).setY1(tempTree.get(j).getY1() + changeRan);
+						}
+						else
+						{
+							tempTree.get(j).setY1(tempTree.get(j).getY1() - changeRan);
+						}
+						
 					} else if(pointDecider > 50  && pointDecider <= 75){
 						// change x2
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
 						int changeRan = newRan.nextInt(changeRanVal); // change 100 to what has been selected on slider.
-						tempTree.get(j).setX2(tempTree.get(j).getX2() + changeRan); //TODO: change "+2" to amount on slider.
+						if(!up)
+						{
+							tempTree.get(j).setX2(tempTree.get(j).getX2() + changeRan); //TODO: change "+2" to amount on slider.
+						}
+						else
+						{
+							tempTree.get(j).setX2(tempTree.get(j).getX2() - changeRan); //TODO: change "+2" to amount on slider.
+						}
+						
 					} else {
 						//change y2
 						//TODO: generate random variable between 0 and what is chosen on slider and insert instead of "+2"
 						Random newRan = new Random();
 						int changeRan = newRan.nextInt(changeRanVal); // change 100 to what has been selected on slider.
-						tempTree.get(j).setY2(tempTree.get(j).getY2() +changeRan); //TODO: change "+2" to amount on slider.
+						if(!up)
+						{
+							tempTree.get(j).setY2(tempTree.get(j).getY2() +changeRan); //TODO: change "+2" to amount on slider.
+						}
+						else
+						{
+							tempTree.get(j).setY2(tempTree.get(j).getY2() -changeRan); //TODO: change "+2" to amount on slider.
+						}
+						
 					}
 				}
 			}
