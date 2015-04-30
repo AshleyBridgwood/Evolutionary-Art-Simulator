@@ -323,6 +323,7 @@ public class UserInterface extends MouseAdapter{
 					HOFPanel1.setBackground(SystemColor.menu);
 					refreshHallOfFamePanels();
 					hofCounter--;
+					btnRemove.setVisible(false);
 				}
 				else if (hofSelected == 2){
 					panelOutput.removeAll();
@@ -330,6 +331,7 @@ public class UserInterface extends MouseAdapter{
 					HOFPanel2.setBackground(SystemColor.menu);
 					refreshHallOfFamePanels();
 					hofCounter--;
+					btnRemove.setVisible(false);
 				}
 				else if (hofSelected == 3){
 					panelOutput.removeAll();
@@ -337,6 +339,7 @@ public class UserInterface extends MouseAdapter{
 					HOFPanel3.setBackground(SystemColor.menu);
 					refreshHallOfFamePanels();
 					hofCounter--;
+					btnRemove.setVisible(false);
 					
 				}
 			}
