@@ -91,12 +91,14 @@ public class UserInterface extends MouseAdapter{
 	 */
 	private void initialize() {
 		frame =	new JFrame();	
+		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+		frame.setUndecorated(true);
 		
-		frame.setBounds(100, 100, 1093, 875);
+		//frame.setBounds(100, 100, 1093, 875);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		Dimension d = new Dimension (1093, 885); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
-		frame.setPreferredSize(d);
+		//Dimension d = new Dimension (1093, 885); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
+		//frame.setPreferredSize(d);
 		frame.setResizable(false);
 		
 		//Exit prompt
@@ -292,6 +294,10 @@ public class UserInterface extends MouseAdapter{
 		btnHome.setBounds(0, 0, 130, 43);
 		frame.getContentPane().add(btnHome);
 		
+		JButton btnClose = new JButton("Close");
+		btnClose.setBounds(130, 0, 130, 43);
+		frame.getContentPane().add(btnClose);
+		
 		final JButton btnRemove = new JButton("Remove");
 		btnRemove.setBounds(393, 186, 210, 35);
 		btnRemove.setVisible(false);
@@ -335,6 +341,8 @@ public class UserInterface extends MouseAdapter{
 				}
 			}
 		});	
+		
+	
 		
 		//Action listener for the hall of fame button.
 		btnHOF.addActionListener(new ActionListener(){
