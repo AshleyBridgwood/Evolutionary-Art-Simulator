@@ -36,6 +36,8 @@ public class LoadBiomorph {
 	JPanel panelLoaded = new JPanel(); // panel to contain the selected biomorph 
 	JPanel mainPanel = new JPanel();
     ArrayList<String> loadedNames = BioController.getSavedFileNames();
+    boolean panelSelected = false;
+    
 
 
 
@@ -63,9 +65,9 @@ public class LoadBiomorph {
 		scrollPane.setBounds(50, 178, 672, 448);
 		frame.getContentPane().add(scrollPane);
 		
-		JButton btnImport = new JButton("Import Own Bomorph");
-		btnImport.setBounds(49, 128, 201, 52);
-		frame.getContentPane().add(btnImport);
+		JButton btnRemove = new JButton("Remove");
+		btnRemove.setBounds(770, 355, 154, 52);
+		frame.getContentPane().add(btnRemove);
 		
 		panelBiomorphs.setForeground(Color.BLACK);
 		panelBiomorphs.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
@@ -79,20 +81,21 @@ public class LoadBiomorph {
 		
 		JLabel lblChooseFromList = new JLabel();
 		//("Choose from list of saved biomorphs, or click the import button on the left to import your own!");
-		lblChooseFromList.setText("<html><body>Choose from list of saved biomorphs, or click the<br>import button on the left to import your own!</body></html>");
+		lblChooseFromList.setText("<html><body>Hover the list of file names to see the biomorphs. Click on the filename so you can load it into the main screen!"
+				+ "<br>Click the 'remove' button, to be able to browse the list again! </body></html>");
 		lblChooseFromList.setFont(new Font("Calibri", Font.PLAIN, 20));
 		lblChooseFromList.setBackground(Color.ORANGE);
-		lblChooseFromList.setBounds(49, 57, 841, 52);
+		lblChooseFromList.setBounds(77, 72, 971, 80);
 		frame.getContentPane().add(lblChooseFromList);
 		
 		JLabel lblLoadYourBiomorph = new JLabel("Load Your Biomorph!");
 		lblLoadYourBiomorph.setFont(new Font("Calibri", Font.BOLD, 22));
 		lblLoadYourBiomorph.setBackground(Color.ORANGE);
-		lblLoadYourBiomorph.setBounds(321, 13, 236, 35);
+		lblLoadYourBiomorph.setBounds(415, 24, 236, 35);
 		frame.getContentPane().add(lblLoadYourBiomorph);
 		
 		JButton btnNext = new JButton("Load Biomorph"); 
-		btnNext.setBounds(831, 369, 201, 52);
+		btnNext.setBounds(927, 355, 154, 52);
 		frame.getContentPane().add(btnNext);
 		
 		btnNext.addActionListener(new ActionListener() {
@@ -110,22 +113,14 @@ public class LoadBiomorph {
 
 			}
 		});
-		btnHome.setBounds(831, 456, 201, 52);
+		btnHome.setBounds(0, 0, 148, 52);
 		frame.getContentPane().add(btnHome);
 
 		
 		//Action listener for export button. Directs it to the main screen of the UI.
-		btnImport.addActionListener(new ActionListener() {
+		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser chooser = new JFileChooser();
-				chooser.showOpenDialog(null);
-				File f = chooser.getSelectedFile();
-				String filename = f.getAbsolutePath();
-				//Import(filename);
-				panelLoaded.add(new ImagePanel(filename));
-				
-				
-				frame.setVisible(true);
+				panelSelected = false;
 			}
 		});
 		
@@ -141,8 +136,7 @@ public class LoadBiomorph {
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
        int numberOfLoops = loadedNames.size();
-       int id = 0;
-			for (int x = 0; x < 16; x++){
+			for (int x = 0; x < loadedNames.size(); x++){
 			     final JPanel panel = new JPanel();
 					panel.setForeground(Color.RED);
 					panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 0, 0), null));
@@ -150,33 +144,43 @@ public class LoadBiomorph {
 					if(x < numberOfLoops){
 						final JLabel fileName = new JLabel(loadedNames.get(x));
 						panel.add(fileName);
-						//panel.add(new JLabel(loadedNames.get(x)));
+						final String path = fileName.getText();
+
 						
 						//add mouse listener to each panel, so they can be loaded.
 						panel.addMouseListener(new MouseListener() {
 							@Override
 							public void mouseClicked(MouseEvent e) {
-								//panel.setBackground(Color.GREEN);
-								
-								String path = fileName.getText();
-								// BioController.loadBiomorphsFromFile(path); 
-								
+							
+							if (panelSelected == false){
 								BioController.loadBiomorphsFromFile(path); 
 								panelLoaded.removeAll();
 								panelLoaded.add(BioController.displayParent());
 								panelLoaded.repaint();
 								panelLoaded.revalidate();
+								panelSelected = true;
+							}
+								
 							}
 							
 							@Override
 							public void mouseEntered(MouseEvent e) {
-								panel.setBackground(Color.GREEN);
-
+								if (panelSelected == false){
+									panel.setBackground(Color.GREEN);
+									BioController.loadBiomorphsFromFile(path); 
+									panelLoaded.removeAll();
+									panelLoaded.add(BioController.displayParent());
+									panelLoaded.repaint();
+									panelLoaded.revalidate();
+								}
 							}
 
 							@Override
 							public void mouseExited(MouseEvent e) {
-								panel.setBackground(SystemColor.menu);
+								if (panelSelected == false){
+									panel.setBackground(SystemColor.menu);
+									panelLoaded.removeAll();
+								}
 							}
 
 							@Override
