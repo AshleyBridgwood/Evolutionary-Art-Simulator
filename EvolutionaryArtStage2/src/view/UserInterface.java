@@ -67,6 +67,7 @@ public class UserInterface extends MouseAdapter{
 	static int colourChoice = -1;
 	static int lineThicknessChoice = 1;
 	static int lineAmountChoice = 20;
+	int hofCounter = BioController.getCurrentHallOfFameNumber();
 	
 	int slot;
 	
@@ -321,18 +322,21 @@ public class UserInterface extends MouseAdapter{
 					BioController.clearCertainHallOfFameBiomorph(0);
 					HOFPanel1.setBackground(SystemColor.menu);
 					refreshHallOfFamePanels();
+					hofCounter--;
 				}
 				else if (hofSelected == 2){
 					panelOutput.removeAll();
 					BioController.clearCertainHallOfFameBiomorph(1);
 					HOFPanel2.setBackground(SystemColor.menu);
 					refreshHallOfFamePanels();
+					hofCounter--;
 				}
 				else if (hofSelected == 3){
 					panelOutput.removeAll();
 					BioController.clearCertainHallOfFameBiomorph(2);
 					HOFPanel3.setBackground(SystemColor.menu);
 					refreshHallOfFamePanels();
+					hofCounter--;
 					
 				}
 			}
@@ -363,6 +367,7 @@ public class UserInterface extends MouseAdapter{
 					BioController.saveCurrentParentToHallOfFame();
 					panelOutput.removeAll();
 					refreshHallOfFamePanels();
+					hofCounter++;
 				}
 			}
 		});
@@ -463,20 +468,23 @@ public class UserInterface extends MouseAdapter{
 		
 			public void mouseClicked(MouseEvent e) {
 			
-				if (hofSelected != 1 ){
-					for (int i = 0; i < hofPanels.length; i++){
-						hofPanels[i].setBackground(SystemColor.menu);
-						HOFPanel1.setBackground(Color.GREEN);
-						hofSelected = 1;
-						btnRemove.setBounds(393, 181, 210, 35);
-						btnRemove.setVisible(true);
+				if(hofCounter != 0)
+				{
+					if (hofSelected != 1 ){
+						for (int i = 0; i < hofPanels.length; i++){
+							hofPanels[i].setBackground(SystemColor.menu);
+							HOFPanel1.setBackground(Color.GREEN);
+							hofSelected = 1;
+							btnRemove.setBounds(393, 181, 210, 35);
+							btnRemove.setVisible(true);
+						}
+						HofInstructions();
+					} else {
+						hofSelected = 0;
+						HOFPanel1.setBackground(SystemColor.menu);
+						btnRemove.setVisible(false);
+	
 					}
-					HofInstructions();
-				} else {
-					hofSelected = 0;
-					HOFPanel1.setBackground(SystemColor.menu);
-					btnRemove.setVisible(false);
-
 				}
 			}
 		});
@@ -504,20 +512,23 @@ public class UserInterface extends MouseAdapter{
 		
 			public void mouseClicked(MouseEvent e) {
 				
-				if (hofSelected != 2){
-					for (int i = 0; i < hofPanels.length; i++){
-						hofPanels[i].setBackground(SystemColor.menu);
-						HOFPanel2.setBackground(Color.GREEN);
-						btnRemove.setBounds(615, 181, 210, 35);
-						btnRemove.setVisible(true);
-						hofSelected = 2;
+				if(hofCounter == 2 || hofCounter == 3)
+				{
+					if (hofSelected != 2){
+						for (int i = 0; i < hofPanels.length; i++){
+							hofPanels[i].setBackground(SystemColor.menu);
+							HOFPanel2.setBackground(Color.GREEN);
+							btnRemove.setBounds(615, 181, 210, 35);
+							btnRemove.setVisible(true);
+							hofSelected = 2;
+						}
+						HofInstructions();
+					} else {
+						hofSelected = 0;
+						HOFPanel2.setBackground(SystemColor.menu);
+						btnRemove.setVisible(false);
 					}
-					HofInstructions();
-				} else {
-					hofSelected = 0;
-					HOFPanel2.setBackground(SystemColor.menu);
-					btnRemove.setVisible(false);
-				}	
+				}
 			}
 		});
 		
@@ -542,19 +553,27 @@ public class UserInterface extends MouseAdapter{
 			}
 		
 			public void mouseClicked(MouseEvent e) {
-				if (hofSelected != 3){
-					for (int i = 0; i < hofPanels.length; i++){
-						hofPanels[i].setBackground(SystemColor.menu);
-						HOFPanel3.setBackground(Color.GREEN);
-						hofSelected = 3;
-						btnRemove.setBounds(837, 181, 210, 35);
-						btnRemove.setVisible(true);
+			if(hofCounter == 3)
+			{
+				if (hofSelected != 3  )
+				{
+					
+						for (int i = 0; i < hofPanels.length; i++){
+							hofPanels[i].setBackground(SystemColor.menu);
+							HOFPanel3.setBackground(Color.GREEN);
+							hofSelected = 3;
+							btnRemove.setBounds(837, 181, 210, 35);
+							btnRemove.setVisible(true);
+						}
+						HofInstructions();
+					} 
+					else 
+					{
+						hofSelected = 0;
+						HOFPanel3.setBackground(SystemColor.menu);
+						btnRemove.setVisible(false);
 					}
-					HofInstructions();
-				} else {
-					hofSelected = 0;
-					HOFPanel3.setBackground(SystemColor.menu);
-					btnRemove.setVisible(false);
+					
 				}
 			}
 		});
