@@ -20,7 +20,7 @@ public class Save extends FileHandler {
 	public static void saveBiomorphs(String name, ArrayList<ArrayList<Line>> bioData){
 		Log.add("Saving Biomorph...");
 		try {
-			saveObjectToFile("/Saved Biomorphs/" + name + ".biomorph", bioData);
+			FileHandler.saveObjectToFile("/Saved Biomorphs/" + name + ".biomorph", bioData);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
