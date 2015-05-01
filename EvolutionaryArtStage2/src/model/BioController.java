@@ -191,6 +191,12 @@ public class BioController {
 		hallOfFameBiomorphs.remove(id);
 	}
 	
+	public static void bringHOFBiomorphToMainPanel(int id){
+		ArrayList<Line> parent = hallOfFameBiomorphs.get(id);
+		ArrayList<ArrayList<Line>> data = BioGeneration.getChildrenFromParent(parent);
+		biomorphs = data;
+	}
+	
 	/**
 	 * Sets the next biomorph to be mutated
 	 * @param data The ID of the next child to be mutated
