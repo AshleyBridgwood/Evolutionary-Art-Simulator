@@ -306,9 +306,14 @@ public class UserInterface extends MouseAdapter{
 		frame.getContentPane().add(btnClose);
 		
 		final JButton btnRemove = new JButton("Remove");
-		btnRemove.setBounds(393, 186, 210, 35);
+		btnRemove.setBounds(393, 186, 105, 35);
 		btnRemove.setVisible(false);
 		frame.getContentPane().add(btnRemove);
+                
+                final JButton btnUse = new JButton("Use");
+                btnUse.setBounds(498,186,105,35);
+                btnUse.setVisible(false);
+                frame.getContentPane().add(btnUse);
 		
 		
 		//frame.pack();
@@ -478,14 +483,17 @@ public class UserInterface extends MouseAdapter{
 							hofPanels[i].setBackground(SystemColor.menu);
 							HOFPanel1.setBackground(Color.GREEN);
 							hofSelected = 1;
-							btnRemove.setBounds(393, 181, 210, 35);
+							btnRemove.setBounds(393, 181, 105, 35);
 							btnRemove.setVisible(true);
+                                                        btnUse.setBounds(498, 181, 105, 35);
+                                                        btnUse.setVisible(true);
 						}
 						HofInstructions();
 					} else {
 						hofSelected = 0;
 						HOFPanel1.setBackground(SystemColor.menu);
 						btnRemove.setVisible(false);
+                                                btnUse.setVisible(false);
 	
 					}
 				}
@@ -521,8 +529,10 @@ public class UserInterface extends MouseAdapter{
 						for (int i = 0; i < hofPanels.length; i++){
 							hofPanels[i].setBackground(SystemColor.menu);
 							HOFPanel2.setBackground(Color.GREEN);
-							btnRemove.setBounds(615, 181, 210, 35);
+							btnRemove.setBounds(615, 181, 105, 35);
 							btnRemove.setVisible(true);
+                                                        btnUse.setBounds(720, 181, 105, 35);
+                                                        btnUse.setVisible(true);
 							hofSelected = 2;
 						}
 						HofInstructions();
@@ -530,6 +540,7 @@ public class UserInterface extends MouseAdapter{
 						hofSelected = 0;
 						HOFPanel2.setBackground(SystemColor.menu);
 						btnRemove.setVisible(false);
+                                                btnUse.setVisible(false);
 					}
 				}
 			}
@@ -565,8 +576,10 @@ public class UserInterface extends MouseAdapter{
 							hofPanels[i].setBackground(SystemColor.menu);
 							HOFPanel3.setBackground(Color.GREEN);
 							hofSelected = 3;
-							btnRemove.setBounds(837, 181, 210, 35);
+							btnRemove.setBounds(837, 181, 105, 35);
 							btnRemove.setVisible(true);
+                                                        btnUse.setBounds(942, 181, 105, 35);
+                                                        btnUse.setVisible(true);
 						}
 						HofInstructions();
 					} 
@@ -575,6 +588,7 @@ public class UserInterface extends MouseAdapter{
 						hofSelected = 0;
 						HOFPanel3.setBackground(SystemColor.menu);
 						btnRemove.setVisible(false);
+                                                btnUse.setVisible(false);
 					}
 					
 				}
@@ -1148,6 +1162,7 @@ public class UserInterface extends MouseAdapter{
 		}
 		else if (response == JOptionPane.NO_OPTION) {
 			frame.dispose();
+                        System.exit(0);
 		}
 		return false;
 	}
