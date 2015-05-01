@@ -116,6 +116,14 @@ public class StartScreen{
 		frame.add(panel2);
 		
 		
+                //Listen if window is crossed off
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				exit();
+			}
+		});
+                
+                
 		//Action listeners for new button. Directs it to the main screen of the UI.
 		newButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -156,6 +164,7 @@ public class StartScreen{
 						JOptionPane.QUESTION_MESSAGE);
 		if (response == JOptionPane.YES_OPTION) {
 			frame.dispose();
+                        System.exit(0);
 		}
 	}
 	

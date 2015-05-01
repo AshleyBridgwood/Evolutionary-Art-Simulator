@@ -356,7 +356,7 @@ public class UserInterface extends MouseAdapter{
 		
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(exit()==false){
+				if(!saveWithoutClose()){
 					new StartScreen().getFrame().setVisible(true);
 					frame.dispose();
 				}
@@ -448,6 +448,13 @@ public class UserInterface extends MouseAdapter{
 			public void actionPerformed(ActionEvent e) {
 				exportBiomorph();
 
+			}
+		});
+                
+                //WindowLsistner if window is crossed off
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
 			}
 		});
 		
@@ -1166,6 +1173,22 @@ public class UserInterface extends MouseAdapter{
 		else if (response == JOptionPane.NO_OPTION) {
 			frame.dispose();
                         System.exit(0);
+		}
+		return false;
+	}
+        
+        private boolean saveWithoutClose(){
+		int response = JOptionPane
+				.showConfirmDialog(frame,
+						"Do you want to save your work?", "Quit",
+						JOptionPane.YES_NO_OPTION,
+						JOptionPane.QUESTION_MESSAGE);
+		if (response == JOptionPane.YES_OPTION) {
+			new SaveBiomorph().getFrame().setVisible(true);	
+			return true;
+		}
+		else if (response == JOptionPane.NO_OPTION) {
+			//No option should be in method using this
 		}
 		return false;
 	}
