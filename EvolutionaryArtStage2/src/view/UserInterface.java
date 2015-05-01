@@ -329,6 +329,7 @@ public class UserInterface extends MouseAdapter{
 					refreshHallOfFamePanels();
 					hofCounter--;
 					btnRemove.setVisible(false);
+                                        btnUse.setVisible(false);
 				}
 				else if (hofSelected == 2){
 					panelOutput.removeAll();
@@ -337,6 +338,7 @@ public class UserInterface extends MouseAdapter{
 					refreshHallOfFamePanels();
 					hofCounter--;
 					btnRemove.setVisible(false);
+                                        btnUse.setVisible(false);
 				}
 				else if (hofSelected == 3){
 					panelOutput.removeAll();
@@ -345,6 +347,7 @@ public class UserInterface extends MouseAdapter{
 					refreshHallOfFamePanels();
 					hofCounter--;
 					btnRemove.setVisible(false);
+                                        btnUse.setVisible(false);
 					
 				}
 			}
