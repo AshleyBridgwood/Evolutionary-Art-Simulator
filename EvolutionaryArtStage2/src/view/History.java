@@ -41,7 +41,7 @@ public class History {
 	 */
 	public History() {
 		initialize();
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+                mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 	}
 
 	/**
@@ -85,8 +85,9 @@ public class History {
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         BioController.getHistoryData();
         	int id = 0;
-        	int numberOfRows = BioController.getNumberOfItemsInHistory();
-			for (int x = 0; x < numberOfRows; x++){
+        	int itemsToShow = BioController.getNumberOfItemsInHistory();
+			//for (int x = 0; x < numberOfRows; x++){
+                        while(itemsToShow > 0){
 			     JPanel panel = new JPanel();
 			     panel.setForeground(Color.RED);
 			     panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 0, 0), null));
@@ -102,6 +103,7 @@ public class History {
 				    id++;
 				}
 				mainPanel.add(panel);
+                                itemsToShow-=5;
 			}
 			BioController.clearHistoryData();
 		//scrollPane.getViewport().add(mainPanel);
