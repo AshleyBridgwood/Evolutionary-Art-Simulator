@@ -3,7 +3,8 @@
  * other classes speak to the controller, who then passes it to the User Interface if required.
  * 
  * @author Ashley Bridgwood
- * 
+ * @author James Langford
+ * @author Ibrahim Farah
  */
 
 package model;

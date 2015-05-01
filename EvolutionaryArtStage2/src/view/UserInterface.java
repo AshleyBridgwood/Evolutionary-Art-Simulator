@@ -493,18 +493,17 @@ public class UserInterface extends MouseAdapter{
 							hofPanels[i].setBackground(SystemColor.menu);
 							HOFPanel1.setBackground(Color.GREEN);
 							hofSelected = 1;
-							btnRemove.setBounds(393, 181, 105, 35);
+							btnRemove.setBounds(498, 181, 105, 35);
 							btnRemove.setVisible(true);
-                                                        btnUse.setBounds(498, 181, 105, 35);
-                                                        btnUse.setVisible(true);
+                            btnUse.setBounds(393, 181, 105, 35);
+                            btnUse.setVisible(true);
 						}
 						HofInstructions();
 					} else {
 						hofSelected = 0;
 						HOFPanel1.setBackground(SystemColor.menu);
 						btnRemove.setVisible(false);
-                                                btnUse.setVisible(false);
-	
+                        btnUse.setVisible(false);
 					}
 				}
 			}
@@ -539,10 +538,10 @@ public class UserInterface extends MouseAdapter{
 						for (int i = 0; i < hofPanels.length; i++){
 							hofPanels[i].setBackground(SystemColor.menu);
 							HOFPanel2.setBackground(Color.GREEN);
-							btnRemove.setBounds(615, 181, 105, 35);
+							btnRemove.setBounds(720, 181, 105, 35);
 							btnRemove.setVisible(true);
-                                                        btnUse.setBounds(720, 181, 105, 35);
-                                                        btnUse.setVisible(true);
+                            btnUse.setBounds(615, 181, 105, 35);
+                            btnUse.setVisible(true);
 							hofSelected = 2;
 						}
 						HofInstructions();
@@ -586,10 +585,10 @@ public class UserInterface extends MouseAdapter{
 							hofPanels[i].setBackground(SystemColor.menu);
 							HOFPanel3.setBackground(Color.GREEN);
 							hofSelected = 3;
-							btnRemove.setBounds(837, 181, 105, 35);
+							btnRemove.setBounds(942, 181, 105, 35);
 							btnRemove.setVisible(true);
-                                                        btnUse.setBounds(942, 181, 105, 35);
-                                                        btnUse.setVisible(true);
+                            btnUse.setBounds(837, 181, 105, 35);
+                            btnUse.setVisible(true);
 						}
 						HofInstructions();
 					} 
@@ -598,7 +597,7 @@ public class UserInterface extends MouseAdapter{
 						hofSelected = 0;
 						HOFPanel3.setBackground(SystemColor.menu);
 						btnRemove.setVisible(false);
-                                                btnUse.setVisible(false);
+                        btnUse.setVisible(false);
 					}
 					
 				}
@@ -864,7 +863,10 @@ public class UserInterface extends MouseAdapter{
 		JMenuItem export = new JMenuItem("Export");
 		JMenuItem help = new JMenuItem("Help");
 	
-		JMenuItem clearHOF = new JMenuItem("Clear Hall of Fame"); 
+		JMenuItem clearHOF = new JMenuItem("Clear Hall of Fame");
+		JMenuItem clearHOF1 = new JMenuItem("Remove Biomorph 1");
+		JMenuItem clearHOF2 = new JMenuItem("Remove Biomorph 2");
+		JMenuItem clearHOF3 = new JMenuItem("Remove Biomorph 3");
 		
 		JMenuItem black = new JMenuItem("Default: Black");
 		JMenuItem red = new JMenuItem("Red");
@@ -885,7 +887,11 @@ public class UserInterface extends MouseAdapter{
 		file.add(export);
 		file.add(help);
 		
+		hallOfFame.add(clearHOF1);
+		hallOfFame.add(clearHOF2);
+		hallOfFame.add(clearHOF3);
 		hallOfFame.add(clearHOF);
+		
 		
 		colours.add(black);
 		colours.add(red);
