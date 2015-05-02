@@ -1,9 +1,12 @@
 package testing;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import model.BioController;
+import model.Line;
 
 public class TestFileHandling {
 
@@ -16,6 +19,6 @@ public class TestFileHandling {
 	
 	@Test
 	public void testSaving(){
-		controller.saveCurrentBiomorphsToFile("test");
+		
 	}
 }
