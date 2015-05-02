@@ -49,4 +49,12 @@ public class TestBioGeneration {
 		assertNotSame(biomorphs.get(6), combinationBiomorphs);
 	}
 	
+	@Test
+	public void testChildCreation(){
+		ArrayList<ArrayList<Line>> data = generation.getAllBiomorphs();
+		ArrayList<Line> parent = data.get(0);
+		ArrayList<Line> child1 = generation.createChild(parent);
+		assertNotSame(parent, child1);
+	}
+	
 }
