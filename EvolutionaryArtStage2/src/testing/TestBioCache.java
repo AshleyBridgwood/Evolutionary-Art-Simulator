@@ -8,11 +8,16 @@ import org.junit.Test;
 
 public class TestBioCache {
 	
+	private BioCache cache;
 	private Object data;
+	
+	@Before
+	public void before(){
+		cache = new BioCache();
+	}
 	
 	@Test
 	public void testPush(){
-		BioCache cache = new BioCache();
 		assertEquals(cache.getNumberOfItemsOnStack(), -1);
 		Object data = null;
 		cache.push(data);
@@ -24,7 +29,6 @@ public class TestBioCache {
 	
 	@Test
 	public void testPop(){
-		BioCache cache = new BioCache();
 		for(int i = 0; i < 10; i++){
 			cache.push(data);
 		}
