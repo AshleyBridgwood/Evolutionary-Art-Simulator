@@ -116,7 +116,7 @@ public class Tree {
 	}
 	
 	//Inner class for the TreeNode
-	protected static class TreeNode<Point> {
+	public static class TreeNode<Point> {
 		
 		private Point element; //Data which is stored within each TreeNode
 		private List<TreeNode<Point>> children; //A list of all children which are connected to the TreeNode

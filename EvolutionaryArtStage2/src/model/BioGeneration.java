@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import view.BiomorphStartUp;
-import view.UserInterface;
 import model.Tree.TreeNode;
 
 public class BioGeneration {
