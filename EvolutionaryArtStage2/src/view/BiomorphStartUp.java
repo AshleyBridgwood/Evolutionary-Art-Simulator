@@ -58,32 +58,26 @@ public class BiomorphStartUp {
 		biomorphPanel.setForeground(Color.BLACK);
 		biomorphPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		biomorphPanel.setBackground(SystemColor.menu);
-		biomorphPanel.setBounds(190, 132, 311, 175);
+		biomorphPanel.setBounds(190, 144, 311, 175);
 		BioController.generateBiomorphs();
 		biomorphPanel.add(BioController.displayParent());
 		frame.getContentPane().add(biomorphPanel);
 		
-		JLabel lblBiomorph = new JLabel("Biomorph");
-		lblBiomorph.setFont(new Font("Calibri", Font.BOLD, 22));
-		lblBiomorph.setBackground(Color.ORANGE);
-		lblBiomorph.setBounds(296, 89, 120, 35);
-		frame.getContentPane().add(lblBiomorph);
-		
 		JButton btnGenerate = new JButton("Generate");
-		btnGenerate.setBounds(190, 309, 154, 43);
+		btnGenerate.setBounds(190, 321, 154, 43);
 		frame.getContentPane().add(btnGenerate);
 		
 		JButton btnNext = new JButton("Next");
-		btnNext.setBounds(347, 309, 154, 43);
+		btnNext.setBounds(347, 321, 154, 43);
 		frame.getContentPane().add(btnNext);
 	
-		lineAmountSlider.setBounds(35, 293, 150, 70);
+		lineAmountSlider.setBounds(261, 73, 150, 70);
 		frame.getContentPane().add(lineAmountSlider);
 		
 		JLabel lblChooseYourBiomorph = new JLabel("Choose Your Biomorph!");
 		lblChooseYourBiomorph.setFont(new Font("Calibri", Font.BOLD, 22));
 		lblChooseYourBiomorph.setBackground(Color.ORANGE);
-		lblChooseYourBiomorph.setBounds(239, 13, 236, 35);
+		lblChooseYourBiomorph.setBounds(234, 13, 236, 35);
 		frame.getContentPane().add(lblChooseYourBiomorph);
 		
 		JLabel lblClickGenerateUntil = new JLabel("Click generate until you find the biomoph of your choice!");
@@ -93,7 +87,7 @@ public class BiomorphStartUp {
 		frame.getContentPane().add(lblClickGenerateUntil);
 		
 		JPanel navPanel = new JPanel();
-		navPanel.setBounds(0, 373, 711, 70);
+		navPanel.setBounds(0, 382, 711, 70);
 		frame.getContentPane().add(navPanel);
 		navPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		navPanel.setLayout(null);

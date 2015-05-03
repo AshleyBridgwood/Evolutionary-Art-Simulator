@@ -69,14 +69,14 @@ public class LoadBiomorph {
 		frame.getContentPane().add(scrollPane);
 		
 		JButton btnRemove = new JButton("Remove");
-		btnRemove.setBounds(770, 355, 154, 52);
+		btnRemove.setBounds(770, 430, 154, 52);
 		frame.getContentPane().add(btnRemove);
 		
 		panelBiomorphs.setForeground(Color.BLACK);
 		panelBiomorphs.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorphs.setBackground(SystemColor.menu);
 		
-		panelLoaded.setBounds(770, 178, 311, 172);
+		panelLoaded.setBounds(770, 253, 311, 172);
 		panelLoaded.setForeground(Color.BLACK);
 		panelLoaded.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelLoaded.setBackground(SystemColor.menu);
@@ -98,7 +98,7 @@ public class LoadBiomorph {
 		frame.getContentPane().add(lblLoadYourBiomorph);
 		
 		JButton btnNext = new JButton("Load Biomorph"); 
-		btnNext.setBounds(927, 355, 154, 52);
+		btnNext.setBounds(927, 430, 154, 52);
 		frame.getContentPane().add(btnNext);
 		
 		btnNext.addActionListener(new ActionListener() {

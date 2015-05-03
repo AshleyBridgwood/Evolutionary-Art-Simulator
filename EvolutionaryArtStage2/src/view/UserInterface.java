@@ -101,7 +101,7 @@ public class UserInterface extends MouseAdapter{
 		//frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		//frame.setUndecorated(true);
 		
-		frame.setBounds(100, 100, 1093, 875);
+		frame.setBounds(100, 100, 1093, 825);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		Dimension d = new Dimension (1093, 885); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
@@ -231,7 +231,7 @@ public class UserInterface extends MouseAdapter{
 		controlPanel.setForeground(Color.BLACK);
 		controlPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		controlPanel.setBackground(SystemColor.menu);
-		controlPanel.setBounds(28, 662, 1025, 153);
+		controlPanel.setBounds(28, 662, 1025, 92);
 		
 		//Sliders to adjust genes of bio-morph.
 		//probability sliders
@@ -266,12 +266,9 @@ public class UserInterface extends MouseAdapter{
 		logoImage.setIcon(scaledLogo);
 		panelLogo.add(logoImage);
 		frame.getContentPane().add(panelLogo);
-		JButton menuButton = new JButton("Home - Temp Next");
-		menuButton.setBounds(208, 483, 149, 43);
-		frame.getContentPane().add(menuButton);
 		
 		JButton btnHOF = new JButton("Add to hall of fame");
-		btnHOF.setBounds(47, 531, 154, 43);
+		btnHOF.setBounds(209, 487, 148, 43);
 		frame.getContentPane().add(btnHOF);
 		
 		JLabel lblBiomorphParent = new JLabel("Parent");
@@ -295,11 +292,11 @@ public class UserInterface extends MouseAdapter{
 		frame.getContentPane().add(btnMutate);
 		
 		JButton btnSave = new JButton("Save!");
-		btnSave.setBounds(47, 483, 154, 43);
+		btnSave.setBounds(47, 487, 78, 43);
 		frame.getContentPane().add(btnSave);
 		
 		JButton btnExport = new JButton("Export!");
-		btnExport.setBounds(209, 531, 149, 43);
+		btnExport.setBounds(123, 487, 78, 43);
 		frame.getContentPane().add(btnExport);
 		
 		JButton btnHome = new JButton("Home");
@@ -443,22 +440,6 @@ public class UserInterface extends MouseAdapter{
 				for (int i = 0; i < panels.length; i++){
 					panels[i].setBackground(SystemColor.menu);
 				}
-			}
-		});
-		
-		//Action listener for new button. Directs it to the main screen of the UI.
-		menuButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//new StartScreen().getFrame().setVisible(true);
-				//frame.setVisible(false);
-				panelOutput.removeAll();
-				BioController.generateBiomorphs();
-				refreshAllPanels();
-				for (int i = 0; i < panels.length; i++){
-					panels[i].setBackground(SystemColor.menu);
-				}
-
-
 			}
 		});
 		
