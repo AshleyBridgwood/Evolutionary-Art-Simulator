@@ -70,9 +70,9 @@ public class UserInterface extends MouseAdapter{
 	int hofCounter = BioController.getCurrentHallOfFameNumber();
 	
 	int slot;
-	
 	int attempts = 0;
 	int hofSelected = 0;
+	static boolean changes = false;
 
 	private ArrayList<Integer> panelsSelected = new ArrayList<Integer>();
 	
@@ -111,7 +111,12 @@ public class UserInterface extends MouseAdapter{
 		//Exit prompt
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				exit();
+				if (changes == true){
+					exit();
+				} else {
+					exitNoChange();
+				}
+				
 			}
 		});
 
@@ -369,7 +374,13 @@ public class UserInterface extends MouseAdapter{
 		
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(!saveWithoutClose()){
+				if (changes == true){
+					if (!exit()){
+						new StartScreen().getFrame().setVisible(true);
+						frame.dispose();	
+					}
+					
+				} else {
 					new StartScreen().getFrame().setVisible(true);
 					frame.dispose();
 				}
@@ -417,12 +428,14 @@ public class UserInterface extends MouseAdapter{
 						panelOutput.removeAll();
 						BioController.mutuateBiomorphOne();
 						refreshAllPanels();	
+						changes = true;
 					}
 					else // mutate two selected.
 					{
 						panelOutput.removeAll();
 						BioController.mutateBiomorphMultiple(panelsSelected.get(0),panelsSelected.get(1));
 						refreshAllPanels();
+						changes = true;
 					}
 				}
 
@@ -463,15 +476,6 @@ public class UserInterface extends MouseAdapter{
 
 			}
 		});
-                
-                //WindowLsistner if window is crossed off
-		frame.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-			}
-		});
-		
-		
 
 		
 		///////////////////////////////////////////   Mouse Listener so panels can be clicked!\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -944,7 +948,13 @@ public class UserInterface extends MouseAdapter{
 		newBiomorph.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				if(exit()==false){
+				if (changes == true){
+					if (!exit()){
+						new BiomorphStartUp().getFrame().setVisible(true);
+						frame.dispose();	
+					}
+					
+				} else {
 					new BiomorphStartUp().getFrame().setVisible(true);
 					frame.dispose();
 				}
@@ -1124,7 +1134,7 @@ public class UserInterface extends MouseAdapter{
 	public JFrame getFrame() {
 			return this.frame;
 	}
-	
+
 	public void exportBiomorph(){
 		JFileChooser chooser = new JFileChooser();
 		chooser.showOpenDialog(null);
@@ -1181,34 +1191,30 @@ public class UserInterface extends MouseAdapter{
 	private boolean exit(){
 		int response = JOptionPane
 				.showConfirmDialog(frame,
-						"Do you want to save your work?", "Quit",
+						"Are you sure you want to quit? All unsaved changes will be lost", "Quit",
 						JOptionPane.YES_NO_OPTION,
 						JOptionPane.QUESTION_MESSAGE);
 		if (response == JOptionPane.YES_OPTION) {
-			new SaveBiomorph().getFrame().setVisible(true);	
-			return true;
+			frame.dispose();
+			return false;
 		}
 		else if (response == JOptionPane.NO_OPTION) {
-			frame.dispose();
-                        System.exit(0);
+			new SaveBiomorph().getFrame().setVisible(true);	
 		}
-		return false;
+		return true;
 	}
         
-        private boolean saveWithoutClose(){
+	private boolean exitNoChange(){
 		int response = JOptionPane
 				.showConfirmDialog(frame,
-						"Do you want to save your work?", "Quit",
+						"Are you sure you want to quit?", "Quit",
 						JOptionPane.YES_NO_OPTION,
 						JOptionPane.QUESTION_MESSAGE);
 		if (response == JOptionPane.YES_OPTION) {
-			new SaveBiomorph().getFrame().setVisible(true);	
-			return true;
+			frame.dispose();
+			return false;
 		}
-		else if (response == JOptionPane.NO_OPTION) {
-			//No option should be in method using this
-		}
-		return false;
+		return true;
 	}
 	
 	public void HofInstructions(){
@@ -1244,6 +1250,10 @@ public class UserInterface extends MouseAdapter{
 		} else if (exported == false){
 			JOptionPane.showMessageDialog(null, "Incorrect File!");
 		}
+	}
+	
+	public static void setChanged(boolean changed){
+			changes = changed;
 	}
 	
 

@@ -141,6 +141,7 @@ public class SaveBiomorph {
 	public static void saved(boolean saved){
 		if (saved == true){
 			JOptionPane.showMessageDialog(null, "File Successfully Saved");
+			UserInterface.setChanged(false);
 		} else {
 			JOptionPane.showMessageDialog(null, "File not saved!");
 		}
