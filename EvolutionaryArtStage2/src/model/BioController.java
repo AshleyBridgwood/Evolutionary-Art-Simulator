@@ -117,6 +117,8 @@ public class BioController {
 	}
 	
 	public static void getHistoryData(){
+		
+		clearHistoryData();
 		int number = BioCache.getNumberOfItemsOnStack();
 		for(int i = 0; i < number; i++){
 			ArrayList<ArrayList<Line>> newLine = (ArrayList<ArrayList<Line>>) BioCache.pop();
