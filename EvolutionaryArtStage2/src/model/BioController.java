@@ -269,5 +269,7 @@ public class BioController {
 		
 		// generate children from new parent
 		biomorphs = BioGeneration.getChildrenFromParent(parent);
+		BioCache.push(biomorphs);
+
 	}
 }
