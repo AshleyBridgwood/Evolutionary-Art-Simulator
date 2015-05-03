@@ -54,6 +54,7 @@ public class BioController {
 	public static void saveCurrentBiomorphsToFile(String fileName){
 		Save.saveBiomorphs(fileName, biomorphs);
 		Log.add("Biomorph Successfully saved! (" + fileName + ".biomorph)");
+		
 	}
 	
 	/**

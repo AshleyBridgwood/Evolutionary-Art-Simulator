@@ -1138,7 +1138,6 @@ public class UserInterface extends MouseAdapter{
 		panelOutput.paint(g);  //this == JComponent
 		g.dispose();
 		Export.export(filename, pingImage);
-		JOptionPane.showMessageDialog(null, "File Successfully Exported!");
 	}
 	
 	public static int getColourChoice()
@@ -1236,6 +1235,15 @@ public class UserInterface extends MouseAdapter{
 				frame.dispose();
 			}
 		return false;
+	}
+	
+	public static void exported(boolean exported){
+	
+		if (exported == true){
+			JOptionPane.showMessageDialog(null, "File Successfully Exported!");
+		} else if (exported == false){
+			JOptionPane.showMessageDialog(null, "Incorrect File!");
+		}
 	}
 	
 

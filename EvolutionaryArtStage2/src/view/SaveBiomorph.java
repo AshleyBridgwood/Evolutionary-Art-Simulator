@@ -108,10 +108,11 @@ public class SaveBiomorph {
 		//Action listener for save button. Confirmation of saved file.
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String test = txtName.getText();
-				System.out.println(test);
-				BioController.saveCurrentBiomorphsToFile(txtName.getText());
-				JOptionPane.showMessageDialog(null, "File Successfully Saved");
+				
+				int size = BioController.getNumOfSavedBiomorphs();
+				
+				String fileName= txtName.getText().replaceAll("\\W","") + size;
+				BioController.saveCurrentBiomorphsToFile(fileName);
 				frame.dispose();
 			}
 		});
@@ -132,11 +133,17 @@ public class SaveBiomorph {
 		
 	}
 
-
-	
-	
 	//getter so mainscreen can access the main frame.
 	public JFrame getFrame() {
 			return this.frame;
 	}
+	
+	public static void saved(boolean saved){
+		if (saved == true){
+			JOptionPane.showMessageDialog(null, "File Successfully Saved");
+		} else {
+			JOptionPane.showMessageDialog(null, "File not saved!");
+		}
+	}
+	
 }
