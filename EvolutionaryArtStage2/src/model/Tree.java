@@ -10,7 +10,6 @@ package model;
 import model.Point;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Tree {
@@ -55,6 +54,7 @@ public class Tree {
 	 * @param key Find the key within the tree
 	 * @return Boolean True if found, false if not
 	 */
+	@SuppressWarnings("unused")
 	private boolean find(TreeNode<Point> node, int key){
 		boolean result = false;
 		if(node.element.getID() == key){
@@ -116,6 +116,7 @@ public class Tree {
 	}
 	
 	//Inner class for the TreeNode
+	@SuppressWarnings("hiding")
 	public static class TreeNode<Point> {
 		
 		private Point element; //Data which is stored within each TreeNode

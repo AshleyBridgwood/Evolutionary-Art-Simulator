@@ -119,6 +119,7 @@ public class BioController {
 	public static void getHistoryData(){
 		int number = BioCache.getNumberOfItemsOnStack();
 		for(int i = 0; i < number; i++){
+			@SuppressWarnings("unchecked")
 			ArrayList<ArrayList<Line>> newLine = (ArrayList<ArrayList<Line>>) BioCache.pop();
 			history.add(newLine);
 		}

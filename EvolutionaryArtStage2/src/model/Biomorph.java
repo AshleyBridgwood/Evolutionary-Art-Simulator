@@ -21,7 +21,6 @@ public class Biomorph {
 	 * Constructor for creating a new biomorph
 	 */
 	public Biomorph(){
-		String testStr = "\nThis bio-morphs genes are: ";
 		Gene first_gene;
 
 		this.seed = Factory.generateSeed(); //Generate the seed value
@@ -35,7 +34,6 @@ public class Biomorph {
 			Gene g = new Gene();
 			genes.add(g);
 		}
-		testStr += getStringGeneValues(); //print gene values
 	}
 	
 	/**

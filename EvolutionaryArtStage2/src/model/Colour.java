@@ -12,7 +12,6 @@ import java.util.Random;
 
 public class Colour {
 	
-	private static final String[] colours = {"red","yellow","blue","orange","pink","cyan","magenta","black","lightGrey","darkGrey"};
 	private static final Color[] reds = {new Color(204,0,0), new Color(204,102,0), new Color(255,71,71), new Color(204,0,102)};
 	private static final Color[] blues = {new Color(0,0,68), new Color(0,51,102), new Color(102,153,204), new Color(192,192,192)};
 	private static final Color[] greens = {new Color(0,255,0), new Color(4,193,4), new Color(1,128,1), new Color(0,50,0)};

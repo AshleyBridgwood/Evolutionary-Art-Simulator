@@ -9,7 +9,6 @@ package model;
 
 public class Gene {
 	private int g;
-	private boolean branch = false;
 	
 	public Gene() {
 		g = Factory.generateGeneValue(); 
@@ -17,7 +16,6 @@ public class Gene {
 	
 	public Gene(boolean isBranch) {
 		g = Factory.generateBranchValue(); 
-		branch = isBranch;
 	}
 	
 	public int getValue(){
@@ -27,7 +25,4 @@ public class Gene {
 	public void setValue(int g){
 		this.g = g;
 	}
-	
-
-
 }

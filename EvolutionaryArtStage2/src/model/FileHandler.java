@@ -15,7 +15,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class FileHandler {
@@ -59,6 +58,7 @@ public class FileHandler {
 		try{
 			FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
 			ObjectInputStream in = new ObjectInputStream(fileIn);
+			@SuppressWarnings("unchecked")
 			ArrayList<Line> data = (ArrayList<Line>) in.readObject();
 			fileIn.close();
 			return data;
@@ -77,6 +77,7 @@ public class FileHandler {
 		try{
 			FileInputStream fileIn = new FileInputStream(EvolutionaryArtFolderLocation + locationWithinFolder);
 			ObjectInputStream in = new ObjectInputStream(fileIn);
+			@SuppressWarnings("unchecked")
 			ArrayList<ArrayList<Line>> data = (ArrayList<ArrayList<Line>>) in.readObject();
 			fileIn.close();
 			return data;
