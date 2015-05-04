@@ -144,7 +144,6 @@ public class StartScreen{
     
     
 	//Default exit of the system
-	@SuppressWarnings("unused")
 	private void exit(){
 		int response = JOptionPane
 				.showConfirmDialog(frame,

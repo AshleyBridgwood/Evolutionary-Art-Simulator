@@ -1,15 +1,14 @@
 package testing;
 
-import java.util.ArrayList;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import model.BioController;
-import model.Line;
+
 
 public class TestFileHandling {
 
+	@SuppressWarnings("unused")
 	private BioController controller;
 	
 	@Before

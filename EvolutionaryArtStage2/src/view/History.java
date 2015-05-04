@@ -1,5 +1,6 @@
 /**
  * @author Ibrahim Farah
+ * @author Ashley Bridgwood
  */
 
 package view;

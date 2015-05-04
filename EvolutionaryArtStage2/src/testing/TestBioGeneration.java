@@ -16,12 +16,14 @@ public class TestBioGeneration {
 	private BioController controller;
 	private BioGeneration generation;
 	
+	@SuppressWarnings("static-access")
 	@Before
 	public void before(){
 		controller =  new BioController();
 		generation = new BioGeneration(controller.newBiomorph());
 	}
 	
+	@SuppressWarnings("static-access")
 	@Test
 	public void testCorrectNumberOfBiomorphsGenerated(){
 		ArrayList<ArrayList<Line>> biomorphs = generation.getAllBiomorphs();
@@ -33,6 +35,7 @@ public class TestBioGeneration {
 		assertEquals(1, parent.size());
 	}
 	
+	@SuppressWarnings("static-access")
 	@Test
 	public void testUniqueGeneration(){
 		ArrayList<ArrayList<Line>> biomorphs = generation.getAllBiomorphs();
@@ -41,6 +44,7 @@ public class TestBioGeneration {
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	@Test
 	public void testCombiningBiomorphs(){
 		ArrayList<ArrayList<Line>> biomorphs = generation.getAllBiomorphs();
@@ -49,6 +53,7 @@ public class TestBioGeneration {
 		assertNotSame(biomorphs.get(6), combinationBiomorphs);
 	}
 	
+	@SuppressWarnings("static-access")
 	@Test
 	public void testChildCreation(){
 		ArrayList<ArrayList<Line>> data = generation.getAllBiomorphs();

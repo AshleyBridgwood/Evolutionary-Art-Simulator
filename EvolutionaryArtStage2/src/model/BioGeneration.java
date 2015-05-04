@@ -19,7 +19,7 @@ import model.Tree.TreeNode;
 
 public class BioGeneration {
 	
-	private Gene g0; //Stores the value for the first gene
+	//private Gene g0; //Stores the value for the first gene
 	private Gene g1; //Stores the value for the second gene
 	private Gene g2; //Stores the value of the third gene
 
@@ -28,7 +28,7 @@ public class BioGeneration {
 	
 	public BioGeneration(Biomorph b){
 		//Initialise the fields
-		g0 = b.getGenes().get(0);
+		//g0 = b.getGenes().get(0);
 		g1 = b.getGenes().get(1);
 		g2 = b.getGenes().get(2);
 		finishedBiomorphs = new ArrayList<ArrayList<Line>>();

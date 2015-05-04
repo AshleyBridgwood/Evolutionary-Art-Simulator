@@ -3,13 +3,8 @@
  */
 package view;
 
-import java.awt.EventQueue;
 
-import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -34,15 +29,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import model.BioController;
-import model.Colour;
 import model.Export;
-import model.FileHandler;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class UserInterface extends MouseAdapter{
@@ -1053,7 +1045,9 @@ public class UserInterface extends MouseAdapter{
 			//allows key shortcuts
 		 	file.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK), "save");
 	        file.getActionMap().put("save", new AbstractAction() {
-	            @Override
+				private static final long serialVersionUID = -3278863802954479650L;
+
+				@Override
 	            public void actionPerformed(ActionEvent e) {
 	            	new SaveBiomorph().getFrame().setVisible(true);
 	            }
@@ -1061,7 +1055,10 @@ public class UserInterface extends MouseAdapter{
 	        
 	        file.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.CTRL_MASK), "undo");
 	        file.getActionMap().put("undo", new AbstractAction() {
-	            @Override
+
+				private static final long serialVersionUID = -4995258529742317659L;
+
+				@Override
 	            public void actionPerformed(ActionEvent e) {
 	            	panelOutput.removeAll();
 					BioController.undoOneBiomorph();

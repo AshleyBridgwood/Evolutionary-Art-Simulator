@@ -5,7 +5,6 @@
 package view;
 
 
-import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -27,7 +26,6 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 import javax.swing.JTextField;
-import javax.swing.JRadioButton;
 
 import model.BioController;
 

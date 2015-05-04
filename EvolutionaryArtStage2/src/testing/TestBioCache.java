@@ -16,6 +16,7 @@ public class TestBioCache {
 		cache = new BioCache();
 	}
 	
+	@SuppressWarnings("static-access")
 	@Test
 	public void testPush(){
 		assertEquals(cache.getNumberOfItemsOnStack(), -1);
@@ -27,6 +28,7 @@ public class TestBioCache {
 		assertEquals(cache.getNumberOfItemsOnStack(), 2);
 	}
 	
+	@SuppressWarnings("static-access")
 	@Test
 	public void testPop(){
 		for(int i = 0; i < 10; i++){
