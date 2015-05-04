@@ -31,7 +31,6 @@ public class History {
 
 	private JFrame frame;
 	JPanel panelBiomorphs = new JPanel(); // panel to contain all of the loaded biomorphs.
-	
 	JPanel mainPanel = new JPanel();
 
 
@@ -80,16 +79,13 @@ public class History {
 		//mainPanel.setPreferredSize(new Dimension(987, 917));
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         BioController.getHistoryData();
-		System.out.println("Number of items to display: " + BioController.getNumberOfItemsInHistory());	
 		
         	int id = 0;
         	
-        	int numberOfRows = BioController.getNumberOfItemsInHistory();
+        	int numberOfRows = BioController.getNumberOfItemsInHistory(); //gets number of biomorphs.
         	int times = (int) Math.ceil(numberOfRows / (float)5);  // works out multiple of 5 rounded up.. e.g 12 / 5 =  2.4 -> rounds up to 3. So 3 rows.
-        	
-        	System.out.println("times is : " + times);
-        	
-			for (int x = 0; x < times; x++){
+        	       	
+			for (int x = 0; x < times; x++){ 
 			     JPanel panel = new JPanel();
 			     panel.setForeground(Color.RED);
 			     panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 0, 0), null));
@@ -97,8 +93,8 @@ public class History {
 			     panel.setLayout(new GridLayout(1,5));
 				for (int j = 0; j < 5; j++){
 					JPanel panels = new JPanel();
-					if(id < BioController.getNumberOfItemsInHistory()){
-						panels.add(BioController.displayHistoryBiomorph(id));
+					if(id < BioController.getNumberOfItemsInHistory()){ //whilst there's still more items in history.
+						panels.add(BioController.displayHistoryBiomorph(id)); //add biomorph.
 					}
 				    panels.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 255, 0), null));
 				    panel.add(panels);
@@ -106,7 +102,6 @@ public class History {
 				}
 				mainPanel.add(panel);
 			}
-		//scrollPane.getViewport().add(mainPanel);
 		
 		JScrollPane scrollPane = new JScrollPane(mainPanel); // scroll pane that will contain all saved biomorphs.
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);//set the horizontal scrollbar to never appear

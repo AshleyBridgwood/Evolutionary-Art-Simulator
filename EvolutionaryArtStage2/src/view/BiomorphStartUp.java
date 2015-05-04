@@ -31,11 +31,8 @@ public class BiomorphStartUp {
 
 	private JFrame frame;
 	private static JPanel biomorphPanel = new JPanel();
-	
 	static int lineAmountChoice;
-	
 	static LabelledSlider lineAmountSlider = new LabelledSlider(" Amount of Lines  ", 20, 10, 30, 1);
-
 
 	public BiomorphStartUp() {
 		initialize();
@@ -59,7 +56,7 @@ public class BiomorphStartUp {
 		biomorphPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		biomorphPanel.setBackground(SystemColor.menu);
 		biomorphPanel.setBounds(190, 144, 311, 175);
-		BioController.generateBiomorphs();
+		BioController.generateBiomorphs(); //generate a new random biomorph
 		biomorphPanel.add(BioController.displayParent());
 		frame.getContentPane().add(biomorphPanel);
 		
@@ -71,7 +68,7 @@ public class BiomorphStartUp {
 		btnNext.setBounds(347, 321, 154, 43);
 		frame.getContentPane().add(btnNext);
 	
-		lineAmountSlider.setBounds(261, 73, 150, 70);
+		lineAmountSlider.setBounds(261, 73, 150, 70); 
 		frame.getContentPane().add(lineAmountSlider);
 		
 		JLabel lblChooseYourBiomorph = new JLabel("Choose Your Biomorph!");
@@ -112,7 +109,7 @@ public class BiomorphStartUp {
 			}
 		});
 		
-		//Action listeners for new button. Directs it to the main screen of the UI.
+		//Action listeners for next button. Directs it to the main screen of the UI.
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BioController.startMainScreen();
@@ -120,7 +117,7 @@ public class BiomorphStartUp {
 			}
 		});
 		
-		//Action listener for new button. Directs it to the main screen of the UI.
+		//Action listener for home button. Directs it to the home screen of the UI.
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new StartScreen().getFrame().setVisible(true);
@@ -129,7 +126,7 @@ public class BiomorphStartUp {
 			}
 		});
 		
-		//Action listener for new button. Directs it to the main screen of the UI.
+		//Action listener for help button. Directs it to the help screen of the UI.
 		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new HelpScreen().getFrame().setVisible(true);

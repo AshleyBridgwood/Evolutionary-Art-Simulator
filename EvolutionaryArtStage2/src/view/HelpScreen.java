@@ -53,7 +53,7 @@ public class HelpScreen {
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+		frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2); //centralises frame
 		
 		JLabel lblUltimateEvolution = new JLabel("Ultimate Evolution : Help Screen");
 		lblUltimateEvolution.setBounds(196, 30, 413, 27);
@@ -63,7 +63,7 @@ public class HelpScreen {
 		
 
 		try {
-	       textArea.read(new FileReader("src/view/Help.txt"), null);
+	       textArea.read(new FileReader("src/view/Help.txt"), null); //reads text file and adds it to the JTextArea
 	       textArea.setEditable(false);
 	       
 		} catch (IOException e1) {
@@ -73,11 +73,9 @@ public class HelpScreen {
 		
 		
 		
-		JScrollPane scrollPane = new JScrollPane(textArea);
+		JScrollPane scrollPane = new JScrollPane(textArea); // adds the textarea to the scroll pane.
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);//set the horizontal scrollbar to never appear
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//set the horizontal scrollbar to never appear7
-
-
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//set the horizontal scrollbar to never appear
 		scrollPane.setBounds(26, 94, 729, 382);
 		frame.getContentPane().add(scrollPane);
 		
@@ -97,7 +95,6 @@ public class HelpScreen {
 
 					getFrame().dispose();
 			}
-			
 		});
 		
 	}
