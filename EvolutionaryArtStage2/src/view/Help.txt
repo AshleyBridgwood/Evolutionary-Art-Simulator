@@ -1,3 +1,51 @@
-*****WELCOME TO EVOLUTIONARY ART HELP SCREEN***********
+                                    ***********WELCOME TO EVOLUTIONARY ART HELP SCREEN***********
 
-TEST.. Help Instructions to be filled out.
+1. Starting the Evolution Porcess.
+============================================================================================
+Click on the 'new biomorph' button on the home screen. Select the amount of lines you want your biomorph to
+have; click 'generate' until you find the biomorph of your choice. After finding the right biomorph
+click the 'next' button to continue to the next screen and start mutating your biomorph.
+
+2. Mutating a biomorph.
+============================================================================================
+Click on one, or two of the biomorphs in the 'children' section. After selecting the biomorph(s) of your 
+choice click on the mutate button. If at any point you wish to go back a previously generated biomorph 
+click the 'undo' button.
+
+3. Hall Of Fame.
+============================================================================================
+Click the 'add to hall of fame' button to add the current artwork to the hall of fame.  To then use that 
+artwork in the hall of fame, at a later stage click on the biomorph, and then click on the 'use' button 
+that appears. This would add the artwork to the parent panel, where you can continue with the mutation process.
+
+To remove a biomorph from the hall of fame, simply click on the biomorph and click on the remove button that 
+appears. Alternatively you can simply click on the 'hall of fame' menu bar and click on the clear button and 
+clear all the biomorphs in the hall of fame, or remove them individually.
+
+
+4. Saving and Exporting.
+============================================================================================
+To save your current artwork, click on the 'save' button and enter your name, and click the save button.
+You will then receive confirmation that your biomorph has been saved.
+Similarly, to export a biomorph click on the 'export' and choose the location of where you want your
+biomorph to be saved. You will then receive confirmation that your biomorph has been exported.
+
+
+5. Adjusting Biomorph Line Settings
+============================================================================================
+To change the current colour scheme of the biomorph, click on the menu bar 'Line Options' and then
+'Colour Scheme' and select the colour scheme of your choice from the list.
+To adjust the thickness of the lines,  click on the menu bar 'Line Options' and then
+'Line Thickness' and select the relevant option.
+
+6. History
+============================================================================================
+To access the history, click on the menu bar 'History' and then 'view history'. Alternatively 
+click 'clear history' if you wish to clear the history.
+
+
+7. Loading an existing biomorph
+============================================================================================
+From the homepage, click on 'Exisitng Biomorph'. Then browse the list of files, by hovering over the
+filenames you will be able to see the biomorph artwork. Once you find a biomorph you like click on the
+filename and click the 'load biomorph' button. 

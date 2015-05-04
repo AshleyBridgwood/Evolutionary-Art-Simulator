@@ -70,17 +70,14 @@ public class UserInterface extends MouseAdapter{
 	int hofCounter = BioController.getCurrentHallOfFameNumber();
 	
 	int slot;
-	
 	int attempts = 0;
 	int hofSelected = 0;
+	static boolean changes = false;
 
 	private ArrayList<Integer> panelsSelected = new ArrayList<Integer>();
 	
 	JPanel[] panels = {panelBiomorph1,panelBiomorph2, panelBiomorph3, panelBiomorph4, panelBiomorph5, panelBiomorph6, 
 			panelBiomorph7, panelBiomorph8, panelBiomorph9};
-	
-	JPanel[] allPanels = {panelOutput, panelBiomorph1,panelBiomorph2, panelBiomorph3, panelBiomorph4, panelBiomorph5, panelBiomorph6, 
-			panelBiomorph7, panelBiomorph8, panelBiomorph9, HOFPanel1, HOFPanel2, HOFPanel3};
 	
 	JPanel[] hofPanels = {HOFPanel1, HOFPanel2, HOFPanel3};
 
@@ -98,10 +95,8 @@ public class UserInterface extends MouseAdapter{
 	 */
 	private void initialize() {
 		frame =	new JFrame();	
-		//frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-		//frame.setUndecorated(true);
-		
-		frame.setBounds(100, 100, 1093, 875);
+
+		frame.setBounds(100, 100, 1093, 825);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		Dimension d = new Dimension (1093, 885); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
@@ -111,54 +106,56 @@ public class UserInterface extends MouseAdapter{
 		//Exit prompt
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				exit();
+				if (changes == true){ // if changes have been made, direct user where they will get prompt to save work.
+					exit();
+				} else {
+					exitNoChange(); // if no changes, direct to normal exit.
+				}
+				
 			}
 		});
 
 		
-		JLabel lblHOF = new JLabel("Hall Of Fame");
+		JLabel lblHOF = new JLabel("Hall Of Fame"); //Hall of Fame Label
 		lblHOF.setFont(new Font("Calibri", Font.BOLD, 22));
 		lblHOF.setBackground(Color.ORANGE);
 		lblHOF.setBounds(664, 13, 130, 35);
 		frame.getContentPane().add(lblHOF);
 		
-		HOFPanel1.setForeground(Color.BLACK);
+		HOFPanel1.setForeground(Color.BLACK); //first hall of fame panel.
 		HOFPanel1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		HOFPanel1.setBackground(SystemColor.menu);
 		HOFPanel1.setBounds(393, 50, 210, 133);
-		System.out.println("Current Number in hall of fame: " + BioController.getCurrentHallOfFameNumber());
-		if(BioController.getCurrentHallOfFameNumber() >= 1){
-			System.out.println("Displayed 1st hall of fame biomorph");
-			HOFPanel1.add(BioController.displayHallOfFameBiomorph(0));
+		if(BioController.getCurrentHallOfFameNumber() >= 1){ 
+			HOFPanel1.add(BioController.displayHallOfFameBiomorph(0)); //load up first hall of fame biomorph
 		}
 		frame.getContentPane().add(HOFPanel1);
 		
-		HOFPanel2.setForeground(Color.BLACK);
+		HOFPanel2.setForeground(Color.BLACK); //second hall of fame panel.
 		HOFPanel2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		HOFPanel2.setBackground(SystemColor.menu);
 		HOFPanel2.setBounds(615, 50, 210, 133);
-		if(BioController.getCurrentHallOfFameNumber() >= 2){
-			System.out.println("Displayed 2nd hall of fame biomorph");
+		if(BioController.getCurrentHallOfFameNumber() >= 2){  //load up second hall of fame biomorph
 			HOFPanel2.add(BioController.displayHallOfFameBiomorph(1));
 		}
 		frame.getContentPane().add(HOFPanel2);
 		
-		HOFPanel3.setForeground(Color.BLACK);
+		HOFPanel3.setForeground(Color.BLACK); //third hall of fame panel.
 		HOFPanel3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		HOFPanel3.setBackground(SystemColor.menu);
 		HOFPanel3.setBounds(837, 50, 210, 133);
-		if(BioController.getCurrentHallOfFameNumber() >= 3){
-			System.out.println("Displayed 3rd hall of fame biomorph");
+		if(BioController.getCurrentHallOfFameNumber() >= 3){  //load up third hall of fame biomorph
 			HOFPanel3.add(BioController.displayHallOfFameBiomorph(2));
 		}
 		frame.getContentPane().add(HOFPanel3);
 		
-		JLabel lblBiomorph = new JLabel("Children");
+		JLabel lblBiomorph = new JLabel("Children"); //children label
 		lblBiomorph.setFont(new Font("Calibri", Font.BOLD, 22));
 		lblBiomorph.setBackground(Color.ORANGE);
 		lblBiomorph.setBounds(680, 217, 210, 35);
 		frame.getContentPane().add(lblBiomorph);
 		
+		//9 panels for children biomorph, call to biocontroller to display each biomorph in relative panel.
 		panelBiomorph1.setForeground(Color.BLACK);
 		panelBiomorph1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelBiomorph1.setBackground(SystemColor.menu);
@@ -222,14 +219,14 @@ public class UserInterface extends MouseAdapter{
 		panelBiomorph9.add(BioController.displayChildren(9));
 		frame.getContentPane().add(panelBiomorph9);
 		
+		//panel to hold sliders
 		JPanel controlPanel = new JPanel();
 		controlPanel.setForeground(Color.BLACK);
 		controlPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		controlPanel.setBackground(SystemColor.menu);
-		controlPanel.setBounds(28, 662, 1025, 153);
+		controlPanel.setBounds(28, 662, 1025, 92);
 		
-		//Sliders to adjust genes of bio-morph.
-		//probability sliders
+		//Sliders to adjust probability of change.
 		Dimension d2 = new Dimension(300,70);
 		final LabelledSlider probSlider = new LabelledSlider(" Probability of Change  ", 0.0, 0, 20, 100);
 		probSlider.setBounds(193, 13, 300, 70);
@@ -237,22 +234,19 @@ public class UserInterface extends MouseAdapter{
 		final LabelledSlider changeSlider = new LabelledSlider("Amount of Change  ", 0.0, 0, 20, 100);
 		changeSlider.setBounds(498, 13, 300, 70);
      	changeSlider.setPreferredSize(d2);
-		
+     	
 		controlPanel.add(probSlider);
 		controlPanel.add(changeSlider);
-
-
-
 		frame.getContentPane().add(controlPanel);
 
 		
-		JPanel panelLogo = new JPanel();
+		JPanel panelLogo = new JPanel(); //panel to hold the logo image.
 		panelLogo.setForeground(Color.BLACK);
 		//panelLogo.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelLogo.setBackground(SystemColor.menu);
 		panelLogo.setBounds(41, 50, 311, 127);
 		
-		// add logo to panel 4.
+		// adds actual logo to the panel
 		JLabel logoImage = new JLabel();
 		ImageIcon logoIcon = new ImageIcon(getClass().getResource("untitled-2.png"));
 		Image l = logoIcon.getImage();
@@ -261,20 +255,20 @@ public class UserInterface extends MouseAdapter{
 		logoImage.setIcon(scaledLogo);
 		panelLogo.add(logoImage);
 		frame.getContentPane().add(panelLogo);
-		JButton menuButton = new JButton("Home - Temp Next");
-		menuButton.setBounds(208, 483, 149, 43);
-		frame.getContentPane().add(menuButton);
 		
+		// adding to hall of fame button
 		JButton btnHOF = new JButton("Add to hall of fame");
-		btnHOF.setBounds(47, 531, 154, 43);
+		btnHOF.setBounds(209, 487, 148, 43);
 		frame.getContentPane().add(btnHOF);
 		
+		//label for parent biomorph.
 		JLabel lblBiomorphParent = new JLabel("Parent");
 		lblBiomorphParent.setFont(new Font("Calibri", Font.BOLD, 22));
 		lblBiomorphParent.setBackground(Color.ORANGE);
 		lblBiomorphParent.setBounds(169, 217, 188, 35);
 		frame.getContentPane().add(lblBiomorphParent);
 		
+		// panel that holds the parent 
 		panelOutput.setForeground(Color.BLACK);
 		panelOutput.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
 		panelOutput.setBackground(SystemColor.menu);
@@ -290,11 +284,11 @@ public class UserInterface extends MouseAdapter{
 		frame.getContentPane().add(btnMutate);
 		
 		JButton btnSave = new JButton("Save!");
-		btnSave.setBounds(47, 483, 154, 43);
+		btnSave.setBounds(47, 487, 78, 43);
 		frame.getContentPane().add(btnSave);
 		
 		JButton btnExport = new JButton("Export!");
-		btnExport.setBounds(209, 531, 149, 43);
+		btnExport.setBounds(123, 487, 78, 43);
 		frame.getContentPane().add(btnExport);
 		
 		JButton btnHome = new JButton("Home");
@@ -305,71 +299,75 @@ public class UserInterface extends MouseAdapter{
 		btnClose.setBounds(130, 0, 130, 43);
 		frame.getContentPane().add(btnClose);
 		
-		final JButton btnRemove = new JButton("Remove");
+		final JButton btnRemove = new JButton("Remove"); // button to remove a biomorph from the hall of fame.
 		btnRemove.setBounds(393, 186, 105, 35);
 		btnRemove.setVisible(false);
 		frame.getContentPane().add(btnRemove);
                 
-                final JButton btnUse = new JButton("Use");
-                btnUse.setBounds(498,186,105,35);
-                btnUse.setVisible(false);
-                frame.getContentPane().add(btnUse);
+        final JButton btnUse = new JButton("Use");	    // button to add the hall of fame to the current parent panel.
+        btnUse.setBounds(498,186,105,35);
+        btnUse.setVisible(false);
+        frame.getContentPane().add(btnUse);
 		
 		
-		//frame.pack();
-		
-		//Action listeners for help button. Directs it to the help screen.
+		//Action listeners to add hall of fame to current parent.
         	btnUse.addActionListener(new ActionListener(){
         			@Override
         			public void actionPerformed(ActionEvent e) {
+        				panelOutput.removeAll(); //clears the parnt panel of it's current biomorph so hall of fame can be added
+        				int id_to_pass = hofSelected - 1;  // hof biomorphs stored in arraylist, therefore have to subtract one from hof selected.
+        				BioController.bringHOFBiomorphToMainPanel(id_to_pass); 
+        				refreshHallOfFamePanels(); 
         				panelOutput.removeAll();
-        				int id_to_pass = hofSelected - 1;
-        				BioController.bringHOFBiomorphToMainPanel(id_to_pass);
-        				refreshHallOfFamePanels();
-        				panelOutput.removeAll();
-        				refreshAllPanels();
+        				refreshAllPanels(); // repaints panels so parent panel can change to the selected hall of fame.
         				
-        				btnRemove.setVisible(false);
-        				btnUse.setVisible(false);
+        				btnRemove.setVisible(false); //sets the remove and use button to invisble. 
+        				btnUse.setVisible(false);    // only show after it ha been clicked.
         			}	
         		});
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(hofSelected == 1){
 					panelOutput.removeAll();
-					BioController.clearCertainHallOfFameBiomorph(0);
+					BioController.clearCertainHallOfFameBiomorph(0); //clear the first hall of fame in arraylist
 					HOFPanel1.setBackground(SystemColor.menu);
-					refreshHallOfFamePanels();
-					hofCounter--;
+					refreshHallOfFamePanels(); //repaint the hall of fame panels, so changes can be applied.
+					hofCounter--; //decrement the counter for the amount of hall of fame biomorphs
 					btnRemove.setVisible(false);
-                                        btnUse.setVisible(false);
+                    btnUse.setVisible(false);
 				}
 				else if (hofSelected == 2){
 					panelOutput.removeAll();
-					BioController.clearCertainHallOfFameBiomorph(1);
+					BioController.clearCertainHallOfFameBiomorph(1); //clear the second hall of fame in arraylist
 					HOFPanel2.setBackground(SystemColor.menu);
-					refreshHallOfFamePanels();
-					hofCounter--;
+					refreshHallOfFamePanels();						//repaint the hall of fame panels, so changes can be applied.
+					hofCounter--;	//decrement the counter for the amount of hall of fame biomorphs
 					btnRemove.setVisible(false);
-                                        btnUse.setVisible(false);
+                     btnUse.setVisible(false);
 				}
 				else if (hofSelected == 3){
 					panelOutput.removeAll();
-					BioController.clearCertainHallOfFameBiomorph(2);
+					BioController.clearCertainHallOfFameBiomorph(2); //clear the third hall of fame in arraylist
 					HOFPanel3.setBackground(SystemColor.menu);
-					refreshHallOfFamePanels();
-					hofCounter--;
+					refreshHallOfFamePanels();						//repaint the hall of fame panels, so changes can be applied.
+					hofCounter--;	//decrement the counter for the amount of hall of fame biomorphs
 					btnRemove.setVisible(false);
-                                        btnUse.setVisible(false);
+                    btnUse.setVisible(false);
 					
 				}
 			}
 		});	
 		
 		
-		btnHome.addActionListener(new ActionListener() {
+		btnHome.addActionListener(new ActionListener() { //direct to exit prompt only if changes have been made.
 			public void actionPerformed(ActionEvent e) {
-				if(!saveWithoutClose()){
+				if (changes == true){
+					if (!exit()){
+						new StartScreen().getFrame().setVisible(true);
+						frame.dispose();	
+					}
+					
+				} else {
 					new StartScreen().getFrame().setVisible(true);
 					frame.dispose();
 				}
@@ -387,8 +385,8 @@ public class UserInterface extends MouseAdapter{
 		//Action listener for the hall of fame button.
 		btnHOF.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				if(BioController.getCurrentHallOfFameNumber() < 3){
-					BioController.saveCurrentParentToHallOfFame();
+				if(BioController.getCurrentHallOfFameNumber() < 3){ //only proceed if there aren't three biomorphs in hall of fame already
+					BioController.saveCurrentParentToHallOfFame(); //saves the selected biomorph as the parent.
 					panelOutput.removeAll();
 					refreshHallOfFamePanels();
 					hofCounter++;
@@ -399,9 +397,9 @@ public class UserInterface extends MouseAdapter{
 		//Action listener for the undo button. Goes to the previous biomorph
 		undoButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				panelOutput.removeAll();
-				BioController.undoOneBiomorph();
-				refreshAllPanels();
+				panelOutput.removeAll(); // remove the current parent panel.
+				BioController.undoOneBiomorph(); // calls biocontroller method, so previous biomorph can be retrieved.
+				refreshAllPanels(); //repaint panels so changes can be applied.
 			}
 		});
 		
@@ -417,61 +415,38 @@ public class UserInterface extends MouseAdapter{
 						panelOutput.removeAll();
 						BioController.mutuateBiomorphOne();
 						refreshAllPanels();	
+						changes = true;
 					}
 					else // mutate two selected.
 					{
 						panelOutput.removeAll();
 						BioController.mutateBiomorphMultiple(panelsSelected.get(0),panelsSelected.get(1));
 						refreshAllPanels();
+						changes = true;
 					}
 				}
 
-
+				//reset all the panel's background colour.
 				for (int i = 0; i < panels.length; i++){
 					panels[i].setBackground(SystemColor.menu);
 				}
 			}
 		});
 		
-		//Action listener for new button. Directs it to the main screen of the UI.
-		menuButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//new StartScreen().getFrame().setVisible(true);
-				//frame.setVisible(false);
-				panelOutput.removeAll();
-				BioController.generateBiomorphs();
-				refreshAllPanels();
-				for (int i = 0; i < panels.length; i++){
-					panels[i].setBackground(SystemColor.menu);
-				}
-
-
-			}
-		});
-		
-		//Action listener for new button. Directs it to the main screen of the UI.
+		//Action listener for save button. Directs it to save screen.
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new SaveBiomorph().getFrame().setVisible(true);
 			}
 		});
 		
-		//Action listener for export button. Directs it to the main screen of the UI.
+		//Action listener for export button. Directs it to save screen.
 		btnExport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				exportBiomorph();
 
 			}
 		});
-                
-                //WindowLsistner if window is crossed off
-		frame.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-			}
-		});
-		
-		
 
 		
 		///////////////////////////////////////////   Mouse Listener so panels can be clicked!\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -499,7 +474,7 @@ public class UserInterface extends MouseAdapter{
 		
 			public void mouseClicked(MouseEvent e) {
 			
-				if(hofCounter != 0)
+				if(hofCounter != 0) // only allow panel to be clicked if it contains a bimorph.
 				{
 					if (hofSelected != 1 ){
 						for (int i = 0; i < hofPanels.length; i++){
@@ -931,7 +906,7 @@ public class UserInterface extends MouseAdapter{
 		frame.setJMenuBar(menuBar);
 
 		
-		//Listeners for the menu bar:
+		//Listener to allow user to clear hall of fame via menu bar.
 		clearHOF.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -941,16 +916,25 @@ public class UserInterface extends MouseAdapter{
 			}
 		});
 		
+		//Listener to allow user to clear new biomorph via menu bar.
 		newBiomorph.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				if(exit()==false){
+				if (changes == true){
+					if (!exit()){
+						new BiomorphStartUp().getFrame().setVisible(true);
+						frame.dispose();	
+					}
+					
+				} else {
 					new BiomorphStartUp().getFrame().setVisible(true);
 					frame.dispose();
 				}
 				
 			}
 		});
+		
+		//Listener to allow user to click help button via menu bar.
 		help.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -958,6 +942,7 @@ public class UserInterface extends MouseAdapter{
 			}	
 		});
 		
+		//Listener to allow user to click export button via menu bar.
 		export.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -965,6 +950,7 @@ public class UserInterface extends MouseAdapter{
 			}	
 		});
 		
+		//Listener to allow user to click save button via menu bar.
 		save.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -972,6 +958,7 @@ public class UserInterface extends MouseAdapter{
 			}	
 		});
 		
+		//Listeners to allow colour schemes to be clicked on via the menu bar.
 		black.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -1019,6 +1006,7 @@ public class UserInterface extends MouseAdapter{
 			}	
 		});
 		
+		//Listeners to allow line thickness to be chosen via the menu bar.
 		thin.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -1047,6 +1035,7 @@ public class UserInterface extends MouseAdapter{
 		});
 		
 		
+		//Listeners to allow hitory to be clicked via a menu bar.
 		viewHistory.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -1061,6 +1050,7 @@ public class UserInterface extends MouseAdapter{
 			}
 			});
 		
+			//allows key shortcuts
 		 	file.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK), "save");
 	        file.getActionMap().put("save", new AbstractAction() {
 	            @Override
@@ -1078,11 +1068,10 @@ public class UserInterface extends MouseAdapter{
 					refreshAllPanels();
 	            }
 	        });
-	        
-	        
-			
+	        			
 	}
 	
+	//method that repaints the hall of fame panels, to show the changes.
 	private void refreshHallOfFamePanels(){
 		BioController.loadHallOfFameBiomorphs();
 		panelOutput.add(BioController.displayParent());
@@ -1101,12 +1090,13 @@ public class UserInterface extends MouseAdapter{
 		}
 	}
 	
+	//method that repaints the child biomorphs and the parent biomorphs.
 	private void refreshAllPanels(){
 		panelOutput.add(BioController.displayParent());
 		panelOutput.repaint();
 		panelOutput.revalidate();
 		int i = 1;
-		for (JPanel onePanel : panels){
+		for (JPanel onePanel : panels){ //loops through all the child and parent biomorphs.
 			onePanel.removeAll();
 			onePanel.add(BioController.displayChildren(i));
 			onePanel.validate();
@@ -1114,31 +1104,27 @@ public class UserInterface extends MouseAdapter{
 			i++;
 		}
 		
-		for (int x = 0; x <= panelsSelected.size(); x++){
+		for (int x = 0; x <= panelsSelected.size(); x++){ //clears arraylist.
 			if (!panelsSelected.isEmpty()){
 				panelsSelected.remove(0);
 			}
 		}
 	}
-	//getter so startscreen can access the main frame.
+	//getter so frame can be accessed..
 	public JFrame getFrame() {
 			return this.frame;
 	}
-	
-	public void exportBiomorph(){
+
+	public void exportBiomorph(){ //method to access frame as a png
 		JFileChooser chooser = new JFileChooser();
 		chooser.showOpenDialog(null);
 		File f = chooser.getSelectedFile();
-
-		//File f = chooser.getCurrentDirectory();
 		String filename = f.getAbsolutePath();
-		
 		BufferedImage pingImage = new BufferedImage(panelOutput.getSize().width, panelOutput.getSize().height, BufferedImage.TYPE_INT_ARGB); 
 		Graphics g = pingImage.createGraphics();
-		panelOutput.paint(g);  //this == JComponent
+		panelOutput.paint(g); 
 		g.dispose();
 		Export.export(filename, pingImage);
-		JOptionPane.showMessageDialog(null, "File Successfully Exported!");
 	}
 	
 	public static int getColourChoice()
@@ -1158,10 +1144,10 @@ public class UserInterface extends MouseAdapter{
 	
 	public void panelClicked(int panel){
 		
-		if (!panelsSelected.isEmpty()){
-			if (panelsSelected.get(0) == panel + 1){
+		if (!panelsSelected.isEmpty()){  
+			if (panelsSelected.get(0) == panel + 1){ //if first element in arraylist, is equal to selected biomorph panel, then slot to be removed is that.
 				slot = 0;			
-			} else {
+			} else {  // else slot is in the second element.
 				slot = 1;
 			}
 		}
@@ -1169,52 +1155,46 @@ public class UserInterface extends MouseAdapter{
 		if (panels[panel].getBackground()==Color.GREEN){
 			panels[panel].setBackground(SystemColor.menu);
 			panelsSelected.remove(slot);
-			System.out.println(panelsSelected);
 			
 		} else if (panelsSelected.size() < 2){
 			panels[panel].setBackground(Color.GREEN);
 			BioController.setNextToMutate(panel + 1);
 			panelsSelected.add(panel+1);
-			System.out.println(panelsSelected);
 		}
 	}
 	
-	private boolean exit(){
+	private boolean exit(){ //if user opts to not quit, directs them to save screen.
 		int response = JOptionPane
 				.showConfirmDialog(frame,
-						"Do you want to save your work?", "Quit",
+						"Are you sure you want to quit? All unsaved changes will be lost", "Quit",
 						JOptionPane.YES_NO_OPTION,
 						JOptionPane.QUESTION_MESSAGE);
 		if (response == JOptionPane.YES_OPTION) {
-			new SaveBiomorph().getFrame().setVisible(true);	
-			return true;
+			frame.dispose();
+			return false;
 		}
 		else if (response == JOptionPane.NO_OPTION) {
-			frame.dispose();
-                        System.exit(0);
+			new SaveBiomorph().getFrame().setVisible(true);	
 		}
-		return false;
+		return true;
 	}
         
-        private boolean saveWithoutClose(){
+	private boolean exitNoChange(){ //no changes have been made, so users are not directed to save screen regardless.
 		int response = JOptionPane
 				.showConfirmDialog(frame,
-						"Do you want to save your work?", "Quit",
+						"Are you sure you want to quit?", "Quit",
 						JOptionPane.YES_NO_OPTION,
 						JOptionPane.QUESTION_MESSAGE);
 		if (response == JOptionPane.YES_OPTION) {
-			new SaveBiomorph().getFrame().setVisible(true);	
-			return true;
+			frame.dispose();
+			return false;
 		}
-		else if (response == JOptionPane.NO_OPTION) {
-			//No option should be in method using this
-		}
-		return false;
+		return true;
 	}
 	
-	public void HofInstructions(){
+	public void HofInstructions(){ //instructions on how to use the hall of fame.
 		if (attempts <1){
-			JOptionPane.showMessageDialog(null, "<html><body>Click on the parent box to continue evolving this artwork. <br>If you"
+			JOptionPane.showMessageDialog(null, "<html><body>Click on the use button to add this artwork to the parent panel. <br>If you"
 					+ " want to remove this artwork from the hall of fame, click on the remove button below!</body></html>");
 			attempts++;
 		} else {
@@ -1222,7 +1202,7 @@ public class UserInterface extends MouseAdapter{
 		}
 	}
 	
-	private boolean clearHistory(){
+	private boolean clearHistory(){ //clears history.
 		int response = JOptionPane
 				.showConfirmDialog(frame,
 						"Are you sure you want to clear the history?\n You will not be able to undo your work previous to this point", "Clear History",
@@ -1236,6 +1216,19 @@ public class UserInterface extends MouseAdapter{
 				frame.dispose();
 			}
 		return false;
+	}
+	
+	public static void exported(boolean exported){ //waits for confirmation that file has been exported successfully.
+	
+		if (exported == true){
+			JOptionPane.showMessageDialog(null, "File Successfully Exported!");
+		} else if (exported == false){
+			JOptionPane.showMessageDialog(null, "Incorrect File!");
+		}
+	}
+	
+	public static void setChanged(boolean changed){ //method that tracks whether there have been any changes.
+			changes = changed;
 	}
 	
 

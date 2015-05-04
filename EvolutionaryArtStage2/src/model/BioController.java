@@ -54,6 +54,7 @@ public class BioController {
 	public static void saveCurrentBiomorphsToFile(String fileName){
 		Save.saveBiomorphs(fileName, biomorphs);
 		Log.add("Biomorph Successfully saved! (" + fileName + ".biomorph)");
+		
 	}
 	
 	/**
@@ -117,6 +118,8 @@ public class BioController {
 	}
 	
 	public static void getHistoryData(){
+		
+		clearHistoryData();
 		int number = BioCache.getNumberOfItemsOnStack();
 		for(int i = 0; i < number; i++){
 			@SuppressWarnings("unchecked")
@@ -270,5 +273,7 @@ public class BioController {
 		
 		// generate children from new parent
 		biomorphs = BioGeneration.getChildrenFromParent(parent);
+		BioCache.push(biomorphs);
+
 	}
 }

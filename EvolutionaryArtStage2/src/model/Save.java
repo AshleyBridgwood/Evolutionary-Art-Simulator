@@ -10,6 +10,8 @@ package model;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import view.SaveBiomorph;
+
 public class Save extends FileHandler {
 	
 	/**
@@ -21,8 +23,9 @@ public class Save extends FileHandler {
 		Log.add("Saving Biomorph...");
 		try {
 			FileHandler.saveObjectToFile("/Saved Biomorphs/" + name + ".biomorph", bioData);
+			SaveBiomorph.saved(true);
 		} catch (IOException e) {
-			e.printStackTrace();
+			SaveBiomorph.saved(false);
 		}
 		Log.add("Biomorph saved: " + EvolutionaryArtFolderLocation + "\\Saved Biomorphs");
 	}

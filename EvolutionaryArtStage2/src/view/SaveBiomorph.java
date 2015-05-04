@@ -52,7 +52,7 @@ public class SaveBiomorph {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 685, 244);
+		frame.setBounds(100, 100, 685, 178);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
@@ -63,12 +63,11 @@ public class SaveBiomorph {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 0, 0), null));
-		panel.setBounds(0, 131, 679, 62);
+		panel.setBounds(0, 81, 679, 62);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JButton btnSave = new JButton("Save");
-		btnSave.setBackground(Color.CYAN);
 		btnSave.setBounds(432, 13, 98, 38);
 		panel.add(btnSave);
 		
@@ -81,37 +80,19 @@ public class SaveBiomorph {
 		lblName.setBounds(85, 35, 144, 16);
 		frame.getContentPane().add(lblName);
 		
-		JLabel lblLevelOfAccess = new JLabel("Level Of Access");
-		lblLevelOfAccess.setFont(new Font("Calibri", Font.BOLD, 22));
-		lblLevelOfAccess.setBounds(85, 89, 144, 16);
-		frame.getContentPane().add(lblLevelOfAccess);
-		
 		txtName = new JTextField();
 		txtName.setBounds(274, 32, 286, 24);
 		frame.getContentPane().add(txtName);
-		txtName.setColumns(10);
-		
-		JRadioButton publicAccess = new JRadioButton("Public");
-		publicAccess.setBounds(274, 86, 127, 25);
-		frame.getContentPane().add(publicAccess);
-		
-		JRadioButton readOnly = new JRadioButton("Read Only");
-		readOnly.setBounds(398, 86, 127, 25);
-		frame.getContentPane().add(readOnly);
-		
-		//group the two radio buttons.
-	    ButtonGroup group = new ButtonGroup();
-	    group.add(publicAccess);
-	    group.add(readOnly);
-	    
+		txtName.setColumns(10);   
 	    
 		//Action listener for save button. Confirmation of saved file.
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String test = txtName.getText();
-				System.out.println(test);
-				BioController.saveCurrentBiomorphsToFile(txtName.getText());
-				JOptionPane.showMessageDialog(null, "File Successfully Saved");
+				
+				int size = BioController.getNumOfSavedBiomorphs();
+				
+				String fileName= txtName.getText().replaceAll("\\W","") + size;
+				BioController.saveCurrentBiomorphsToFile(fileName);
 				frame.dispose();
 			}
 		});
@@ -132,11 +113,18 @@ public class SaveBiomorph {
 		
 	}
 
-
-	
-	
 	//getter so mainscreen can access the main frame.
 	public JFrame getFrame() {
 			return this.frame;
 	}
+	
+	public static void saved(boolean saved){ //gets confirmation if file was saved or not.
+		if (saved == true){
+			JOptionPane.showMessageDialog(null, "File Successfully Saved");
+			UserInterface.setChanged(false);
+		} else {
+			JOptionPane.showMessageDialog(null, "File not saved!");
+		}
+	}
+	
 }

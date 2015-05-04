@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -32,7 +31,6 @@ public class History {
 
 	private JFrame frame;
 	JPanel panelBiomorphs = new JPanel(); // panel to contain all of the loaded biomorphs.
-	
 	JPanel mainPanel = new JPanel();
 
 
@@ -41,7 +39,7 @@ public class History {
 	 */
 	public History() {
 		initialize();
-                mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 	}
 
 	/**
@@ -52,10 +50,7 @@ public class History {
 		frame.setBounds(100, 100, 1128, 686);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
 		
-
 		JLabel lblHistory = new JLabel("History");
 		lblHistory.setFont(new Font("Calibri", Font.BOLD, 26));
 		lblHistory.setBackground(Color.ORANGE);
@@ -84,10 +79,13 @@ public class History {
 		//mainPanel.setPreferredSize(new Dimension(987, 917));
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         BioController.getHistoryData();
+		
         	int id = 0;
-        	int itemsToShow = BioController.getNumberOfItemsInHistory();
-			//for (int x = 0; x < numberOfRows; x++){
-                        while(itemsToShow > 0){
+        	
+        	int numberOfRows = BioController.getNumberOfItemsInHistory(); //gets number of biomorphs.
+        	int times = (int) Math.ceil(numberOfRows / (float)5);  // works out multiple of 5 rounded up.. e.g 12 / 5 =  2.4 -> rounds up to 3. So 3 rows.
+        	       	
+			for (int x = 0; x < times; x++){ 
 			     JPanel panel = new JPanel();
 			     panel.setForeground(Color.RED);
 			     panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 0, 0), null));
@@ -95,23 +93,20 @@ public class History {
 			     panel.setLayout(new GridLayout(1,5));
 				for (int j = 0; j < 5; j++){
 					JPanel panels = new JPanel();
-					if(id < BioController.getNumberOfItemsInHistory()){
-						panels.add(BioController.displayHistoryBiomorph(id));
+					if(id < BioController.getNumberOfItemsInHistory()){ //whilst there's still more items in history.
+						panels.add(BioController.displayHistoryBiomorph(id)); //add biomorph.
 					}
 				    panels.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 255, 0), null));
 				    panel.add(panels);
 				    id++;
 				}
 				mainPanel.add(panel);
-                                itemsToShow-=5;
 			}
-			BioController.clearHistoryData();
-		//scrollPane.getViewport().add(mainPanel);
 		
 		JScrollPane scrollPane = new JScrollPane(mainPanel); // scroll pane that will contain all saved biomorphs.
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);//set the horizontal scrollbar to never appear
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//set the horizontal scrollbar to never appear
-		scrollPane.setBounds(48, 92, 1036, 521);
+		scrollPane.setBounds(49, 70, 1036, 556);
 		frame.getContentPane().add(scrollPane);
 		
 		

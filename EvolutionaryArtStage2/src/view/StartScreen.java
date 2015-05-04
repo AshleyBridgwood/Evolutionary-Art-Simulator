@@ -25,28 +25,19 @@ public class StartScreen{
 	JPanel panel1 = new JPanel();
 	JPanel panelOne = new JPanel();
 	JPanel panelLogo = new JPanel();
-
 	JPanel panel2 = new JPanel();
 	JPanel panel2Top = new JPanel();
 	JPanel panel2Middle = new JPanel();
 	JPanel panel2Bottom = new JPanel();
-	
 	JButton newButton = new JButton(); 
 
-    
     public StartScreen(){
     	
-    	//.............................................. Initialise Main Screen ....................................................\\
-		//mainFrame
 		frame = new JFrame("Ultimate Evolution");
-		
 		frame.setBounds(100, 100, 1000, 500);
-		
-		//mainFrame properties
-		Dimension d = new Dimension (900,500); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
-		frame.setPreferredSize(d); // not set in step 2 because mainFrame variable not initialised.
+		Dimension d = new Dimension (900,500); 
+		frame.setPreferredSize(d);
 		frame.setResizable(false);
-		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
 		
@@ -116,7 +107,7 @@ public class StartScreen{
 		frame.add(panel2);
 		
 		
-                //Listen if window is crossed off
+        //Listener if window is crossed off
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				exit();
@@ -147,9 +138,7 @@ public class StartScreen{
 				new HelpScreen().getFrame().setVisible(true);
 			}
 		});
-		
-        //display frame
-		//frame.pack();
+
 		frame.setVisible(true);
     }
     
