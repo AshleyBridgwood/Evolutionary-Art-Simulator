@@ -257,7 +257,7 @@ public class BioController {
 	/**
 	 * Exports the log to file
 	 */
-	public void exportLogToFile(){
+	public static void exportLogToFile(){
 		Log.exportLogToFile();
 	}
 	

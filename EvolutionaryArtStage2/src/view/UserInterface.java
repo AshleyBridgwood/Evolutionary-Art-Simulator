@@ -1183,6 +1183,7 @@ public class UserInterface extends MouseAdapter{
 						JOptionPane.YES_NO_OPTION,
 						JOptionPane.QUESTION_MESSAGE);
 		if (response == JOptionPane.YES_OPTION) {
+			BioController.exportLogToFile();
 			frame.dispose();
 			return false;
 		}
