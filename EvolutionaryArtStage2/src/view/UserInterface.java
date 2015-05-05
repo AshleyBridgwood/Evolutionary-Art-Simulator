@@ -94,13 +94,11 @@ public class UserInterface extends MouseAdapter{
 		Dimension d = new Dimension (1093, 885); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
 		//frame.setPreferredSize(d);
 		
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		frame.setUndecorated(true);
-		Toolkit tk = Toolkit.getDefaultToolkit();
-		int xSize = ((int) tk.getScreenSize().getWidth());
-		int ySize = ((int) tk.getScreenSize().getHeight());
-		Dimension fullScreen = new Dimension(xSize,ySize);
-		frame.setSize(fullScreen);
+		frame.setState(Frame.NORMAL);
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Dimension dimension = toolkit.getScreenSize();
+		frame.setSize(dimension);
+		frame.setLocationRelativeTo(null);
 		
 		frame.setVisible(true);
 		frame.setResizable(false);
