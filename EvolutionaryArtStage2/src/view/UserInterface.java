@@ -3,7 +3,6 @@
  */
 package view;
 
-
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
