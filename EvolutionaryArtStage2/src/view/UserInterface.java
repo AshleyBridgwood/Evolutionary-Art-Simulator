@@ -55,6 +55,9 @@ public class UserInterface extends MouseAdapter{
 	JPanel HOFPanel2 = new JPanel();
 	JPanel HOFPanel3 = new JPanel();
 	
+	static LabelledSlider probSlider = new LabelledSlider(" Probability of Change  ", 100.0, 50, 100, 1);
+	static LabelledSlider changeSlider = new LabelledSlider("Amount of Change  ", 35.0, 35, 75, 1);
+	
 	static int colourChoice = -1;
 	static int lineThicknessChoice = 1;
 	static int lineAmountChoice = 20;
@@ -91,15 +94,13 @@ public class UserInterface extends MouseAdapter{
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		Dimension d = new Dimension (1093, 885); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
-		//frame.setPreferredSize(d);
+		frame.setPreferredSize(d);
 		
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		frame.setUndecorated(true);
-		Toolkit tk = Toolkit.getDefaultToolkit();
-		int xSize = ((int) tk.getScreenSize().getWidth());
-		int ySize = ((int) tk.getScreenSize().getHeight());
-		Dimension fullScreen = new Dimension(xSize,ySize);
-		frame.setSize(fullScreen);
+		//frame.setState(Frame.NORMAL);
+		//Toolkit toolkit = Toolkit.getDefaultToolkit();
+		//Dimension dimension = toolkit.getScreenSize();
+		//frame.setSize(dimension);
+		//frame.setLocationRelativeTo(null);
 		
 		frame.setVisible(true);
 		frame.setResizable(false);
@@ -231,10 +232,10 @@ public class UserInterface extends MouseAdapter{
 		
 		//Sliders to adjust probability of change.
 		Dimension d2 = new Dimension(300,70);
-		final LabelledSlider probSlider = new LabelledSlider(" Probability of Change  ", 0.0, 0, 20, 100);
+		//
 		probSlider.setBounds(193, 13, 300, 70);
 		probSlider.setPreferredSize(d2);
-		final LabelledSlider changeSlider = new LabelledSlider("Amount of Change  ", 0.0, 0, 20, 100);
+		//
 		changeSlider.setBounds(498, 13, 300, 70);
      	changeSlider.setPreferredSize(d2);
      	
@@ -919,6 +920,48 @@ public class UserInterface extends MouseAdapter{
 			}
 		});
 		
+		//Listener to allow user to clear specific hall of fame via menu bar.
+		clearHOF1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				panelOutput.removeAll();
+				BioController.clearCertainHallOfFameBiomorph(0); //clear the first hall of fame in arraylist
+				HOFPanel1.setBackground(SystemColor.menu);
+				refreshHallOfFamePanels(); //repaint the hall of fame panels, so changes can be applied.
+				hofCounter--; //decrement the counter for the amount of hall of fame biomorphs
+				btnRemove.setVisible(false);
+                btnUse.setVisible(false);
+			}
+		});
+		
+		//Listener to allow user to clear specific hall of fame via menu bar.
+		clearHOF2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				panelOutput.removeAll();
+				BioController.clearCertainHallOfFameBiomorph(1); //clear the first hall of fame in arraylist
+				HOFPanel1.setBackground(SystemColor.menu);
+				refreshHallOfFamePanels(); //repaint the hall of fame panels, so changes can be applied.
+				hofCounter--; //decrement the counter for the amount of hall of fame biomorphs
+				btnRemove.setVisible(false);
+                btnUse.setVisible(false);
+			}
+		});
+		
+		//Listener to allow user to clear specific hall of fame via menu bar.
+		clearHOF3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				panelOutput.removeAll();
+				BioController.clearCertainHallOfFameBiomorph(2); //clear the first hall of fame in arraylist
+				HOFPanel1.setBackground(SystemColor.menu);
+				refreshHallOfFamePanels(); //repaint the hall of fame panels, so changes can be applied.
+				hofCounter--; //decrement the counter for the amount of hall of fame biomorphs
+				btnRemove.setVisible(false);
+                btnUse.setVisible(false);
+			}
+		});
+		
 		//Listener to allow user to clear new biomorph via menu bar.
 		newBiomorph.addActionListener(new ActionListener(){
 			@Override
@@ -1124,6 +1167,7 @@ public class UserInterface extends MouseAdapter{
 	}
 
 	public void exportBiomorph(){ //method to access frame as a png
+				
 		JFileChooser chooser = new JFileChooser();
 		chooser.showOpenDialog(null);
 		File f = chooser.getSelectedFile();
@@ -1148,6 +1192,14 @@ public class UserInterface extends MouseAdapter{
 	public static int getLineAmount()
 	{
 		return lineAmountChoice;
+	}
+	public static int getProbOfChange()
+	{
+		return probSlider.getValue().intValue();
+	}
+	public static int getAmountOfChange()
+	{
+		return changeSlider.getValue().intValue();
 	}
 	
 	public void panelClicked(int panel){

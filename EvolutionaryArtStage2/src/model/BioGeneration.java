@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import view.BiomorphStartUp;
+import view.UserInterface;
 import model.Tree.TreeNode;
 
 public class BioGeneration {
@@ -115,9 +116,9 @@ public class BioGeneration {
 			//iterate through tree			
 			for(int j = 0; j < tempTree.size(); j++){
 				Random rand = new Random();
-				int chance = 100;
+				int chance = UserInterface.getProbOfChange();
 				int num = rand.nextInt(chance);
-				int changeRanVal = 35;
+				int changeRanVal = UserInterface.getAmountOfChange();
 				int upOrDown = rand.nextInt(100);
 				boolean up = false;
 				
@@ -129,8 +130,9 @@ public class BioGeneration {
 				{
 					up = true;
 				}
+				
 				//if it does mutate change x or y by certain amount				
-				if(num <= 49){
+				if(num <= (chance/2)-1){
 					//which point to change:
 					int pointDecider = rand.nextInt(99)+1;
 					
