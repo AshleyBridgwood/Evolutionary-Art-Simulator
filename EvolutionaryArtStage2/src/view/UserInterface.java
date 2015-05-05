@@ -95,13 +95,13 @@ public class UserInterface extends MouseAdapter{
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		Dimension d = new Dimension (1093, 885); //dimensions set to be used as parameter for mainFrame.setPreferedSize(d) method.
-		//frame.setPreferredSize(d);
+		frame.setPreferredSize(d);
 		
-		frame.setState(Frame.NORMAL);
-		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		Dimension dimension = toolkit.getScreenSize();
-		frame.setSize(dimension);
-		frame.setLocationRelativeTo(null);
+		//frame.setState(Frame.NORMAL);
+		//Toolkit toolkit = Toolkit.getDefaultToolkit();
+		//Dimension dimension = toolkit.getScreenSize();
+		//frame.setSize(dimension);
+		//frame.setLocationRelativeTo(null);
 		
 		frame.setVisible(true);
 		frame.setResizable(false);
@@ -921,6 +921,48 @@ public class UserInterface extends MouseAdapter{
 			}
 		});
 		
+		//Listener to allow user to clear specific hall of fame via menu bar.
+		clearHOF1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				panelOutput.removeAll();
+				BioController.clearCertainHallOfFameBiomorph(0); //clear the first hall of fame in arraylist
+				HOFPanel1.setBackground(SystemColor.menu);
+				refreshHallOfFamePanels(); //repaint the hall of fame panels, so changes can be applied.
+				hofCounter--; //decrement the counter for the amount of hall of fame biomorphs
+				btnRemove.setVisible(false);
+                btnUse.setVisible(false);
+			}
+		});
+		
+		//Listener to allow user to clear specific hall of fame via menu bar.
+		clearHOF2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				panelOutput.removeAll();
+				BioController.clearCertainHallOfFameBiomorph(1); //clear the first hall of fame in arraylist
+				HOFPanel1.setBackground(SystemColor.menu);
+				refreshHallOfFamePanels(); //repaint the hall of fame panels, so changes can be applied.
+				hofCounter--; //decrement the counter for the amount of hall of fame biomorphs
+				btnRemove.setVisible(false);
+                btnUse.setVisible(false);
+			}
+		});
+		
+		//Listener to allow user to clear specific hall of fame via menu bar.
+		clearHOF3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				panelOutput.removeAll();
+				BioController.clearCertainHallOfFameBiomorph(2); //clear the first hall of fame in arraylist
+				HOFPanel1.setBackground(SystemColor.menu);
+				refreshHallOfFamePanels(); //repaint the hall of fame panels, so changes can be applied.
+				hofCounter--; //decrement the counter for the amount of hall of fame biomorphs
+				btnRemove.setVisible(false);
+                btnUse.setVisible(false);
+			}
+		});
+		
 		//Listener to allow user to clear new biomorph via menu bar.
 		newBiomorph.addActionListener(new ActionListener(){
 			@Override
@@ -1126,6 +1168,7 @@ public class UserInterface extends MouseAdapter{
 	}
 
 	public void exportBiomorph(){ //method to access frame as a png
+				
 		JFileChooser chooser = new JFileChooser();
 		chooser.showOpenDialog(null);
 		File f = chooser.getSelectedFile();
