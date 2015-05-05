@@ -56,6 +56,9 @@ public class UserInterface extends MouseAdapter{
 	JPanel HOFPanel2 = new JPanel();
 	JPanel HOFPanel3 = new JPanel();
 	
+	static LabelledSlider probSlider = new LabelledSlider(" Probability of Change  ", 100.0, 50, 100, 1);
+	static LabelledSlider changeSlider = new LabelledSlider("Amount of Change  ", 35.0, 35, 75, 1);
+	
 	static int colourChoice = -1;
 	static int lineThicknessChoice = 1;
 	static int lineAmountChoice = 20;
@@ -230,10 +233,10 @@ public class UserInterface extends MouseAdapter{
 		
 		//Sliders to adjust probability of change.
 		Dimension d2 = new Dimension(300,70);
-		final LabelledSlider probSlider = new LabelledSlider(" Probability of Change  ", 0.0, 0, 20, 100);
+		//
 		probSlider.setBounds(193, 13, 300, 70);
 		probSlider.setPreferredSize(d2);
-		final LabelledSlider changeSlider = new LabelledSlider("Amount of Change  ", 0.0, 0, 20, 100);
+		//
 		changeSlider.setBounds(498, 13, 300, 70);
      	changeSlider.setPreferredSize(d2);
      	
@@ -1147,6 +1150,14 @@ public class UserInterface extends MouseAdapter{
 	public static int getLineAmount()
 	{
 		return lineAmountChoice;
+	}
+	public static int getProbOfChange()
+	{
+		return probSlider.getValue().intValue();
+	}
+	public static int getAmountOfChange()
+	{
+		return changeSlider.getValue().intValue();
 	}
 	
 	public void panelClicked(int panel){
