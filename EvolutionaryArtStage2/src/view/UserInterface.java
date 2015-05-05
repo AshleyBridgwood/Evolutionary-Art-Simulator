@@ -240,7 +240,7 @@ public class UserInterface extends MouseAdapter{
 		
 		// adds actual logo to the panel
 		JLabel logoImage = new JLabel();
-		ImageIcon logoIcon = new ImageIcon(getClass().getResource("untitled-2.png"));
+		ImageIcon logoIcon = new ImageIcon(getClass().getResource("Untitled-2.png"));
 		Image l = logoIcon.getImage();
 		Image logo = l.getScaledInstance(550, 120, Image.SCALE_DEFAULT);
 		ImageIcon scaledLogo = new ImageIcon(logo);

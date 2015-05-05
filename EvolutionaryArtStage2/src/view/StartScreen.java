@@ -50,7 +50,7 @@ public class StartScreen{
 		JPanel logoPanel = new JPanel();
 		
 		JLabel logoImage = new JLabel();
-		ImageIcon logoIcon = new ImageIcon(getClass().getResource("untitled-2.png"));
+		ImageIcon logoIcon = new ImageIcon(getClass().getResource("Untitled-2.png"));
 		Image l = logoIcon.getImage();
 		Image logo = l.getScaledInstance(550, 200, Image.SCALE_DEFAULT);
 		ImageIcon scaledLogo = new ImageIcon(logo);
