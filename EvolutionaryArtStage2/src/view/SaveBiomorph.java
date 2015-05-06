@@ -73,9 +73,9 @@ public class SaveBiomorph {
 		btnCancel.setBounds(557, 13, 98, 38);
 		panel.add(btnCancel);
 		
-		JLabel lblName = new JLabel("Author Name");
+		JLabel lblName = new JLabel("Biomorph Name");
 		lblName.setFont(new Font("Calibri", Font.BOLD, 22));
-		lblName.setBounds(85, 35, 144, 16);
+		lblName.setBounds(85, 35, 180, 16);
 		frame.getContentPane().add(lblName);
 		
 		txtName = new JTextField();

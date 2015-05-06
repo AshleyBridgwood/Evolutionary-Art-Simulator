@@ -285,6 +285,7 @@ public class UserInterface extends MouseAdapter{
 		JButton undoButton = new JButton("Undo");
 		undoButton.setBounds(47, 436, 154, 43);
 		frame.getContentPane().add(undoButton);
+		undoButton.setToolTipText("CTRL+Z");
 		
 		btnMutate.setBounds(209, 436, 149, 43);
 		frame.getContentPane().add(btnMutate);
@@ -292,6 +293,7 @@ public class UserInterface extends MouseAdapter{
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(47, 487, 78, 43);
 		frame.getContentPane().add(btnSave);
+		btnSave.setToolTipText("CTRL+S");
 		
 		JButton btnExport = new JButton("Export");
 		btnExport.setBounds(123, 487, 78, 43);
