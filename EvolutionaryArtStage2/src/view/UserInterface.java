@@ -312,10 +312,6 @@ public class UserInterface extends MouseAdapter{
 		btnHome.setBounds(0, 0, 130, 43);
 		frame.getContentPane().add(btnHome);
 		
-		JButton btnClose = new JButton("Close");
-		btnClose.setBounds(130, 0, 130, 43);
-		frame.getContentPane().add(btnClose);
-		
 		final JButton btnRemove = new JButton("Remove"); // button to remove a biomorph from the hall of fame.
 		btnRemove.setBounds(393, 186, 105, 35);
 		btnRemove.setVisible(false);
@@ -337,6 +333,7 @@ public class UserInterface extends MouseAdapter{
         				refreshHallOfFamePanels(); 
         				panelOutput.removeAll();
         				refreshAllPanels(); // repaints panels so parent panel can change to the selected hall of fame.
+						hofPanels[hofSelected-1].setBackground(SystemColor.menu); // resets hall of fame biomorph if it's clicked.
         				
         				btnRemove.setVisible(false); //sets the remove and use button to invisble. 
         				btnUse.setVisible(false);    // only show after it ha been clicked.
@@ -390,15 +387,7 @@ public class UserInterface extends MouseAdapter{
 				}
 			}
 		});	
-		
-		btnClose.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				exit();
-			}
-		});	
-		
-	
-		
+
 		//Action listener for the hall of fame button.
 		btnHOF.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -424,6 +413,8 @@ public class UserInterface extends MouseAdapter{
 		btnMutate.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//Only allow mutation to occur if more than one panel is selected.
+				hofPanels[hofSelected-1].setBackground(SystemColor.menu); // resets hof biomorph if its clicked.
+
 				if(!panelsSelected.isEmpty())
 				{
 					//  mutate one biomorph
@@ -1295,9 +1286,7 @@ public class UserInterface extends MouseAdapter{
 				BioController.clearHistoryData();
 				BioController.resetCache();
 				return true;
-			} else if (response == JOptionPane.NO_OPTION) {
-				frame.dispose();
-			}
+			} 
 		return false;
 	}
 	

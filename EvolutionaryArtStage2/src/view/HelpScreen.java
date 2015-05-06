@@ -64,7 +64,7 @@ public class HelpScreen {
 		
 
 		try {
-	       textArea.read(new FileReader("/src/view/Help.txt"), null); //reads text file and adds it to the JTextArea
+	       textArea.read(new FileReader("src/view/Help.txt"), null); //reads text file and adds it to the JTextArea
 	       textArea.setEditable(false);
 	       
 		} catch (IOException e1) {
@@ -79,17 +79,7 @@ public class HelpScreen {
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//set the horizontal scrollbar to never appear
 		scrollPane.setBounds(26, 94, 729, 382);
 		frame.getContentPane().add(scrollPane);
-		
-		JButton btnHome = new JButton("Home");
-		btnHome.setBounds(0, 1, 140, 56);
-		frame.getContentPane().add(btnHome);
-		btnHome.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				new StartScreen().getFrame().setVisible(true);
-				frame.setVisible(false);
-			}
-		});
-		
+				
 		//Exit prompt
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {

@@ -60,17 +60,6 @@ public class History {
 		lblHistory.setBackground(Color.ORANGE);
 		lblHistory.setBounds(508, 15, 236, 35);
 		frame.getContentPane().add(lblHistory);
-		
-		JButton btnHome = new JButton("Home");
-		btnHome.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new StartScreen().getFrame().setVisible(true);
-				frame.dispose();
-
-			}
-		});
-		btnHome.setBounds(0, 5, 168, 52);
-		frame.getContentPane().add(btnHome);
 
 		loadBiomorphs();
 	}
