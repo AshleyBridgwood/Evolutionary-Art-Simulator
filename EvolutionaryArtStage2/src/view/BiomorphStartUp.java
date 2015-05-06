@@ -1,5 +1,6 @@
 /**
  * @author Ibrahim Farah
+ * @author James Langford
  */
 
 package view;
