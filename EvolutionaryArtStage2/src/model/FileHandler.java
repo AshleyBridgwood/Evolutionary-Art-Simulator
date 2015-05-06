@@ -207,8 +207,6 @@ public class FileHandler {
 			File defaultDir = new File(dir,"Evolutionary Art");
 			EvolutionaryArtFolderLocation = dir + File.separator + "Evolutionary Art";
 			File logDir = new File(dir + File.separator + "Evolutionary Art", "Log");
-			File videoDir = new File(dir + File.separator + "Evolutionary Art", "Videos");
-			File exportDir = new File(dir + File.separator + "Evolutionary Art", "Exported Biomorphs");
 			File savedDir = new File(dir + File.separator + "Evolutionary Art", "Saved Biomorphs");
 			File hallOfFameDir = new File(dir + File.separator + "Evolutionary Art", "Hall Of Fame");
 			
@@ -222,18 +220,6 @@ public class FileHandler {
 			if(!logDir.isDirectory()){
 				logDir.mkdirs();
 				Log.add("Folder Created in Evolutionary Art: Log");		
-			}
-			
-			//Check and/or create the videos folder
-			if(!videoDir.isDirectory()){
-				videoDir.mkdirs();
-				Log.add("Folder Created in Evolutionary Art: Videos");
-			}
-			
-			//Check and/or create the exported Biomorph's folder
-			if(!exportDir.isDirectory()){
-				exportDir.mkdirs();
-				Log.add("Folder Created in Evolutionary Art: Exported Biomorphs");
 			}
 			
 			//Check and/or create the Saved Biomorph's folder
