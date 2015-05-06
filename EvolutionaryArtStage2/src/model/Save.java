@@ -22,7 +22,7 @@ public class Save extends FileHandler {
 	public static void saveBiomorphs(String name, ArrayList<ArrayList<Line>> bioData){
 		Log.add("Saving Biomorph...");
 		try {
-			FileHandler.saveObjectToFile("/Saved Biomorphs/" + name + ".biomorph", bioData);
+			saveObjectToFile("/Saved Biomorphs/" + name + ".biomorph", bioData);
 			SaveBiomorph.saved(true);
 		} catch (IOException e) {
 			SaveBiomorph.saved(false);
@@ -36,10 +36,6 @@ public class Save extends FileHandler {
 	 * @param bioData Data which is passed to be saved
 	 */
 	public static void saveBiomorphToHallOfFame(String name, ArrayList<Line> bioData){
-		try {
-			FileHandler.saveBiomorphToHallOfFame("/Hall Of Fame/" + name + ".biomorph",  bioData);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		saveBiomorphToHallOfFame("/Hall Of Fame/" + name + ".biomorph",  bioData);
 	}
 }

@@ -1308,10 +1308,9 @@ public class UserInterface extends MouseAdapter{
 			changes = changed;
 	}
 	
-	 public static void infoBox(String infoMessage, String titleBar)
-	    {
+	public static void infoBox(String infoMessage, String titleBar){
 	        JOptionPane.showMessageDialog(null, infoMessage, titleBar, JOptionPane.INFORMATION_MESSAGE);
-	    }
+	}
 
 	
 }
