@@ -1,16 +1,21 @@
                                     ***********WELCOME TO EVOLUTIONARY ART HELP SCREEN***********
 
-1. Starting the Evolution Porcess.
+1. Starting the Evolution Process.
 ============================================================================================
-Click on the 'new biomorph' button on the home screen. Select the amount of lines you want your biomorph to
+Click on the 'New Biomorph' button on the home screen. Select the amount of lines you want your biomorph to
 have; click 'generate' until you find the biomorph of your choice. After finding the right biomorph
 click the 'next' button to continue to the next screen and start mutating your biomorph.
 
-2. Mutating a biomorph.
+2. Mutating and Mating Biomorphs.
 ============================================================================================
-Click on one, or two of the biomorphs in the 'children' section. After selecting the biomorph(s) of your 
-choice click on the mutate button. If at any point you wish to go back a previously generated biomorph 
-click the 'undo' button.
+To mutate, click on one of the biomorphs in the 'children' section. After selecting the biomorph of your 
+choice click on the mutate button. This will mutate the selected child with the parent to produce a new
+parent biomorph.
+
+To mate, click on two of the biomorphs in the 'children' section and then select mutate. This will mate
+the two selected children biomorphs and the result will replace the current parent.
+
+If at any point you wish to go back to a previously generated biomorph, click the 'undo' button.
 
 3. Hall Of Fame.
 ============================================================================================
