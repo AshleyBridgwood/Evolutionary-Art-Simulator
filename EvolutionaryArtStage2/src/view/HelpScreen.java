@@ -64,7 +64,7 @@ public class HelpScreen {
 		
 
 		try {
-	       textArea.read(new FileReader("src/view/Help.txt"), null); //reads text file and adds it to the JTextArea
+	       textArea.read(new FileReader("/src/view/Help.txt"), null); //reads text file and adds it to the JTextArea
 	       textArea.setEditable(false);
 	       
 		} catch (IOException e1) {

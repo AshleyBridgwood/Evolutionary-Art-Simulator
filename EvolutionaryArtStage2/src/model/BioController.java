@@ -28,7 +28,7 @@ public class BioController {
 		history = new ArrayList<ArrayList<ArrayList<Line>>>();
 		currentlySelectedToMutate = 0;
 		
-		new BioCache(); //Start the cache for the undo feature
+		new BioCache(); //Start the cdcdhbcache for the undo feature
 		
 		Log.add("Bio Controller Initiated");
 		
