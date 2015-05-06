@@ -28,7 +28,7 @@ public class TestFileHandling {
 	
 	@Test
 	public void testSaveLoad(){
-		Save.saveBiomorphs("Test.biomorph", data);
+		Save.saveBiomorphs("Test", data);
 		assertNotNull("Failed to save data", Load.loadAllBiomorphs("Test.biomorph"));
 	}
 }
