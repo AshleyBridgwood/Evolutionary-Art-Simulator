@@ -24,8 +24,12 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 
 public class HelpScreen {
 
@@ -64,8 +68,16 @@ public class HelpScreen {
 		
 
 		try {
-	       textArea.read(new FileReader("src/view/Help.txt"), null); //reads text file and adds it to the JTextArea
-	       textArea.setEditable(false);
+
+	       
+	       
+	       try (Reader in = new BufferedReader(
+	    		    new InputStreamReader(
+	    		        this.getClass().getResourceAsStream(
+	    		            "/help/Help.txt"),
+	    		        StandardCharsets.UTF_8))) {  // to ensure encoding stays the same regardless of what cpu.
+	    		    textArea.read(in, null);
+	    		}
 	       
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block

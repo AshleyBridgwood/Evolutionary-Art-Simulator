@@ -233,6 +233,7 @@ public class FileHandler {
 				hallOfFameDir.mkdirs();
 				Log.add("Folder Created in Evolutionary Art: Hall Of Fame");
 			}
+
 		} else {
 			//If OS is not Windows or Linux, pass error message about failed folder creation
 			Log.add("Unable to create Evolutionary Art folder in: " + EvolutionaryArtFolderLocation + ". Some functions may not perform correctly!");
