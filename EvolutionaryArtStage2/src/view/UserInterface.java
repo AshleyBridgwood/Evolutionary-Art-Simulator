@@ -90,6 +90,7 @@ public class UserInterface extends MouseAdapter{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame =	new JFrame();	
 
 		frame.setBounds(100, 100, 1093, 825);
@@ -120,6 +121,8 @@ public class UserInterface extends MouseAdapter{
 				
 			}
 		});
+		
+		
 
 		
 		JLabel lblHOF = new JLabel("Hall Of Fame"); //Hall of Fame Label
@@ -1123,6 +1126,13 @@ public class UserInterface extends MouseAdapter{
 					refreshAllPanels();
 	            }
 	        });
+	        
+	        infoBox("Welcome to Ultimate Evolution!\n"
+					+ "To evolve your biomorph please choose one or two children you like and click mutate to\n"
+					+ "view the next generation.\n"
+					+ "\n"
+					+ "CTRL+S to save.\n"
+					+ "CTRL+Z to undo.","Welcome to Ultimate Evolution!");
 	        			
 	}
 	
@@ -1164,6 +1174,8 @@ public class UserInterface extends MouseAdapter{
 				panelsSelected.remove(0);
 			}
 		}
+		
+		
 	}
 	//getter so frame can be accessed..
 	public JFrame getFrame() {
@@ -1296,6 +1308,10 @@ public class UserInterface extends MouseAdapter{
 			changes = changed;
 	}
 	
+	 public static void infoBox(String infoMessage, String titleBar)
+	    {
+	        JOptionPane.showMessageDialog(null, infoMessage, titleBar, JOptionPane.INFORMATION_MESSAGE);
+	    }
 
 	
 }
