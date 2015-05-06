@@ -57,7 +57,7 @@ click 'Clear history' if you wish to clear the history.
 
 7. Loading an Existing Biomorph
 ============================================================================================
-From the homepage, click on 'Exisitng Biomorph'. Then browse the list of files, by hovering over the
+From the homepage, click on 'Existing Biomorph'. Then browse the list of files, by hovering over the
 filenames you will be able to see the biomorph artwork. Once you find a biomorph you like click on the
 filename and click the 'Load Biomorph' button. 
 
