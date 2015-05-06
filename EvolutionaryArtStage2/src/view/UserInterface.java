@@ -63,7 +63,7 @@ public class UserInterface extends MouseAdapter{
 	JPanel HOFPanel2 = new JPanel();
 	JPanel HOFPanel3 = new JPanel();
 	
-	static LabelledSlider probSlider = new LabelledSlider(" Probability of Change  ", 100.0, 50, 100, 1);
+	static LabelledSlider probSlider = new LabelledSlider(" Probability of Change  ", 50.0, 50, 100, 1);
 	static LabelledSlider changeSlider = new LabelledSlider("Amount of Change  ", 35.0, 35, 75, 1);
 	
 	static int colourChoice = -1;
@@ -412,9 +412,12 @@ public class UserInterface extends MouseAdapter{
 		//Action listener for mutuate button. Mutates the biomorpbhs from what is selected
 		btnMutate.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//Only allow mutation to occur if more than one panel is selected.
-				hofPanels[hofSelected-1].setBackground(SystemColor.menu); // resets hof biomorph if its clicked.
 
+				if (hofSelected != 0){
+				hofPanels[hofSelected-1].setBackground(SystemColor.menu); // resets hof biomorph if its clicked.
+				}
+					
+				//Only allow mutation to occur if more than one panel is selected.
 				if(!panelsSelected.isEmpty())
 				{
 					//  mutate one biomorph

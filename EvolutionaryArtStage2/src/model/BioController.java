@@ -127,13 +127,10 @@ public class BioController {
 			ArrayList<ArrayList<Line>> newLine = (ArrayList<ArrayList<Line>>) BioCache.pop();
 			history.add(newLine);
 		}
-		System.out.println("Size of history after adding: " + history.size());
 		int loop = history.size();
 		for(int i = loop; i > 0 ; i--){;
-			System.out.println("Adding to biocache");
 			BioCache.push(history.get(i-1));
 		}
-		System.out.println("size of biocache after readding: " + BioCache.getNumberOfItemsOnStack());
 	}
 	
 	public static BioDraw displayHistoryBiomorph(int number){
