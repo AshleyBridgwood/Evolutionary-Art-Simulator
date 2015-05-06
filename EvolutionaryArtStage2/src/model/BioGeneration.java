@@ -2,6 +2,7 @@
  * DESCRIPTION OF THE CLASS
  * 
  * @author Ashley Bridgwood
+ * @author James Langford
  * 
  * First value is branching, this must always be positive.
  * Right now there are only two other values, the second being length and the third being width.

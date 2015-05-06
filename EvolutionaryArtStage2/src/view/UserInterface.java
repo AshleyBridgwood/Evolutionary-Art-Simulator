@@ -1,5 +1,7 @@
 /**
  * @author Ibrahim Farah
+ * @author Ashley Bridgwood
+ * @author James Langford
  */
 package view;
 
@@ -40,7 +42,7 @@ public class UserInterface extends MouseAdapter{
 
 	private JFrame frame;
 	
-	JButton btnMutate = new JButton("Mutate !");
+	JButton btnMutate = new JButton("Mutate");
 	JPanel panelOutput = new JPanel();
 	JPanel panelBiomorph1 = new JPanel();
 	JPanel panelBiomorph2 = new JPanel();
@@ -287,11 +289,11 @@ public class UserInterface extends MouseAdapter{
 		btnMutate.setBounds(209, 436, 149, 43);
 		frame.getContentPane().add(btnMutate);
 		
-		JButton btnSave = new JButton("Save!");
+		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(47, 487, 78, 43);
 		frame.getContentPane().add(btnSave);
 		
-		JButton btnExport = new JButton("Export!");
+		JButton btnExport = new JButton("Export");
 		btnExport.setBounds(123, 487, 78, 43);
 		frame.getContentPane().add(btnExport);
 		

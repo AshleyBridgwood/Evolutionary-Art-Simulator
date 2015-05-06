@@ -1,6 +1,7 @@
 /**
  * DESCRIPTION OF THE CLASS
  * 
+ * @author James Langford
  * @author Ashley Bridgwood
  *
  */
