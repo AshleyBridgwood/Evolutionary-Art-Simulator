@@ -1,5 +1,8 @@
 /**
+ * Load screen for the system
+ * 
  * @author Ibrahim Farah
+ * 
  */
 
 package view;

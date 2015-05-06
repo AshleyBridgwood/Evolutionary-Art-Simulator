@@ -2,6 +2,7 @@
  * FileHandler - Deals with all reading and writing of data to and from the users computer
  * 
  * @author Ashley Bridgwood
+ * @author Ibrahim Farah
  *
  */
 

@@ -1,6 +1,8 @@
 /**
- * DESCRIPTION OF THE CLASS
+ * The first initial 
+ * 
  * @author Ibrahim Farah
+ * 
  */
 
 package view;

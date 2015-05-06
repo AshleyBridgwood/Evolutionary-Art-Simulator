@@ -1,6 +1,9 @@
 /**
+ * Displays the history of the evolution
+ * 
  * @author Ibrahim Farah
  * @author Ashley Bridgwood
+ * 
  */
 
 package view;

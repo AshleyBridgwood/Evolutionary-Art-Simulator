@@ -1,6 +1,9 @@
 /**
+ * Displays initial biomorph which the user can the mutate
+ * 
  * @author Ibrahim Farah
  * @author James Langford
+ * 
  */
 
 package view;

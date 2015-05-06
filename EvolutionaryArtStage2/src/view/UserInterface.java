@@ -1,7 +1,13 @@
 /**
+ * Main interface for the system
+ * 
+ * Main bulk produced by
  * @author Ibrahim Farah
+ * 
+ * Extra features by
  * @author Ashley Bridgwood
  * @author James Langford
+ * 
  */
 package view;
 

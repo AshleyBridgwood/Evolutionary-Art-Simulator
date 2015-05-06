@@ -1,7 +1,7 @@
 /**
  * DESCRIPTION OF THE CLASS
  * 
- * @author Ashley Bridgwood
+ * @author Ibrahim Farah
  *
  */
 
@@ -18,7 +18,7 @@ public class Export extends FileHandler {
 	
 	public static void export(String fileName, BufferedImage pingImage){	
 		try{ImageIO.write(pingImage,"png",new File(fileName + png));
-		UserInterface.exported(true);
+			UserInterface.exported(true);
 		}catch (Exception e) {
 			UserInterface.exported(false);
 		};

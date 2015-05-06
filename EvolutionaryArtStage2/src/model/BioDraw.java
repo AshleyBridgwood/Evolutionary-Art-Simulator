@@ -68,7 +68,6 @@ public class BioDraw extends JPanel {
 				Colour colour = new Colour();
 				Color toUse = colour.getRandomColourFromScheme(UserInterface.getColourChoice());
 				g.setColor(toUse);
-				
 			}
 			
 			g2.setStroke(new BasicStroke(UserInterface.getLineThickness()));

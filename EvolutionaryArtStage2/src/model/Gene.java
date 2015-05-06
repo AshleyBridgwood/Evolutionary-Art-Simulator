@@ -9,7 +9,8 @@
 package model;
 
 public class Gene {
-	private int g;
+	
+	private int g; //Gene value
 	
 	public Gene() {
 		g = Factory.generateGeneValue(); 

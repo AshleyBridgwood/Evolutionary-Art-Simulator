@@ -1,3 +1,10 @@
+/**
+ * Displays the help screen
+ * 
+ * @author Ibrahim Farah
+ * 
+ */
+
 package view;
 
 import java.awt.event.WindowAdapter;
