@@ -21,7 +21,7 @@ public class Load extends FileHandler {
 	 * @return ArrayList<ArrayList<Line>> the loaded parent and children data
 	 */
 	public static ArrayList<ArrayList<Line>> loadAllBiomorphs(String fileName){
-		return FileHandler.loadBiomorphs("\\Saved Biomorphs\\" + fileName);
+		return FileHandler.loadBiomorphs("/Saved Biomorphs/" + fileName);
 		//		return FileHandler.loadBiomorphs("\\Saved Biomorphs\\" + fileName + ".biomorph"); ..
 
 	}
@@ -32,7 +32,7 @@ public class Load extends FileHandler {
 	 * @return ArrayList<Line> the loaded Biomorph
 	 */
 	public static ArrayList<Line> loadHallOfFameBiomorph(String fileName){
-		return FileHandler.loadHallOfFameBiomorph("\\Hall Of Fame\\" + fileName + ".biomorph");
+		return FileHandler.loadHallOfFameBiomorph("/Hall Of Fame/" + fileName + ".biomorph");
 	}
 	
 	/**
